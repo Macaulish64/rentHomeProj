@@ -81,7 +81,7 @@ create table House(
   ```
 ##### 4.transaction
 ```
-create table transaction(
+create table renttransaction(
     transactionId int auto_increment primary key,
     houseId int,
     landlordId int,
