@@ -19,7 +19,8 @@ public class TestUserDao extends BaseTest{
         User newUser=new User();
         newUser.setuSerNickName("lxlxlx");
         newUser.setPasserId("233333");
-        int num=UserDao.addUser(newUser);
+        int num=userDao.addUser(newUser);
+        System.out.println("!!!!!\n");
     }
 
     /* */

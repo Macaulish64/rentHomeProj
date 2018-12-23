@@ -58,7 +58,7 @@ create table House(
     rent float(10,2),
     registTime varchar(20),
     updateTime varchar(20),
-    status int
+    housestatus int
   )default charset=utf8;
   ```
   ##### 3.rentinformation

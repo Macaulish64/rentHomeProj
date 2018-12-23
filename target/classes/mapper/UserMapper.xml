@@ -7,7 +7,7 @@
 <mapper namespace="com.rent.dao.UserDao">
   <!-- 目的：为dao接口方法提供sql语句配置 -->
   <!-- 具体的sql -->
-  <select id="addUser" parameterType="User" resultType="int">
+  <insert id="addUser">
       insert into user(userNickName, password,
                        userType, userName, cardType,
                        idNumber, phoneNumber, userLevel,
@@ -18,8 +18,7 @@
                   #{idNumber},#{phoneNumber},#{userLevel},
                   #{registCity},#{updateTime}
           );
-
-  </select>
+  </insert>
 
 
 
