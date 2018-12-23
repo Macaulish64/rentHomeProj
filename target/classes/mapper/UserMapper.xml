@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- User的ORM-->
+<mapper namespace="com.rent.dao.UserDao">
+  <!-- 目的：为dao接口方法提供sql语句配置 -->
+  <!-- 具体的sql -->
+  <select id="addUser" parameterType="User" resultType="int">
+      insert into user(userNickName, password,
+                       userType, userName, cardType,
+                       idNumber, phoneNumber, userLevel,
+                       registCity, updateTime)
+          values (
+                  #{userNickName},#{password},
+                  #{userType},#{userName},#{cardType},
+                  #{idNumber},#{phoneNumber},#{userLevel},
+                  #{registCity},#{updateTime}
+          );
+
+  </select>
+
+
+
+</mapper>
