@@ -1,4 +1,4 @@
 package com.rent.entity;
 
-public class Rentinfomation {
+public class RentInfomation {
 }
