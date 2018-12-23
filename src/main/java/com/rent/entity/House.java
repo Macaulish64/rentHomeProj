@@ -17,7 +17,7 @@ public class House {
     private float rent;
     private String registTime;
     private String updateTime;
-    private int status;
+    private int housestatus;
 
 
 }
