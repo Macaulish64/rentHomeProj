@@ -1,5 +1,7 @@
 # idea configuration
 .idea/
 
+target/
+
 # class
 *.class
