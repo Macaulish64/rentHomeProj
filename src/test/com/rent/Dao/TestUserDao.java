@@ -1,5 +1,6 @@
-package com.rent;
+package com.rent.Dao;
 
+import com.rent.BaseTest;
 import com.rent.entity.User;
 import com.rent.dao.UserDao;
 import org.junit.Test;
@@ -7,7 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
-public class TestUserDao extends BaseTest{
+public class TestUserDao extends BaseTest {
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
