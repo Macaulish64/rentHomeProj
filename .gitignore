@@ -1,7 +1,5 @@
-# idea configuration
 .idea/
 
 target/
 
-# class
-*.class
+pom.xml
