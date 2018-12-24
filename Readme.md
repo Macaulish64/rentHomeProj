@@ -49,6 +49,7 @@
     1. 密码不少于8位
     2. 必须含有两个数字
     3. 不能全位大写或者小写
+
   此外还要求：密码不得与原来的相似(相等吧)
   数据库SQL:User表中，(1)查找用户密码(2)修改某个用户的密码
   Dao层：
@@ -57,7 +58,7 @@
 
 
 - 登录系统:
-  登录系统有一个登入界面的视图，登陆界面需要输入用户名(userNickName)和密码（password)。然后接受用户名与密码,根据用户名查询密码,比较与用户输入的密码是否一致。
+  登录系统有一个登入界面的视图，登陆界面需要输入用户名(userNickName)和密码(password)。然后接受用户名与密码,根据用户名查询密码,比较与用户输入的密码是否一致。
   数据库SQL:User表:(1)查询对应用户名的密码
   Dao层:
   service层：
@@ -65,11 +66,15 @@
 
 - 房东身份
   - 填写发布房源信息，上传房屋内部照片:
-    发布
-    数据库SQL:
+    在发布房源信息时中同时支持上传房屋内部照片
+
+    数据库SQL:增加一个条目
     Dao层：
     service层：
+    (1)接受上传的图片
+    (2)调用增加条目
     web-controller层：
+    
   - 查询自己发布的房屋信息
     数据库SQL:
     Dao层：
@@ -229,48 +234,50 @@
       elevatorOrNot int,
       houseDescription nvarchar(500),
       housePhoto varchar(50),
+      depositMoney float(10,2),
+      paymentMethod int,
+      rentMoney float(10,2),
       registTime varchar(20),
       updateTime varchar(20),
       status int default 0
     )default charset=utf8;
-
-  insert into House(publishUserId,cityName,communityName,buildingNumber,houseType,houseArea,floorNumber,elevatorOrNot,houseDescription,housePhoto,registTime,updateTime) values(1,'北京','西土城小区','1',1,100,1,0,'超漂亮','无','20181223','20181223');
 ```
-p.s. 此处有修改，出租费用删掉
 
 - 创建求租信息类
   
-| 列名 | 值域 | 说明                                    |
-| ---- | ---- | --------------------------------------- |
-|   rentId   |   int   | 求租标识                      |
-|    publishUserId  |  int    | 发布用户标识                           |
-|   cityName   |   nvarchar(10)   | 所在城市                           |
-| communityName|nvarchar(50) | 小区名称 |
-| houseType|int | 房屋类型（一居、二居、三居、三居以上） |
-|floorNumber |int | 所在楼层 |
-|elevatorOrNot |int | 是否有电梯 |
-|houseDescription | nvarchar(500)| 房屋家居描述 |
-|deposit | float(10,2)| 押金（N 个月） |
-|paymentMethod|int | 租金支付方式（月、季、年） |
-|rent |float(10,2) | 租金 |
-| registTime|varchar(20) | 注册时间 |
-|updateTime | varchar(20)| 修改时间 |
+  | 列名 | 值域 | 说明                                    |
+  | ---- | ---- | --------------------------------------- |
+  |   rentId   |   int   | 求租标识                      |
+  |    publishUserId  |  int    | 发布用户标识                         |
+  |   cityName   |   nvarchar(10)   | 所在城市                        |
+  | communityName|nvarchar(50) | 小区名称 |
+  | houseType|int | 房屋类型（一居、二居、三居、三居以上） |
+  |floorNumber |int | 所在楼层 |
+  |elevatorOrNot |int | 是否有电梯 |
+  |houseDescription | nvarchar(500)| 房屋家居描述 |
+  |deposit | float(10,2)| 押金（N 个月） |
+  |paymentMethod|int | 租金支付方式（月、季、年） |
+  |rent |float(10,2) | 租金 |
+  | registTime|varchar(20) | 注册时间 |
+  |updateTime | varchar(20)| 修改时间 |
 
 ```
-create table Rent(
+create table RentInformation(
     rentId int auto_increment primary key,
     publishUserId int,
-    houseId int,
-    deposit float(10,2),
+    cityName nvarchar(10),
+    communityName nvarchar(50),
+    houseType int,
+    floorNumber int,
+    elevatorOrNot int,
+    houseDescription nvarchar(500),
+    depositMoney float(10,2),
     paymentMethod int,
-    rent float(10,2),
+    rentMoney float(10,2),
     registTime varchar(20),
     updateTime varchar(20)
   )default charset=utf8;
-
-insert into Rent(publishUserId,houseId,deposit,paymentMethod,rent,registTime,updateTime) values(1,1,1000,0,5000,'20181223','20181223');
 ```
-p.s. 有关房子都删除
 
 - 房屋出租成交明细表
   
@@ -290,15 +297,15 @@ p.s. 有关房子都删除
 | landlordPaymentAgencyFee|float(12,4) | 房东支付中介费（总租金*0.03） |
 |tenantPaymentAgencyFee |float(12,4) | 租户支付中介费（总租金*0.03） |
 ```
-create table rebttransaction(
+create table renttransaction(
     transactionId int auto_increment primary key,
     houseId int,
     landlordId int,
     tenantId int,
     transactionDate varchar(20),
-    startMonth varcahr(10),
-    endMonth varcahr(10),
-    deposit float(10,2),
+    startMonth varchar(10),
+    endMonth varchar(10),
+    depositMoney float(10,2),
     paymentMethod int,
     monthRent float(10,2),
     totalRent float(10,2),
@@ -341,14 +348,6 @@ create table Income(
     成交中介费的明细列表，并按月以折线图的方式展示每月累计成交
     笔数、中介费金额的变化趋势
   - 可支持按照累计成交笔数、累计中介费排序的功能。 
-- 在完成基本功能基础之上，可扩展其它功能。如根据用户的级别开放租
-户或房东的部分信息可见，采用不同的中介费计价规则等。 
+- 在完成基本功能基础之上，可扩展其它功能。如根据用户的级别开放租户或房东的部分信息可见，采用不同的中介费计价规则等。 
 
 
-
-
-
-- 还没点的技能点
-  - 上传文件，图片以及他们的显示
-  - 数据库事务操作
-- 关于设计模式见ppt
