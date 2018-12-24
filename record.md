@@ -79,9 +79,9 @@ create table House(
     updateTime varchar(20)
   )default charset=utf8;
   ```
-##### 4.transaction
+##### 4.renttransaction
 ```
-create table transaction(
+create table renttransaction(
     transactionId int auto_increment primary key,
     houseId int,
     landlordId int,
