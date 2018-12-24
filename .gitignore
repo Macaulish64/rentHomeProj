@@ -1,7 +1,5 @@
-# idea configuration
-.idea/
+#.idea/
 
 target/
 
-# class
 *.class
