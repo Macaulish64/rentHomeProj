@@ -16,6 +16,6 @@ public class UserController {
     @RequestMapping(value = "/register",method = RequestMethod.POST)
     private String register(Model model) {
         logger.info("into");
-        return "index";
+        return "redirect:/index.jsp";
     }
 }
