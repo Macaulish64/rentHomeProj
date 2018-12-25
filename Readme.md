@@ -170,12 +170,12 @@
   |   userId   |    int  | 用户标识                                |
   |    userNickName  |  nvarchar(20)    | 用户名                                  | 
   |    password  |   varchar(20)   | 登录密码                                |
-  |    userType  |    int  | 用户类型 （系统管理员/普通用户） |
+  |    userType  |    int  | 用户类型 （系统管理员1/普通用户0） |
   |     userName |   nvarchar(20)   | 用户姓名                                |
-  |    cardType  |  int    | 证件类型（默认身份证）                  |
+  |    cardType  |  int    | 证件类型（护照1、默认身份证0）                  |
   |     idNumber |    varchar(20)  | 证件号码                                |
   |    phoneNumber  |   varchar(20)   | 手机号码(11位）                           |
-  |    userLevel  |   int   | 用户级别（钻石级、重要、一般）          |
+  |    userLevel  |   int   | 用户级别（钻石级3、重要2、一般0，默认为0）          |
   |    registCity  |   nvarchar(10)   | 注册城市                                |
   |   updateTime   |    varchar(20)  | 修改时间 |
 
@@ -218,7 +218,7 @@
   | rent|float(10,2)  | 租金 |
   |registTime |varchar(20)  | 注册时间 |
   |updateTime | varchar(20) | 修改时间 |
-  |status |int | 状态（已租、待租） |
+  |status |int | 状态（已租1、待租0，默认为0） |
 
 
 ```
