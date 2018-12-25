@@ -54,22 +54,24 @@
 
 <% System.out.println(appPath); %>
 
-<form role="form" id="login" action="<%=appPath%>/user/login" method="post">
-	<div class="form-group">
-		<label for="usernickname">User Name</label>
-		<input type="text" class="form-control" id="usernickname" name="usernickname">
-	</div>
-	<div class="form-group">
-		<label for="password">Password</label>
-		<input type="password" class="form-control" id="password" name="password">
-	</div>
-	<div class="form-group form-check">
-		<label class="form-check-label">
-			<input class="form-check-input" type="checkbox"> Remember me
-		</label>
-	</div>
-	<button type="submit" class="btn btn-primary">Submit</button>
-</form>
+<div class="col-md-12 column">
+	<form role="form" id="login" action="<%=appPath%>/user/login" method="post">
+		<div class="form-group">
+			<label for="usernickname">User Name</label>
+			<input type="text" class="form-control" id="usernickname" name="usernickname">
+		</div>
+		<div class="form-group">
+			<label for="password">Password</label>
+			<input type="password" class="form-control" id="password" name="password">
+		</div>
+		<div class="form-group form-check">
+			<label class="form-check-label">
+				<input class="form-check-input" type="checkbox"> Remember me
+			</label>
+		</div>
+		<button type="submit" class="btn btn-primary">Submit</button>
+	</form>
+</div>
 
 </body>
 </html>
