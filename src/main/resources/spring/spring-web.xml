@@ -39,5 +39,5 @@
     <property name="maxUploadSize" value="10240000" />
   </bean>
   <!-- 4.扫描web相关的bean -->
-  <context:component-scan base-package="com.hisen.web" />
+  <context:component-scan base-package="com.rent.web" />
 </beans>

@@ -54,7 +54,7 @@
 
 <% System.out.println(appPath); %>
 
-<form action="<%appPath%>/user/register" method="post">
+<form role="form" id="register" action="<%=appPath%>/user/register" method="post">
 	<div class="form-group">
 		<label for="userid">User Name</label>
 		<input type="text" class="form-control" id="userid">
