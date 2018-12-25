@@ -170,7 +170,7 @@
   |   userId   |    int  | 用户标识                                |
   |    userNickName  |  nvarchar(20)    | 用户名                                  | 
   |    password  |   varchar(20)   | 登录密码                                |
-  |    userType  |    int  | 用户类型 （系统管理员1/普通用户0） |
+  |    userType  |    int  | 用户类型 （系统管理员1/普通用户0，默认为0） |
   |     userName |   nvarchar(20)   | 用户姓名                                |
   |    cardType  |  int    | 证件类型（护照1、默认身份证0）                  |
   |     idNumber |    varchar(20)  | 证件号码                                |
@@ -184,7 +184,7 @@
     userId int auto_increment primary key,
     userNickName nvarchar(20),
     password varchar(20),
-    userType int,
+    userType int default 0,
     userName nvarchar(20),
     cardType int,
     idNumber varchar(20),
