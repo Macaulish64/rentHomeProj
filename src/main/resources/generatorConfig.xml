@@ -29,8 +29,12 @@
       <property name="enableSubPackages" value="true"/>
     </javaClientGenerator>
 
-    <table tableName="appointment"/>
-    <table tableName="user"/>
+    <table catalog="rentsystem" tableName="user" domainObjectName="User"
+           enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+           enableSelectByExample="false" selectByExampleQueryId="false" >
+      <property name="useActualColumnNames" value="false"/>
+      <property name="ignoreQualifiersAtRuntime" value="true"/>
+    </table>
 
   </context>
 
