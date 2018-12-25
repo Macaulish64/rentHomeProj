@@ -54,7 +54,7 @@
 
 <% out.println(appPath); %>
 
-<form role="form" id="register" action="<%=appPath%>/user/login" method="post">
+<form role="form" id="login" action="<%=appPath%>/user/login" method="post">
 	<div class="form-group">
 		<label for="usernickname">User Name</label>
 		<input type="text" class="form-control" id="usernickname">

@@ -51,15 +51,17 @@
 	</div>
 </nav>
 
+<script src="<%=appPath%>/js/signup.js"></script>
+
 <div class="container">
-	<form role="form" id="register" action="<%=appPath%>/user/register">
+	<form role="form" id="register" action="<%=appPath%>/user/register" method="post">
 		<div class="form-group">
-			<label for="phonenumber">User Name</label>
-			<input type="number" class="form-control" id="phonenumber">
+			<label for="phonenumber">Phone number</label>
+			<input type="text" class="form-control" id="phonenumber">
 		</div>
 		<div class="form-group">
-			<label for="userid">User Name</label>
-			<input type="text" class="form-control" id="userid">
+			<label for="usernickname">User Name</label>
+			<input type="text" class="form-control" id="usernickname">
 		</div>
 		<div class="form-group">
 			<label for="password">Password</label>
@@ -77,7 +79,7 @@
 				<option value=1>护照</option>
 			</select>
 		</div>
-		<button type="submit" class="btn btn-primary">Submit</button>
+		<button type="submit" class="btn btn-primary" onclick="signup_sumbit()">Submit</button>
 	</form>
 </div>
 

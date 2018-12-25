@@ -1,6 +1,7 @@
 package com.rent.web;
 
 
+import com.rent.entity.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -14,7 +15,9 @@ public class UserController {
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @RequestMapping(value = "/register",method = RequestMethod.POST)
-    private String register(Model model) {
+    private String register(User user, Model model) {
+    	  logger.info(user.getPhonenumber());
+    	  logger.info(user.getUsernickname());
         logger.info("into");
         return "redirect:/index.jsp";
     }
