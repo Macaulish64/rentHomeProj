@@ -52,16 +52,16 @@
 
 </nav>
 
-<% out.println(appPath); %>
+<% System.out.println(appPath); %>
 
 <form role="form" id="login" action="<%=appPath%>/user/login" method="post">
 	<div class="form-group">
 		<label for="usernickname">User Name</label>
-		<input type="text" class="form-control" id="usernickname">
+		<input type="text" class="form-control" id="usernickname" name="usernickname">
 	</div>
 	<div class="form-group">
 		<label for="password">Password</label>
-		<input type="password" class="form-control" id="password">
+		<input type="password" class="form-control" id="password" name="password">
 	</div>
 	<div class="form-group form-check">
 		<label class="form-check-label">

@@ -21,4 +21,12 @@ public class UserController {
         logger.info("into");
         return "redirect:/index.jsp";
     }
+
+    @RequestMapping(value = "/login",method = RequestMethod.POST)
+    private String login(User user, Model model) {
+        logger.info(user.getUsernickname());
+        logger.info(user.getPassword());
+        logger.info("into");
+        return "redirect:/index.jsp";
+    }
 }
