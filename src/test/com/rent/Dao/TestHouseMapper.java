@@ -1,4 +1,4 @@
-package com.rent;
+package com.rent.Dao;
 
 import com.rent.BaseTest;
 import com.rent.dao.HouseMapper;
@@ -9,7 +9,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
