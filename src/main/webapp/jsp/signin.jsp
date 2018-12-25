@@ -52,12 +52,12 @@
 
 </nav>
 
-<% System.out.println(appPath); %>
+<% out.println(appPath); %>
 
-<form role="form" id="register" action="<%=appPath%>/user/register" method="post">
+<form role="form" id="register" action="<%=appPath%>/user/login" method="post">
 	<div class="form-group">
-		<label for="userid">User Name</label>
-		<input type="text" class="form-control" id="userid">
+		<label for="usernickname">User Name</label>
+		<input type="text" class="form-control" id="usernickname">
 	</div>
 	<div class="form-group">
 		<label for="password">Password</label>

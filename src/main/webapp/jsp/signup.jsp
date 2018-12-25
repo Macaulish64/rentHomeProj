@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<% String appPath = request.getContextPath(); %>
 <html>
 <head>
 	<title>sign up</title>
@@ -48,5 +49,37 @@
 			</li>
 		</ul>
 	</div>
-
 </nav>
+
+<div class="container">
+	<form role="form" id="register" action="<%=appPath%>/user/register">
+		<div class="form-group">
+			<label for="phonenumber">User Name</label>
+			<input type="number" class="form-control" id="phonenumber">
+		</div>
+		<div class="form-group">
+			<label for="userid">User Name</label>
+			<input type="text" class="form-control" id="userid">
+		</div>
+		<div class="form-group">
+			<label for="password">Password</label>
+			<input type="password" class="form-control" id="password">
+		</div>
+		<div class="form-group">
+			<label for="confirmpassword">Confirm password</label>
+			<input type="password" class="form-control" id="confirmpassword">
+		</div>
+		<hr>
+		<div class="form-group">
+			<label for="selectid">Select ID</label>
+			<select name="id" id="selectid">
+				<option value=0>身份证</option>
+				<option value=1>护照</option>
+			</select>
+		</div>
+		<button type="submit" class="btn btn-primary">Submit</button>
+	</form>
+</div>
+
+</body>
+</html>
