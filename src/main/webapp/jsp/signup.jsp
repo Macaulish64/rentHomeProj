@@ -51,7 +51,7 @@
 	</div>
 </nav>
 
-<script src="<%=appPath%>/js/signup.js"></script>
+<script src="<%=appPath%>/js/user.js"></script>
 
 <div class="container">
 	<form role="form" id="register" action="<%=appPath%>/user/register" method="post">
