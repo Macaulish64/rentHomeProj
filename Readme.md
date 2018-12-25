@@ -290,7 +290,7 @@ create table RentInformation(
 | transactionDate|varchar(20) | 成交日期 |
 | startMonth| varchar(10)| 出租起始月份 |
 | endMonth| varchar(10)| 出租终止月份 |
-|deposit |float(10,2)  | 押金金额 |
+|depositMoney |float(10,2)  | 押金金额 |
 |paymentMethod |int | 租金支付方式（月、季、年） |
 | monthRent|float(10,2) | 月租金 |
 | totalRent| float(10,2)| 总租金 |
