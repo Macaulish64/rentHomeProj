@@ -18,9 +18,9 @@ public class TestUserMapper extends BaseTest {
     @Test
     public void insert() {
         User newUser=new User();
-        newUser.set("lxlxlx");
-        newUser.setPasserId("233333");
-        int num=userDao.addUser(newUser);
+        newUser.setUsernickname("lxlxlx2");
+        newUser.setPassword("233333");
+        int num=userMapper.insert(newUser);
         System.out.println("!!!!!\n");
     }
 
