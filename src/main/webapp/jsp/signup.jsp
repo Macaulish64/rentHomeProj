@@ -54,7 +54,7 @@
 <script src="<%=appPath%>/js/user.js"></script>
 
 <div class="container">
-	<form role="form" id="register" action="<%=appPath%>/user/register" method="post">
+	<form role="form" id="register" <%--action="<%=appPath%>/user/register" method="post"--%>>
 		<div class="form-group">
 			<label for="phonenumber">Phone number</label>
 			<input type="text" class="form-control" id="phonenumber">
@@ -79,7 +79,10 @@
 				<option value=1>护照</option>
 			</select>
 		</div>
-		<button type="submit" class="btn btn-primary" onclick="signup_sumbit()">Submit</button>
+		<button type="submit" class="btn btn-primary"
+						onclick="signup_sumbit('<%=appPath%>/user/register')">
+			Submit
+		</button>
 	</form>
 </div>
 
