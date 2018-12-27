@@ -6,15 +6,15 @@ function signup_sumbit(url) {
     cardtype:0
   };
 
-  var xhr = new XMLHttpRequest();
-  xhr.open("POST", url, true);
-  xhr.setRequestHeader("Content-Type", "application/json");
-  xhr.onload = function() {
+  var http = new XMLHttpRequest();
+  http.open("POST", url, true);
+  http.setRequestHeader("Content-Type", "application/json");
+  http.onload = function() {
     // window.alert('yes! sign up');
   };
 
   var data = JSON.stringify(obj);
-  xhr.send(data);
+  http.send(data);
 }
 
 function signin_sumbit(url) {
@@ -23,18 +23,16 @@ function signin_sumbit(url) {
     password:"qwe12345"
   };
 
-  // window.alert('@' + url + '@');
+  window.alert('@' + url + '@');
 
-  // window.alert('sign in !');
-
-  var xhr = new XMLHttpRequest();
-  xhr.open("POST", url, true);
-  xhr.setRequestHeader("Content-Type", "application/json");
-  xhr.onload = function() {
+  var http = new XMLHttpRequest();
+  http.open("POST", url, true);
+  http.setRequestHeader("Content-Type", "application/json");
+  http.onload = function() {
    // window.alert('yes! sign in');
     window.alert(http.responseText);
   };
 
   var data = JSON.stringify(obj);
-  xhr.send(data);
+  http.send(data);
 }

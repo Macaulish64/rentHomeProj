@@ -56,7 +56,7 @@
 <script src="<%=appPath%>/js/user.js"></script>
 
 <div class="col-md-12 column">
-	<form role="form" id="login" <%--action="<%=appPath%>/user/login" method="post"--%>>
+	<form role="form" id="login"<%-- action="<%=appPath%>/user/login" method="post"--%>>
 		<div class="form-group">
 			<label for="usernickname">User Name</label>
 			<input type="text" class="form-control" id="usernickname" name="usernickname">
@@ -71,7 +71,7 @@
 			</label>
 		</div>
 		<button type="submit" class="btn btn-primary" id="signin-btn"
-						onclick="signin_sumbit('<%=appPath%>/user/login')">
+						onclick="signin_sumbit('/user/login')">
 			Submit
 		</button>
 	</form>

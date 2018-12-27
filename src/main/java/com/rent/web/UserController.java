@@ -23,7 +23,7 @@ public class UserController {
         return "redirect:/index.jsp";
     }
 
-    @RequestMapping(value = "/login", headers = "application/json", method = RequestMethod.POST)
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
     @ResponseBody
     private String login(Model model) {
         System.out.println("sign in !!!");
