@@ -8,24 +8,25 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequestMapping("/user")
 public class UserController {
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    @RequestMapping(value = "/register",method = RequestMethod.POST)
-    private String register(User user, Model model) {
-    	  logger.info(user.getPhonenumber());
-    	  logger.info(user.getUsernickname());
+    @RequestMapping(value = "/register", headers = "application/json", method = RequestMethod.POST)
+    @ResponseBody
+    private String register(Model model) {
+        System.out.println("sign up !!!");
         logger.info("into");
         return "redirect:/index.jsp";
     }
 
-    @RequestMapping(value = "/login",method = RequestMethod.POST)
-    private String login(User user, Model model) {
-        logger.info(user.getUsernickname());
-        logger.info(user.getPassword());
+    @RequestMapping(value = "/login", headers = "application/json", method = RequestMethod.POST)
+    @ResponseBody
+    private String login(Model model) {
+        System.out.println("sign in !!!");
         logger.info("into");
         return "redirect:/index.jsp";
     }

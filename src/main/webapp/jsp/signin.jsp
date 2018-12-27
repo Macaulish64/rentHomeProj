@@ -70,7 +70,7 @@
 				<input class="form-check-input" type="checkbox"> Remember me
 			</label>
 		</div>
-		<button type="submit" class="btn btn-primary"
+		<button type="submit" class="btn btn-primary" id="signin-btn"
 						onclick="signin_sumbit('<%=appPath%>/user/login')">
 			Submit
 		</button>
