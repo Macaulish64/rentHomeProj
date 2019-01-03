@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<% String appPath = request.getContextPath(); %>
 <html>
 <head>
 	<title>user info</title>
@@ -26,9 +27,45 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
-<div class="text-center">
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+
+	<a class="col-sm-1 navbar-brand" href="../index.jsp">
+		zufang
+	</a>
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+
+	<div class="col-sm-8 collapse navbar-collapse" id="collapsibleNavbar">
+		<ul class="navbar-nav">
+			<li class="nav-item">
+				<a class="nav-link" href="#">Link</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="#">Link</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="#">Link</a>
+			</li>
+		</ul>
+	</div>
+</nav>
+
+<div class="container">
+	<div class="col-sm-4"></div>
+
+	<div class="col-sm-4">
+		<a href="usredit.jsp">Edit</a>
+		<p>jaisdj<b>djfidjfdi</b>djifjdfi</p>
+		<form role="form" id="displayUserInfo">
+
+		</form>
+	</div>
+
+	<div class="col-sm-4"></div>
 
 </div>
+
 
 </body>
 </html>
