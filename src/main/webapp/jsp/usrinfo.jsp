@@ -39,13 +39,10 @@
 	<div class="col-sm-8 collapse navbar-collapse" id="collapsibleNavbar">
 		<ul class="navbar-nav">
 			<li class="nav-item">
-				<a class="nav-link" href="#">Link</a>
+				<a class="nav-link" href="houseinfo.jsp">租房信息</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="#">Link</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="#">Link</a>
+				<a class="nav-link" href="demandinfo.jsp">求租信息</a>
 			</li>
 		</ul>
 	</div>

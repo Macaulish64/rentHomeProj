@@ -34,24 +34,21 @@
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div class="col-sm-8 collapse navbar-collapse" id="collapsibleNavbar">
+  <div class="col-sm-8 collapse navbar-collapse" id="collapsibleNavbar1">
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
+        <a class="nav-link" href="jsp/houseinfo.jsp">租房信息</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
+        <a class="nav-link" href="jsp/demandinfo.jsp">求租信息</a>
       </li>
     </ul>
   </div>
 
-  <div class="col-sm-3 collapse navbar-collapse" id="collapsibleNavbar">
-    <a class="nav-link" href="jsp/signin.jsp">Sign in</a>
-    <a class="nav-link" href="jsp/signup.jsp">Sign up</a>
-    <a class="nav-link" href="jsp/usrinfo.jsp">User</a>
+  <div class="col-sm-3 collapse navbar-collapse" id="collapsibleNavbar2">
+    <a class="nav-link" href="jsp/signin.jsp">登陆</a>
+    <a class="nav-link" href="jsp/signup.jsp">注册</a>
+    <a class="nav-link" href="jsp/usrinfo.jsp">个人中心</a>
   </div>
 
 </nav>
