@@ -68,9 +68,9 @@
 				<h4>北京市海淀区西土城路10号北京邮电大学学一楼307</h4>
 			</div>
 			<div class="btn col-sm-4">
-				<button style="alignment: center">
+				<a class="button" style="alignment: center" href="houseinfo.jsp">
 					Details
-				</button>
+				</a>
 			</div>
 		</li>
 		<% } %>
