@@ -48,15 +48,14 @@
 	</div>
 </nav>
 
-<div class="container">
+<div class="container row">
 	<div class="col-sm-4"></div>
 
 	<div class="col-sm-4">
 		<a href="usredit.jsp">Edit</a>
-		<p>jaisdj<b>djfidjfdi</b>djifjdfi</p>
-		<form role="form" id="displayUserInfo">
+		<ul id="userinfolist">
 
-		</form>
+		</ul>
 	</div>
 
 	<div class="col-sm-4"></div>
