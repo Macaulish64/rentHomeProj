@@ -47,10 +47,10 @@
 	<div class="col-sm-8 collapse navbar-collapse" id="collapsibleNavbar">
 		<ul class="navbar-nav">
 			<li class="nav-item">
-				<a class="nav-link" href="houseinfo.jsp">租房信息</a>
+				<a class="nav-link" href="houselist.jsp">租房信息</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="demandinfo.jsp">求租信息</a>
+				<a class="nav-link" href="demandlist.jsp">求租信息</a>
 			</li>
 		</ul>
 	</div>
@@ -58,6 +58,7 @@
 
 <div class="container">
 	<ul id="houseList">
+		<% for (int i = 0; i < 3; i++) { %>
 		<li class="row">
 			<div class="img col-sm-4">
 				<img class="houseimg" src="<%=appPath%>/img/a%20(1).JPG">
@@ -66,27 +67,13 @@
 				<h3>Haha</h3>
 				<h4>北京市海淀区西土城路10号北京邮电大学学一楼307</h4>
 			</div>
-		</li>
-
-		<li class="row">
-			<div class="img col-sm-4">
-				<img class="houseimg" src="<%=appPath%>/img/a%20(3).JPG">
-			</div>
-			<div class="txt col-sm-4">
-				<h3>Haha</h3>
-				<h4>北京市海淀区西土城路10号北京邮电大学学一楼308</h4>
+			<div class="btn col-sm-4">
+				<button style="alignment: center">
+					Details
+				</button>
 			</div>
 		</li>
-
-		<li class="row">
-			<div class="img col-sm-4">
-				<img class="houseimg" src="<%=appPath%>/img/a%20(4).JPG">
-			</div>
-			<div class="txt">
-				<h3>Haha</h3>
-				<h4>北京市海淀区西土城路10号北京邮电大学学一楼309</h4>
-			</div>
-		</li>
+		<% } %>
 	</ul>
 </div>
 
