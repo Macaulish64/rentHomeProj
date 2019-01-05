@@ -37,18 +37,18 @@
   <div class="col-sm-8 collapse navbar-collapse" id="collapsibleNavbar1">
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link" href="jsp/houselist.jsp">租房信息</a>
+        <a class="nav-link" href="houselist.jsp">租房信息</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="jsp/demandlist.jsp">求租信息</a>
+        <a class="nav-link" href="demandlist.jsp">求租信息</a>
       </li>
     </ul>
   </div>
 
   <div class="col-sm-3 collapse navbar-collapse" id="collapsibleNavbar2">
-    <a class="nav-link" href="jsp/signin.jsp">登陆</a>
-    <a class="nav-link" href="jsp/signup.jsp">注册</a>
-    <a class="nav-link" href="jsp/usrinfo.jsp">个人中心</a>
+    <a class="nav-link" href="signin.jsp">登陆</a>
+    <a class="nav-link" href="signup.jsp">注册</a>
+    <a class="nav-link" href="usrinfo.jsp">个人中心</a>
   </div>
 
 </nav>
