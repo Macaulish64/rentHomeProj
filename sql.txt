@@ -76,4 +76,4 @@ insert into User(userNickName,password,userType,userName)
     values('admin','admin',1,'admin');
 
 insert into User(userNickName,password,userType,userName,cardType,idNumber,phoneNumber,registCity,updateTime) 
-values('小明','123456',0,'王明',0,'123456789012345678','12345678901','北京','20181222');
+values('灏忔槑','123456',0,'鐜嬫槑',0,'123456789012345678','12345678901','鍖椾含','20181222');
