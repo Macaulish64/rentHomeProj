@@ -14,7 +14,7 @@ public class RentTransactionImpl implements RentTransactionService {
 
     @Override
     public int insertRentTransaction(RentTransaction record) {
-        return rentTransactionMapper.insert(record);
+        return rentTransactionMapper.insertSelective(record);
     }
 
 
