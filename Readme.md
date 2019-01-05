@@ -212,13 +212,13 @@
   |    floorNumber  |    int  | 所在楼层                       |
   |   elevatorOrNot   |  int    | 是否有电梯     |
   |     houseDescription |    nvarchar(500)  | 房屋家居描述                         |
-  |  housePhoto    |   varchar(50)   | 房屋内部照片 |
-  |deposit |float(10,2) | 押金（N 个月） |
+  |  photoNum     |   int   | 房屋照片数量 |
+  |depositMoney |float(10,2) | 押金（N 个月） |
   |paymentMethod |int | 租金支付方式（月、季、年） |
-  | rent|float(10,2)  | 租金 |
+  | rentMoney|float(10,2)  | 租金 |
   |registTime |varchar(20)  | 注册时间 |
   |updateTime | varchar(20) | 修改时间 |
-  |status |int | 状态（已租1、待租0，默认为0） |
+  |houseStatus |int | 状态（已租1、待租0，默认为0） |
 
 
 ```
@@ -233,14 +233,28 @@
       floorNumber int,
       elevatorOrNot int,
       houseDescription nvarchar(500),
-      housePhoto varchar(50),
+      photoNum int,
       depositMoney float(10,2),
       paymentMethod int,
       rentMoney float(10,2),
       registTime varchar(20),
       updateTime varchar(20),
-      status int default 0
+      houseStatus int default 0
     )default charset=utf8;
+```
+- 照片
+
+| 列名 | 值域|说明|
+|---|---|---|
+|photoId|int|照片标识|
+|houseId|int|照片的房屋|
+|housePhoto    |   varchar(50)   | 照片 |
+```
+create table Photo(
+    photoId int auto_increment primary key,
+    houseId int,
+    housePhoto varchar(50)
+)default charset=utf8;
 ```
 
 - 创建求租信息类
@@ -255,9 +269,9 @@
   |floorNumber |int | 所在楼层 |
   |elevatorOrNot |int | 是否有电梯 |
   |houseDescription | nvarchar(500)| 房屋家居描述 |
-  |deposit | float(10,2)| 押金（N 个月） |
+  |depositMoney | float(10,2)| 押金（N 个月） |
   |paymentMethod|int | 租金支付方式（月、季、年） |
-  |rent |float(10,2) | 租金 |
+  |rentMoney |float(10,2) | 租金 |
   | registTime|varchar(20) | 注册时间 |
   |updateTime | varchar(20)| 修改时间 |
 

@@ -30,7 +30,7 @@
 
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
 
-	<a class="col-sm-1 navbar-brand" href="../index.jsp">
+	<a class="col-sm-1 navbar-brand" href="index.jsp">
 		zufang
 	</a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
