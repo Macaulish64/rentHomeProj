@@ -33,10 +33,10 @@ btn.click(function() {
        url:"http://localhost:8080/rentHomeProj_war/user/test2",
        data:{"idList[]":idList}
    })*/
-  var form = $('#form-signin');
+ /* var form = $('#form-signin');
   var usrdata = {
-    usernickname : form["usernickname"].value,
-    password : form["password"].value
+    usernickname : form["usernickname"].val,
+    password : form["password"].val
   };
 
   $.ajax({
@@ -50,5 +50,18 @@ btn.click(function() {
       alert("Success");
     },
     error : function(){ alert("Error");}
+  })*/
+  $.ajax({
+    type:"POST",
+    url:"http://localhost:8080/rentHomeProj_war/user/login",
+    async: false,
+    data:$('#form-signin').serialize(),
+    contentType: "application/x-www-form-urlencoded",
+    success:function(){
+      $(location).attr('href', '/rentHomeProj_war/');
+      alert("Success");
+    },
+    error:function(){alert("Error");}
   })
+
 });

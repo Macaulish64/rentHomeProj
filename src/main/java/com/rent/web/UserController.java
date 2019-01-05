@@ -2,7 +2,6 @@ package com.rent.web;
 
 
 import com.rent.entity.User;
-import javafx.application.Application;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -24,9 +23,9 @@ public class UserController {
 		return "success";
 	}
 
-	@RequestMapping(value = "login", method = RequestMethod.POST, consumes = "application/json")
+	@RequestMapping(value = "login", method = RequestMethod.POST)
 	@ResponseBody
-	private String login(@RequestBody User user) {
+	private String login( User user) {
 		System.out.println("user-nick-name: " + user.getUsernickname());
 		System.out.println("user-password: " + user.getPassword());
 		return "success";

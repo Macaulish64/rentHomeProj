@@ -2,6 +2,8 @@ package com.rent.Dao;
 
 import com.rent.BaseTest;
 import com.rent.dao.HouseMapper;
+import com.rent.entity.House;
+import com.rent.entity.HouseExample;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -78,6 +78,16 @@
       <property name="useActualColumnNames" value="false"/>
       <property name="ignoreQualifiersAtRuntime" value="true"/>
     </table>
+    <!--自动生成Photo-->
+    <table catalog="rentsystem" tableName="photo" domainObjectName="Photo"
+           enableCountByExample="true"
+           enableUpdateByExample="true"
+           enableDeleteByExample="true"
+           enableSelectByExample="true"
+           selectByExampleQueryId="true" >
+      <property name="useActualColumnNames" value="false"/>
+      <property name="ignoreQualifiersAtRuntime" value="true"/>
+    </table>
 
   </context>
 
