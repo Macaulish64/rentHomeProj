@@ -2,8 +2,6 @@ package com.rent.Dao;
 
 import com.rent.BaseTest;
 import com.rent.dao.UserMapper;
-import com.rent.entity.User;
-import com.rent.entity.UserExample;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
