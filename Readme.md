@@ -243,7 +243,8 @@
     )default charset=utf8;
 ```
 - 照片
-|列名|值域|说明|
+
+| 列名 | 值域|说明|
 |---|---|---|
 |photoId|int|照片标识|
 |houseId|int|照片的房屋|
