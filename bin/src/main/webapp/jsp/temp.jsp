@@ -9,7 +9,7 @@
 <% String appPath = request.getContextPath(); %>
 <html>
 <head>
-	<title>user edit</title>
+	<title></title>
 
 	<!-- Required meta tags -->
 	<meta charset="utf-8">
@@ -29,7 +29,7 @@
 
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
 
-	<a class="col-sm-1 navbar-brand" href="../index.html">
+	<a class="col-sm-1 navbar-brand" href="../index.jsp">
 		zufang
 	</a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -47,33 +47,6 @@
 		</ul>
 	</div>
 </nav>
-
-
-<div class="container">
-	<div class="col-sm-4"></div>
-
-	<div class="col-sm-4">
-		<form role="form" id="editUserInfo" action="<%=appPath%>/user/edit" method="post">
-
-			<div class="form-group">
-				<label for="phonenumber">Phone Number</label>
-				<input type="text" class="form-control" id="phonenumber">
-			</div>
-			<div class="form-group">
-				<label for="password">Password</label>
-				<input type="password" class="form-control" id="password">
-			</div>
-			<div class="form-group">
-				<label for="checkpassword">Password</label>
-				<input type="password" class="form-control" id="checkpassword">
-			</div>
-			<button type="sumbit" class="btn btn-primary">
-				Ok
-			</button>
-
-		</form>
-	</div>
-</div>
 
 </body>
 </html>

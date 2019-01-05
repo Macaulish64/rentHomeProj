@@ -7,9 +7,10 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <% String appPath = request.getContextPath(); %>
+
 <html>
 <head>
-	<title>user edit</title>
+	<title></title>
 
 	<!-- Required meta tags -->
 	<meta charset="utf-8">
@@ -27,9 +28,16 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
+<style>
+	.houseimg {
+		width: 250px;
+		height: 250px;
+	}
+</style>
+
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
 
-	<a class="col-sm-1 navbar-brand" href="../index.html">
+	<a class="col-sm-1 navbar-brand" href="../index.jsp">
 		zufang
 	</a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -48,31 +56,25 @@
 	</div>
 </nav>
 
-
 <div class="container">
-	<div class="col-sm-4"></div>
-
-	<div class="col-sm-4">
-		<form role="form" id="editUserInfo" action="<%=appPath%>/user/edit" method="post">
-
-			<div class="form-group">
-				<label for="phonenumber">Phone Number</label>
-				<input type="text" class="form-control" id="phonenumber">
+	<ul id="houseList">
+		<% for (int i = 0; i < 3; i++) { %>
+		<li class="row">
+			<div class="img col-sm-4">
+				<img class="houseimg" src="<%=appPath%>/img/a%20(1).JPG">
 			</div>
-			<div class="form-group">
-				<label for="password">Password</label>
-				<input type="password" class="form-control" id="password">
+			<div class="txt col-sm-4">
+				<h3>Haha</h3>
+				<h4>北京市海淀区西土城路10号北京邮电大学学一楼307</h4>
 			</div>
-			<div class="form-group">
-				<label for="checkpassword">Password</label>
-				<input type="password" class="form-control" id="checkpassword">
+			<div class="btn col-sm-4">
+				<a class="button" style="alignment: center" href="houseinfo.jsp">
+					Details
+				</a>
 			</div>
-			<button type="sumbit" class="btn btn-primary">
-				Ok
-			</button>
-
-		</form>
-	</div>
+		</li>
+		<% } %>
+	</ul>
 </div>
 
 </body>

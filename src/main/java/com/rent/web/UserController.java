@@ -1,13 +1,11 @@
 package com.rent.web;
 
 
-import com.rent.dao.UserMapper;
 import com.rent.entity.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -22,15 +20,14 @@ public class UserController {
     private String register(Model model) {
         System.out.println("sign up !!!");
         logger.info("into");
-        return "redirect:/index.jsp";
+        return "redirect:/index.html";
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    @ResponseBody
-    private String login(Model model) {
+    private String login(User user,Model model) {
         System.out.println("sign in !!!");
         logger.info("into");
-        return "redirect:/index.jsp";
+        return "redirect:/index.html";
     }
 
     @RequestMapping(value = "/edit", method = RequestMethod.POST)

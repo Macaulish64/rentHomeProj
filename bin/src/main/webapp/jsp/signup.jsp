@@ -2,14 +2,14 @@
   Created by IntelliJ IDEA.
   User: DY
   Date: 2018/12/23
-  Time: 19:52
+  Time: 19:02
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <% String appPath = request.getContextPath(); %>
 <html>
 <head>
-	<title>user edit</title>
+	<title>sign up</title>
 
 	<!-- Required meta tags -->
 	<meta charset="utf-8">
@@ -29,7 +29,7 @@
 
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
 
-	<a class="col-sm-1 navbar-brand" href="../index.html">
+	<a class="col-sm-1 navbar-brand" href="../index.jsp">
 		zufang
 	</a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -48,31 +48,48 @@
 	</div>
 </nav>
 
+<script src="<%=appPath%>/js/user.js"></script>
 
 <div class="container">
-	<div class="col-sm-4"></div>
+	<form role="form" id="register" action="<%=appPath%>/user/register" method="post">
 
-	<div class="col-sm-4">
-		<form role="form" id="editUserInfo" action="<%=appPath%>/user/edit" method="post">
+		<div class="form-group">
+			<label for="phonenumber">Phone number</label>
+			<input type="text" class="form-control" id="phonenumber">
+		</div>
+		<div class="form-group">
+			<label for="usernickname">User Name</label>
+			<input type="text" class="form-control" id="usernickname">
+		</div>
+		<div class="form-group">
+			<label for="password">Password</label>
+			<input type="password" class="form-control" id="password">
+		</div>
+		<div class="form-group">
+			<label for="confirmpassword">Confirm password</label>
+			<input type="password" class="form-control" id="confirmpassword">
+		</div>
 
-			<div class="form-group">
-				<label for="phonenumber">Phone Number</label>
-				<input type="text" class="form-control" id="phonenumber">
-			</div>
-			<div class="form-group">
-				<label for="password">Password</label>
-				<input type="password" class="form-control" id="password">
-			</div>
-			<div class="form-group">
-				<label for="checkpassword">Password</label>
-				<input type="password" class="form-control" id="checkpassword">
-			</div>
-			<button type="sumbit" class="btn btn-primary">
-				Ok
-			</button>
+		<hr>
+		<div class="form-group">
+			<label for="selectid">Select ID</label>
+			<select name="id" id="selectid">
+				<option value=0>身份证</option>
+				<option value=1>护照</option>
+			</select>
+		</div>
+		<div class="form-group">
+			<label for="idnumber">ID Number</label>
+			<input type="text" class="form-control" id="idnumber">
+		</div>
+		<div class="form-group">
+			<%--<label for="city">City</label>--%>
+		</div>
 
-		</form>
-	</div>
+		<button type="submit" class="btn btn-primary">
+			Sign up
+		</button>
+	</form>
 </div>
 
 </body>

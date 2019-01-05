@@ -1,15 +1,15 @@
-<%--
+<!--
   Created by IntelliJ IDEA.
   User: DY
   Date: 2018/12/23
-  Time: 19:52
+  Time: 17:53
   To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<% String appPath = request.getContextPath(); %>
-<html>
+-->
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org">
 <head>
-	<title>user edit</title>
+	<title>sign in</title>
 
 	<!-- Required meta tags -->
 	<meta charset="utf-8">
@@ -46,33 +46,34 @@
 			</li>
 		</ul>
 	</div>
+
 </nav>
 
+<script th:src="/js/user.js}"></script>
 
-<div class="container">
-	<div class="col-sm-4"></div>
-
-	<div class="col-sm-4">
-		<form role="form" id="editUserInfo" action="<%=appPath%>/user/edit" method="post">
-
-			<div class="form-group">
-				<label for="phonenumber">Phone Number</label>
-				<input type="text" class="form-control" id="phonenumber">
-			</div>
-			<div class="form-group">
-				<label for="password">Password</label>
-				<input type="password" class="form-control" id="password">
-			</div>
-			<div class="form-group">
-				<label for="checkpassword">Password</label>
-				<input type="password" class="form-control" id="checkpassword">
-			</div>
-			<button type="sumbit" class="btn btn-primary">
-				Ok
-			</button>
-
-		</form>
-	</div>
+<div class="col-md-12 column">
+	<form action="#"
+		  th:action="@{/user/login}"
+		   th:object="${user}" method="post">
+		<div class="form-group">
+			<label for="usernickname">User Name</label>
+			<input type="text" class="form-control" id="usernickname"
+				   	th:field="*{usernickname}">
+		</div>
+		<div class="form-group">
+			<label for="password">Password</label>
+			<input type="password" class="form-control" id="password"
+				   th:field="*{password}">
+		</div>
+		<div class="form-group form-check">
+			<label class="form-check-label">
+				<input class="form-check-input" type="checkbox"> Remember me
+			</label>
+		</div>
+		<button type="submit" class="btn btn-primary" id="signin-btn">
+			Login
+		</button>
+	</form>
 </div>
 
 </body>

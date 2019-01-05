@@ -1,15 +1,15 @@
 <%--
   Created by IntelliJ IDEA.
   User: DY
-  Date: 2018/12/23
-  Time: 19:52
+  Date: 2018/1/4
+  Time: 21:00
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <% String appPath = request.getContextPath(); %>
 <html>
 <head>
-	<title>user edit</title>
+	<title></title>
 
 	<!-- Required meta tags -->
 	<meta charset="utf-8">
@@ -29,7 +29,7 @@
 
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
 
-	<a class="col-sm-1 navbar-brand" href="../index.html">
+	<a class="col-sm-1 navbar-brand" href="../index.jsp">
 		zufang
 	</a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -48,32 +48,21 @@
 	</div>
 </nav>
 
-
 <div class="container">
-	<div class="col-sm-4"></div>
-
-	<div class="col-sm-4">
-		<form role="form" id="editUserInfo" action="<%=appPath%>/user/edit" method="post">
-
-			<div class="form-group">
-				<label for="phonenumber">Phone Number</label>
-				<input type="text" class="form-control" id="phonenumber">
+	<div class="row">
+		<div class="col-sm-8 row">
+			<div class="col-sm-3 img">
+				<img src="<%=appPath%>/img/a%20(6).JPG">
 			</div>
-			<div class="form-group">
-				<label for="password">Password</label>
-				<input type="password" class="form-control" id="password">
+			<div class="col-sm-5 txt">
+				<h2>Halalalalala</h2>
+				<p>Beijing University of Posts and Telecommunications</p>
+				<p>10, Xitucheng Rd, Haidian District, Beijing, China</p>
 			</div>
-			<div class="form-group">
-				<label for="checkpassword">Password</label>
-				<input type="password" class="form-control" id="checkpassword">
-			</div>
-			<button type="sumbit" class="btn btn-primary">
-				Ok
-			</button>
-
-		</form>
+		</div>
 	</div>
 </div>
 
 </body>
 </html>
+

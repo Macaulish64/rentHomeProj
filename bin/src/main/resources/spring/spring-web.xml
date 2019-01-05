@@ -26,23 +26,10 @@
 
   <!-- 3.配置jsp 显示ViewResolver -->
   <!-- 即return的时候默认返回/XXX/XXXXX.jsp -->
-  <!-- 模板解析器  -->
-  <bean id="templateResolver"
-        class="org.thymeleaf.spring4.templateresolver.SpringResourceTemplateResolver">
-    <property name="prefix" value="/WEB-INF/templates/" />
-    <property name="suffix" value=".html" />
-    <property name="templateMode" value="HTML5" />
-    <property name="characterEncoding" value="UTF-8" />
-    <property name="cacheable" value="false" />
-  </bean>
-
-  <bean id="templateEngine"
-        class="org.thymeleaf.spring4.SpringTemplateEngine">
-    <property name="templateResolver" ref="templateResolver" />
-  </bean>
-
-  <bean class="org.thymeleaf.spring4.view.ThymeleafViewResolver">
-    <property name="templateEngine" ref="templateEngine" />
+  <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+    <property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
+    <property name="prefix" value="/WEB-INF/jsp/" />
+    <property name="suffix" value=".jsp" />
   </bean>
   <!-- SpringMVC上传文件时，需要配置MultipartResolver处理器 -->
   <bean id="multipartResolver"
