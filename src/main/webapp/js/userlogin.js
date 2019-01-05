@@ -33,12 +33,12 @@ $('#sub').click(function(){
      })*/
     $.ajax({
         type:"POST",
-        url:"http://localhost:8080/rentHomeProj_war/user/login",
+        url:"/rentHomeProj_war/user/login",
         async: false,
         data:$('#login').serialize(),
         contentType: "application/x-www-form-urlencoded",
         success:function(){
-            $(location).attr('href', 'http://localhost:8080/rentHomeProj_war/templates/index.html');
+            $(location).attr('href', '/rentHomeProj_war/');
             alert("Success");
         },
         error:function(){alert("Error");}
