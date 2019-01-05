@@ -213,12 +213,12 @@
   |   elevatorOrNot   |  int    | 是否有电梯     |
   |     houseDescription |    nvarchar(500)  | 房屋家居描述                         |
   |  housePhoto    |   varchar(50)   | 房屋内部照片 |
-  |deposit |float(10,2) | 押金（N 个月） |
+  |depositMoney |float(10,2) | 押金（N 个月） |
   |paymentMethod |int | 租金支付方式（月、季、年） |
-  | rent|float(10,2)  | 租金 |
+  | rentMoney|float(10,2)  | 租金 |
   |registTime |varchar(20)  | 注册时间 |
   |updateTime | varchar(20) | 修改时间 |
-  |status |int | 状态（已租1、待租0，默认为0） |
+  |housestatus |int | 状态（已租1、待租0，默认为0） |
 
 
 ```
@@ -239,7 +239,7 @@
       rentMoney float(10,2),
       registTime varchar(20),
       updateTime varchar(20),
-      status int default 0
+      housestatus int default 0
     )default charset=utf8;
 ```
 
@@ -255,9 +255,9 @@
   |floorNumber |int | 所在楼层 |
   |elevatorOrNot |int | 是否有电梯 |
   |houseDescription | nvarchar(500)| 房屋家居描述 |
-  |deposit | float(10,2)| 押金（N 个月） |
+  |depositMoney | float(10,2)| 押金（N 个月） |
   |paymentMethod|int | 租金支付方式（月、季、年） |
-  |rent |float(10,2) | 租金 |
+  |rentMoney |float(10,2) | 租金 |
   | registTime|varchar(20) | 注册时间 |
   |updateTime | varchar(20)| 修改时间 |
 
