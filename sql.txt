@@ -23,6 +23,7 @@ create table House(
       floorNumber int,
       elevatorOrNot int,
       houseDescription nvarchar(500),
+      photoNum int,
       depositMoney float(10,2),
       paymentMethod int,
       rentMoney float(10,2),
@@ -32,9 +33,8 @@ create table House(
     )default charset=utf8;
 
 create table Photo(
+    photoId int auto_increment primary key,
     houseId int,
-    photoNum int,
-    primary key(houseId ,photoNum),
     housePhoto varchar(50)
 )default charset=utf8;
 
