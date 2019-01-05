@@ -1,13 +1,6 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: DY
-  Date: 2018/12/23
-  Time: 19:52
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<% String appPath = request.getContextPath(); %>
-<html>
+<!DOCTYPE html>
+<html xmlns:="http://www.w3.org/1999/xhtml"
+			xmlns:th="http://www.thymeleaf.org">
 <head>
 	<title>user edit</title>
 
@@ -28,8 +21,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-
-	<a class="col-sm-1 navbar-brand" href="../templates/index.html">
+	<a class="col-sm-1 navbar-brand" th:href="@{/}">
 		zufang
 	</a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -39,21 +31,20 @@
 	<div class="col-sm-8 collapse navbar-collapse" id="collapsibleNavbar">
 		<ul class="navbar-nav">
 			<li class="nav-item">
-				<a class="nav-link" href="houselist.html">租房信息</a>
+				<a class="nav-link" th:href="@{/houselist}">租房信息</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="demandlist.html">求租信息</a>
+				<a class="nav-link" th:href="@{/demandlist}">求租信息</a>
 			</li>
 		</ul>
 	</div>
 </nav>
 
-
 <div class="container">
 	<div class="col-sm-4"></div>
 
 	<div class="col-sm-4">
-		<form role="form" id="editUserInfo" action="<%=appPath%>/user/edit" method="post">
+		<form role="form" id="editUserInfo" action="@{/user/edit}" method="post">
 
 			<div class="form-group">
 				<label for="phonenumber">Phone Number</label>

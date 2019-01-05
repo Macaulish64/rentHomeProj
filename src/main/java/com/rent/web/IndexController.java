@@ -24,4 +24,29 @@ public class IndexController {
 		return "signup";
 	}
 
+	@RequestMapping("/houselist")
+	public String houselist() {
+		return "houselist";
+	}
+
+	@RequestMapping("/houseinfo")
+	public String houseinfo() {
+		return "houseinfo";
+	}
+
+	@RequestMapping("/demandlist")
+	public String demandlist() {
+		return "demandlist";
+	}
+
+	@RequestMapping("/usredit")
+	public String usredit() {
+		return "usredit";
+	}
+
+	@RequestMapping("/usrinfo")
+	public String usrinfo() {
+		return "usrinfo";
+	}
+
 }
