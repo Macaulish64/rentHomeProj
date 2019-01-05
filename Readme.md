@@ -218,7 +218,7 @@
   | rentMoney|float(10,2)  | 租金 |
   |registTime |varchar(20)  | 注册时间 |
   |updateTime | varchar(20) | 修改时间 |
-  |housestatus |int | 状态（已租1、待租0，默认为0） |
+  |houseStatus |int | 状态（已租1、待租0，默认为0） |
 
 
 ```
@@ -239,7 +239,7 @@
       rentMoney float(10,2),
       registTime varchar(20),
       updateTime varchar(20),
-      housestatus int default 0
+      houseStatus int default 0
     )default charset=utf8;
 ```
 
