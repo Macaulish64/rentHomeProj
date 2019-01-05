@@ -27,11 +27,12 @@
   <!-- 3.配置jsp 显示ViewResolver -->
   <!-- 即return的时候默认返回/XXX/XXXXX.jsp -->
   <!-- 模板解析器  -->
+
   <bean id="templateResolver"
         class="org.thymeleaf.spring4.templateresolver.SpringResourceTemplateResolver">
     <property name="prefix" value="/WEB-INF/templates/" />
     <property name="suffix" value=".html" />
-    <property name="templateMode" value="HTML5" />
+    <property name="templateMode" value="HTML" />
     <property name="characterEncoding" value="UTF-8" />
     <property name="cacheable" value="false" />
   </bean>
