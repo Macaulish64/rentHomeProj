@@ -18,4 +18,10 @@ public class IndexController {
 		return "signin";
 	}
 
+	@RequestMapping("/signup")
+	public String signup() {
+		System.out.println("sign up");
+		return "signup";
+	}
+
 }
