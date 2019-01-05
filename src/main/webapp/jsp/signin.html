@@ -6,8 +6,7 @@
   To change this template use File | Settings | File Templates.
 -->
 
-<html xmlns="http://www.w3.org/1999/xhtml"
-	  xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<title>sign in</title>
 
@@ -23,9 +22,9 @@
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
 
@@ -49,32 +48,37 @@
 
 </nav>
 
-<script th:src="/js/user.js}"></script>
+<!--
+<script src="/js/user.js}"></script>
+-->
 
 <div class="col-md-12 column">
-	<form action="#"
-		  th:action="@{/user/login}"
-		   th:object="${user}" method="post">
+	<form class="form-horizontal"
+          role="form"
+          id="login"
+          method="post">
 		<div class="form-group">
 			<label for="usernickname">User Name</label>
 			<input type="text" class="form-control" id="usernickname"
-				   	th:field="*{usernickname}">
+				   	name="usernickname">
 		</div>
 		<div class="form-group">
 			<label for="password">Password</label>
 			<input type="password" class="form-control" id="password"
-				   th:field="*{password}">
+				   name="password">
 		</div>
 		<div class="form-group form-check">
 			<label class="form-check-label">
 				<input class="form-check-input" type="checkbox"> Remember me
 			</label>
 		</div>
-		<button type="submit" class="btn btn-primary" id="signin-btn">
+		<button type="submit" class="btn btn-default" id="sub">
 			Login
 		</button>
 	</form>
 </div>
+<script src="../js/userlogin.js"></script>
+
 
 </body>
 </html>
