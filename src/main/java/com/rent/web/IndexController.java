@@ -39,35 +39,50 @@ public class IndexController {
 		return "templates/demandlist";
 	}
 
-	@RequestMapping("/usredit")
-	public String usredit() {
-		return "templates/usredit";
-	}
-
-	@RequestMapping("/usrinfo")
-	public String usrinfo() {
-		return "templates/usrinfo";
-	}
-
 	@RequestMapping("/personview")
 	public String personview() {
 		System.out.printf("Into admin");
-		return "templates/personviewbase";
+		return "templates/personinfo/personviewbase";
 	}
 
 	@RequestMapping("/personedit")
 	public String personedit() {
-		return "templates/personedit";
+		return "templates/personinfo/personedit";
 	}
 
 	@RequestMapping("/personimg")
 	public String personimg() {
-		return "templates/personimg";
+		return "templates/personinfo/personimg";
 	}
 
 	@RequestMapping("/personsecurity")
 	public String personsecurity() {
-		return "templates/personsecurity";
+		return "templates/personinfo/personsecurity";
+	}
+
+	@RequestMapping("/roomer")
+	public String roomer() {
+		return "templates/roomer";
+	}
+
+	@RequestMapping("/roomerdemandlist")
+	public String roomerdemandlist() {
+		return "templates/roomer/roomerdemandlist";
+	}
+
+	@RequestMapping("/roomerstar")
+	public String roomerstar() {
+		return "templates/roomer/roomerstar";
+	}
+
+	@RequestMapping("/roomerappointment")
+	public String roomerappointment() {
+		return "templates/roomer/roomerappointment";
+	}
+
+	@RequestMapping("/roomerstatistics")
+	public String roomerstatistics() {
+		return "templates/roomer/roomerstatistics";
 	}
 
 	@RequestMapping("/temp1")
