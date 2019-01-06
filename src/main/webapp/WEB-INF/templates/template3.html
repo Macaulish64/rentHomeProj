@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Rent</title>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" th:href="@{/css/w3.css}">
+
+  <style>
+    h1, h2, h3, h4, h5, h6 { font-family: Constantia, "思源宋体", sans-serif; }
+    a, p { font-family: "Century Gothic", "华文中宋", sans-serif; }
+
+    .our-login-box {
+      width: 400px;
+      height: 450px;
+      right: 100px;
+      bottom: -250px
+    }
+  </style>
+</head>
+<body>
+
+<div class="w3-top">
+  <div class="w3-row w3-black w3-hide-small">
+    <a th:href="@{/}" class="w3-bar-item w3-button w3-col l1">主页</a>
+    <a th:href="@{/houselist}" class="w3-bar-item w3-button w3-col l1">房源</a>
+    <a th:href="@{/demandlist}" class="w3-bar-item w3-button w3-col l1">求租</a>
+  </div>
+</div>
+
+<div class="w3-display-container w3-content w3-center"
+     style="max-width:3200px; height:300px; background:dimgray;">
+  <div class="w3-container w3-border w3-round w3-white w3-display-bottomright our-login-box">
+  </div>
+</div>
+
+<div class="w3-container w3-white" style="background: white; height: 300px"></div>
+
+<footer class="w3-container w3-black" style="padding:32px;">
+  <p class="w3-center">@Copyright haha</p>
+</footer>
+
+</body>
+</html>

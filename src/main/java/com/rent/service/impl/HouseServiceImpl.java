@@ -24,12 +24,17 @@ public class HouseServiceImpl implements HouseService {
     }
 
     @Override
-    public <List> House queryHouse(HouseExample example) {
-        return (House) houseMapper.selectByExample(example);
+    public <List> House queryHouse(HouseExample example,int start ,int end) {
+        return (House) houseMapper.selectByExample(example).subList(start,end);
     }
 
     @Override
     public int deleteHouse(Integer houseid) {
         return houseMapper.deleteByPrimaryKey(houseid);
+    }
+
+    @Override
+    public int countHouse(HouseExample example) {
+        return houseMapper.countByExample(example);
     }
 }

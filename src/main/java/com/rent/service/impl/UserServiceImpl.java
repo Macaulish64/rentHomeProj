@@ -28,4 +28,13 @@ public class UserServiceImpl implements UserService {
         return userMapper.updateByPrimaryKeySelective(record);
     }
 
+    @Override
+    public <List> User queryUser(UserExample example, int start, int end) {
+        return (User) userMapper.selectByExample(example).subList(start,end);
+    }
+
+    @Override
+    public int countUser(UserExample example) {
+        return userMapper.countByExample(example);
+    }
 }
