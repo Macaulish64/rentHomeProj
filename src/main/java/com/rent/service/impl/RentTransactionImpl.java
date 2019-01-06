@@ -24,6 +24,11 @@ public class RentTransactionImpl implements RentTransactionService {
         return rentTransactionMapper.insertSelective(record);
     }
 
+    @Override
+    public RentTransaction selectRentTransactionById(int transactionId) {
+        return rentTransactionMapper.selectByPrimaryKey(transactionId);
+    }
+
 
     @Override
     public List<RentTransaction> queryRentTransaction(RentTransactionExample example, int start, int end) {

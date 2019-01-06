@@ -39,6 +39,16 @@ public class IndexController {
 		return "templates/demandlist";
 	}
 
+	@RequestMapping("/irent")
+	public String irent() {
+		return "templates/post/irent";
+	}
+
+	@RequestMapping("/irentout")
+	public String irentout() {
+		return "templates/post/irentout";
+	}
+
 	@RequestMapping("/personview")
 	public String personview() {
 		System.out.printf("Into admin");
