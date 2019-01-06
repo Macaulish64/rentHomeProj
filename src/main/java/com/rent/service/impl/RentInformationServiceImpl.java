@@ -28,7 +28,12 @@ public class RentInformationServiceImpl implements RentInformationService {
     }
 
     @Override
-    public <List> RentInformation queryRentInformation(RentInformationExample example) {
-        return (RentInformation) rentInformationMapper.selectByExample(example);
+    public <List> RentInformation queryRentInformation(RentInformationExample example,int start,int end) {
+        return (RentInformation) rentInformationMapper.selectByExample(example).subList(start,end);
+    }
+
+    @Override
+    public int countRentInformation(RentInformationExample example) {
+        return rentInformationMapper.countByExample(example);
     }
 }

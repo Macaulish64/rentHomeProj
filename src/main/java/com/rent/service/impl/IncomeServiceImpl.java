@@ -23,7 +23,12 @@ public class IncomeServiceImpl implements IncomeService {
     }
 
     @Override
-    public <List> Income queryIncome(IncomeExample example) {
-        return (Income) incomeMapper.selectByExample(example);
+    public <List> Income queryIncome(IncomeExample example,int start,int end) {
+        return (Income) incomeMapper.selectByExample(example).subList(start,end);
+    }
+
+    @Override
+    public int countIncome(IncomeExample example) {
+        return incomeMapper.countByExample(example);
     }
 }

@@ -24,7 +24,7 @@ public class RentTransactionImpl implements RentTransactionService {
 
 
     @Override
-    public <List> RentTransaction queryRentTransaction(RentTransactionExample example) {
-        return (RentTransaction) rentTransactionMapper.selectByExample(example);
+    public <List> RentTransaction queryRentTransaction(RentTransactionExample example,int start,int end) {
+        return (RentTransaction) rentTransactionMapper.selectByExample(example).subList(start,end);
     }
 }
