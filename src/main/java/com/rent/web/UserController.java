@@ -6,7 +6,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
@@ -25,17 +28,24 @@ public class UserController {
 
 	@RequestMapping(value = "login", method = RequestMethod.POST)
 	@ResponseBody
-	private String login( User user) {
+	private String login(User user) {
 		System.out.println("user-nick-name: " + user.getUsernickname());
 		System.out.println("user-password: " + user.getPassword());
+
 		return "success";
 	}
 
-	@RequestMapping(value = "/edit", method = RequestMethod.POST)
+	@RequestMapping(value = "/personedit/{userid}", method = RequestMethod.GET)
 	@ResponseBody
 	private String edit() {
-		return "userinfo";
+
+		return ;
 	}
+
+
+
+
+
 
 	@RequestMapping("/test")
 	@ResponseBody
