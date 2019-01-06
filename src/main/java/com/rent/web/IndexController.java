@@ -67,22 +67,47 @@ public class IndexController {
 
 	@RequestMapping("/roomerdemandlist")
 	public String roomerdemandlist() {
-		return "templates/roomer/roomerdemandlist";
+		return "templates/roomer/demands";
 	}
 
 	@RequestMapping("/roomerstar")
 	public String roomerstar() {
-		return "templates/roomer/roomerstar";
+		return "templates/roomer/star";
 	}
 
 	@RequestMapping("/roomerappointment")
 	public String roomerappointment() {
-		return "templates/roomer/roomerappointment";
+		return "templates/roomer/appointment";
 	}
 
 	@RequestMapping("/roomerstatistics")
 	public String roomerstatistics() {
-		return "templates/roomer/roomerstatistics";
+		return "templates/roomer/rstatistics";
+	}
+
+	@RequestMapping("/landlord")
+	public String landlord() {
+		return "templates/landlord/landlord";
+	}
+
+	@RequestMapping("/landlordhouselist")
+	public String landlordhouselist() {
+		return "templates/landlord/houses";
+	}
+
+	@RequestMapping("/landlordappointment")
+	public String landlordappointment() {
+		return "templates/landlord/appointment";
+	}
+
+	@RequestMapping("/landlorddeal")
+	public String landlorddeal() {
+		return "templates/landlord/deal";
+	}
+
+	@RequestMapping("/landlordstatistics")
+	public String landlordstatistics() {
+		return "templates/landlord/lstatistics";
 	}
 
 	@RequestMapping("/temp1")
