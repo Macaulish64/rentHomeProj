@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Rent</title>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" th:href="@{/css/w3.css}">
+</head>
+
+<style>
+  h1, h2, h3, h4, h5, h6 { font-family: Constantia, "思源宋体", sans-serif; }
+  a, p { font-family: "Century Gothic", "华文中宋", sans-serif; }
+</style>
+
+<body>
+
+<div class="w3-content" style="max-width: 3200px">
+
+  <header class="w3-container w3-center w3-padding-48 w3-white">
+    <h1 class="w3-jumbo">自恋儒家</h1>
+    <h6 class="w3-large">党和国家大力支持的租房网站</h6>
+  </header>
+
+</div>
+
+<div class="w3-bar w3-black w3-hide-small w3-xlarge">
+  <a th:href="@{/}" class="w3-bar-item w3-button w3-col">主页</a>
+  <a th:href="@{/houselist}" class="w3-bar-item w3-button w3-col">房源</a>
+  <a th:href="@{/demandlist}" class="w3-bar-item w3-button w3-col">求租</a>
+  <a th:href="@{/signin}" class="w3-bar-item w3-button w3-right w3-col">登陆</a>
+  <a th:href="@{/signup}" class="w3-bar-item w3-button w3-right w3-col">注册</a>
+</div>
+
+<div class="w3-container w3-center w3-large">
+  <p>C'est la vie!</p>
+  <p>Vouloir, c'est pouvoir.</p>
+</div>
+
+<footer class="w3-container w3-black w3-bottom" style="padding:32px;">
+  <p class="w3-center">@Copyright haha</p>
+</footer>
+
+</body>
+</html>

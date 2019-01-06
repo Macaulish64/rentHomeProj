@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>后台管理系统</title>
+
+    <!-- -->
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" th:href="@{css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{css/bootstrap-reset.css}">
+    <!--矢量图标插件-->
+    <link rel="stylesheet" th:href="@{css/font-awesome/css/font-awesome.css}">
+    <!--统计插件https://github.com/rendro/easy-pie-chart/-->
+    <link th:href="@{css/jquery-easy-pie-chart/jquery.easy-pie-chart.css}" rel="stylesheet" type="text/css" media="screen">
+     <!--幻灯片插件-->
+    <link rel="stylesheet" th:href="@{css/owl.carousel.css}" type="text/css">
+
+    <!--right slidebar-->
+    <link rel="stylesheet" th:href="@{css/slidebars.css}">
+
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" th:href="@{css/style.css}">
+    <link rel="stylesheet" th:href="@{css/style-responsive.css}">
+
+</head>
+
+<body>
+
+<section id="container" >
+    <!--顶部结束-->
+    <header class="header white-bg">
+        <div class="sidebar-toggle-box">
+            <div class="fa fa-bars tooltips" data-placement="right"></div>
+        </div>
+        <a href="adminindex.html" class="logo">后台管理系统</a>
+    </header>
+    <!--顶部结束-->
+    <!--侧栏开始-->
+    <aside>
+        <div id="sidebar"  class="nav-collapse ">
+            <!-- sidebar menu start-->
+            <ul class="sidebar-menu" id="nav-accordion">
+                <li>
+                    <a  href="adminindex.html">
+                        <i class="fa fa-dashboard"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+
+                <li >
+                    <a >
+                        <i class="fa fa-laptop"></i>
+                        <span>Layouts</span>
+                    </a>
+                    <ul>
+                        <li><a  href="">sadsad</a></li>
+                        <li><a  href="">asdas</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <!-- sidebar menu end-->
+        </div>
+    </aside>
+    <!--侧栏结束-->
+    <!--主体内容-->
+    <section id="main-content">
+        <section class="wrapper">
+        </section>
+    </section>
+    <!--main content end-->
+
+
+
+    <!--footer start-->
+    <footer class="site-footer">
+        <div class="text-center">
+            @Copyright haha
+            <a href="#" class="go-top">
+                <i class="fa fa-angle-up"></i>
+            </a>
+        </div>
+    </footer>
+    <!--footer end-->
+</section>
+
+
+
+</body>
+</html>

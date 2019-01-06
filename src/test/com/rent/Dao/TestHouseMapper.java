@@ -33,6 +33,7 @@ public class TestHouseMapper extends BaseTest {
     public void queryhouse() {
         HouseExample newHouse = new HouseExample();
         newHouse.createCriteria().andCitynameIn(Collections.singletonList("北京"));
+        newHouse.createCriteria().andCitynameIn(Collections.singletonList("天津"));
         List<House> newhouses = houseMapper.selectByExample(newHouse);
         System.out.println(newhouses);
     }

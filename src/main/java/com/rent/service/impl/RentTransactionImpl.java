@@ -4,6 +4,8 @@ import com.rent.dao.RentTransactionMapper;
 import com.rent.entity.RentTransaction;
 import com.rent.entity.RentTransactionExample;
 import com.rent.service.RentTransactionService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 @Service
 public class RentTransactionImpl implements RentTransactionService {

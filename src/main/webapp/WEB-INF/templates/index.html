@@ -2,56 +2,43 @@
 <html xmlns:="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head>
-  <title>hehe</title>
+  <title>Rent</title>
 
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
+  <link rel="stylesheet" th:href="@{/css/w3.css}">
 </head>
+
+<style>
+  h1, h2, h3, h4, h5, h6 { font-family: Constantia, "思源宋体", sans-serif; }
+  a, p { font-family: "Century Gothic", "华文中宋", sans-serif; }
+</style>
+
 <body>
 
-<!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<div class="w3-content" style="max-width: 3200px">
 
-<div class="jumbotron text-center" style="margin-bottom:0">
-	<h1>
-		ZuFang
-	</h1>
+  <header class="w3-container w3-center w3-padding-48 w3-white">
+    <h1 class="w3-jumbo">自恋儒家</h1>
+    <h6 class="w3-large">党和国家大力支持的租房网站</h6>
+  </header>
+
 </div>
 
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-  <a class="col-sm-1 navbar-brand" th:href="@{/}">
-    zufang
-  </a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+<div class="w3-bar w3-black w3-hide-small w3-xlarge">
+  <a th:href="@{/}" class="w3-bar-item w3-button w3-col">主页</a>
+  <a th:href="@{/houselist}" class="w3-bar-item w3-button w3-col">房源</a>
+  <a th:href="@{/demandlist}" class="w3-bar-item w3-button w3-col">求租</a>
+  <a th:href="@{/adminindex}" class="w3-bar-item w3-button w3-col">后台</a>
+  <a th:href="@{/adminindex}" class="w3-bar-item w3-button w3-col">个人中心</a>
+  <a th:href="@{/signup}" class="w3-bar-item w3-button w3-right w3-col">注册</a>
+  <a th:href="@{/signin}" class="w3-bar-item w3-button w3-right w3-col">登陆</a>
+</div>
 
-  <div class="col-sm-8 collapse navbar-collapse" id="collapsibleNavbar1">
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" th:href="@{/houselist}">租房信息</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" th:href="@{/demandlist}">求租信息</a>
-      </li>
-    </ul>
-  </div>
-
-  <div class="col-sm-3 collapse navbar-collapse" id="collapsibleNavbar2">
-    <a class="nav-link" th:href="@{/signin}">登陆</a>
-    <a class="nav-link" th:href="@{/signup}">注册</a>
-    <a class="nav-link" th:href="@{/usrinfo}">个人中心</a>
-  </div>
-
-</nav>
+<footer class="w3-container w3-black w3-bottom" style="padding:32px;">
+  <p class="w3-center">@Copyright haha</p>
+</footer>
 
 </body>
 </html>
