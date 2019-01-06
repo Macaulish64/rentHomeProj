@@ -53,6 +53,7 @@ public class IndexController {
 	public String personview() {
 		System.out.printf("Into admin");
 		return "templates/personviewbase";
+	}
 	@RequestMapping("/temp1")
 	public String temp1() {
 		return "templates/template1";
