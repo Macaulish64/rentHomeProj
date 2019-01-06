@@ -71,31 +71,45 @@
 
 <section class="main-content">
 	<div class="container-fluid">
-		<div class="panel-body">
-			<!-- ::before -->
-			<div id="tobehouselist">
+		<div class="col-lg-8">
+			<div class="panel-body">
+				<!-- ::before -->
+				<div id="tobehouselist">
 
+				</div>
+				<!-- ::after -->
 			</div>
-			<!-- ::after -->
-		</div>	
 
 
-		<ul id="houseList">
-			<li class="row">
-				<div class="img col-sm-4">
-					<img class="houseimg" th:src="@{/img/a(1).JPG}">
-				</div>
-				<div class="txt col-sm-4">
-					<h3>Haha</h3>
-					<h4>北京市海淀区西土城路10号北京邮电大学学一楼307</h4>
-				</div>
-				<div class="btn col-sm-4">
-					<a class="button" style="alignment:center" th:href="houseinfo.html">
-						Details
-					</a>
-				</div>
-			</li>
-		</ul>
+			<ul id="houseList">
+				<li class="row">
+					<div class="img col-sm-4">
+						<img class="houseimg" th:src="@{/img/a(1).JPG}">
+					</div>
+					<div class="txt col-sm-4">
+						<h3>Haha</h3>
+						<h4>北京市海淀区西土城路10号北京邮电大学学一楼307</h4>
+					</div>
+					<div class="btn col-sm-4">
+						<a class="button" style="alignment:center" th:href="houseinfo.html">
+							Details
+						</a>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<div class="col-lg-3">
+			<table class="table table-hover personal-task">
+				<tbody>
+					<tr>
+						<a class="nav-link" href="#">我要组组组</a>
+					</tr>
+					<tr>
+						<a class="nav-link" href="#">我求组组组</a>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 	</div>
 
 

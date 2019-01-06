@@ -30,7 +30,7 @@ $(document).ready(function () {
 					  '<h4>北京市海淀区西土城路10号北京邮电大学学一楼307</h4>'+
 				  '</div>'+
 				  '<div class="btn col-sm-4">'+
-					  '<a class="button" style="alignment:center" th:href="houseinfo.html">'+
+					  '<a class="button" style="alignment:center" href="houseinfo.html">'+
 						  'Details'+
 					  '</a>'+
 				  '</div>'+
