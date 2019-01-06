@@ -2,7 +2,7 @@
 <html xmlns:="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head>
-  <title>personedit</title>
+  <title>person edit</title>
 
   <!-- Required meta tags -->
   <meta charset="utf-8">
@@ -84,7 +84,7 @@
                 </a>
               </li>
               <li>
-                <a href="#">
+                <a th:href="@{/landlord}">
                   <i class=" "></i>
                   "
                   房东中心
@@ -92,7 +92,7 @@
                 </a>
               </li>
               <li>
-                <a href="@{/roomer/roomer}">
+                <a th:href="@{/roomer}">
                   <i class=" "></i>
                   "
                   房客中心
