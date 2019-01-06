@@ -13,7 +13,9 @@ public interface HouseService {
     //查找房屋，从start项到end项，从0开始
     List<House> queryHouse(HouseExample example, int start , int end);
     //在已知房屋标识的情况下，删除房屋
-    int deleteHouse(Integer houseid);
+    int deleteHouse(Integer houseId);
+    //在已知房屋标识的情况下，查找
+    House selectHouseById(Integer houseId);
     //计数
     int countHouse(HouseExample example);
 }

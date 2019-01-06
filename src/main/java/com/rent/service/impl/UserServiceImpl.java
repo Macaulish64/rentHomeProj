@@ -31,6 +31,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public User selectUserById(int userId) {
+        return userMapper.selectByPrimaryKey(userId);
+    }
+
+    @Override
     public List<User> queryUser(UserExample example, int start, int end) {
         return  userMapper.selectByExample(example).subList(start,end);
     }

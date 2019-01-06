@@ -17,6 +17,9 @@ public interface  UserService {
     //在得知用户标识的情况下，修改用户信息
     int updateUser(User record);
 
+    //在已知用户标识的情况下，查找用户
+    User selectUserById(int userId);
+
     //查找用户，从start项到end项，从0开始
     List<User> queryUser(UserExample example,int start,int end);
 

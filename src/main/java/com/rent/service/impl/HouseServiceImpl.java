@@ -31,8 +31,13 @@ public class HouseServiceImpl implements HouseService {
     }
 
     @Override
-    public int deleteHouse(Integer houseid) {
-        return houseMapper.deleteByPrimaryKey(houseid);
+    public int deleteHouse(Integer houseId) {
+        return houseMapper.deleteByPrimaryKey(houseId);
+    }
+
+    @Override
+    public House selectHouseById(Integer houseId) {
+        return houseMapper.selectByPrimaryKey(houseId);
     }
 
     @Override

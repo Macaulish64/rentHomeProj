@@ -10,6 +10,8 @@ public interface RentTransactionService {
     int countRentTransaction(RentTransactionExample example);
 
     int insertRentTransaction(RentTransaction record);
+    //已知交易记录标识，查找
+    RentTransaction selectRentTransactionById(int transactionId);
     //查找交易记录，从start项到end项，从0开始
     List<RentTransaction> queryRentTransaction(RentTransactionExample example, int start, int end);
 }
