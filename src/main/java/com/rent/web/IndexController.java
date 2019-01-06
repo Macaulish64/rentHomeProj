@@ -54,6 +54,22 @@ public class IndexController {
 		System.out.printf("Into admin");
 		return "templates/personviewbase";
 	}
+
+	@RequestMapping("/personedit")
+	public String personedit() {
+		return "templates/personedit";
+	}
+
+	@RequestMapping("/personimg")
+	public String personimg() {
+		return "templates/personimg";
+	}
+
+	@RequestMapping("/personsecurity")
+	public String personsecurity() {
+		return "templates/personsecurity";
+	}
+
 	@RequestMapping("/temp1")
 	public String temp1() {
 		return "templates/template1";
