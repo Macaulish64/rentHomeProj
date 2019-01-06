@@ -2,15 +2,14 @@
 <html xmlns:="http://www.w3.org/1999/xhtml"
 			xmlns:th="http://www.thymeleaf.org">
 <head>
-	<title></title>
+	<title>Rent</title>
 
-	<!-- Required meta tags -->
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<!-- Bootstrap CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" th:href="@{/css/w3.css}">
 
+<<<<<<< Updated upstream
     <!-- -->
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" th:href="@{css/bootstrap.min.css}">
@@ -66,8 +65,24 @@
 				<a class="nav-link" th:href="@{/demandlist}">求租信息</a>
 			</li>
 		</ul>
+=======
+	<style>
+		h1, h2, h3, h4, h5, h6 { font-family: Constantia, "思源宋体", sans-serif; }
+		a, p { font-family: "Century Gothic", "华文中宋", sans-serif; }
+	</style>
+</head>
+<body>
+
+<div class="w3-top">
+	<div class="w3-row w3-black w3-hide-small">
+		<a th:href="@{/}" class="w3-bar-item w3-button w3-col l1">主页</a>
+		<a th:href="@{/houselist}" class="w3-bar-item w3-button w3-col l1">房源</a>
+		<a th:href="@{/demandlist}" class="w3-bar-item w3-button w3-col l1">求租</a>
+		<a th:href="@{/signin}" class="w3-bar-item w3-button w3-right">登陆</a>
+		<a th:href="@{/signup}" class="w3-bar-item w3-button w3-right">注册</a>
+>>>>>>> Stashed changes
 	</div>
-</nav>
+</div>
 
 <section class="main-content">
 	<div class="container-fluid">
@@ -132,6 +147,10 @@
 	</section>
 	<!--pagination end-->
 </section>
+
+<footer class="w3-container w3-black w3-bottom" style="padding:32px;">
+	<p class="w3-center">@Copyright haha</p>
+</footer>
 
 </body>
 </html>
