@@ -37,6 +37,40 @@ $(document).ready(function () {
           '</li>'
         );
       }
+      var list1=["1","2","3"];
+      var list2=["444","555","666"];
+      $.ajax({
+		  url:'http://localhost:8080/rentHomeProj_war/house/list',
+		  type:"POST",
+		  data:{"prideList[]":list1,"cityList[]":list2},
+		  success:function(){
+		  	alert("Success");
+		  },
+		  error:function(){
+		  	alert("Error");
+		  }
+	  })
+		var idList = new Array();
+		idList.push("1");
+		idList.push("2");
+		idList.push("3");
+		$.ajax({
+			type:"POST",
+			url:"http://localhost:8080/rentHomeProj_war/user/test2",
+			data:{"idList[]":idList}
+		})
+		var list1=["1","2","3"];
+		$.ajax({
+			url:'http://localhost:8080/rentHomeProj_war/user/test3',
+			type:"POST",
+			data:{"prideList[]":list1},
+			success:function(){
+				alert("Success");
+			},
+			error:function(){
+				alert("Error");
+			}
+		})
      // }
     // })
   });

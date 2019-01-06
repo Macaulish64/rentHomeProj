@@ -44,6 +44,14 @@ public class UserController {
 			System.out.println(i);
 		}
 	}
+	@RequestMapping("/test3")
+	@ResponseBody
+	public void test3(@RequestParam("prideList[]") List<Integer> idList){
+		for(Integer i: idList){
+			System.out.println(i);
+		}
+	}
+
 	@RequestMapping(value ="/test2",method = RequestMethod.POST)
 	@ResponseBody
 	public String test1(){
