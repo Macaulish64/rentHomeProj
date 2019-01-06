@@ -7,6 +7,8 @@ import com.rent.service.PhotoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class PhotoServiceImpl implements PhotoService {
 
@@ -24,8 +26,8 @@ public class PhotoServiceImpl implements PhotoService {
     }
 
     @Override
-    public <List> Photo queryHouse(PhotoExample example, int start, int end) {
-        return (Photo) photoMapper.selectByExample(example).subList(start,end);
+    public List<Photo> queryHouse(PhotoExample example, int start, int end) {
+        return  photoMapper.selectByExample(example).subList(start,end);
     }
 
 }
