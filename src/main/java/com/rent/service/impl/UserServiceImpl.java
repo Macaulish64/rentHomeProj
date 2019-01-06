@@ -16,8 +16,8 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    public List<User> getExistUser(UserExample example) {
-        return  userMapper.selectByExample(example);
+    public User getExistUser(UserExample example) {
+        return userMapper.selectByExample(example).get(0);
     }
 
     @Override

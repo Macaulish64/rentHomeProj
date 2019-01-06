@@ -9,7 +9,7 @@ import java.util.List;
 public interface  UserService {
     /*判断是否在用户名已注册,example里加上andUsernicknameEqualTo或andPhonenumberEqualTo
     或登录系统,example里加上andUsernicknameEqualTo和andPasswordEqualTo*/
-    List<User> getExistUser(UserExample example);
+    User getExistUser(UserExample example);
 
     //插入新用户
     int insertUser(User record);
