@@ -44,10 +44,10 @@ $(document).ready(function () {
 		  type:"POST",
 		  data:{"prideList[]":list1,"cityList[]":list2},
 		  success:function(){
-		  	alert("Success");
+		 // 	alert("Success");
 		  },
 		  error:function(){
-		  	alert("Error");
+		 // 	alert("Error");
 		  }
 	  })
 		var idList = new Array();
@@ -65,10 +65,10 @@ $(document).ready(function () {
 			type:"POST",
 			data:{"prideList[]":list1},
 			success:function(){
-				alert("Success");
+			//	alert("Success");
 			},
 			error:function(){
-				alert("Error");
+			//	alert("Error");
 			}
 		})
      // }
