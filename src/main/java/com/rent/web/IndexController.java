@@ -49,6 +49,12 @@ public class IndexController {
 		return "templates/usrinfo";
 	}
 
+	@RequestMapping("/personview")
+	public String personview() {
+		System.out.printf("Into admin");
+		return "templates/personviewbase";
+	}
+
 	@RequestMapping("/adminindex")
 	public String adminindex() {
 		System.out.printf("Into admin");
