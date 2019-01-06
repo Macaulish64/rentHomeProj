@@ -39,21 +39,77 @@ public class IndexController {
 		return "templates/demandlist";
 	}
 
-	@RequestMapping("/usredit")
-	public String usredit() {
-		return "templates/usredit";
-	}
-
-	@RequestMapping("/usrinfo")
-	public String usrinfo() {
-		return "templates/usrinfo";
-	}
-
 	@RequestMapping("/personview")
 	public String personview() {
 		System.out.printf("Into admin");
-		return "templates/personviewbase";
+		return "templates/personinfo/personviewbase";
 	}
+
+	@RequestMapping("/personedit")
+	public String personedit() {
+		return "templates/personinfo/personedit";
+	}
+
+	@RequestMapping("/personimg")
+	public String personimg() {
+		return "templates/personinfo/personimg";
+	}
+
+	@RequestMapping("/personsecurity")
+	public String personsecurity() {
+		return "templates/personinfo/personsecurity";
+	}
+
+	@RequestMapping("/roomer")
+	public String roomer() {
+		return "templates/roomer/roomer";
+	}
+
+	@RequestMapping("/roomerdemandlist")
+	public String roomerdemandlist() {
+		return "templates/roomer/demands";
+	}
+
+	@RequestMapping("/roomerstar")
+	public String roomerstar() {
+		return "templates/roomer/star";
+	}
+
+	@RequestMapping("/roomerappointment")
+	public String roomerappointment() {
+		return "templates/roomer/appointment";
+	}
+
+	@RequestMapping("/roomerstatistics")
+	public String roomerstatistics() {
+		return "templates/roomer/statistics";
+	}
+
+	@RequestMapping("/landlord")
+	public String landlord() {
+		return "templates/landlord/landlord";
+	}
+
+	@RequestMapping("/landlordhouselist")
+	public String landlordhouselist() {
+		return "templates/landlord/houses";
+	}
+
+	@RequestMapping("/landlordappointment")
+	public String landlordappointment() {
+		return "templates/landlord/appointment";
+	}
+
+	@RequestMapping("/landlorddeal")
+	public String landlorddeal() {
+		return "templates/landlord/deal";
+	}
+
+	@RequestMapping("/landlordstatistics")
+	public String landlordstatistics() {
+		return "templates/landlord/statistics";
+	}
+
 	@RequestMapping("/temp1")
 	public String temp1() {
 		return "templates/template1";

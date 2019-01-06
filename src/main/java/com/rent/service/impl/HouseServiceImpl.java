@@ -7,6 +7,8 @@ import com.rent.service.HouseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class HouseServiceImpl implements HouseService {
 
@@ -24,8 +26,8 @@ public class HouseServiceImpl implements HouseService {
     }
 
     @Override
-    public <List> House queryHouse(HouseExample example,int start ,int end) {
-        return (House) houseMapper.selectByExample(example).subList(start,end);
+    public List<House> queryHouse(HouseExample example, int start , int end) {
+        return houseMapper.selectByExample(example).subList(start,end);
     }
 
     @Override

@@ -7,6 +7,8 @@ import com.rent.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserServiceImpl implements UserService {
     @Autowired
@@ -14,8 +16,8 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    public <List>User getExistUser(UserExample example) {
-        return (User) userMapper.selectByExample(example);
+    public List<User> getExistUser(UserExample example) {
+        return  userMapper.selectByExample(example);
     }
 
     @Override
@@ -29,8 +31,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public <List> User queryUser(UserExample example, int start, int end) {
-        return (User) userMapper.selectByExample(example).subList(start,end);
+    public List<User> queryUser(UserExample example, int start, int end) {
+        return  userMapper.selectByExample(example).subList(start,end);
     }
 
     @Override

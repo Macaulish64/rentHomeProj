@@ -2,7 +2,7 @@
 <html xmlns:="http://www.w3.org/1999/xhtml"
 			xmlns:th="http://www.thymeleaf.org">
 <head>
-	<title></title>
+	<title>person info</title>
 
 	<!-- Required meta tags -->
 	<meta charset="utf-8">
@@ -11,23 +11,23 @@
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <!-- -->
-    <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" th:href="@{css/bootstrap.min.css}">
-    <link rel="stylesheet" th:href="@{css/bootstrap-reset.css}">
-    <!--矢量图标插件-->
-    <link rel="stylesheet" th:href="@{css/font-awesome/css/font-awesome.css}">
-    <!--统计插件https://github.com/rendro/easy-pie-chart/-->
-    <link th:href="@{css/jquery-easy-pie-chart/jquery.easy-pie-chart.css}" rel="stylesheet" type="text/css" media="screen">
-     <!--幻灯片插件-->
-    <link rel="stylesheet" th:href="@{css/owl.carousel.css}" type="text/css">
+	<!-- -->
+	<!-- Bootstrap core CSS -->
+	<link rel="stylesheet" th:href="@{css/bootstrap.min.css}">
+	<link rel="stylesheet" th:href="@{css/bootstrap-reset.css}">
+	<!--矢量图标插件-->
+	<link rel="stylesheet" th:href="@{css/font-awesome/css/font-awesome.css}">
+	<!--统计插件https://github.com/rendro/easy-pie-chart/-->
+	<link th:href="@{css/jquery-easy-pie-chart/jquery.easy-pie-chart.css}" rel="stylesheet" type="text/css" media="screen">
+	<!--幻灯片插件-->
+	<link rel="stylesheet" th:href="@{css/owl.carousel.css}" type="text/css">
 
-    <!--right slidebar-->
-    <link rel="stylesheet" th:href="@{css/slidebars.css}">
+	<!--right slidebar-->
+	<link rel="stylesheet" th:href="@{css/slidebars.css}">
 
-    <!-- Custom styles for this template -->
-    <link rel="stylesheet" th:href="@{css/style.css}">
-    <link rel="stylesheet" th:href="@{css/style-responsive.css}">
+	<!-- Custom styles for this template -->
+	<link rel="stylesheet" th:href="@{css/style.css}">
+	<link rel="stylesheet" th:href="@{css/style-responsive.css}">
 
 
 </head>
@@ -76,32 +76,32 @@
 					<div>
 						<ul class="summary-list">
 							<li>
-							<a href="#">
-								<i class=" "></i>
-								"              
-									   个人中心(图标放矢量图像)
-								"
-							</a>
-						</li>
-						<li>
-							<a href="#">
-								<i class=" "></i>
-								"              
+								<a href="#">
+									<i class=" "></i>
+									"
+									个人中心(图标放矢量图像)
+									"
+								</a>
+							</li>
+							<li>
+								<a th:href="@{/landlord}">
+									<i class=" "></i>
+									"
 									房东中心
-								"
-							</a>
-						</li>
-						<li>
-							<a href="#">
-								<i class=" "></i>
-								"              
+									"
+								</a>
+							</li>
+							<li>
+								<a th:href="@{/roomer}">
+									<i class=" "></i>
+									"
 									房客中心
-								"
-							</a>
-						</li>
-					</ul>
+									"
+								</a>
+							</li>
+						</ul>
+					</div>
 				</div>
-			</div>
 			</section>
 		</div>
 		<div>
@@ -110,10 +110,10 @@
 					Link items
 				</section>
 				<div class="list-group">
-					<div class="list-group-item">个人信息</div>
-					<div class="list-group-item">修改信息</div>
-					<div class="list-group-item">修改头像</div>
-					<div class="list-group-item">安全设置</div>
+					<div class="list-group-item"><a th:href="@{/personview}">个人信息</a></div>
+					<div class="list-group-item"><a th:href="@{/personedit}">修改信息</a></div>
+					<div class="list-group-item"><a th:href="@{/personimg}">修改头像</a></div>
+					<div class="list-group-item"><a th:href="@{/personsecurity}">安全设置</a></div>
 				</div>
 			</div>
 
@@ -132,19 +132,12 @@
 							</div>
 
 						</div>
-
 					</div>
-
 				</section>
-
 			</div>
-
-
-
 		</div>
 	</div>
-
-</sec>
+</section>
 
 </body>
 </html>

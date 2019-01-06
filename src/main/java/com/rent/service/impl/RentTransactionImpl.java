@@ -7,6 +7,8 @@ import com.rent.service.RentTransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class RentTransactionImpl implements RentTransactionService {
     @Autowired
@@ -24,7 +26,7 @@ public class RentTransactionImpl implements RentTransactionService {
 
 
     @Override
-    public <List> RentTransaction queryRentTransaction(RentTransactionExample example,int start,int end) {
-        return (RentTransaction) rentTransactionMapper.selectByExample(example).subList(start,end);
+    public List<RentTransaction> queryRentTransaction(RentTransactionExample example, int start, int end) {
+        return  rentTransactionMapper.selectByExample(example).subList(start,end);
     }
 }
