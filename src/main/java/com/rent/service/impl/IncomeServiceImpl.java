@@ -7,6 +7,8 @@ import com.rent.service.IncomeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class IncomeServiceImpl implements IncomeService {
     @Autowired
@@ -23,8 +25,8 @@ public class IncomeServiceImpl implements IncomeService {
     }
 
     @Override
-    public <List> Income queryIncome(IncomeExample example,int start,int end) {
-        return (Income) incomeMapper.selectByExample(example).subList(start,end);
+    public List<Income> queryIncome(IncomeExample example, int start, int end) {
+        return  incomeMapper.selectByExample(example).subList(start,end);
     }
 
     @Override
