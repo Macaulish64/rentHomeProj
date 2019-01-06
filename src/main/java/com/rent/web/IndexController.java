@@ -49,6 +49,21 @@ public class IndexController {
 		return "templates/usrinfo";
 	}
 
+	@RequestMapping("/temp1")
+	public String temp1() {
+		return "templates/template1";
+	}
+
+	@RequestMapping("/temp2")
+	public String temp2() {
+		return "templates/template2";
+	}
+
+	@RequestMapping("/temp3")
+	public String temp3() {
+		return "templates/template3";
+	}
+
 	@RequestMapping("/adminindex")
 	public String adminindex() {
 		System.out.printf("Into admin");
