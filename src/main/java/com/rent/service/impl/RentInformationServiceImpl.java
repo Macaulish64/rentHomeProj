@@ -20,13 +20,18 @@ public class RentInformationServiceImpl implements RentInformationService {
     }
 
     @Override
-    public int deleteRentInformation(Integer transactionid) {
-        return rentInformationMapper.deleteByPrimaryKey(transactionid);
+    public int deleteRentInformation(Integer rentId) {
+        return rentInformationMapper.deleteByPrimaryKey(rentId);
     }
 
     @Override
     public int updateRentInformation(RentInformation record) {
         return rentInformationMapper.updateByPrimaryKeySelective(record);
+    }
+
+    @Override
+    public RentInformation selectRentInformationById(Integer rentId) {
+        return rentInformationMapper.selectByPrimaryKey(rentId);
     }
 
     @Override
