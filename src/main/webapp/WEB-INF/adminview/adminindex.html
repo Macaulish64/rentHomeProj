@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,22 +9,21 @@
 
     <!-- -->
     <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/bootstrap-reset.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{css/bootstrap-reset.css}">
     <!--矢量图标插件-->
-    <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link rel="stylesheet" th:href="@{css/font-awesome/css/font-awesome.css}">
     <!--统计插件https://github.com/rendro/easy-pie-chart/-->
-    <link href="assets/jquery-easy-pie-chart/jquery.easy-pie-chart.css" rel="stylesheet" type="text/css" media="screen"/>
-    <!--幻灯片插件-->
-    <link rel="stylesheet" href="css/owl.carousel.css" type="text/css">
+    <link th:href="@{css/jquery-easy-pie-chart/jquery.easy-pie-chart.css}" rel="stylesheet" type="text/css" media="screen">
+     <!--幻灯片插件-->
+    <link rel="stylesheet" th:href="@{css/owl.carousel.css}" type="text/css">
 
     <!--right slidebar-->
-    <link href="css/slidebars.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{css/slidebars.css}">
 
     <!-- Custom styles for this template -->
-
-    <link href="css/style.css" rel="stylesheet">
-    <link href="css/style-responsive.css" rel="stylesheet" />
+    <link rel="stylesheet" th:href="@{css/style.css}">
+    <link rel="stylesheet" th:href="@{css/style-responsive.css}">
 
 </head>
 

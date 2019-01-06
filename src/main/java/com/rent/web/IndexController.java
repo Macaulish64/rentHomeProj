@@ -9,44 +9,50 @@ public class IndexController {
 	@RequestMapping("/")
 	public String index() {
 		System.out.println("home");
-		return "index";
+		return "templates/index";
 	}
 
 	@RequestMapping("/signin")
 	public String signin() {
 		System.out.println("sign in");
-		return "signin";
+		return "templates/signin";
 	}
 
 	@RequestMapping("/signup")
 	public String signup() {
 		System.out.println("sign up");
-		return "signup";
+		return "templates/signup";
 	}
 
 	@RequestMapping("/houselist")
 	public String houselist() {
-		return "houselist";
+		return "templates/houselist";
 	}
 
 	@RequestMapping("/houseinfo")
 	public String houseinfo() {
-		return "houseinfo";
+		return "templates/houseinfo";
 	}
 
 	@RequestMapping("/demandlist")
 	public String demandlist() {
-		return "demandlist";
+		return "templates/demandlist";
 	}
 
 	@RequestMapping("/usredit")
 	public String usredit() {
-		return "usredit";
+		return "templates/usredit";
 	}
 
 	@RequestMapping("/usrinfo")
 	public String usrinfo() {
-		return "usrinfo";
+		return "templates/usrinfo";
+	}
+
+	@RequestMapping("/adminindex")
+	public String adminindex() {
+		System.out.printf("Into admin");
+		return "adminview/adminindex";
 	}
 
 }
