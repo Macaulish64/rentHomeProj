@@ -17,33 +17,36 @@
 
 <body>
 
-<div class="w3-content" style="max-width: 3200px">
+<section id="container">
 
   <header class="w3-container w3-center w3-padding-48 w3-white">
     <h1 class="w3-jumbo">自恋儒家</h1>
     <h6 class="w3-large">党和国家大力支持的租房网站</h6>
   </header>
 
-</div>
+  <div class="w3-bar w3-dark-gray w3-hide-small w3-xlarge">
+    <a th:href="@{/}" class="w3-bar-item w3-button w3-col">主页</a>
+    <a th:href="@{/houselist}" class="w3-bar-item w3-button w3-col">房源</a>
+    <a th:href="@{/demandlist}" class="w3-bar-item w3-button w3-col">求租</a>
+    <a th:href="@{/adminindex}" class="w3-bar-item w3-button w3-col">后台</a>
+    <a th:href="@{/personview}" class="w3-bar-item w3-button w3-col">个人中心</a>
+    <a th:href="@{/signup}" class="w3-bar-item w3-button w3-right w3-col">注册</a>
+    <a th:href="@{/signin}" class="w3-bar-item w3-button w3-right w3-col">登陆</a>
+  </div>
 
-<div class="w3-bar w3-black w3-hide-small w3-xlarge">
-  <a th:href="@{/}" class="w3-bar-item w3-button w3-col">主页</a>
-  <a th:href="@{/houselist}" class="w3-bar-item w3-button w3-col">房源</a>
-  <a th:href="@{/demandlist}" class="w3-bar-item w3-button w3-col">求租</a>
-  <a th:href="@{/adminindex}" class="w3-bar-item w3-button w3-col">后台</a>
-  <a th:href="@{/personview}" class="w3-bar-item w3-button w3-col">个人中心</a>
-  <a th:href="@{/signup}" class="w3-bar-item w3-button w3-right w3-col">注册</a>
-  <a th:href="@{/signin}" class="w3-bar-item w3-button w3-right w3-col">登陆</a>
-</div>
+  <section id="main-content">
+    <div class="w3-container w3-center w3-large">
+      <p>C'est la vie!</p>
+      <p>Vouloir, c'est pouvoir.</p>
+    </div>
 
-<div class="w3-container w3-center w3-large">
-  <p>C'est la vie!</p>
-  <p>Vouloir, c'est pouvoir.</p>
-</div>
+  </section>
 
-<footer class="w3-container w3-black" style="padding:32px;">
-  <p class="w3-center">@Copyright haha</p>
-</footer>
+  <footer class="w3-container w3-black" style="padding:32px;">
+    <p class="w3-center">@Copyright haha</p>
+  </footer>
+
+</section>
 
 </body>
 </html>
