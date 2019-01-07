@@ -51,6 +51,13 @@
 	#main-content {
 		padding-top: 50px;
 	}
+
+	#user-panel {
+		border-radius: 3px;
+		border-style: solid;
+		border-width: 1px;
+		border-color: black;
+	}
 </style>
 
 <section id="container">
@@ -99,11 +106,11 @@
 
 			</div>
 
-      <!-- sidebar -->
+			<!-- sidebar -->
 			<div class="col-sm-3">
 				<div id="user-panel">
 					<div class="caption title">
-						UserName
+						<h2>UserName</h2>
 					</div>
 					<div>
 						<div>
@@ -116,16 +123,18 @@
 						<div>
 							<ul>
 								<li>
-									<a th:href="@{/irent}">我要求租</a>
+									<a th:href="@{/irent}"><h3>我要求租</h3></a>
 								</li>
 								<li>
-									<a th:href="@{/irentout}">我要出租</a>
+									<a th:href="@{/irentout}"><h3>我要出租</h3></a>
 								</li>
 							</ul>
 						</div>
 					</div>
 				</div>
 			</div>
+
+
 		</div>
 
 		<!--pagination start-->
