@@ -47,64 +47,86 @@
 		width: 250px;
 		height: 250px;
 	}
+
+	#main-content {
+		padding-top: 50px;
+	}
 </style>
 
 <section id="container">
 	<!-- Navbar -->
 	<header class="w3-top">
 		<div class="w3-row w3-black w3-hide-small">
-			<a th:href="@{/}" class="w3-bar-item w3-button w3-col l1">主页</a>
-			<a th:href="@{/houselist}" class="w3-bar-item w3-button w3-col l1">房源</a>
-			<a th:href="@{/demandlist}" class="w3-bar-item w3-button w3-col l1">求租</a>
+			<a th:href="@{/}" class="w3-bar-item w3-button w3-col s1">主页</a>
+			<a th:href="@{/houselist}" class="w3-bar-item w3-button w3-col s1">房源</a>
+			<a th:href="@{/demandlist}" class="w3-bar-item w3-button w3-col s1">求租</a>
 			<a th:href="@{/signup}" class="w3-bar-item w3-button w3-right">注册</a>
 			<a th:href="@{/signin}" class="w3-bar-item w3-button w3-right">登陆</a>
 		</div>
 	</header>
 
-	<section class="main-content">
-		<div class="container-fluid">
-			<div class="col-lg-8">
-				<div class="panel-body">
-					<!-- ::before -->
-					<div id="tobehouselist">
+	<section id="main-content">
+		<div class="row">
+			<!-- left side (content) -->
+			<div class="container-fluid col-sm-9">
+				<div class="col-lg-8">
+					<div class="panel-body">
+						<!-- ::before -->
+						<div id="tobehouselist">
 
+						</div>
+						<!-- ::after -->
 					</div>
-					<!-- ::after -->
+
+
+					<ul id="houseList">
+						<li class="row">
+							<div class="img col-sm-4">
+								<img class="houseimg" th:src="@{/img/a(1).JPG}">
+							</div>
+							<div class="txt col-sm-4">
+								<h3>Haha</h3>
+								<h4>北京市海淀区西土城路10号北京邮电大学学一楼307</h4>
+							</div>
+							<div class="btn col-sm-4">
+								<a class="button" style="alignment:center" th:href="houseinfo.html">
+									Details
+								</a>
+							</div>
+						</li>
+					</ul>
 				</div>
 
-
-				<ul id="houseList">
-					<li class="row">
-						<div class="img col-sm-4">
-							<img class="houseimg" th:src="@{/img/a(1).JPG}">
-						</div>
-						<div class="txt col-sm-4">
-							<h3>Haha</h3>
-							<h4>北京市海淀区西土城路10号北京邮电大学学一楼307</h4>
-						</div>
-						<div class="btn col-sm-4">
-							<a class="button" style="alignment:center" th:href="houseinfo.html">
-								Details
-							</a>
-						</div>
-					</li>
-				</ul>
 			</div>
-			<div class="col-lg-3">
-				<table class="table table-hover personal-task">
-					<tbody>
-					<tr>
-						<a class="nav-link" href="#">我要组组组</a>
-					</tr>
-					<tr>
-						<a class="nav-link" href="#">我求组组组</a>
-					</tr>
-					</tbody>
-				</table>
+
+      <!-- sidebar -->
+			<div class="col-sm-3">
+				<div id="user-panel">
+					<div class="caption title">
+						UserName
+					</div>
+					<div>
+						<div>
+							<ul>
+								<li>...</li>
+								<li>...</li>
+								<li>...</li>
+							</ul>
+						</div>
+						<div>
+							<ul>
+								<li>
+									<a th:href="@{/irent}">我要求租</a>
+								</li>
+								<li>
+									<a th:href="@{/irentout}">我要出租</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
-
-
 
 		<!--pagination start-->
 		<section class="panel">

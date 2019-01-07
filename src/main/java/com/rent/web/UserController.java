@@ -38,8 +38,8 @@ public class UserController {
 	@RequestMapping(value = "/personedit/{userid}", method = RequestMethod.GET)
 	@ResponseBody
 	private String edit() {
-
-		return ;
+		// TODO: fix it
+		return "success";
 	}
 
 
