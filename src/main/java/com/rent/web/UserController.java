@@ -10,10 +10,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.io.File;
+import java.io.IOException;
+import java.util.*;
 
 @Controller
 @RequestMapping("user")
@@ -43,10 +45,6 @@ public class UserController {
 		// TODO: fix it
 		return "success";
 	}
-
-
-
-
 
 
 	@RequestMapping("/test")
@@ -80,8 +78,29 @@ public class UserController {
 		//files.put("files",list);
 		return files;
 	}
-//	public void test4(@RequestParam("photofile") MultipartFile img) {
-//		logger.info("if ok?");
-//	}
+
+	@RequestMapping(value="/testpersonimg", method = RequestMethod.POST)
+	@ResponseBody
+	public void addphoto(MultipartHttpServletRequest request) {
+		Iterator<String> itr = request.getFileNames();
+		MultipartFile mpf;
+		mpf=request.getFile(itr.next());
+		String fileName = mpf.getOriginalFilename();
+		File file = new File(request.getServletContext()
+				.getRealPath("/img/file"), fileName);
+		if (!file.getParentFile().exists()) {
+			file.getParentFile().mkdirs();
+		}
+		System.out.println(request.getServletContext()
+				.getRealPath("/img/file"));
+		System.out.println("tttwwwoooo\n");
+		try {
+			mpf.transferTo(file);
+		}
+		catch (IOException e) {
+
+		}
+		System.out.println("tttwwwoooo\n");
+	}
 
 }
