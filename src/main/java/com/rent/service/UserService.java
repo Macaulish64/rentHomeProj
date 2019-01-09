@@ -5,6 +5,7 @@ import com.rent.entity.User;
 import com.rent.entity.UserExample;
 
 import java.util.List;
+import java.util.Map;
 
 public interface  UserService {
     /*判断是否在用户名已注册,example里加上andUsernicknameEqualTo或andPhonenumberEqualTo
@@ -25,4 +26,6 @@ public interface  UserService {
 
     //计数
     int countUser(UserExample example);
+
+    public Map<String,Object> checkUserLogin(User record);
 }

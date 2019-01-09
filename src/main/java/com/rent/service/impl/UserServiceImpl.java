@@ -1,16 +1,25 @@
 package com.rent.service.impl;
 
+import com.alibaba.fastjson.JSON;
+import com.rent.common.CommonEnum;
+import com.rent.common.JWTUtil;
 import com.rent.dao.UserMapper;
+import com.rent.entity.JWTInfo;
 import com.rent.entity.User;
 import com.rent.entity.UserExample;
 import com.rent.service.UserService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class UserServiceImpl implements UserService {
+    private Logger logger= LoggerFactory.getLogger(this.getClass());
     @Autowired
     private UserMapper userMapper;
 
@@ -43,5 +52,36 @@ public class UserServiceImpl implements UserService {
     @Override
     public int countUser(UserExample example) {
         return userMapper.countByExample(example);
+    }
+
+    @Override
+    public Map<String,Object> checkUserLogin(User record) {
+        Map<String,Object> map=new HashMap<String,Object>();
+        User nowuser=getExistUser(record);
+        logger.info("Check User Login:",nowuser);
+        if (nowuser == null) {
+            /*密码错误*/
+            map.put("rescode", CommonEnum.LOGIN_FAILED.getCode());
+            map.put("resmsg",CommonEnum.LOGIN_FAILED.getMsg());
+            return map;
+        }
+        /* 密码正确 */
+        JWTInfo jwtInfo = new JWTInfo();
+        jwtInfo.setPassword(record.getPassword());
+        jwtInfo.setUsername(record.getUsernickname());
+        String jwt = JWTUtil.sign(jwtInfo, Long.valueOf(CommonEnum.JWT_MAXAGE.getMsg()));
+        // 放入返回
+        map.put("JWT",jwt);
+        map.put("userid",nowuser.getUserid());
+        map.put("username",nowuser.getUsernickname());
+        map.put("usertype",nowuser.getUsertype());
+        map.put("rescode",CommonEnum.LOGIN_SUCCESS.getCode());
+        map.put("resmsp",CommonEnum.LOGIN_SUCCESS.getMsg());
+        logger.info("checkUserLogin出参:\n");
+        for(Map.Entry<String,Object> entry:map.entrySet()) {
+            logger.info("[", entry.getKey() + ":" + entry.getValue() + "],");
+        }
+        logger.info("\n");
+        return map;
     }
 }
