@@ -1,3 +1,4 @@
+/*
 var totalFileLength, totalUploaded, fileCount, filesUploaded;
 
 function debug(s) {
@@ -85,4 +86,14 @@ window.onload = function() {
         'change', onFileSelect, false);
     document.getElementById('uploadButton').
     addEventListener('click', startUpload, false);
-}
+}*/
+
+
+
+$(function () {
+    $('#prefileupload').fileupload({
+        dataType:'json',
+        url:"rentHomeProj_war/user/edit",
+    })
+
+})
