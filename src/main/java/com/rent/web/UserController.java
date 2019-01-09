@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("user")
@@ -69,6 +71,17 @@ public class UserController {
 		return "redirect:/index.html";
 	}
 
-	/*@RequestMapping(valuse="/personimg/change")
-	@*/
+	/* test photo */
+	@RequestMapping(value="/testpersonimg", method = RequestMethod.GET)
+	public @ResponseBody Map list(){
+		System.out.printf("!!!\n");
+	//	List<String> list;
+		Map<String,Object> files=new HashMap<>();
+		//files.put("files",list);
+		return files;
+	}
+//	public void test4(@RequestParam("photofile") MultipartFile img) {
+//		logger.info("if ok?");
+//	}
+
 }

@@ -1,7 +1,6 @@
 $(document).ready(function () {
     // $.ajax({
       // type: "GET",
-      // url: "http://localhost:8081/book/list/",
       // dataType: 'json',
       // global: "false",
       // success: function (data) {
