@@ -2,25 +2,30 @@ package com.rent.web;
 
 
 import com.rent.entity.User;
+import com.rent.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.*;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("user")
 public class UserController {
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
+
+	@Autowired
+	private UserService userService;
 
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	@ResponseBody
@@ -39,12 +44,34 @@ public class UserController {
 		return "success";
 	}
 
-	@RequestMapping(value = "/personedit/{userid}", method = RequestMethod.GET)
+	@RequestMapping(value = "/personinfo", method = RequestMethod.GET)
 	@ResponseBody
-	private String edit() {
+	public User edit() {
 		// TODO: fix it
-		return "success";
+		logger.info("!!!!are you ok?\n");
+		User nowUser=userService.selectUserById(1);
+		System.out.println("!!!"+nowUser.toString());
+		logger.info(nowUser.toString());
+		return nowUser;
 	}
+
+	@RequestMapping(value = "/personinfo/{userid}", method = RequestMethod.GET)
+	@ResponseBody
+	public User edit(@PathVariable("userid") int userid) {
+		// TODO: fix it
+		return userService.selectUserById(userid);
+	}
+
+	@RequestMapping(value = "/changepassword/{userid}", method = RequestMethod.POST)
+	@ResponseBody
+	public User edit(@PathVariable("userid") int userid,
+					 @RequestParam("newpassword") String newpassword,
+					 @RequestParam("newpassword") String oldpassword) {
+		// TODO: fix it
+		return userService.selectUserById(userid);
+	}
+
+
 
 
 	@RequestMapping("/test")

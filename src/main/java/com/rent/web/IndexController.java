@@ -57,7 +57,7 @@ public class IndexController {
 	@RequestMapping("/personview")
 	public String personview() {
 		System.out.printf("Into admin");
-		return "templates/personinfo/personviewbase";
+		return "templates/personinfo/personinfo";
 	}
 
 	@RequestMapping("/personedit")

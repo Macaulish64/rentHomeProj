@@ -21,11 +21,15 @@ public class TestHouseMapper extends BaseTest {
     /* */
     @Test
     public void insert() {
-        House newHouse=new House();
-        newHouse.setCityname("天津");
-        newHouse.setCommunityname("西城");
-        int num=houseMapper.insertSelective(newHouse);
-        System.out.println("!!!!!\n");
+    //    for(Integer i=1;i<=20;i++) {
+            House newHouse = new House();
+      //      newHouse.setHouseid(100+i);
+            newHouse.setCityname("天津");
+            newHouse.setCommunityname("西城");
+            newHouse.setBuildingnumber(Integer.valueOf(100).toString());
+            int num = houseMapper.insert(newHouse);
+            System.out.println("!!!!!\n");
+     //   }
     }
 
     /* */

@@ -120,12 +120,35 @@
       <div class="col-lg-10">
         <section class="panel">
           <header class="panel-heading">
-            个人信息
+            安全设置
           </header>
           <div class="panel-body">
             <div class="row">
               <div class="col-lg-7">
-
+                <head class="panel-heading">修改密码</head>
+                <div class="panel-body">
+                  <form class="form-horizontal tasi-form">
+                    <div class="form-group">
+                      <label class="control-label">原密码</label>
+                      <div class="col-lg-6">
+                        <input id="oldpassword1" type="text" class="form-control">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label">新密码</label>
+                      <div class="col-lg-6">
+                        <input id="newpassword1" type="text" class="form-control">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label">重复新密码</label>
+                      <div class="col-lg-6">
+                        <input id="newpassword2" type="text" class="form-control">
+                      </div>
+                    </div>
+                    <button id="changepassword" type="submit" class="btn btn-info">提交</button>
+                  </form>
+                </div>
               </div>
               <div class="col-lg-5">
                 <img class="img-responsive" src="img/person/person1.jpg">
@@ -139,5 +162,6 @@
   </div>
 </section>
 
+<script th:src="@{/js/personinfo/usersecurity.js}"></script>
 </body>
 </html>
