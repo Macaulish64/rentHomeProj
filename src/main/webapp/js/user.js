@@ -1,3 +1,6 @@
+var jwt = localStorage["jwt"];
+var name = localStorage["name"];
+console.log("输出:"+jwt);
 function signup_sumbit(url) {
   var obj = {
     phonenumber:"123",

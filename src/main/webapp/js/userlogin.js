@@ -58,6 +58,13 @@ btn.click(function() {
     data:$('#form-signin').serialize(),
     contentType: "application/x-www-form-urlencoded",
     success:function(){
+      console.log(data);
+      var json = jQuery.parseJSON(data);
+      var jwt = json.jwt;
+      // 登录成功,存储令牌到本地
+      localStorage["jwt"] = jwt;
+      localStorage["name"] = json.name;
+      console.log(jwt);
       $(location).attr('href', '/rentHomeProj_war/');
       alert("Success");
     },

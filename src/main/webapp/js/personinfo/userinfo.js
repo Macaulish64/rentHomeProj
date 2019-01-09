@@ -1,6 +1,12 @@
-
+var jwt = localStorage["jwt"];
+var name = localStorage["name"];
+console.log("输出:"+jwt);
 $(document).ready(function() {
     $.ajax({
+        headers: {
+            Authorization : jwt,
+            'userid' : name
+        },
         type:"GET",
         url:"http://localhost:8080/rentHomeProj_war/user/personinfo",
         dataType:"json",

@@ -38,33 +38,24 @@ public class UserController {
 	@RequestMapping(value = "login", method = RequestMethod.POST)
 	@ResponseBody
 	private String login(User user) {
-		System.out.println("user-nick-name: " + user.getUsernickname());
-		System.out.println("user-password: " + user.getPassword());
 
 		return "success";
 	}
 
+
 	@RequestMapping(value = "/personinfo", method = RequestMethod.GET)
 	@ResponseBody
-	public User edit() {
-		// TODO: fix it
+	public User edit(@RequestHeader("userid") int userid) {
 		logger.info("!!!!are you ok?\n");
 		User nowUser=userService.selectUserById(1);
 		System.out.println("!!!"+nowUser.toString());
 		logger.info(nowUser.toString());
-		return nowUser;
-	}
-
-	@RequestMapping(value = "/personinfo/{userid}", method = RequestMethod.GET)
-	@ResponseBody
-	public User edit(@PathVariable("userid") int userid) {
-		// TODO: fix it
 		return userService.selectUserById(userid);
 	}
 
-	@RequestMapping(value = "/changepassword/{userid}", method = RequestMethod.POST)
+	@RequestMapping(value = "/changepassword", method = RequestMethod.POST)
 	@ResponseBody
-	public User edit(@PathVariable("userid") int userid,
+	public User edit(@RequestHeader("userid") int userid,
 					 @RequestParam("newpassword") String newpassword,
 					 @RequestParam("newpassword") String oldpassword) {
 		// TODO: fix it
