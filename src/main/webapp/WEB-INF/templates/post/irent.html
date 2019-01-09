@@ -77,13 +77,53 @@
       <!-- left side (content) -->
       <div class="col-sm-9">
 
+        <div id="demandinfo-pwd">
+          <p><a>home</a> > <a>demandlist</a> > <a>irent</a></p>
+        </div>
+
+        <div class="container">
+          <h1>我要出租</h1>
+
+          <form class="form-horizontal" role="form"
+                id="irentout-form" method="post">
+            <div class="form-group row">
+              <label for="title">Title:</label>
+              <input type="text" class="form-control" id="title" name="title">
+            </div>
+
+            <div class="form-group row">
+              <label>Keywords:</label>
+            </div>
+
+            <div class="form-group row">
+              <label for="province">Province:</label>
+              <select id="province" name="province">
+                <option>Beijing</option>
+                <option>Shanghai</option>
+                <option>Andorra</option>
+              </select>
+
+              <label for="city">City:</label>
+              <select id="city" name="city">
+                <option>Abcd</option>
+                <option>Bcde</option>
+                <option>Cdef</option>
+              </select>
+            </div>
+
+            <button type="button" class="btn" id="btn-irentout">
+              Submit
+            </button>
+          </form>
+        </div>
+
       </div>
 
       <!-- sidebar -->
       <div class="col-sm-3">
         <div id="user-panel">
           <div class="caption title">
-            UserName
+            <h2>UserName</h2>
           </div>
           <div>
             <div>
@@ -96,10 +136,10 @@
             <div>
               <ul>
                 <li>
-                  <a th:href="@{/irent}">我要求租</a>
+                  <a th:href="@{/irent}"><h3>我要求租</h3></a>
                 </li>
                 <li>
-                  <a th:href="@{/irentout}">我要出租</a>
+                  <a th:href="@{/irentout}"><h3>我要出租</h3></a>
                 </li>
               </ul>
             </div>
@@ -109,7 +149,6 @@
     </div>
 
   </section>
-
   <footer class="w3-container w3-black" style="padding:32px;">
     <p class="w3-center">@Copyright haha</p>
   </footer>

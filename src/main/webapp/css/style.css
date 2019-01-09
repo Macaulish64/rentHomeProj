@@ -6210,3 +6210,19 @@ header.blue-bg .search:focus {
     background: #fff;
     border-radius:4px;
 }
+
+#user-panel {
+    padding: 15px 15px 15px 15px;
+    border-radius: 6px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+}
+
+.round-panel {
+    padding: 15px 15px 15px 15px;
+    border-radius: 8px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+}

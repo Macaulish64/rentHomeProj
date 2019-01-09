@@ -39,6 +39,11 @@ public class IndexController {
 		return "templates/demandlist";
 	}
 
+	@RequestMapping("/demandinfo")
+	public String demandinfo() {
+		return "templates/demandinfo";
+	}
+
 	@RequestMapping("/irent")
 	public String irent() {
 		return "templates/post/irent";
