@@ -5,3 +5,5 @@ bin/
 target/
 
 *.class
+
+src/main/resources/jdbc.properties
