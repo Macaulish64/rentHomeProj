@@ -146,4 +146,23 @@ public class IndexController {
 		return "adminview/adminindex";
 	}
 
+	@RequestMapping("/adminusrlist")
+	public String adminusrlist() {
+		return "adminview/ausrlist";
+	}
+
+	@RequestMapping("/adminhouselist")
+	public String adminhouselist() {
+		return "adminview/ahouselist";
+	}
+
+	@RequestMapping("/admindemandlist")
+	public String admindemandlist() {
+		return "adminview/ademandlist";
+	}
+
+	@RequestMapping("/admintransactionlist")
+	public String admintransaction() {
+		return "adminview/atransactionlist";
+	}
 }

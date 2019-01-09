@@ -2,13 +2,14 @@ package com.rent.web;
 
 
 import com.rent.entity.User;
-import com.rent.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
@@ -16,12 +17,10 @@ import java.util.List;
 @RequestMapping("user")
 public class UserController {
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
-	@Autowired
-	private UserService userService;
 
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	@ResponseBody
-	public String register(Model model) {
+	private String register(Model model) {
 		System.out.println("sign up !!!");
 		logger.info("into");
 		return "success";
@@ -29,30 +28,23 @@ public class UserController {
 
 	@RequestMapping(value = "login", method = RequestMethod.POST)
 	@ResponseBody
-	public String login(User user) {
+	private String login(User user) {
 		System.out.println("user-nick-name: " + user.getUsernickname());
 		System.out.println("user-password: " + user.getPassword());
 
 		return "success";
 	}
 
-	@RequestMapping(value = "/personedit", method = RequestMethod.GET)
-	@ResponseBody
-	public User edit() {
-		// TODO: fix it
-		logger.info("!!!!are you ok?\n");
-		User nowUser=userService.selectUserById(1);
-		System.out.println("!!!"+nowUser.toString());
-		logger.info(nowUser.toString());
-		return nowUser;
-	}
-
 	@RequestMapping(value = "/personedit/{userid}", method = RequestMethod.GET)
 	@ResponseBody
-	public User edit(@PathVariable("userid") int userid) {
+	private String edit() {
 		// TODO: fix it
-		return userService.selectUserById(userid);
+		return "success";
 	}
+
+
+
+
 
 
 	@RequestMapping("/test")

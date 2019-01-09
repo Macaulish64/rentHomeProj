@@ -44,7 +44,7 @@
             <!-- sidebar menu start-->
             <ul class="sidebar-menu" id="nav-accordion">
                 <li>
-                    <a  href="adminindex.html">
+                    <a th:href="@{/adminindex}">
                         <i class="fa fa-dashboard"></i>
                         <span>Dashboard</span>
                     </a>
@@ -56,8 +56,10 @@
                         <span>Layouts</span>
                     </a>
                     <ul>
-                        <li><a  href="">sadsad</a></li>
-                        <li><a  href="">asdas</a></li>
+                        <li><a th:href="@{/adminusrlist}">Users</a></li>
+                        <li><a th:href="@{/adminhouselist}">Houses</a></li>
+                        <li><a th:href="@{/admindemandlist}">Demands</a></li>
+                        <li><a th:href="@{/admintransactionlist}">Transactions</a></li>
                     </ul>
                 </li>
             </ul>

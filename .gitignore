@@ -5,3 +5,7 @@ bin/
 target/
 
 *.class
+
+src/main/resources/jdbc.properties
+
+target/rentHomeProj/WEB-INF/classes/jdbc.properties
