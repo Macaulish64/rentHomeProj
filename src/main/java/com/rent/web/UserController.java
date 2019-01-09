@@ -69,6 +69,6 @@ public class UserController {
 		return "redirect:/index.html";
 	}
 
-	@RequestMapping(valuse="/personimg/change")
-	@
+	/*@RequestMapping(valuse="/personimg/change")
+	@*/
 }
