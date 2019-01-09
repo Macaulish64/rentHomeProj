@@ -76,4 +76,7 @@ public class UserController {
 		System.out.println("!!!!!Response");
 		return "redirect:/index.html";
 	}
+
+	@RequestMapping(valuse="/personimg/change")
+	@
 }

@@ -30,16 +30,61 @@
   <link rel="stylesheet" th:href="@{css/style-responsive.css}">
 
 
+  <!-- blueimp Gallery styles -->
+  <link rel="stylesheet" href="http://blueimp.github.io/Gallery/css/blueimp-gallery.min.css">
+  <!-- CSS to style the file input field as button and adjust the Bootstrap progress bars -->
+  <link rel="stylesheet" th:href="@{assets/file-uploader/css/jquery.fileupload.css}">
+  <link rel="stylesheet" th:href="@{assets/file-uploader/css/jquery.fileupload-ui.css}">
+  <!-- CSS adjustments for browsers with JavaScript disabled -->
+  <noscript>
+    <link rel="stylesheet" th:href="@{assets/file-uploader/css/jquery.fileupload-noscript.css}">
+  </noscript>
+  <noscript>
+    <link rel="stylesheet" th:href="@{assets/file-uploader/css/jquery.fileupload-ui-noscript.css}">
+  </noscript>
+
+
 </head>
+
+
+
+
 <body>
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
 <!-- <script src="Scripts/jquery.pagination.js" type="text/javascript"></script> -->
+<script th:src="@{/js/userchangephoto.js}"></script>
+
+<!-- blueimp Gallery script -->
+<script src="//blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js"></script>
+<!-- The Iframe Transport is required for browsers without support for XHR file uploads -->
+<script th:src="@{assets/file-uploader/js/jquery.iframe-transport.js}"></script>
+<!-- The basic File Upload plugin -->
+<script th:src="@{assets/file-uploader/js/jquery.fileupload.js}"></script>
+<!-- The File Upload processing plugin -->
+<script th:src="@{assets/file-uploader/js/jquery.fileupload-process.js}"></script>
+<!-- The File Upload image preview & resize plugin -->
+<script th:src="@{assets/file-uploader/js/jquery.fileupload-image.js}"></script>
+<!-- The File Upload audio preview plugin -->
+<script th:src="@{assets/file-uploader/js/jquery.fileupload-audio.js}"></script>
+<!-- The File Upload video preview plugin -->
+<script th:src="@{assets/file-uploader/js/jquery.fileupload-video.js}"></script>
+<!-- The File Upload validation plugin -->
+<script th:src="@{assets/file-uploader/js/jquery.fileupload-validate.js}"></script>
+<!-- The File Upload user interface plugin -->
+<script th:src="@{assets/file-uploader/js/jquery.fileupload-ui.js}"></script>
+<!-- The main application script -->
+<script th:src="@{assets/file-uploader/js/main.js}"></script>
+<!-- The XDomainRequest Transport is included for cross-domain file deletion for IE 8 and IE 9 -->
+<!--[if (gte IE 8)&(lt IE 10)]>
+<script th:src="@{assets/file-uploader/js/cors/jquery.xdr-transport.js}"></script>
+<![endif]-->
+
 
 <style>
   .houseimg {
@@ -124,11 +169,16 @@
           </header>
           <div class="panel-body">
             <div class="row">
-              <div class="col-lg-7">
-
-              </div>
               <div class="col-lg-5">
                 <img class="img-responsive" src="img/person/person1.jpg">
+              </div>
+              <div class="col-lg-7">
+                <form>
+                  <input type="file" id="files" multiple/>
+                  <br/>
+                  <output id="selectedFiles"></output>
+                  <input id="uploadButton" type="button" value="Upload"/>
+                </form>
               </div>
 
             </div>
