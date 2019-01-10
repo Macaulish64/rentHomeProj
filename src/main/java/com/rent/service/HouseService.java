@@ -25,5 +25,5 @@ public interface HouseService {
     public List<House> queryHouse(Map<String,List> map, int start,int end);
 
     //在已知房屋标识的情况下，查找
-    House selectHouseById(Integer houseId);
+    public House selectHouseById(Integer houseId);
 }

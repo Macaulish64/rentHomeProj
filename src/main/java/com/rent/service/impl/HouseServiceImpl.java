@@ -54,7 +54,7 @@ public class HouseServiceImpl implements HouseService {
     @Override
     public Map<String, Object> updateHouse(House record) {
         Map<String,Object> map=new HashMap<String,Object>();
-        int num = houseMapper.updateByPrimaryKey(record);
+        int num = houseMapper.updateByPrimaryKeySelective(record);
         //失败
         if (num==0)
         {
