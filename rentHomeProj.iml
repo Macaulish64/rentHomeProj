@@ -78,5 +78,7 @@
     <orderEntry type="library" name="Maven: commons-codec:commons-codec:1.10" level="project" />
     <orderEntry type="library" name="Maven: org.bouncycastle:bcprov-jdk15on:1.55" level="project" />
     <orderEntry type="library" name="Maven: joda-time:joda-time:2.9.3" level="project" />
+    <orderEntry type="library" name="load-image.all" level="application" />
+    <orderEntry type="library" name="jquery-2.1.4" level="application" />
   </component>
 </module>
