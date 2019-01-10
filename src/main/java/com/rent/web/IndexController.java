@@ -165,4 +165,9 @@ public class IndexController {
 	public String admintransaction() {
 		return "adminview/atransactionlist";
 	}
+
+	@RequestMapping("/adminstatistics")
+	public String adminstatistics() {
+		return "adminview/statistics";
+	}
 }
