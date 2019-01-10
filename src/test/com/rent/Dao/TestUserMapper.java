@@ -4,6 +4,7 @@ import com.rent.BaseTest;
 import com.rent.dao.UserMapper;
 import com.rent.entity.User;
 import com.rent.entity.UserExample;
+import com.rent.service.UserService;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,6 +17,9 @@ public class TestUserMapper extends BaseTest {
 
     @Autowired
     private UserMapper userMapper;
+
+    @Autowired
+    private UserService userService;
 
     /* */
     @Test
@@ -36,7 +40,7 @@ public class TestUserMapper extends BaseTest {
 
     /* */
     @Test
-    public void queryhouse() {
+    public void queryuser() {
         UserExample newUser = new UserExample();
     //    newUser.createCriteria().andUseridEqualTo(Collections.singleton("lxlxlx"));
         newUser.createCriteria().andUsernicknameEqualTo("lxlxlx");
@@ -44,6 +48,17 @@ public class TestUserMapper extends BaseTest {
         for(User nowUser : userList) {
             System.out.println(nowUser.toString());
         }
+    }
+
+    @Test
+    public void querygetexistuser() {
+        //    newUser.createCriteria().andUseridEqualTo(Collections.singleton("lxlxlx"));
+        UserExample newUser = new UserExample();
+        User nowuser;
+        newUser.createCriteria().andUsernicknameEqualTo("lxlxlx");
+        newUser.createCriteria().andPasswordEqualTo("23333");
+        nowuser=userService.getExistUser(newUser);
+        logger.debug(nowuser.toString());
     }
 
 

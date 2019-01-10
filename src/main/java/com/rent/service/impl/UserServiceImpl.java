@@ -1,6 +1,5 @@
 package com.rent.service.impl;
 
-import com.alibaba.fastjson.JSON;
 import com.rent.common.CommonEnum;
 import com.rent.common.JWTUtil;
 import com.rent.dao.UserMapper;
@@ -57,9 +56,12 @@ public class UserServiceImpl implements UserService {
     @Override
     public Map<String,Object> checkUserLogin(User record) {
         Map<String,Object> map=new HashMap<String,Object>();
-        User nowuser=getExistUser(record);
-        logger.info("Check User Login:",nowuser);
-        if (nowuser == null) {
+        UserExample newUser = new UserExample();
+        newUser.createCriteria().andUsernicknameEqualTo(record.getUsernickname());
+        newUser.createCriteria().andPasswordEqualTo(record.getPassword());
+        record=getExistUser(newUser);
+        logger.info("Check User Login:",record);
+        if (record == null) {
             /*密码错误*/
             map.put("rescode", CommonEnum.LOGIN_FAILED.getCode());
             map.put("resmsg",CommonEnum.LOGIN_FAILED.getMsg());
@@ -72,9 +74,9 @@ public class UserServiceImpl implements UserService {
         String jwt = JWTUtil.sign(jwtInfo, Long.valueOf(CommonEnum.JWT_MAXAGE.getMsg()));
         // 放入返回
         map.put("JWT",jwt);
-        map.put("userid",nowuser.getUserid());
-        map.put("username",nowuser.getUsernickname());
-        map.put("usertype",nowuser.getUsertype());
+        map.put("userid",record.getUserid());
+        map.put("username",record.getUsernickname());
+        map.put("usertype",record.getUsertype());
         map.put("rescode",CommonEnum.LOGIN_SUCCESS.getCode());
         map.put("resmsp",CommonEnum.LOGIN_SUCCESS.getMsg());
         logger.info("checkUserLogin出参:\n");
