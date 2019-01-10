@@ -67,6 +67,7 @@ $('#btnsignin').click(function() {
         // 登录成功,存储令牌到本地
         storage["jwt"] = jwt;
         storage["username"] = json.username;
+        storage["userid"]=json.userid;
         console.log(jwt);
         $(location).attr('href', '/rentHomeProj_war/');
       }

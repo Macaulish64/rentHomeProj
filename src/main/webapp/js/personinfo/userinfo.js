@@ -1,7 +1,9 @@
-var jwt = localStorage["jwt"];
-var name = localStorage["name"];
+var storage=window.localStorage;
+var jwt = storage["jwt"];
+var name = storage["name"];
 console.log("输出:"+jwt);
 $(document).ready(function() {
+    alert(jwt);
     $.ajax({
         headers: {
             Authorization : jwt,
