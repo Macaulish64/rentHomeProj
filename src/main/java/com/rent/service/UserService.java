@@ -22,6 +22,7 @@ public interface  UserService {
     User selectUserById(int userId);
 
     //查找用户，从start项到end项，从0开始
+
     List<User> queryUser(UserExample example,int start,int end);
 
     //计数
