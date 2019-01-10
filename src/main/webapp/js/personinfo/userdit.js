@@ -1,3 +1,7 @@
+var jwt = window.localStorage["jwt"];
+var username = window.localStorage["username"];
+console.log("输出:"+jwt);
+
 $('#btn-usredit').click = function() {
   $.ajax({
     type: "POST",
