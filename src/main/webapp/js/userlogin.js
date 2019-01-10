@@ -70,7 +70,7 @@ $('#btnsignin').click(function() {
         console.log(jwt);
         $(location).attr('href', '/rentHomeProj_war/');
       }
-      alert(data.resmsg);
+      alert(json.resmsg);
     },
     error:function(){alert("Error");}
   })
