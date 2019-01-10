@@ -57,15 +57,21 @@
   <context:component-scan base-package="com.rent.web" />
 
   <!--拦截器-->
+  <mvc:resources location="/js" mapping="/**/*.js"/>
+  <mvc:resources location="/css" mapping="/**/*.css"/>
+  <mvc:resources location="/assets/" mapping="/assets/**/*"/>
+  <mvc:resources location="/img/" mapping="/img/*" cache-period="360000"/>
   <mvc:interceptors>
     <mvc:interceptor>
-      <!-- 匹配的是url路径， 如果不配置或/**,将拦截所有的Controller -->
+      <!--&lt;!&ndash; 匹配的是url路径， 如果不配置或/**,将拦截所有的Controller &ndash;&gt;-->
       <mvc:mapping path="/user" />
-      <!-- /register 和 /login 不需要拦截-->
+      <!--&lt;!&ndash; /register 和 /login 不需要拦截&ndash;&gt;-->
       <mvc:exclude-mapping path="/user/register"/>
       <mvc:exclude-mapping path="/user/login"/>
-      <!--spring-mvc-3.2.xsd 下面才不会报错-->
-      <!--防止静态文件被拦截-->
+      <mvc:exclude-mapping path="/user/signin"/>
+      <mvc:exclude-mapping path="/user/signup"/>
+      <!--&lt;!&ndash;spring-mvc-3.2.xsd 下面才不会报错&ndash;&gt;-->
+      <!--&lt;!&ndash;防止静态文件被拦截&ndash;&gt;-->
       <mvc:exclude-mapping path="/**/fonts/*"/>
       <mvc:exclude-mapping path="/**/*.css"/>
       <mvc:exclude-mapping path="/**/*.js"/>
@@ -77,7 +83,7 @@
       <mvc:exclude-mapping path="/**/*register.html"/>
       <bean class="com.rent.filter.JWTCheckInterceptor"></bean>
     </mvc:interceptor>
-    <!-- 当设置多个拦截器时，先按顺序调用preHandle方法，然后逆序调用每个拦截器的postHandle和afterCompletion方法 -->
+    <!--&lt;!&ndash; 当设置多个拦截器时，先按顺序调用preHandle方法，然后逆序调用每个拦截器的postHandle和afterCompletion方法 &ndash;&gt;-->
   </mvc:interceptors>
 
 
