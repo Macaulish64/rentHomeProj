@@ -153,7 +153,7 @@ public class UserServiceImpl implements UserService {
         map.put("username",record.getUsernickname());
         map.put("usertype",record.getUsertype());
         map.put("rescode",CommonEnum.LOGIN_SUCCESS.getCode());
-        map.put("resmsp",CommonEnum.LOGIN_SUCCESS.getMsg());
+        map.put("resmsg",CommonEnum.LOGIN_SUCCESS.getMsg());
         logger.info("checkUserLogin出参:\n");
         for(Map.Entry<String,Object> entry:map.entrySet()) {
             logger.info("["+entry.getKey() + ":" + entry.getValue() + "],");
