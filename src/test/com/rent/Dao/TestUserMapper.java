@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
+import java.util.Map;
 
 public class TestUserMapper extends BaseTest {
     private Logger logger = LoggerFactory.getLogger(this.getClass());
@@ -51,13 +52,11 @@ public class TestUserMapper extends BaseTest {
     }
 
     @Test
-    public void querygetexistuser() {
-        //    newUser.createCriteria().andUseridEqualTo(Collections.singleton("lxlxlx"));
-        UserExample newUser = new UserExample();
-        User nowuser;
-        newUser.createCriteria().andUsernicknameEqualTo("lxlxlx");
-        newUser.createCriteria().andPasswordEqualTo("23333");
-        nowuser=userService.getExistUser(newUser);
+    public void queryGetExistuser() {
+        User nowuser=new User();
+        nowuser.setUsernickname("lxlxlx");
+        nowuser.setPassword("23333");
+        Map<String,Object> map=userService.checkUserLogin(nowuser);
         logger.debug(nowuser.toString());
     }
 

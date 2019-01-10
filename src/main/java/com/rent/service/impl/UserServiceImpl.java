@@ -57,8 +57,8 @@ public class UserServiceImpl implements UserService {
     public Map<String,Object> checkUserLogin(User record) {
         Map<String,Object> map=new HashMap<String,Object>();
         UserExample newUser = new UserExample();
-        newUser.createCriteria().andUsernicknameEqualTo(record.getUsernickname());
-        newUser.createCriteria().andPasswordEqualTo(record.getPassword());
+        newUser.or().andUsernicknameEqualTo(record.getUsernickname());
+        newUser.or().andPasswordEqualTo(record.getPassword());
         record=getExistUser(newUser);
         logger.info("Check User Login:",record);
         if (record == null) {
