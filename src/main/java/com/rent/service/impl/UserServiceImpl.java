@@ -25,7 +25,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getExistUser(UserExample example) {
-        return userMapper.selectByExample(example).get(0);
+        List<User> nowlistuser=userMapper.selectByExample(example);
+        if (nowlistuser.size()==0) return null;
+        return nowlistuser.get(0);
     }
 
     @Override
@@ -81,7 +83,7 @@ public class UserServiceImpl implements UserService {
         map.put("resmsp",CommonEnum.LOGIN_SUCCESS.getMsg());
         logger.info("checkUserLogin出参:\n");
         for(Map.Entry<String,Object> entry:map.entrySet()) {
-            logger.info("[", entry.getKey() + ":" + entry.getValue() + "],");
+            logger.info("["+entry.getKey() + ":" + entry.getValue() + "],");
         }
         logger.info("\n");
         return map;

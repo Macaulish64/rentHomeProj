@@ -69,48 +69,91 @@
   <!--侧栏结束-->
   <!--主体内容-->
   <section id="main-content">
-    <section class="wrapper">
+    <section class="panel" style="padding-top:100px;">
+      <form class="search-result" style="padding-left: 50px;">
+        <div class="row panel">
+          <label class="col-sm-1 control-label" for="search-input">Search</label>
+          <div class="col-sm-8">
+            <input class="form-control w3-xlarge"
+                   type="text"
+                   id="search-input"
+                   name="search-text">
+            <p class="help-block">About ... results (... seconds)</p>
+          </div>
+          <div class="col-sm-2">
+            <button class="btn" type="submit">SEARCH</button>
+          </div>
+        </div>
+
+        <div class="row panel">
+          <label for="select-province">Province</label>
+          <select id="select-province" name="province">
+            <option>Bj</option>
+            <option>Sh</option>
+            <option>AN</option>
+            <option>SC</option>
+          </select>
+          <label for="select-city">Province</label>
+          <select id="select-city" name="city">
+            <option>Bj</option>
+            <option>Ai</option>
+            <option>Zh</option>
+          </select>
+          <label for="select-district">Province</label>
+          <select id="select-district" name="district">
+            <option>QAZ</option>
+            <option>WSX</option>
+            <option>EDC</option>
+          </select>
+        </div>
+
+        <div class="row panel">
+          <label for="user-id">user id</label>
+          <input type="text" id="user-id">
+        </div>
+      </form>
+    </section>
+
+    <section class="panel">
+      <div>
+        <header>User List</header>
+        <table class="table table-hover">
+          <thead>
+          <tr>
+            <th>userId</th>
+            <th>userNickName</th>
+            <th>password</th>
+            <th>userType</th>
+            <th>userName</th>
+            <th>cardType</th>
+            <th>idNumber</th>
+            <th>phoneNumber</th>
+            <th>userLevel</th>
+            <th>registCity</th>
+            <th>updateTime</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>a</td>
+            <td>b</td>
+            <td>c</td>
+            <td>d</td>
+            <td>e</td>
+            <td>f</td>
+            <td>g</td>
+            <td>h</td>
+            <td>i</td>
+            <td>j</td>
+            <td>k</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+
     </section>
   </section>
   <!--main content end-->
-
-  <div class="row">
-    <div class="col-sm-12">
-      <header>User List</header>
-      <table class="table table-hover">
-        <thead>
-        <tr>
-          <th>userId</th>
-          <th>userNickName</th>
-          <th>password</th>
-          <th>userType</th>
-          <th>userName</th>
-          <th>cardType</th>
-          <th>idNumber</th>
-          <th>phoneNumber</th>
-          <th>userLevel</th>
-          <th>registCity</th>
-          <th>updateTime</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-          <td>a</td>
-          <td>b</td>
-          <td>c</td>
-          <td>d</td>
-          <td>e</td>
-          <td>f</td>
-          <td>g</td>
-          <td>h</td>
-          <td>i</td>
-          <td>j</td>
-          <td>k</td>
-        </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
 
   <!--footer start-->
   <footer class="site-footer">
@@ -123,8 +166,6 @@
   </footer>
   <!--footer end-->
 </section>
-
-
 
 </body>
 </html>

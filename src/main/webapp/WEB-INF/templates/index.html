@@ -8,9 +8,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <link rel="stylesheet" th:href="@{/css/w3.css}">
-  <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
-  <link rel="stylesheet" th:href="@{/css/bootstrap.reset.css}">
-  <link rel="stylesheet" th:href="@{/css/style.css}">
+
+  <!-- -->
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" th:href="@{css/bootstrap.min.css}">
+  <link rel="stylesheet" th:href="@{css/bootstrap-reset.css}">
+  <!--矢量图标插件-->
+  <link rel="stylesheet" th:href="@{css/font-awesome/css/font-awesome.css}">
+  <!--统计插件https://github.com/rendro/easy-pie-chart/-->
+  <link th:href="@{css/jquery-easy-pie-chart/jquery.easy-pie-chart.css}" rel="stylesheet" type="text/css" media="screen">
+  <!--幻灯片插件-->
+  <link rel="stylesheet" th:href="@{css/owl.carousel.css}" type="text/css">
+
+  <!--right slidebar-->
+  <link rel="stylesheet" th:href="@{css/slidebars.css}">
+
+  <!-- Custom styles for this template -->
+  <link rel="stylesheet" th:href="@{css/style.css}">
+  <link rel="stylesheet" th:href="@{css/style-responsive.css}">
+
 </head>
 
 <style>
@@ -89,6 +105,17 @@
 <footer class="w3-container w3-black">
   <p class="w3-center">@Copyright haha</p>
 </footer>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<!--<script src="https://code.jquery.com/jquery-3.1.1.js"></script>-->
+<script th:src="@{/js/external/jquery.js}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<!-- myself -->
+<script th:src="@{/js/userlogin.js}"></script>
+
+
 
 </body>
 </html>

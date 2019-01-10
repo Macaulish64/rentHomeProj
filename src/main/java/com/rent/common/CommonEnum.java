@@ -6,8 +6,8 @@ package com.rent.common;
  * E-mail: hisenyuan@gmail.com
  */
 public enum CommonEnum {
-  LOGIN_FAILED(10001, "登录失败,账号或者密码错误"),
-  LOGIN_SUCCESS(10002, "登录成功"),
+  LOGIN_FAILED(10001, "login failed,please check username and password"),
+  LOGIN_SUCCESS(10002, "login success"),
   LOGIN_LOCKED(10003, "账号被锁定,请重置密码"),
   REQUEST_SUCCESS(10003, "请求成功"),
   REQUEST_FAILED(10004, "请求失败"),
