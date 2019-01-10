@@ -6212,7 +6212,12 @@ header.blue-bg .search:focus {
 }
 
 #user-panel {
-    padding: 15px 15px 15px 15px;
+    background: white;
+    float: right;
+    width: 20em;
+    display: inline;
+    padding-left: 4em;
+    margin: 1em 1em 1em -22em;
     border-radius: 6px;
     border-style: solid;
     border-width: 1px;

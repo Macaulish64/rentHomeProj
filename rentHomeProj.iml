@@ -80,5 +80,6 @@
     <orderEntry type="library" name="Maven: joda-time:joda-time:2.9.3" level="project" />
     <orderEntry type="library" name="load-image.all" level="application" />
     <orderEntry type="library" name="jquery-2.1.4" level="application" />
+    <orderEntry type="library" name="jquery-3.1.1" level="application" />
   </component>
 </module>
