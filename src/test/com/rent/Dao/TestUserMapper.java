@@ -43,7 +43,7 @@ public class TestUserMapper extends BaseTest {
     public void queryuser() {
         UserExample newUser = new UserExample();
     //    newUser.createCriteria().andUseridEqualTo(Collections.singleton("lxlxlx"));
-        newUser.createCriteria().andUsernicknameEqualTo("lxlxlx");
+        newUser.or().andUsernicknameEqualTo("lxlxlx");
         List<User> userList = userMapper.selectByExample(newUser);
         for(User nowUser : userList) {
             System.out.println(nowUser.toString());

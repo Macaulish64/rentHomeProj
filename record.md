@@ -128,3 +128,101 @@ create table renttransaction(
 
 
 
+1. 搜索框.String -> list<House>  （1）
+2. 房源 （2）
+  public List<House> getHouseList( Map<String,List<String>> map)
+  {
+    List<String> list;
+    list=map['publishUser'];
+    HouseExample suithouse;
+    for(String publish: list<String>) 
+    {
+      suithouse.(publish);
+    }
+
+     list=map['cityName'];
+    HouseExample suithouse;
+    for(String publish: list<String>) 
+    {
+      suithouse.(publish);
+    }
+
+     list=map['publishUser'];
+    HouseExample suithouse;
+    for(String publish: list<String>) 
+    {
+      suithouse.(publish);
+    }
+
+     list=map['publishUser'];
+    HouseExample suithouse;
+    for(String publish: list<String>) 
+    {
+      suithouse.(publish);
+    }
+
+    return List<House>;
+  }
+
+  public int counterHouseList( Map<String,List<String>> map)
+  {
+    List<String> list;
+    list=map['publishUser'];
+    HouseExample suithouse;
+    for(String publish: list<String>) 
+    {
+      suithouse.(publish);
+    }
+
+     list=map['cityName'];
+    HouseExample suithouse;
+    for(String publish: list<String>) 
+    {
+      suithouse.(publish);
+    }
+
+     list=map['publishUser'];
+    HouseExample suithouse;
+    for(String publish: list<String>) 
+    {
+      suithouse.(publish);
+    }
+
+     list=map['publishUser'];
+    HouseExample suithouse;
+    for(String publish: list<String>) 
+    {
+      suithouse.(publish);
+    }
+
+    return ;
+  }
+
+
+
+  Map<String,List<String>>,start-> List<House>
+  citylist=map['city'];
+  for(city :ctiylist) exmp
+
+  Map<String,List<String>>> number,
+
+
+  Map< 'publishUser', List<String> 
+        'cityNmae' ,List<String> 
+        '
+3. 发布房源
+  House -> Map
+4. 求租，发布求租如上图（2）
+6. 房客中心，房东中心，返回统计信息（4）
+  getListTransaction1
+   userid -> List<transaction>
+   同上，
+7. 删除房源/求租信息，给一个id -> enum
+8. 修改视图(暂时没有)。
+7. 个人基本信息，给一个namenickid -> User
+8. 修改密码,
+9. 修改信息
+10. 
+
+
+
