@@ -23,13 +23,15 @@
 </head>
 <body>
 
-<div class="w3-top">
-	<div class="w3-row w3-black w3-hide-small">
-		<a th:href="@{/}" class="w3-bar-item w3-button w3-col l1">主页</a>
-		<a th:href="@{/houselist}" class="w3-bar-item w3-button w3-col l1">房源</a>
-		<a th:href="@{/demandlist}" class="w3-bar-item w3-button w3-col l1">求租</a>
+<header class="w3-top">
+	<div>
+		<div class="w3-navbar w3-white navbar-collapse collapse w3-large">
+			<a th:href="@{/}" class="w3-bar-item w3-button w3-hover-orange">主页</a>
+			<a th:href="@{/houselist}" class="w3-bar-item w3-button w3-hover-orange">房源</a>
+			<a th:href="@{/demandlist}" class="w3-bar-item w3-button w3-hover-orange">求租</a>
+		</div>
 	</div>
-</div>
+</header>
 
 <div class="w3-display-container w3-content w3-center"
 		 style="max-width:3200px; height:300px; background:dimgray;">
