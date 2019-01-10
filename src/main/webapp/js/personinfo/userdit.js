@@ -28,7 +28,8 @@ $(document).ready(function() {
        alert(JSON.stringify(data));
      },*/
     error:function(){
-      alert("!!!Error");
+      alert("Please Log In First");
+      $(location).attr('href', '/rentHomeProj_war/signin');
     }
   })
 });
