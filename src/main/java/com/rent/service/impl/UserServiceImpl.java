@@ -3,9 +3,7 @@ package com.rent.service.impl;
 import com.rent.common.CommonEnum;
 import com.rent.common.JWTUtil;
 import com.rent.dao.UserMapper;
-import com.rent.entity.JWTInfo;
-import com.rent.entity.User;
-import com.rent.entity.UserExample;
+import com.rent.entity.*;
 import com.rent.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,13 +29,40 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public int insertUser(User record) {
-        return userMapper.insertSelective(record);
+    public Map<String, Object> insertUser(User record) {
+        Map<String,Object> map=new HashMap<String,Object>();
+        int num = userMapper.insertSelective(record);
+        //失败
+        if (num==0)
+        {
+            map.put("rescode", CommonEnum.REQUEST_FAILED.getCode());
+            map.put("resmsg",CommonEnum.REQUEST_FAILED.getMsg());
+            return map;
+        }
+        //成功
+        map.put("rescode", CommonEnum.REQUEST_SUCCESS.getCode());
+        map.put("resmsg",CommonEnum.REQUEST_SUCCESS.getMsg());
+        UserExample suithouse = new UserExample();
+        List<User> list = userMapper.selectByExample(suithouse);
+        map.put("userId",list.get(list.size()-1).getUserid());
+        return map;
     }
 
     @Override
-    public int updateUser(User record) {
-        return userMapper.updateByPrimaryKeySelective(record);
+    public Map<String, Object> updateUser(User record) {
+        Map<String,Object> map=new HashMap<String,Object>();
+        int num = userMapper.updateByPrimaryKeySelective(record);
+        //失败
+        if (num==0)
+        {
+            map.put("rescode", CommonEnum.REQUEST_FAILED.getCode());
+            map.put("resmsg",CommonEnum.REQUEST_FAILED.getMsg());
+            return map;
+        }
+        //成功
+        map.put("rescode", CommonEnum.REQUEST_SUCCESS.getCode());
+        map.put("resmsg",CommonEnum.REQUEST_SUCCESS.getMsg());
+        return map;
     }
 
     @Override
@@ -46,14 +71,62 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<User> queryUser(UserExample example, int start, int end) {
-        return  userMapper.selectByExample(example).subList(start,end);
+    public List<User> queryUser(Map<String, List> map, int start, int end) {
+        UserExample suituser = new UserExample();
+        UserExample.Criteria criteria= suituser.createCriteria();
+        if (map.containsKey("userId"))
+            criteria.andUseridIn(map.get("userId"));
+        if (map.containsKey("userNickName"))
+            criteria.andUsernicknameIn(map.get("userNickName"));
+        if (map.containsKey("password"))
+            criteria.andPasswordIn(map.get("password"));
+        if (map.containsKey("userType"))
+            criteria.andUsertypeIn(map.get("userType"));
+        if (map.containsKey("userName"))
+            criteria.andUsernameIn(map.get("userName"));
+        if (map.containsKey("cardType"))
+            criteria.andCardtypeIn(map.get("cardType"));
+        if (map.containsKey("idNumber"))
+            criteria.andIdnumberIn(map.get("idNumber"));
+        if (map.containsKey("phoneNumber"))
+            criteria.andPhonenumberIn(map.get("phoneNumber"));
+        if (map.containsKey("userLevel"))
+            criteria.andUserlevelIn(map.get("userLevel"));
+        if (map.containsKey("registCity"))
+            criteria.andRegistcityIn(map.get("registCity"));
+
+        return userMapper.selectByExample(suituser).subList(start,end);
     }
 
+
     @Override
-    public int countUser(UserExample example) {
-        return userMapper.countByExample(example);
+    public int queryUserNum(Map<String, List> map) {
+        UserExample suithouse = new UserExample();
+        UserExample.Criteria criteria= suithouse.createCriteria();
+        if (map.containsKey("userId"))
+            criteria.andUseridIn(map.get("userId"));
+        if (map.containsKey("userNickName"))
+            criteria.andUsernicknameIn(map.get("userNickName"));
+        if (map.containsKey("password"))
+            criteria.andPasswordIn(map.get("password"));
+        if (map.containsKey("userType"))
+            criteria.andUsertypeIn(map.get("userType"));
+        if (map.containsKey("userName"))
+            criteria.andUsernameIn(map.get("userName"));
+        if (map.containsKey("cardType"))
+            criteria.andCardtypeIn(map.get("cardType"));
+        if (map.containsKey("idNumber"))
+            criteria.andIdnumberIn(map.get("idNumber"));
+        if (map.containsKey("phoneNumber"))
+            criteria.andPhonenumberIn(map.get("phoneNumber"));
+        if (map.containsKey("userLevel"))
+            criteria.andUserlevelIn(map.get("userLevel"));
+        if (map.containsKey("registCity"))
+            criteria.andRegistcityIn(map.get("registCity"));
+
+        return userMapper.selectByExample(suithouse).size();
     }
+
 
     @Override
     public Map<String,Object> checkUserLogin(User record) {
