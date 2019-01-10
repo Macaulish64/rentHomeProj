@@ -17,14 +17,16 @@ import java.io.PrintWriter;
  */
 public class JWTCheckInterceptor implements HandlerInterceptor {
 
-  private Logger log = LoggerFactory.getLogger(this.getClass());
+  private Logger logger= LoggerFactory.getLogger(this.getClass());
 
   public boolean preHandle(HttpServletRequest request,
                            HttpServletResponse response, Object o) throws Exception {
+    logger.info("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+    logger.info("jwf 11111111");
     response.setCharacterEncoding("utf-8");
     String jwt = request.getHeader("Authorization");
-    String name = request.getHeader("name");
-    log.info("JWTCheckInterceptor - jwt:{},name{}",jwt,name);
+    String name = request.getHeader("username");
+    logger.info("JWTCheckInterceptor - jwt:{},name{}",jwt,name);
     if ("".equals(jwt) || "".equals(name) || null == jwt || null == name) {
       com.rent.common.CommonResponse commonResponse = new com.rent.common.CommonResponse();
       commonResponse.setResCode(com.rent.common.CommonEnum.REQUEST_FAILED.getCode());
@@ -34,7 +36,7 @@ public class JWTCheckInterceptor implements HandlerInterceptor {
     }
     // 解密信息
     com.rent.entity.JWTInfo jwtInfo = com.rent.common.JWTUtil.unsign(jwt, com.rent.entity.JWTInfo.class);
-    log.info("jwt解密之后:{}", JSON.toJSONString(jwtInfo));
+    logger.info("jwt解密之后:{}", JSON.toJSONString(jwtInfo));
     if (jwtInfo == null) {
       com.rent.common.CommonResponse commonResponse = new com.rent.common.CommonResponse();
       commonResponse.setResCode(com.rent.common.CommonEnum.REQUEST_FAILED.getCode());
@@ -56,16 +58,21 @@ public class JWTCheckInterceptor implements HandlerInterceptor {
   public void postHandle(HttpServletRequest request,
       HttpServletResponse response, Object o, ModelAndView modelAndView)
       throws Exception {
+    logger.info("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+    logger.info("jwf 2222222222");
   }
 
   public void afterCompletion(HttpServletRequest httpServletRequest,
       HttpServletResponse httpServletResponse, Object o, Exception e) throws Exception {
-
+    logger.info("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+    logger.info("jwf 3333333333333");
   }
 
   //请求不通过，返回错误信息给客户端
   private void responseMessage(HttpServletResponse response, PrintWriter out,
       com.rent.common.CommonResponse commonResponse) {
+    logger.info("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+    logger.info("jwf 44444444444444444");
     response.setContentType("application/json; charset=utf-8");
     String json = JSON.toJSONString(commonResponse);
     out.print(json);

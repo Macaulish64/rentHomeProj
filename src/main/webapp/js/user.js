@@ -1,5 +1,5 @@
-var jwt = localStorage["jwt"];
-var name = localStorage["name"];
+var jwt = window.localStorage["jwt"];
+var username = window.localStorage["name"];
 console.log("输出:"+jwt);
 function signup_sumbit(url) {
   var obj = {
