@@ -23,7 +23,7 @@ public class JWTCheckInterceptor implements HandlerInterceptor {
                            HttpServletResponse response, Object o) throws Exception {
     response.setCharacterEncoding("utf-8");
     String jwt = request.getHeader("Authorization");
-    String name = request.getHeader("name");
+    String name = request.getHeader("username");
     log.info("JWTCheckInterceptor - jwt:{},name{}",jwt,name);
     if ("".equals(jwt) || "".equals(name) || null == jwt || null == name) {
       com.rent.common.CommonResponse commonResponse = new com.rent.common.CommonResponse();
