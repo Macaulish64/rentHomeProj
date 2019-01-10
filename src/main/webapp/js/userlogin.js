@@ -59,6 +59,7 @@ btn.click(function() {
     contentType: "application/x-www-form-urlencoded",
     success:function(){
       console.log(data);
+      alert(data);
       var json = jQuery.parseJSON(data);
       var jwt = json.jwt;
       // 登录成功,存储令牌到本地

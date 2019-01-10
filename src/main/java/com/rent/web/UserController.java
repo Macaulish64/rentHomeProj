@@ -1,6 +1,7 @@
 package com.rent.web;
 
 
+import com.alibaba.fastjson.JSON;
 import com.rent.entity.User;
 import com.rent.service.UserService;
 import org.slf4j.Logger;
@@ -38,8 +39,8 @@ public class UserController {
 	@RequestMapping(value = "login", method = RequestMethod.POST)
 	@ResponseBody
 	private String login(User user) {
-
-		return "success";
+		Map<String,Object> map=userService.checkUserLogin(user);
+		return JSON.toJSONString(map);
 	}
 
 
