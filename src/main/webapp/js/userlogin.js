@@ -63,8 +63,9 @@ $('#btnsignin').click(function() {
      // alert(data['resmsg']);
       if (json.rescode === 10002) {
         alert("Success");
-        var jwt = json.jwt;
+        var jwt = json.JWT;
         // 登录成功,存储令牌到本地
+        alert(jwt);
         storage["jwt"] = jwt;
         storage["username"] = json.username;
         storage["userid"]=json.userid;
