@@ -3,7 +3,9 @@ package com.rent.web;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.serializer.SerializerFeature;
+import com.rent.entity.House;
 import com.rent.entity.User;
+import com.rent.service.HouseService;
 import com.rent.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,10 +19,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Controller
 @RequestMapping("user")
@@ -29,6 +28,9 @@ public class UserController {
 
 	@Autowired
 	private UserService userService;
+
+	@Autowired
+	private HouseService houseService;
 
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	@ResponseBody
@@ -149,6 +151,23 @@ public class UserController {
 
 		}
 		System.out.println("tttwwwoooo\n");
+	}
+
+	@RequestMapping(value="/ownerhouselist/{userid}",method=RequestMethod.GET)
+	@ResponseBody
+	public String getOwnerHouseList(@PathVariable("userid") int userid,
+									HttpServletRequest request) {
+		List<House> houselist;
+		Map<String,List> map=new HashMap<>();
+		List<Integer> publishuserlist=new ArrayList<>();
+		publishuserlist.add(userid);
+		map.put("publishUserId",publishuserlist);
+		houselist=houseService.queryHouse(map,0,1);
+		for(House nowhouse : houselist) {//其内部实质上还是调用了迭代器遍历方式，这种循环方式还有其他限制，不建议使用。
+			System.out.println(nowhouse.toString());
+		}
+		String json= JSON.toJSONString(houselist, SerializerFeature.WriteMapNullValue);
+		return json;
 	}
 
 }
