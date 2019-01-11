@@ -15,6 +15,7 @@
 create table House(
       houseId int auto_increment primary key,
       publishUserId int,
+      foreign key(publishUserId) references User(userId),
       cityName nvarchar(10),
       communityName nvarchar(50),
       buildingNumber nvarchar(20),
@@ -35,12 +36,14 @@ create table House(
 create table Photo(
     photoId int auto_increment primary key,
     houseId int,
+    foreign key(houseId) references House(houseId),
     housePhoto varchar(50)
 )default charset=utf8;
 
 create table RentInformation(
     rentId int auto_increment primary key,
     publishUserId int,
+    foreign key(publishUserId) references User(userId),
     cityName nvarchar(10),
     communityName nvarchar(50),
     houseType int,
@@ -57,8 +60,11 @@ create table RentInformation(
 create table RentTransaction(
     transactionId int auto_increment primary key,
     houseId int,
+    foreign key(houseId) references House(houseId),
     landlordId int,
     tenantId int,
+    foreign key(landlordId) references User(userId),
+    foreign key(tenantId) references User(userId),
     transactionDate varchar(20),
     startMonth varchar(10),
     endMonth varchar(10),
@@ -84,3 +90,18 @@ insert into User(userNickName,password,userType,userName)
 
 insert into User(userNickName,password,userType,userName,cardType,idNumber,phoneNumber,registCity,updateTime) 
 values('小明','123456',0,'王明',0,'123456789012345678','12345678901','北京','20181222');
+
+insert into User(userNickName,password,userType,userName,cardType,idNumber,phoneNumber,registCity,updateTime) 
+values('小红','123456',0,'张红',0,'123456789012345678','12345678901','天津','20181222');
+
+insert into User(userNickName,password,userType,userName,cardType,idNumber,phoneNumber,registCity,updateTime) 
+values('小蓝','123456',0,'李兰',0,'123456789012345678','12345678901','上海','20181222');
+
+insert into User(userNickName,password,userType,userName,cardType,idNumber,phoneNumber,registCity,updateTime) 
+values('小绿','123456',0,'赵律',0,'123456789012345678','12345678901','北京','20181222');
+
+insert into House(publishUserId,cityName,communityName,buildingNumber,houseType,houseArea,floorNumber,elevatorOrNot,houseDescription,photoNum,depositMoney,paymentMethod,rentMoney,registTime,updateTime)
+values(1,'北京','北邮',1,0,100,1,0,'很漂亮',0,10.0,1,1000.0,'20190111','20190111');
+
+insert into RentTransaction(houseId,landlordId,tenantId,transactionDate,startMonth,endMonth,depositMoney,paymentMethod,monthRent,totalRent,landlordPaymentAgencyFee,tenantPaymentAgencyFee)
+values(1,1,2,'20190111','201901','201902',10.0,1,1000.0,2000.0,60,60);

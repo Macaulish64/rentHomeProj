@@ -2,6 +2,7 @@ package com.rent.web;
 
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.rent.entity.User;
 import com.rent.service.UserService;
 import org.slf4j.Logger;
@@ -51,7 +52,8 @@ public class UserController {
 		logger.info("userid="+userid);
 		User nowUser=userService.selectUserById(userid);
 		System.out.println("!!!"+nowUser.toString());
-		return JSON.toJSONString(nowUser);
+		String json=JSON.toJSONString(nowUser, SerializerFeature.WriteMapNullValue);
+		return json;
 	}
 
 	@RequestMapping(value = "/changepassword/{userid}", method = RequestMethod.POST)
