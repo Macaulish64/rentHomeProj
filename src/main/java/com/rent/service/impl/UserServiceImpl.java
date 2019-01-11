@@ -72,8 +72,6 @@ public class UserServiceImpl implements UserService {
         return map;
     }
 
-
-
     @Override
     public User selectUserById(int userId) {
         return userMapper.selectByPrimaryKey(userId);
@@ -108,6 +106,28 @@ public class UserServiceImpl implements UserService {
         map.put("resmsg",CommonEnum.REQUEST_SUCCESS.getMsg());
         return map;
     }
+
+    @Override
+    public Map<String, Object> updateUserPhonenumber(int Userid, String phonenum) {
+        Map<String, Object> map = new HashMap<String, Object>();
+        User newUser = new User();
+        newUser.setUserid(Userid);
+        newUser.setPassword(phonenum);
+        newUser.setUpdatetime(df.format(new Date()));
+        int num = userMapper.updateByPrimaryKeySelective(newUser);
+        //失败
+        if (num==0)
+        {
+            map.put("rescode", CommonEnum.REQUEST_FAILED.getCode());
+            map.put("resmsg",CommonEnum.REQUEST_FAILED.getMsg());
+            return map;
+        }
+        //成功
+        map.put("rescode", CommonEnum.REQUEST_SUCCESS.getCode());
+        map.put("resmsg",CommonEnum.REQUEST_SUCCESS.getMsg());
+        return map;
+    }
+
     @Override
     public List<User> queryUser(Map<String, List> map, int start, int end) {
         UserExample suituser = new UserExample();
