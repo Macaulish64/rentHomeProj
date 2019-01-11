@@ -67,7 +67,8 @@ create table RentTransaction(
     monthRent float(10,2),
     totalRent float(10,2),
     landlordPaymentAgencyFee float(12,4),
-    tenantPaymentAgencyFee float(12,4)
+    tenantPaymentAgencyFee float(12,4),
+    rentStatus int default 0
   )default charset=utf8;
 
 create table Income(
