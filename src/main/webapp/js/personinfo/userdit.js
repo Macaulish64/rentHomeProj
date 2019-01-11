@@ -14,8 +14,13 @@ $('#btn-usredit').click = function() {
 
 $(document).ready(function() {
   $.ajax({
+    headers: {
+      Authorization : jwt,
+      'username' : username,
+      'userid' : userid
+    },
     type:"GET",
-    url:"http://localhost:8080/rentHomeProj_war/user/personedit",
+    url:"http://localhost:8080/rentHomeProj_war/user/personedit"+userid,
     dataType:"json",
     global:"false",
     success:function(data) {

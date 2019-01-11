@@ -6,10 +6,11 @@ $(document).ready(function() {
     $.ajax({
         headers: {
             Authorization : jwt,
-            'username' : username
+            'username' : username,
+            'userid' : userid
         },
         type:"GET",
-        url:"http://localhost:8080/rentHomeProj_war/user/personinfo",
+        url:"http://localhost:8080/rentHomeProj_war/user/personinfo"+userid,
         dataType:"json",
         global:"false",
         success:function(data) {
@@ -38,11 +39,16 @@ $('#changepassword').click(function () {
         }
         else {
         $.ajax({
+            headers: {
+                Authorization : jwt,
+                'username' : username,
+                'userid' : userid
+            },
             type: "POST",
-            url: "rentHomeProj_war/user/changepassword",
+            url: "rentHomeProj_war/user/changepassword/"+userid,
             async: false,
             data: { oldpassword:oldpass,newpassword:newpass1},
-            success:function() {
+            success:function(data) {
                 alert("修改成功");
             },
             error:function() {

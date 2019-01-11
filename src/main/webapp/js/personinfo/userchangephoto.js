@@ -108,10 +108,11 @@ $(document).ready(function() {
     $.ajax({
         headers: {
             Authorization : jwt,
-            'username' : username
+            'username' : username,
+            'userid' : userid
         },
         type:"GET",
-        url:"http://localhost:8080/rentHomeProj_war/user/personinfo",
+        url:"http://localhost:8080/rentHomeProj_war/user/personinfo/"+userid,
         dataType:"json",
         global:"false",
         success:function(data) {

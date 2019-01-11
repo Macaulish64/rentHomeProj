@@ -14,8 +14,6 @@ import java.util.Enumeration;
 /**
  * CorsFileter 功能描述：CORS过滤器
  * 允许跨域访问
- * Created by hisen on 17-8-27.
- * E-mail: hisenyuan@gmail.com
  */
 @Component
 public class CorsFilter implements Filter {

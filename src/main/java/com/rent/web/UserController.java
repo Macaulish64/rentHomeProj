@@ -44,27 +44,25 @@ public class UserController {
 	}
 
 
-	@RequestMapping(value = "/personinfo", method = RequestMethod.GET)
+	@RequestMapping(value = "/personinfo/{userid}", method = RequestMethod.GET)
 	@ResponseBody
-	public User edit(@RequestHeader("userid") int userid) {
+	public String edit(@PathVariable("userid") int userid) {
 		logger.info("!!!!are you ok?\n");
-		User nowUser=userService.selectUserById(1);
+		logger.info("userid="+userid);
+		User nowUser=userService.selectUserById(userid);
 		System.out.println("!!!"+nowUser.toString());
-		logger.info(nowUser.toString());
-		return userService.selectUserById(userid);
+		return JSON.toJSONString(nowUser);
 	}
 
-	@RequestMapping(value = "/changepassword", method = RequestMethod.POST)
+	@RequestMapping(value = "/changepassword/{userid}", method = RequestMethod.POST)
 	@ResponseBody
-	public User edit(@RequestHeader("userid") int userid,
-					 @RequestParam("newpassword") String newpassword,
-					 @RequestParam("newpassword") String oldpassword) {
+	public User changepassword(@PathVariable("userid") int userid,
+					 @RequestParam("oldpassword") String oldpassword,
+					 @RequestParam("newpassword") String newpassword) {
 		// TODO: fix it
-		return userService.selectUserById(userid);
+		return userService.changepassword(userid,oldpassword,newpassword);
+	//	return userService.selectUserById(userid);
 	}
-
-
-
 
 	@RequestMapping("/test")
 	@ResponseBody
