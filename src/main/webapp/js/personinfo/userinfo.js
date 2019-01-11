@@ -15,7 +15,7 @@ $(document).ready(function() {
         dataType:"json",
         global:"false",
         success:function(data) {
-            alert("!!!");
+            
         },
         error:function(data){
             alert("Please Log In First");
