@@ -70,12 +70,15 @@ public class UserController {
 
 	@RequestMapping(value = "/changepassword/{userid}", method = RequestMethod.POST)
 	@ResponseBody
-	public User changepassword(@PathVariable("userid") int userid,
+	public String changepassword(@PathVariable("userid") int userid,
 					 @RequestParam("oldpassword") String oldpassword,
 					 @RequestParam("newpassword") String newpassword) {
 		// TODO: fix it
-		//return userService.changepassword(userid,oldpassword,newpassword);
-		return userService.selectUserById(userid);
+		Map<String,Object> map=new HashMap<String,Object>();
+		map=userService.updateUserPassword(userid,oldpassword,newpassword);
+		String json=JSON.toJSONString(map, SerializerFeature.WriteMapNullValue);
+		return json;
+		//return userService.selectUserById(userid);
 	}
 
 	@RequestMapping("/test")
