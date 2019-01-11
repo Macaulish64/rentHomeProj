@@ -13,5 +13,5 @@ public interface IncomeService {
     //查询，从start项到end项，从0开始
     public List<Income> queryIncome(Map<String,List> map, int start, int end);
     //计数
-    public int queryIncomeNum(Map<String,List> map);
+    public Map<String,Object> queryIncomeNum(Map<String,List> map);
 }

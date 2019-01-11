@@ -35,8 +35,8 @@ public class TestHouseMapper extends BaseTest {
     @Test
     public void queryhouse() {
         HouseExample newHouse = new HouseExample();
-       // newHouse.or().andCitynameIn(Collections.singletonList("北京"));
-       // newHouse.or().andCitynameIn(Collections.singletonList("天津"));
+        newHouse.or().andCitynameLike("%津%");
+        newHouse.or().andCommunitynameLike("%北%");
         List<House> newhouses = houseMapper.selectByExample(newHouse);
         System.out.println(newhouses);
     }
