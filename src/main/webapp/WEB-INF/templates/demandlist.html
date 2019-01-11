@@ -103,14 +103,30 @@
     <div class="row">
       <!-- left side (content) -->
       <div class="container-fluid col-sm-9">
-        <div class="col-lg-8">
-          <div class="panel-body">
-            <!-- ::before -->
-            <div id="tobedemandlist">
-              <!-- TODO: js operates demand list -->
-            </div>
-            <!-- ::after -->
+        <div class="panel-body">
+          <!-- ::before -->
+          <div id="tobedemandlist">
+            <ul id="demandList">
+              <li class="round-panel">
+                <div class="row">
+                  <div class="img col-sm-5">
+                    <img class="w3-center"
+                         style="width: 15em; height: 15em;"
+                         th:src="@{/img/a(1).JPG}">
+                  </div>
+                  <div class="txt col-sm-5">
+                    <h3>Haha</h3>
+                    <h4>北京市海淀区西土城路10号北京邮电大学学一楼307</h4>
+                  </div>
+                  <div class="btn col-sm-2">
+                    <button id="house-btn" class="btn btn-default w3-center">查看</button>
+                  </div>
+                </div>
+              </li>
+            </ul>
+
           </div>
+          <!-- ::after -->
         </div>
 
       </div>
