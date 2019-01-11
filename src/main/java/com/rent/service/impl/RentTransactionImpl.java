@@ -71,6 +71,7 @@ public class RentTransactionImpl implements RentTransactionService {
         RentTransactionExample suithouse = new RentTransactionExample();
         List<RentTransaction> list = rentTransactionMapper.selectByExample(suithouse);
         map.put("transId",list.get(list.size()-1).getTenantid());
+
         return map;
     }
 

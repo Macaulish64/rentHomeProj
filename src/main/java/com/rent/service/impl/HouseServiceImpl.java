@@ -24,7 +24,7 @@ public class HouseServiceImpl implements HouseService {
     @Override
     public List<House> searchBar(String c) {
         HouseExample suithouse = new HouseExample();
-
+        c='%'+c+'%';
         suithouse.or().andCitynameLike(c);
         suithouse.or().andCommunitynameLike(c);
 

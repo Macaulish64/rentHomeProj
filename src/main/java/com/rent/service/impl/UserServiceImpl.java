@@ -65,11 +65,40 @@ public class UserServiceImpl implements UserService {
         return map;
     }
 
+
+
     @Override
     public User selectUserById(int userId) {
         return userMapper.selectByPrimaryKey(userId);
     }
 
+    @Override
+    public Map<String, Object> updateUserPassword(int Userid, String oldpassword, String newPassword) {
+        Map<String, Object> map = new HashMap<String, Object>();
+        String truePassword=selectUserById(Userid).getPassword();
+        //密码错误
+        if (truePassword!=oldpassword)
+        {
+            map.put("rescode", CommonEnum.REQUEST_FAILED.getCode());
+            map.put("resmsg",CommonEnum.REQUEST_FAILED.getMsg());
+            return map;
+        }
+        User newUser = new User();
+        newUser.setUserid(Userid);
+        newUser.setPassword(newPassword);
+        int num = userMapper.updateByPrimaryKeySelective(newUser);
+        //失败
+        if (num==0)
+        {
+            map.put("rescode", CommonEnum.REQUEST_FAILED.getCode());
+            map.put("resmsg",CommonEnum.REQUEST_FAILED.getMsg());
+            return map;
+        }
+        //成功
+        map.put("rescode", CommonEnum.REQUEST_SUCCESS.getCode());
+        map.put("resmsg",CommonEnum.REQUEST_SUCCESS.getMsg());
+        return map;
+    }
     @Override
     public List<User> queryUser(Map<String, List> map, int start, int end) {
         UserExample suituser = new UserExample();

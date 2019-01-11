@@ -72,7 +72,7 @@ public class IncomeServiceImpl implements IncomeService {
     }
 
     @Override
-    public int queryIncomeNum(Map<String, List> map) {
+    public Map<String, Object> queryIncomeNum(Map<String, List> map) {
         IncomeExample suitincome = new IncomeExample();
         IncomeExample.Criteria criteria= suitincome.createCriteria();
         if (map.containsKey("month"))
@@ -83,6 +83,16 @@ public class IncomeServiceImpl implements IncomeService {
             criteria.andTransactionnumBetween((int)map.get("transactionNumMin").get(0),(int)map.get("transactionNumMax").get(0));
         if (map.containsKey("feeIncomeMax") && map.containsKey("feeIncomeMin"))
             criteria.andFeeincomeBetween((float)map.get("feeIncomeMin").get(0),(float)map.get("feeIncomeMax").get(0));
-        return incomeMapper.selectByExample(suitincome).size();
+        List<Income> list=incomeMapper.selectByExample(suitincome);
+        float Feeincome=0;
+        int Transnum=0;
+        Map<String,Object> newmap=new HashMap<String, Object>();
+        for (int i=0;i<list.size();i++) {
+            Feeincome+=list.get(i).getFeeincome();
+            Transnum+=list.get(i).getTransactionnum();
+        }
+        newmap.put("transactionNum",Transnum);
+        newmap.put("feeIncome",Feeincome);
+        return null;
     }
 }
