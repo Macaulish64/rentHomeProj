@@ -6226,8 +6226,10 @@ header.blue-bg .search:focus {
 }
 
 .round-panel {
-    padding: 15px 15px 15px 15px;
-    border-radius: 8px;
+    background: white;
+    margin: 2em 2em 2em 2em;
+    padding: 2em 2em 2em 2em;
+    border-radius: 10px;
     border-style: solid;
     border-width: 1px;
     border-color: black;
