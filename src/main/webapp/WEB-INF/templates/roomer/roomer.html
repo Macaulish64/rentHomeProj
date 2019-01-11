@@ -42,13 +42,6 @@
 
 <!-- <script src="Scripts/jquery.pagination.js" type="text/javascript"></script> -->
 
-<style>
-  .houseimg {
-    width: 250px;
-    height: 250px;
-  }
-</style>
-
 <section id="container">
 
   <header class="w3-top">
@@ -65,43 +58,8 @@
   </header>
 
 
-  <section class="main-content">
-    <div class="center-block">
-      <div class="col-lg-12">
-        <section calss="panel">
-          <div class="panel-body">
-            <div>
-              <ul class="summary-list">
-                <li>
-                  <a th:href="@{/personview}">
-                    <i class=" "></i>
-                    "
-                    个人中心(图标放矢量图像)
-                    "
-                  </a>
-                </li>
-                <li>
-                  <a th:href="@{/landlord}">
-                    <i class=" "></i>
-                    "
-                    房东中心
-                    "
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <i class="#"></i>
-                    "
-                    房客中心
-                    "
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </section>
-      </div>
-      <div>
+  <section id="main-content">
+      <div class="row">
         <div class="col-lg-2">
           <section class="panel-heading">
             Link items
@@ -118,6 +76,14 @@
 
         <div class="col-lg-10">
           <section class="panel">
+            <div class="w3-navbar w3-white w3-large">
+              <a th:href="@{/personview}" class="w3-bar-item w3-button w3-hover-deep-orange">个人信息</a>
+              <a th:href="@{/landlord}" class="w3-bar-item w3-button w3-hover-deep-orange">我是房东</a>
+              <a th:href="@{/roomer}" class="w3-bar-item w3-button w3-hover-deep-orange">我是房客</a>
+            </div>
+          </section>
+
+          <section class="panel">
             <header class="panel-heading">
               我是房客
             </header>
@@ -129,7 +95,6 @@
                 <div class="col-lg-5">
                   <img class="img-responsive" src="img/person/person1.jpg">
                 </div>
-
               </div>
 
             </div>
@@ -137,11 +102,7 @@
           </section>
 
         </div>
-
-
-
       </div>
-    </div>
 
   </section>
 </section>

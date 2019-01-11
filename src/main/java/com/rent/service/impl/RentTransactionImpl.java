@@ -4,8 +4,10 @@ import com.rent.common.CommonEnum;
 import com.rent.dao.HouseMapper;
 import com.rent.dao.RentTransactionMapper;
 import com.rent.entity.House;
+import com.rent.entity.Income;
 import com.rent.entity.RentTransaction;
 import com.rent.entity.RentTransactionExample;
+import com.rent.service.IncomeService;
 import com.rent.service.RentTransactionService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,9 +24,11 @@ import java.util.Map;
 public class RentTransactionImpl implements RentTransactionService {
     private Logger logger= LoggerFactory.getLogger(this.getClass());
     SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM");
     @Autowired
     private RentTransactionMapper rentTransactionMapper;
     private HouseMapper houseMapper;
+    private IncomeService incomeService;
 
     @Override
     public int queryRentTransactionNum(Map<String, List> map) {
@@ -123,7 +127,6 @@ public class RentTransactionImpl implements RentTransactionService {
         return rentTransactionMapper.selectByExample(suittrans).subList(start,end);
     }
 
-
     //租客提交申请
     @Override
     public Map<String,Object> submitTransaction(int houseid,int userid)
@@ -154,7 +157,7 @@ public class RentTransactionImpl implements RentTransactionService {
         record.setTotalrent(selectRentTransactionById(transId).getMonthrent() * monthNum);
         record.setLandlordpaymentagencyfee((float) (record.getTotalrent()*0.03));
         record.setTenantpaymentagencyfee((float) (record.getTotalrent()*0.03));
-
+        record.setRentstatus(1);
         int num = rentTransactionMapper.updateByPrimaryKey(record);
 
         //失败
@@ -168,6 +171,14 @@ public class RentTransactionImpl implements RentTransactionService {
         map.put("rescode", CommonEnum.REQUEST_SUCCESS.getCode());
         map.put("resmsg",CommonEnum.REQUEST_SUCCESS.getMsg());
 
+        int houseid=selectRentTransactionById(transId).getHouseid();
+        Income income=incomeService.queryIncomeByKey(df2.format(new Date()),houseMapper.selectByPrimaryKey(houseid).getCityname());
+        int transnum=income.getTransactionnum();
+        float feeincome=income.getFeeincome();
+        income.setTransactionnum(transnum+1);
+        income.setFeeincome(feeincome+record.getLandlordpaymentagencyfee()*2);
+
+        map = incomeService.updateIncome(income);
         return map;
     }
 }

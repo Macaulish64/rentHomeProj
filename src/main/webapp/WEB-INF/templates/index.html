@@ -39,50 +39,21 @@
   </header>
 
   <div>
-    <div>
-      <div class="w3-navbar w3-white navbar-collapse collapse w3-large">
-        <a th:href="@{/}" class="w3-bar-item w3-button w3-hover-orange">主页</a>
-        <a th:href="@{/houselist}" class="w3-bar-item w3-button w3-hover-orange">房源</a>
-        <a th:href="@{/demandlist}" class="w3-bar-item w3-button w3-hover-orange">求租</a>
-        <a th:href="@{/adminindex}" class="w3-bar-item w3-button w3-hover-orange">后台</a>
-        <!--<div id="linkpresonview" class="w3-bar-item w3-button w3-hover-orange w3-right">个人中心</div>-->
-        <a th:href="@{/personview}" id="linkpresonview" class="w3-bar-item w3-button w3-hover-orange w3-right">个人中心</a>
-        <a id="linksignup" th:href="@{/signup}" class="w3-bar-item w3-button w3-hover-orange w3-right">
-          <span class="glyphicon glyphicon-user"></span>注册
-        </a>
-        <a id="linksignin" th:href="@{/signin}" class="w3-bar-item w3-button w3-hover-orange w3-right">
-          <span class="glyphicon glyphicon-log-in"></span>登陆
-        </a>
-      </div>
+    <div class="w3-navbar w3-white navbar-collapse collapse w3-large">
+      <a th:href="@{/}" class="w3-bar-item w3-button w3-hover-orange">主页</a>
+      <a th:href="@{/houselist}" class="w3-bar-item w3-button w3-hover-orange">房源</a>
+      <a th:href="@{/demandlist}" class="w3-bar-item w3-button w3-hover-orange">求租</a>
+      <a th:href="@{/adminindex}" class="w3-bar-item w3-button w3-hover-orange">后台</a>
+      <!--<div id="linkpresonview" class="w3-bar-item w3-button w3-hover-orange w3-right">个人中心</div>-->
+      <a th:href="@{/personview}" id="linkpresonview" class="w3-bar-item w3-button w3-hover-orange w3-right">个人中心</a>
+      <a id="linksignup" th:href="@{/signup}" class="w3-bar-item w3-button w3-hover-orange w3-right">
+        <span class="glyphicon glyphicon-user"></span>注册
+      </a>
+      <a id="linksignin" th:href="@{/signin}" class="w3-bar-item w3-button w3-hover-orange w3-right">
+        <span class="glyphicon glyphicon-log-in"></span>登陆
+      </a>
     </div>
   </div>
-
-
-  <!--    <div class="w3-white navbar-collapse collapse w3-xlarge">
-        <ul class="nav navbar-nav">
-          <li>
-            <a th:href="@{/}" class="w3-bar-item w3-button w3-hover-orange">主页</a>
-          </li>
-          <li>
-            <a th:href="@{/houselist}" class="w3-bar-item w3-button w3-hover-orange">房源</a>
-          </li>
-          <li>
-            <a th:href="@{/demandlist}" class="w3-bar-item w3-button w3-hover-orange">求租</a>
-          </li>
-          <li>
-            <a th:href="@{/adminindex}" class="w3-bar-item w3-button w3-hover-orange">后台</a>
-          </li>
-          <li>
-            <div id="linkpresonview" class="w3-bar-item w3-button w3-hover-orange">个人中心</div>
-          </li>
-          <li class="navbar-link">
-            <a id="linksignup" th:href="@{/signup}" class="w3-bar-item w3-button w3-hover-orange">注册</a>
-          </li>
-          <li>
-            <a id="linksignin" th:href="@{/signin}" class="w3-bar-item w3-button w3-hover-orange">登陆</a>
-          </li>
-        </ul>
-      </div>-->
 
   <section id="main-content">
 
@@ -95,7 +66,7 @@
 
       <div class="col-sm-3">
         <div id="user-panel">
-          <div class="caption title">
+          <div class="caption titled">
             UserName
           </div>
           <div>

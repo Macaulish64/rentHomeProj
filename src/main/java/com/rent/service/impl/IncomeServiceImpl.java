@@ -4,6 +4,7 @@ import com.rent.common.CommonEnum;
 import com.rent.dao.IncomeMapper;
 import com.rent.entity.Income;
 import com.rent.entity.IncomeExample;
+import com.rent.entity.IncomeKey;
 import com.rent.service.IncomeService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -37,6 +38,24 @@ public class IncomeServiceImpl implements IncomeService {
         map.put("rescode", CommonEnum.REQUEST_SUCCESS.getCode());
         map.put("resmsg",CommonEnum.REQUEST_SUCCESS.getMsg());
        return map;
+    }
+
+    @Override
+    public Income queryIncomeByKey(String Month, String Area) {
+        IncomeKey newKey = new IncomeKey();
+        newKey.setMonth(Month);
+        newKey.setArea(Area);
+        Income income= incomeMapper.selectByPrimaryKey(newKey);
+
+        if (income==null)
+        {
+            income.setFeeincome((float) 0);
+            income.setTransactionnum(0);
+            income.setMonth(Month);
+            income.setArea(Area);
+            insertIncome(income);
+        }
+        return incomeMapper.selectByPrimaryKey(newKey);
     }
 
     @Override
@@ -95,4 +114,6 @@ public class IncomeServiceImpl implements IncomeService {
         newmap.put("feeIncome",Feeincome);
         return null;
     }
+
+
 }
