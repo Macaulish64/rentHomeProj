@@ -59,11 +59,11 @@ public class TransactionController {
         return JSON.toJSONString(map);
     }
 
-    @RequestMapping(value = "queryownerTransaction/{op}", method = RequestMethod.GET)
+    @RequestMapping(value = "/queryownerTransaction", method = RequestMethod.GET)
     @ResponseBody
-    private String queryOwnerTransaction(HttpServletRequest request,
-                                         @PathVariable("op") int op) {
+    private String queryOwnerTransaction(HttpServletRequest request) {
         int userid=0;
+        int op=Integer.parseInt(request.getParameter("op"));
         logger.info("Query Owner Transaction");
         logger.info("Query Type:"+op);
         try {
@@ -100,6 +100,9 @@ public class TransactionController {
         }
         map.put("tenantid",tenantid);
         List<RentTransaction> transactionlist=rentTransctionService.queryRentTransaction(map,0,10);
+        for(RentTransaction attribute : transactionlist) {
+            logger.info(attribute.toString());
+        }
         return JSON.toJSONString(transactionlist);
     }
 
@@ -115,6 +118,12 @@ public class TransactionController {
         }
         List<RentTransaction> transactionlist=rentTransctionService.queryRentTransaction(map,0,10);
         return JSON.toJSONString(transactionlist);
+    }
+
+    @RequestMapping(value = "/test", method = RequestMethod.GET)
+    @ResponseBody
+    private void queryAdminTransaction() {
+
     }
 
 

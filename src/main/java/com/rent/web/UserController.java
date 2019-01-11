@@ -86,6 +86,13 @@ public class UserController {
 		return "redirect:/index.html";
 	}
 
+	@RequestMapping(value ="/test4",method = RequestMethod.GET)
+	@ResponseBody
+	public String test4(){
+		System.out.println("!!!!!Response");
+		return "redirect:/index.html";
+	}
+
 	/* test photo */
 	@RequestMapping(value="/testpersonimg", method = RequestMethod.GET)
 	public @ResponseBody Map list(){
