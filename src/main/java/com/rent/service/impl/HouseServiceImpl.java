@@ -10,13 +10,15 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 @Service
 public class HouseServiceImpl implements HouseService {
-
+    SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     private Logger logger= LoggerFactory.getLogger(this.getClass());
     @Autowired
     private HouseMapper houseMapper;
@@ -33,6 +35,8 @@ public class HouseServiceImpl implements HouseService {
 
     @Override
     public Map<String, Object> insertHouse(House record) {
+        record.setUpdatetime(df.format(new Date()));
+        record.setRegisttime(df.format(new Date()));
         Map<String,Object> map=new HashMap<String,Object>();
         int num = houseMapper.insertSelective(record);
         //失败
@@ -53,6 +57,7 @@ public class HouseServiceImpl implements HouseService {
 
     @Override
     public Map<String, Object> updateHouse(House record) {
+        record.setUpdatetime(df.format(new Date()));
         Map<String,Object> map=new HashMap<String,Object>();
         int num = houseMapper.updateByPrimaryKeySelective(record);
         //失败

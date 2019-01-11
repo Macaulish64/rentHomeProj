@@ -3,13 +3,17 @@ package com.rent.service.impl;
 import com.rent.common.CommonEnum;
 import com.rent.common.JWTUtil;
 import com.rent.dao.UserMapper;
-import com.rent.entity.*;
+import com.rent.entity.JWTInfo;
+import com.rent.entity.User;
+import com.rent.entity.UserExample;
 import com.rent.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -17,6 +21,7 @@ import java.util.Map;
 @Service
 public class UserServiceImpl implements UserService {
     private Logger logger= LoggerFactory.getLogger(this.getClass());
+    SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     @Autowired
     private UserMapper userMapper;
 
@@ -30,6 +35,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Map<String, Object> insertUser(User record) {
+        record.setUpdatetime(df.format(new Date()));
         Map<String,Object> map=new HashMap<String,Object>();
         int num = userMapper.insertSelective(record);
         //失败
@@ -50,6 +56,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Map<String, Object> updateUser(User record) {
+        record.setUpdatetime(df.format(new Date()));
         Map<String,Object> map=new HashMap<String,Object>();
         int num = userMapper.updateByPrimaryKeySelective(record);
         //失败
@@ -74,6 +81,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Map<String, Object> updateUserPassword(int Userid, String oldpassword, String newPassword) {
+
         Map<String, Object> map = new HashMap<String, Object>();
         String truePassword=selectUserById(Userid).getPassword();
         //密码错误
@@ -86,6 +94,7 @@ public class UserServiceImpl implements UserService {
         User newUser = new User();
         newUser.setUserid(Userid);
         newUser.setPassword(newPassword);
+        newUser.setUpdatetime(df.format(new Date()));
         int num = userMapper.updateByPrimaryKeySelective(newUser);
         //失败
         if (num==0)
