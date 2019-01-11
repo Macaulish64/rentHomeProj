@@ -128,101 +128,81 @@ create table renttransaction(
 
 
 
-1. 搜索框.String -> list<House>  （1）
-2. 房源 （2）
-  public List<House> getHouseList( Map<String,List<String>> map)
-  {
-    List<String> list;
-    list=map['publishUser'];
-    HouseExample suithouse;
-    for(String publish: list<String>) 
-    {
-      suithouse.(publish);
-    }
+1. 搜索框 
+   
+   调用HouseService层的 List<House> searchBar(String c)
+   给出的是城市或小区名包含c的所有房源
 
-     list=map['cityName'];
-    HouseExample suithouse;
-    for(String publish: list<String>) 
-    {
-      suithouse.(publish);
-    }
+2. 新建房源
 
-     list=map['publishUser'];
-    HouseExample suithouse;
-    for(String publish: list<String>) 
-    {
-      suithouse.(publish);
-    }
+    调用HouseService层的Map<String,Object> insertHouse(House record)
 
-     list=map['publishUser'];
-    HouseExample suithouse;
-    for(String publish: list<String>) 
-    {
-      suithouse.(publish);
-    }
+    插入失败会返回rescode、resmsg
 
-    return List<House>;
-  }
+    插入成功会返回rescode、resmsg、houseId
 
-  public int counterHouseList( Map<String,List<String>> map)
-  {
-    List<String> list;
-    list=map['publishUser'];
-    HouseExample suithouse;
-    for(String publish: list<String>) 
-    {
-      suithouse.(publish);
-    }
+3. 修改房源
+   
+   调用HouseService层的Map<String,Object> updateHouse(House record)
 
-     list=map['cityName'];
-    HouseExample suithouse;
-    for(String publish: list<String>) 
-    {
-      suithouse.(publish);
-    }
+   插入失败会返回rescode、resmsg
 
-     list=map['publishUser'];
-    HouseExample suithouse;
-    for(String publish: list<String>) 
-    {
-      suithouse.(publish);
-    }
+    插入成功会返回rescode、resmsg
 
-     list=map['publishUser'];
-    HouseExample suithouse;
-    for(String publish: list<String>) 
-    {
-      suithouse.(publish);
-    }
+4. 删除房源
+   
+   调用HouseService层的int deleteHouse(Integer houseId);
+   
+   成功返回1，失败返回0
 
-    return ;
-  }
+5. 点击某房源以查看详细信息
+
+    调用HouseService层的House selectHouseById(Integer houseId)
+  
+6. 按需求搜索房源
+   
+   调用HouseService层的int queryHouseNum(Map<String,List> map)先知道搜索出的房源的个数；再调用HouseService层的List<House> queryHouse(Map<String,List> map, int start,int end)
+   
+   ①租客要搜索房源
+
+   可同时搜索多个城市、小区、楼号、户型、楼层数、有无电梯、租金支付方式；押金和租金是个范围值。注意房屋状态必须是0（未租）
+
+   ②房东中心要搜索自己所有的房源
+
+   只需要publishUserId是房东的UserId就行
+
+   ③后台管理要所有房源
+
+   map为空就行
 
 
+7. 新建、修改、删除、搜索求租，租客中心查看自己求租，后台查看所有求租，全与上面相似
 
-  Map<String,List<String>>,start-> List<House>
-  citylist=map['city'];
-  for(city :ctiylist) exmp
+8.  个人基本信息查看
+   
+    调用UserService层的User selectUserById(int userId)
 
-  Map<String,List<String>>> number,
+9.  注册、修改个人信息，点击某用户查看详细信息，后台查看所有用户，全与上面相似
 
+10. 登录界面
+    
+    调用UserService层的Map<String,Object> checkUserLogin(User record)
 
-  Map< 'publishUser', List<String> 
-        'cityNmae' ,List<String> 
-        '
-3. 发布房源
-  House -> Map
-4. 求租，发布求租如上图（2）
-6. 房客中心，房东中心，返回统计信息（4）
-  getListTransaction1
-   userid -> List<transaction>
-   同上，
-7. 删除房源/求租信息，给一个id -> enum
-8. 修改视图(暂时没有)。
-7. 个人基本信息，给一个namenickid -> User
-8. 修改密码,
-9. 修改信息
-10. 
+11. 注册时审核是否已有该用户
+    
+    调用UserService层的User getExistUser(UserExample example);
+
+12. 为某房源插入新照片、删除照片、显示照片全与上面相似。注意房源照片的张数在House实体的photoNum属性
+
+13. 后台查看某月某地区的成交笔数和中介费
+    
+    调用IncomeService层的Map<String,Object> queryIncomeNum(Map<String,List> map)和List<Income> queryIncome(Map<String,List> map, int start, int end)
+
+    前者返回这段时间这些地区的成交笔数总和和中介费总和，分别是transactionNum和feeIncome
+
+    后者是把这些表全拿出来
+    
+   
 
 
 
