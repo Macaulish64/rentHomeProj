@@ -83,28 +83,30 @@ public class UserServiceImpl implements UserService {
         Map<String, Object> map = new HashMap<String, Object>();
         String truePassword=selectUserById(Userid).getPassword();
         //密码错误
-        if (truePassword!=oldpassword)
+        if (truePassword.equals(oldpassword))
         {
+            User newUser = new User();
+            newUser.setUserid(Userid);
+            newUser.setPassword(newPassword);
+            newUser.setUpdatetime(df.format(new Date()));
+            int num = userMapper.updateByPrimaryKeySelective(newUser);
+            //失败
+            if (num==0)
+            {
+                map.put("rescode", CommonEnum.REQUEST_FAILED.getCode());
+                map.put("resmsg",CommonEnum.REQUEST_FAILED.getMsg());
+                return map;
+            }
+            //成功
+            map.put("rescode", CommonEnum.REQUEST_SUCCESS.getCode());
+            map.put("resmsg",CommonEnum.REQUEST_SUCCESS.getMsg());
+            return map;
+        }
+       else {
             map.put("rescode", CommonEnum.REQUEST_FAILED.getCode());
             map.put("resmsg",CommonEnum.REQUEST_FAILED.getMsg());
             return map;
         }
-        User newUser = new User();
-        newUser.setUserid(Userid);
-        newUser.setPassword(newPassword);
-        newUser.setUpdatetime(df.format(new Date()));
-        int num = userMapper.updateByPrimaryKeySelective(newUser);
-        //失败
-        if (num==0)
-        {
-            map.put("rescode", CommonEnum.REQUEST_FAILED.getCode());
-            map.put("resmsg",CommonEnum.REQUEST_FAILED.getMsg());
-            return map;
-        }
-        //成功
-        map.put("rescode", CommonEnum.REQUEST_SUCCESS.getCode());
-        map.put("resmsg",CommonEnum.REQUEST_SUCCESS.getMsg());
-        return map;
     }
 
     @Override

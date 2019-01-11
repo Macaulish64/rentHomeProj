@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
@@ -45,12 +46,12 @@ public class UserController {
 	}
 
 
-	@RequestMapping(value = "/personedit/{userid}", method = RequestMethod.GET)
+	@RequestMapping(value = "/personedit/{userid}", method = RequestMethod.POST)
 	@ResponseBody
 	public String personedit(@PathVariable("userid") int userid,
 							 @RequestParam("phonenumber") String phonenumber) {
+		logger.info("=======================================================");
 		logger.info("Person Edit phonenumber\n");
-		System.out.println("!!!!!!!!!!!!!!!!!");
 		Map<String,Object> map=new HashMap<String,Object>();
 		map=userService.updateUserPhonenumber(userid,phonenumber);
 		String json=JSON.toJSONString(map, SerializerFeature.WriteMapNullValue);
@@ -71,11 +72,17 @@ public class UserController {
 	@RequestMapping(value = "/changepassword/{userid}", method = RequestMethod.POST)
 	@ResponseBody
 	public String changepassword(@PathVariable("userid") int userid,
-					 @RequestParam("oldpassword") String oldpassword,
-					 @RequestParam("newpassword") String newpassword) {
-		// TODO: fix it
+					 			HttpServletRequest request) {
+		logger.info("=======================================================");
+		logger.info("change Password");
+		String oldpassword=request.getParameter("oldpassword");
+		String newpassword=request.getParameter("newpassword");
+		logger.info(oldpassword);
+		logger.info(newpassword);
 		Map<String,Object> map=new HashMap<String,Object>();
 		map=userService.updateUserPassword(userid,oldpassword,newpassword);
+		User nowuser=userService.selectUserById(userid);
+		logger.info(nowuser.toString());
 		String json=JSON.toJSONString(map, SerializerFeature.WriteMapNullValue);
 		return json;
 		//return userService.selectUserById(userid);

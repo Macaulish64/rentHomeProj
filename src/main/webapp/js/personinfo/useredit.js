@@ -29,9 +29,9 @@ function personinformation(data)
     $('#userlevel').attr({"value":"空"});
   }
 
-  phobut.text(data.phonenumber);
+  phobut.attr({"value":data.phonenumber});
   if (data.phonenumber ===null) {
-    phobut.text("空");
+    phobut.attr({"value":"空"});
   }
 
   $('#username').attr({"value":data.username});
@@ -85,17 +85,19 @@ $(document).ready(function() {
 });
 
 $('#personedit-btn-yes').click(function() {
+  var nstr=phobut.prop('value');
+  alert(nstr);
   $.ajax({
     headers: {
       Authorization : jwt,
       'username' : username,
       'userid' : userid
     },
-    type:"GET",
+    type:"POST",
     url:"http://localhost:8080/rentHomeProj_war/user/personedit/"+userid,
     dataType:"json",
     global:"false",
-    data:{phonenumber:phobut.text()},
+    data:{"phonenumber":nstr},
     success:function(data) {
       if (data.rescode===10003) {
         alert("修改成功");

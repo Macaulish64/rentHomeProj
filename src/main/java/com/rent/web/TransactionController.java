@@ -48,7 +48,7 @@ public class TransactionController {
     @RequestMapping(value = "confirmtransaction", method = RequestMethod.POST)
     @ResponseBody
     public String confirmTransaction(HttpServletRequest request) {
-        int transid=0,monthNum=0;
+        int transid=0,monthNum=0,num1,num2;
         String startMonth,endNMonth;
         try {
             transid=Integer.parseInt(request.getParameter("transid"));
@@ -56,9 +56,11 @@ public class TransactionController {
         try {
             monthNum=Integer.parseInt(request.getParameter("monthNum"));
         } catch(NumberFormatException e) { }
+        num1=transid;
+        num2=monthNum;
         startMonth=request.getParameter("startMonth");
         endNMonth=request.getParameter("endNMonth");
-        Map<String,Object> map=rentTransctionService.confirmTransaction(transid,startMonth,endNMonth,monthNum);
+        Map<String,Object> map=rentTransctionService.confirmTransaction(num1,startMonth,endNMonth,num2);
         return JSON.toJSONString(map);
     }
 

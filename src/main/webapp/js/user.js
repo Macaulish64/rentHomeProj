@@ -3,7 +3,7 @@ var username = window.localStorage["name"];
 console.log("输出:"+jwt);
 function signup_sumbit(url) {
   var obj = {
-    phonenumber:"123",
+  //  phonenumber:"123",
     usernickname:"haha",
     password:"qwe12345",
     cardtype:0

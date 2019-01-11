@@ -1,35 +1,15 @@
 var storage=window.localStorage;
 var jwt = storage["jwt"];
 var username = storage["username"];
+var userid=storage["userid"];
 console.log("输出:"+jwt);
-$(document).ready(function() {
-    $.ajax({
-        headers: {
-            Authorization : jwt,
-            'username' : username,
-            'userid' : userid
-        },
-        type:"GET",
-        url:"http://localhost:8080/rentHomeProj_war/user/personinfo"+userid,
-        dataType:"json",
-        global:"false",
-        success:function(data) {
-            alert("!!!");
-        },
-        /* success:function(data){
-           alert(JSON.stringify(data));
-         },*/
-        error:function(){
-            alert("Please Log In First");
-            $(location).attr('href', '/rentHomeProj_war/signin');
-        }
-    })
-});
+
+var oldpass=$('#oldpassword');
+var newpass1=$('#newpassword1');
+var newpass2=$('#newpassword2');
+
 
 $('#changepassword').click(function () {
-    var oldpass=$('#oldpassword');
-    var newpass1=$('#newpassword1');
-    var newpass2=$('#newpassword2');
     if (oldpass.val() === newpass1.val()) {
         alert("与原密码一致");
     }
@@ -38,6 +18,11 @@ $('#changepassword').click(function () {
             alert("两次输入不一致");
         }
         else {
+            var obj = {
+                oldpassword:oldpass.val(),
+                newpassword : newpass1.val()
+            };
+            var json = JSON.stringify(obj);
         $.ajax({
             headers: {
                 Authorization : jwt,
@@ -45,11 +30,17 @@ $('#changepassword').click(function () {
                 'userid' : userid
             },
             type: "POST",
-            url: "rentHomeProj_war/user/changepassword/"+userid,
+            url: "http://localhost:8080/rentHomeProj_war/user/changepassword/"+userid,
             async: false,
-            data: { oldpassword:oldpass,newpassword:newpass1},
+            data: json,
             success:function(data) {
-                alert("修改成功");
+                if (rescode===10003) {
+                    alert("修改成功");
+                    window.location.reload();
+                }
+                else {
+                    alert("密码错误,请重新输入");
+                }
             },
             error:function() {
                 alert("修改失败,请再试一次");
