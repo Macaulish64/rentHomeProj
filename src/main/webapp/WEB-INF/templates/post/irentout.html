@@ -56,35 +56,27 @@
   <section id="main-content">
     <div class="row">
       <!-- left side (content) -->
-      <div class="col-sm-9">
-
-        <div id="demandinfo-pwd">
-          <p><a>home</a> > <a>houselist</a> > <a>irentout</a></p>
-        </div>
+      <div class="col-sm-8">
 
         <div class="container">
           <h1>我要出租</h1>
+          <br>
+          <br>
 
-          <form class="form-horizontal" role="form"
-                id="irentout-form" method="post">
-            <div class="form-group row">
-              <label for="title">Title:</label>
-              <input type="text" class="form-control" id="title" name="title">
-            </div>
+          <div class="form-horizontal" enctype="multipart/form-data"
+                role="form" id="irentout-form" method="post">
 
-            <div class="form-group row">
-              <label>Keywords:</label>
-            </div>
-
-            <div class="form-group row">
-              <label for="province">Province:</label>
+            <div class="form-group">
+              位置
+              <br>
+              <label for="province">省份</label>
               <select id="province" name="province">
                 <option>Beijing</option>
                 <option>Shanghai</option>
                 <option>Andorra</option>
               </select>
 
-              <label for="city">City:</label>
+              <label for="city">城市</label>
               <select id="city" name="city">
                 <option>Abcd</option>
                 <option>Bcde</option>
@@ -92,7 +84,79 @@
               </select>
             </div>
 
-            <button type="button" class="btn btn-default" id="btn-irentout">
+            <div class="form-group">
+              <label for="buildingnumber">栋数</label>
+              <input type="text" class="form-control" id="buildingnumber" name="buildingnumber">
+            </div>
+
+            <div class="form-group">
+              <label for="housetype">房屋类型</label>
+              <input type="number" min="1" max="100"
+                     class="form-control" id="housetype" name="housetype">
+            </div>
+
+            <div class="form-group">
+              <label for="housearea">房屋面积</label>
+              <input type="number" min="1" max="10000"
+                     class="form-control" id="housearea" name="housearea">
+            </div>
+
+            <div class="form-group">
+              <label for="floornumber">楼层</label>
+              <input type="number" min="1" max="1000"
+                     class="form-control" id="floornumber" name="floornumber">
+            </div>
+
+            <div class="form-group">
+              <label for="elevatorornot">是否有电梯</label>
+              <select id="elevatorornot">
+                <option value="1">有</option>
+                <option value="0">没有</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="depositmoney">押金</label>
+              <input type="number" step="0.01" min="0.01" max="100000.00"
+                     class="form-control" id="depositmoney" name="depositmoney">
+            </div>
+
+            <div class="form-group">
+              <label for="rentmoney">租金</label>
+              <input type="number" step="0.01" min="0.01" max="100000000.00"
+                     class="form-control" id="rentmoney" name="rentmoney">
+            </div>
+
+            <div class="form-group">
+              <label for="paymentmethod">支付方式</label>
+              <select id="paymentmethod">
+                <option value="0">月租</option>
+                <option value="1">季租</option>
+                <option value="2">年租</option>
+              </select>
+            </div>
+
+            <div class="form-group" id="input-images">
+              <input type="file" id="chooseimg"
+                     onchange="changeImg(this)" name="file"
+                     accept="image/*">
+            </div>
+
+            <script>
+              function changeImg() {
+                var fin = new FileReader();
+                var f = document.getElementById('chooseimg').files[0];
+                fin.readAsDataURL(f);
+                fin.onload = function(e) {
+                  var img = document.createElement('img');
+                  img.src = this.result;
+                  img.style = "width: 15em;";
+                  document.getElementById('input-images').appendChild(img);
+                }
+              }
+            </script>
+
+            <button type="submit" class="btn btn-primary" id="btn-irentout">
               Submit
             </button>
           </form>
