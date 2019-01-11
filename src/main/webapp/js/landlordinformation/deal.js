@@ -14,7 +14,7 @@ $(document).ready(function() {
         url:"http://localhost:8080/rentHomeProj_war/transaction/queryownerTransaction",
         dataType:"json",
         global:"false",
-        data:{"op":0},
+        data:{ op :0 },
         success:function(data) {
            /* $('#usereditform').append(
                 '<li>' + data[0].userid + '</li>' +
