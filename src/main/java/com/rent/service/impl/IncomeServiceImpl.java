@@ -22,7 +22,6 @@ public class IncomeServiceImpl implements IncomeService {
     @Autowired
     private IncomeMapper incomeMapper;
 
-
     @Override
     public Map<String, Object> insertIncome(Income record) {
         Map<String,Object> map=new HashMap<String,Object>();
@@ -49,13 +48,15 @@ public class IncomeServiceImpl implements IncomeService {
 
         if (income==null)
         {
+            income = new Income();
             income.setFeeincome((float) 0);
             income.setTransactionnum(0);
             income.setMonth(Month);
             income.setArea(Area);
             insertIncome(income);
+            return incomeMapper.selectByPrimaryKey(newKey);
         }
-        return incomeMapper.selectByPrimaryKey(newKey);
+        else return income;
     }
 
     @Override

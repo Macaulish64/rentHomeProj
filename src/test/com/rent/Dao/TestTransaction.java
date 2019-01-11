@@ -10,10 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class TestTransaction extends BaseTest {
     private Logger logger = LoggerFactory.getLogger(this.getClass());
@@ -72,4 +69,12 @@ public class TestTransaction extends BaseTest {
         System.out.println(transactionlist);
     }
 
+    @Test
+    public  void insertTrans()
+    {
+       // RentTransaction record = new RentTransaction();
+        Map<String,Object> map = renttservice.submitTransaction(1,5);
+        renttservice.confirmTransaction((Integer) map.get("transId"),"2019-01","2019-02",3);
+        System.out.println("!!!!\n");
+    }
 }

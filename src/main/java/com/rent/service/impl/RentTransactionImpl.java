@@ -27,7 +27,9 @@ public class RentTransactionImpl implements RentTransactionService {
     SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM");
     @Autowired
     private RentTransactionMapper rentTransactionMapper;
+    @Autowired
     private HouseMapper houseMapper;
+    @Autowired
     private IncomeService incomeService;
 
     @Override
@@ -131,7 +133,7 @@ public class RentTransactionImpl implements RentTransactionService {
     @Override
     public Map<String,Object> submitTransaction(int houseid,int userid)
     {
-        Map<String,Object> map=new HashMap<String,Object>();
+        Map<String,Object> map = new HashMap<String, Object>();
         House house = houseMapper.selectByPrimaryKey(houseid);
         RentTransaction record = new RentTransaction();
         record.setHouseid(houseid);
@@ -158,7 +160,7 @@ public class RentTransactionImpl implements RentTransactionService {
         record.setLandlordpaymentagencyfee((float) (record.getTotalrent()*0.03));
         record.setTenantpaymentagencyfee((float) (record.getTotalrent()*0.03));
         record.setRentstatus(1);
-        int num = rentTransactionMapper.updateByPrimaryKey(record);
+        int num = rentTransactionMapper.updateByPrimaryKeySelective(record);
 
         //失败
         if (num==0)
