@@ -12,12 +12,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Created by hisenyuan on 2017/8/17 at 11:09.
- */
 public class JWTUtil {
-
-
 
   private static final String SECRET = CommonEnum.JWT_SECRET.getMsg();
   private static final String EXP = "exp";

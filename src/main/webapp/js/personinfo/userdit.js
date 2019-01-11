@@ -1,6 +1,6 @@
 var storage=window.localStorage;
 var jwt = storage["jwt"];
-var name = storage["name"];
+var username = storage["username"];
 console.log("输出:"+jwt);
 
 $('#btn-usredit').click = function() {

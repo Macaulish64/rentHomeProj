@@ -101,14 +101,14 @@ window.onload = function() {
 /* jshint nomen:false */
 /* global define, window, document */
 
-var jwt = localStorage["jwt"];
-var name = localStorage["name"];
-console.log("输出:"+jwt);
+var storage=window.localStorage;
+var jwt = storage["jwt"];
+var username = storage["username"];
 $(document).ready(function() {
     $.ajax({
         headers: {
             Authorization : jwt,
-            'username' : name
+            'username' : username
         },
         type:"GET",
         url:"http://localhost:8080/rentHomeProj_war/user/personinfo",

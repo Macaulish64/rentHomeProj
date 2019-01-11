@@ -40,13 +40,29 @@
 
   <div>
     <div class="w3-navbar w3-white navbar-collapse collapse w3-xlarge">
-      <a th:href="@{/}" class="w3-bar-item w3-button w3-hover-orange">主页</a>
-      <a th:href="@{/houselist}" class="w3-bar-item w3-button w3-hover-orange">房源</a>
-      <a th:href="@{/demandlist}" class="w3-bar-item w3-button w3-hover-orange">求租</a>
-      <a th:href="@{/adminindex}" class="w3-bar-item w3-button w3-hover-orange">后台</a>
-      <a th:href="@{/personview}" class="w3-bar-item w3-button w3-hover-orange">个人中心</a>
-      <a th:href="@{/signup}" class="w3-bar-item w3-button w3-hover-orange w3-right">注册</a>
-      <a th:href="@{/signin}" class="w3-bar-item w3-button w3-hover-orange w3-right">登陆</a>
+      <ul class="nav navbar-nav">
+        <li>
+          <a th:href="@{/}" class="w3-bar-item w3-button w3-hover-orange">主页</a>
+        </li>
+        <li>
+          <a th:href="@{/houselist}" class="w3-bar-item w3-button w3-hover-orange">房源</a>
+        </li>
+        <li>
+          <a th:href="@{/demandlist}" class="w3-bar-item w3-button w3-hover-orange">求租</a>
+        </li>
+        <li>
+          <a th:href="@{/adminindex}" class="w3-bar-item w3-button w3-hover-orange">后台</a>
+        </li>
+        <li>
+          <div id="linkpresonview" class="w3-bar-item w3-button w3-hover-orange">个人中心</div>
+        </li>
+        <li>
+          <a th:href="@{/signup}" class="w3-bar-item w3-button w3-hover-orange w3-right">注册</a>
+        </li>
+        <li>
+          <a th:href="@{/signin}" class="w3-bar-item w3-button w3-hover-orange w3-right">登陆</a>
+        </li>
+      </ul>
     </div>
   </div>
 
@@ -139,7 +155,7 @@
 <!-- The File Upload user interface plugin -->
 <!--<script th:src="@{/assets/file-uploader/js/jquery.fileupload-ui.js}"></script>-->
 <!-- myself -->
-<!--<script th:src="@{/js/personinfo/userchangephoto.js}"></script>-->
+<script th:src="@{/js/index.js}"></script>
 
 
 </body>

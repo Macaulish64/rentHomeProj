@@ -2,6 +2,7 @@ package com.rent.web;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class IndexController {
@@ -54,9 +55,9 @@ public class IndexController {
 		return "templates/post/irentout";
 	}
 
-	@RequestMapping("/personview")
+	@RequestMapping(value="/personview",method = RequestMethod.POST)
 	public String personview() {
-		System.out.printf("Into admin");
+		System.out.printf("Into person admin");
 		return "templates/personinfo/personinfo";
 	}
 
