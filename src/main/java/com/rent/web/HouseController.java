@@ -2,6 +2,7 @@ package com.rent.web;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.serializer.SerializerFeature;
+import com.rent.common.CommonEnum;
 import com.rent.entity.House;
 import com.rent.service.HouseService;
 import org.slf4j.Logger;
@@ -47,12 +48,25 @@ public class HouseController {
         return "";
     }
 
-    @RequestMapping(value="/details/{houseid}",method = RequestMethod.POST)
-    @ResponseBody
-    public String houseDetails(HttpServletRequest request)
-    {
 
-        return "";
+
+    @RequestMapping(value="/details/{houseid}",method = RequestMethod.GET)
+    @ResponseBody
+    public String houseDetails(@PathVariable("houseid") int houseid)
+    {
+        House nowhouse=houseService.selectHouseById(houseid);
+        Map<String ,Object> map=new HashMap<>();
+        if (nowhouse==null) {
+            map.put("rescode", CommonEnum.REQUEST_FAILED.getCode());
+            map.put("resmsg",CommonEnum.REQUEST_FAILED.getMsg());
+        }
+        else {
+            map.put("rescode", CommonEnum.REQUEST_SUCCESS.getCode());
+            map.put("resmsg", CommonEnum.REQUEST_SUCCESS.getMsg());
+            map.put("house", nowhouse);
+        }
+        String json= JSON.toJSONString(nowhouse, SerializerFeature.WriteMapNullValue);
+        return json;
     }
 
     @RequestMapping(value="/addhouse",method=RequestMethod.POST)
@@ -76,8 +90,6 @@ public class HouseController {
     {
         return "";
     }
-
-
 
 
     @RequestMapping(value="/ownerhouselist/{userid}",method=RequestMethod.GET)
