@@ -17,6 +17,9 @@ public interface  UserService {
     //在得知用户标识的情况下，修改用户信息
     public Map<String,Object> updateUser(User record);
 
+    //修改密码
+    public Map<String,Object> updateUserPassword(int Userid,String oldpassword,String newPassword);
+
     //在已知用户标识的情况下，查找用户
     User selectUserById(int userId);
 
