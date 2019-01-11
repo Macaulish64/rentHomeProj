@@ -14,4 +14,5 @@ public interface RentTransactionService {
     public RentTransaction selectRentTransactionById(int transactionId);
     //查找交易记录，从start项到end项，从0开始
     public List<RentTransaction> queryRentTransaction(Map<String,List> map, int start, int end);
+
 }

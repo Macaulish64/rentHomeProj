@@ -4,11 +4,9 @@ import com.rent.service.HouseService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 
@@ -32,6 +30,53 @@ public class HouseController {
 //        List<House> houselist=HouseService.queryHouse(HouseExample,0,5);
 
     }
+
+    @RequestMapping(value="/houselist/{pagenumber}",method = RequestMethod.POST)
+    @ResponseBody
+    public String houseListPage(HttpServletRequest request)
+    {
+        return "";
+    }
+
+    @RequestMapping(value="/details/{houseid}",method = RequestMethod.POST)
+    @ResponseBody
+    public String houseDetails(HttpServletRequest request)
+    {
+
+        return "";
+    }
+
+    @RequestMapping(value="/addhouse",method=RequestMethod.POST)
+    @ResponseBody
+    public String addHouse(HttpServletRequest request)
+    {
+
+        return "";
+    }
+
+    @RequestMapping(value="/deletehouse",method=RequestMethod.POST)
+    @ResponseBody
+    public String deleteHouse(HttpServletRequest requset)
+    {
+        return "";
+    }
+
+    @RequestMapping(value="/updatahouse",method=RequestMethod.POST)
+    @ResponseBody
+    public String updataHouse(HttpServletRequest requset)
+    {
+        return "";
+    }
+
+    @RequestMapping(value="/addFavoriteHouse",method=RequestMethod.POST)
+    @ResponseBody
+    public String addFavoriteHouse(HttpServletRequest request)
+    {
+
+        return "";
+    }
+
+    
 
 
 }

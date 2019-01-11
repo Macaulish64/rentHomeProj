@@ -46,7 +46,7 @@ public class UserController {
 
 	@RequestMapping(value = "/personinfo/{userid}", method = RequestMethod.GET)
 	@ResponseBody
-	public String edit(@PathVariable("userid") int userid) {
+	public String personview(@PathVariable("userid") int userid) {
 		logger.info("!!!!are you ok?\n");
 		logger.info("userid="+userid);
 		User nowUser=userService.selectUserById(userid);

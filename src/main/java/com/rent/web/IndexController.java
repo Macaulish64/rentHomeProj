@@ -1,7 +1,6 @@
 package com.rent.web;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -55,9 +54,9 @@ public class IndexController {
 		return "templates/post/irentout";
 	}
 
-	@RequestMapping("/personview/{userid}")
-	public String personview(@PathVariable("userid") int userid) {
-		System.out.printf("Into person admin");
+	@RequestMapping("/personview/*")
+	public String personview() {
+		System.out.printf("Into person view");
 		return "templates/personinfo/personinfo";
 	}
 
