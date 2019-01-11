@@ -2,30 +2,33 @@ package com.rent.Dao;
 
 import com.rent.BaseTest;
 import com.rent.dao.IncomeMapper;
-import com.rent.entity.Income;
-import com.rent.entity.IncomeKey;
+import com.rent.service.IncomeService;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class TestIncome extends BaseTest {
     @Autowired
     private IncomeMapper incomeMapper;
 
+    @Autowired
+    private IncomeService incomeService;
+
     @Test
     public void queryincome() {
-        IncomeKey newKey = new IncomeKey();
-        newKey.setMonth("2018-12");
-        newKey.setArea("上海");
-        Income income = incomeMapper.selectByPrimaryKey(newKey);
+        Map<String, List> map = new HashMap<String,List>();
+        List list1 = new ArrayList();
+        List list2 = new ArrayList();
 
-        if (income == null) {
-            income = new Income();
-            income.setFeeincome((float) 0);
-            income.setTransactionnum(0);
-            income.setMonth("2018-12");
-            income.setArea("上海");
-            incomeMapper.insertSelective(income);
-        }
-        System.out.println("!!!!\n");
+        list1.add("2018-12");
+        list2.add("2019-01");
+        map.put("monthMin",list1);
+        map.put("monthMax",list2);
+
+        System.out.println(incomeService.queryIncome(map,0,1));
     }
 }

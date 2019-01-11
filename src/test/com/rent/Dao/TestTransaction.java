@@ -70,11 +70,10 @@ public class TestTransaction extends BaseTest {
     }
 
     @Test
-    public  void insertTrans()
+    public void insertTrans()
     {
-       // RentTransaction record = new RentTransaction();
         Map<String,Object> map = renttservice.submitTransaction(1,5);
-        renttservice.confirmTransaction((Integer) map.get("transId"),"2019-01","2019-02",3);
+        renttservice.confirmTransaction((Integer) map.get("transId"),"2019-01","2019-03",3);
         System.out.println("!!!!\n");
     }
 }
