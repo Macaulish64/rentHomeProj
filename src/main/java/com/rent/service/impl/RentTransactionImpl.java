@@ -1,7 +1,9 @@
 package com.rent.service.impl;
 
 import com.rent.common.CommonEnum;
+import com.rent.dao.HouseMapper;
 import com.rent.dao.RentTransactionMapper;
+import com.rent.entity.House;
 import com.rent.entity.RentTransaction;
 import com.rent.entity.RentTransactionExample;
 import com.rent.service.RentTransactionService;
@@ -22,6 +24,7 @@ public class RentTransactionImpl implements RentTransactionService {
     SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     @Autowired
     private RentTransactionMapper rentTransactionMapper;
+    private HouseMapper houseMapper;
 
     @Override
     public int queryRentTransactionNum(Map<String, List> map) {
@@ -126,17 +129,44 @@ public class RentTransactionImpl implements RentTransactionService {
     public Map<String,Object> submitTransaction(int houseid,int userid)
     {
         Map<String,Object> map=new HashMap<String,Object>();
-
-
+        House house = houseMapper.selectByPrimaryKey(houseid);
+        RentTransaction record = new RentTransaction();
+        record.setHouseid(houseid);
+        record.setTenantid(userid);
+        record.setLandlordid(house.getPublishuserid());
+        record.setDepositmoney(house.getDepositmoney());
+        record.setPaymentmethod(house.getPaymentmethod());
+        record.setMonthrent(house.getRentmoney());
+        map = insertRentTransaction(record);
         return map;
     }
 
     //房东同意申请
     @Override
-    public Map<String,Object> confirmTransaction(int houseid,int userid)
+    public Map<String,Object> confirmTransaction(int transId,String startMonth,String endNMonth,int monthNum)
     {
         Map<String,Object> map=new HashMap<String,Object>();
+        RentTransaction record = new RentTransaction();
+        record.setTransactionid(transId);
+        record.setTransactiondate(df.format(new Date()));
+        record.setStartmonth(startMonth);
+        record.setEndmonth(endNMonth);
+        record.setTotalrent(selectRentTransactionById(transId).getMonthrent() * monthNum);
+        record.setLandlordpaymentagencyfee((float) (record.getTotalrent()*0.03));
+        record.setTenantpaymentagencyfee((float) (record.getTotalrent()*0.03));
 
+        int num = rentTransactionMapper.updateByPrimaryKey(record);
+
+        //失败
+        if (num==0)
+        {
+            map.put("rescode", CommonEnum.REQUEST_FAILED.getCode());
+            map.put("resmsg",CommonEnum.REQUEST_FAILED.getMsg());
+            return map;
+        }
+        //成功
+        map.put("rescode", CommonEnum.REQUEST_SUCCESS.getCode());
+        map.put("resmsg",CommonEnum.REQUEST_SUCCESS.getMsg());
 
         return map;
     }

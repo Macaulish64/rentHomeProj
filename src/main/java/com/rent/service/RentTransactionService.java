@@ -22,7 +22,7 @@ public interface RentTransactionService {
     public Map<String,Object> submitTransaction(int houseid,int userid);
 
     //房东同意申请
-    public Map<String,Object> confirmTransaction(int houseid,int userid);
+    public Map<String,Object> confirmTransaction(int transId,String startMonth,String endNMonth,int monthNum);
 
 
     //done,use queryRentTransaction
