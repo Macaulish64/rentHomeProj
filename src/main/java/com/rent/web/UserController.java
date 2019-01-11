@@ -60,8 +60,8 @@ public class UserController {
 					 @RequestParam("oldpassword") String oldpassword,
 					 @RequestParam("newpassword") String newpassword) {
 		// TODO: fix it
-		return userService.changepassword(userid,oldpassword,newpassword);
-	//	return userService.selectUserById(userid);
+		//return userService.changepassword(userid,oldpassword,newpassword);
+		return userService.selectUserById(userid);
 	}
 
 	@RequestMapping("/test")
