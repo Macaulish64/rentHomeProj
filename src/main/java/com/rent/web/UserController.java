@@ -81,9 +81,9 @@ public class UserController {
 		logger.info(newpassword);
 		Map<String,Object> map=new HashMap<String,Object>();
 		map=userService.updateUserPassword(userid,oldpassword,newpassword);
-		User nowuser=userService.selectUserById(userid);
-		logger.info(nowuser.toString());
-		String json=JSON.toJSONString(map, SerializerFeature.WriteMapNullValue);
+		//User nowuser=userService.selectUserById(userid);
+		//logger.info(nowuser.toString());
+		String json=JSON.toJSONString(map);
 		return json;
 		//return userService.selectUserById(userid);
 	}

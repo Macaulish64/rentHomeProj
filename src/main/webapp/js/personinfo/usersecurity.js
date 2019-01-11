@@ -18,11 +18,7 @@ $('#changepassword').click(function () {
             alert("两次输入不一致");
         }
         else {
-            var obj = {
-                oldpassword:oldpass.val(),
-                newpassword : newpass1.val()
-            };
-            var json = JSON.stringify(obj);
+
         $.ajax({
             headers: {
                 Authorization : jwt,
@@ -32,9 +28,11 @@ $('#changepassword').click(function () {
             type: "POST",
             url: "http://localhost:8080/rentHomeProj_war/user/changepassword/"+userid,
             async: false,
-            data: json,
+            data: { oldpassword:oldpass.val(),newpassword:newpass1.val() },
+            datetype:"json",
             success:function(data) {
-                if (rescode===10003) {
+                var json = jQuery.parseJSON(data);
+                if (json.rescode === 10003) {
                     alert("修改成功");
                     window.location.reload();
                 }
