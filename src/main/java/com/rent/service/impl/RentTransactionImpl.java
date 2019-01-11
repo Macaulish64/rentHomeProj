@@ -154,7 +154,7 @@ public class RentTransactionImpl implements RentTransactionService {
         record.setTotalrent(selectRentTransactionById(transId).getMonthrent() * monthNum);
         record.setLandlordpaymentagencyfee((float) (record.getTotalrent()*0.03));
         record.setTenantpaymentagencyfee((float) (record.getTotalrent()*0.03));
-
+        record.setRentstatus(1);
         int num = rentTransactionMapper.updateByPrimaryKey(record);
 
         //失败
