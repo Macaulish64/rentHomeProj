@@ -57,7 +57,7 @@ public class IndexController {
 	@RequestMapping("/personview/*")
 	public String personview() {
 		System.out.printf("Into person view");
-		return "templates/personinfo/personviewbase";
+		return "templates/personinfo/personinfo";
 	}
 
 	@RequestMapping("/personedit")
