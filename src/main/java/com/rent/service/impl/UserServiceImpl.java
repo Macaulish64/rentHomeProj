@@ -25,7 +25,6 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserMapper userMapper;
 
-
     @Override
     public User getExistUser(UserExample example) {
         List<User> nowlistuser=userMapper.selectByExample(example);

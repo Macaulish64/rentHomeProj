@@ -80,8 +80,8 @@ public class IncomeServiceImpl implements IncomeService {
     public List<Income> queryIncome(Map<String, List> map, int start, int end) {
         IncomeExample suitincome = new IncomeExample();
         IncomeExample.Criteria criteria= suitincome.createCriteria();
-        if (map.containsKey("month"))
-            criteria.andMonthIn(map.get("month"));
+        if (map.containsKey("monthMax")&&map.containsKey("monthMin"))
+            criteria.andMonthBetween((String)map.get("monthMin").get(0),(String)map.get("monthMax").get(0));
         if (map.containsKey("area"))
             criteria.andAreaIn(map.get("area"));
         if (map.containsKey("transactionNumMax") && map.containsKey("transactionNumMin"))
@@ -115,6 +115,4 @@ public class IncomeServiceImpl implements IncomeService {
         newmap.put("feeIncome",Feeincome);
         return null;
     }
-
-
 }
