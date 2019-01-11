@@ -181,6 +181,7 @@ public class RentTransactionImpl implements RentTransactionService {
         return map;
     }
 
+    //op为0表示房东，op为1表示租客
     @Override
     public Map<String, Object> countTransaction(int userid, int op) {
         RentTransactionExample suittrans = new RentTransactionExample();
