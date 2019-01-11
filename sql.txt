@@ -51,7 +51,8 @@ create table RentInformation(
     paymentMethod int,
     rentMoney float(10,2),
     registTime varchar(20),
-    updateTime varchar(20)
+    updateTime varchar(20),
+    rentStatus int default 0
   )default charset=utf8;
 
 create table RentTransaction(
