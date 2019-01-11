@@ -112,7 +112,7 @@ public class UserServiceImpl implements UserService {
         Map<String, Object> map = new HashMap<String, Object>();
         User newUser = new User();
         newUser.setUserid(Userid);
-        newUser.setPassword(phonenum);
+        newUser.setPhonenumber(phonenum);
         newUser.setUpdatetime(df.format(new Date()));
         int num = userMapper.updateByPrimaryKeySelective(newUser);
         //失败

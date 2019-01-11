@@ -10,6 +10,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 public class TestUserMapper extends BaseTest {
@@ -24,9 +26,12 @@ public class TestUserMapper extends BaseTest {
     /* */
     @Test
     public void insert() {
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
         User newUser=new User();
         newUser.setUsernickname("lxlxlx2");
         newUser.setPassword("233333");
+        newUser.setUpdatetime(df.format(new Date()));
         int num=userMapper.insertSelective(newUser);
         System.out.println("!!!!!\n");
     }
