@@ -14,4 +14,6 @@ public interface IncomeService {
     public List<Income> queryIncome(Map<String,List> map, int start, int end);
     //计数
     public Map<String,Object> queryIncomeNum(Map<String,List> map);
+    //用主键查找
+    public Income queryIncomeByKey(String Month,String Area);
 }

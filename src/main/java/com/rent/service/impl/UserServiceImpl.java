@@ -156,7 +156,6 @@ public class UserServiceImpl implements UserService {
         return userMapper.selectByExample(suituser).subList(start,end);
     }
 
-
     @Override
     public int queryUserNum(Map<String, List> map) {
         UserExample suithouse = new UserExample();
@@ -184,7 +183,6 @@ public class UserServiceImpl implements UserService {
 
         return userMapper.selectByExample(suithouse).size();
     }
-
 
     @Override
     public Map<String,Object> checkUserLogin(User record) {

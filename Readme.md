@@ -308,6 +308,7 @@ create table RentInformation(
 |paymentMethod |int | 租金支付方式（月、季、年） |
 | monthRent|float(10,2) | 月租金 |
 | totalRent| float(10,2)| 总租金 |
+| rentStatus | int | 成交状态 |
 | landlordPaymentAgencyFee|float(12,4) | 房东支付中介费（总租金*0.03） |
 |tenantPaymentAgencyFee |float(12,4) | 租户支付中介费（总租金*0.03） |
 ```
@@ -324,7 +325,8 @@ create table renttransaction(
     monthRent float(10,2),
     totalRent float(10,2),
     landlordPaymentAgencyFee float(12,4),
-    tenantPaymentAgencyFee float(12,4)
+    tenantPaymentAgencyFee float(12,4),
+    rentStatus int default 0
   )default charset=utf8;
 ```
 
