@@ -2,7 +2,7 @@
 <html xmlns:="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head>
-  <title>demand info</title>
+  <title>house info</title>
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -69,24 +69,24 @@
     <div class="row">
       <!-- left side (content) -->
       <div class="col-sm-9 row">
-        <div id="demandinfo-pwd">
+        <div id="houseinfo-pwd">
           <p><a>home</a> > <a>houselist</a> > <a>houseinfo</a></p>
         </div>
 
-        <div class="row round-panel" id="demandinfo-basicinfo">
+        <div class="row round-panel" id="houseinfo-basicinfo">
           <div class="img col-sm-6">
-            <!--<img class="houseimg" th:src="@{/img/a (1).jpg}">-->
+            <img class="houseimg" th:src="@{/img/a(1).jpg}">
           </div>
 
           <div class="col-sm-6 container">
             <h1>The House</h1>
             <h2>Dorm room in BUPT</h2>
-            <label for="demandprice">Price:</label>
-            <h1 id="demandprice">￥65536/月</h1>
+            <label for="houseprice">Price:</label>
+            <h1 id="houseprice">￥65536/月</h1>
           </div>
         </div>
 
-        <div class="row round-panel" id="demandinfo-otherinfo">
+        <div class="row round-panel" id="houseinfo-otherinfo">
 
         </div>
 
@@ -95,7 +95,7 @@
       <!-- sidebar -->
       <div class="col-sm-3">
         <div id="user-panel">
-          <div class="caption titled-pane">
+          <div class="caption title">
             UserName
           </div>
           <div>
