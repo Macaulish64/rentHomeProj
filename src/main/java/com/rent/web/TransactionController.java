@@ -61,7 +61,7 @@ public class TransactionController {
 
     @RequestMapping(value = "/queryownerTransaction", method = RequestMethod.GET)
     @ResponseBody
-    private String queryOwnerTransaction(HttpServletRequest request) {
+    public String queryOwnerTransaction(HttpServletRequest request) {
         int userid=0;
         int op=Integer.parseInt(request.getParameter("op"));
         logger.info("Query Owner Transaction");
@@ -84,7 +84,7 @@ public class TransactionController {
 
     @RequestMapping(value = "queryHolderTransaction/{op}", method = RequestMethod.GET)
     @ResponseBody
-    private String queryHolderTransaction(@PathVariable("op") int op,
+    public String queryHolderTransaction(@PathVariable("op") int op,
                                             HttpServletRequest request) {
         int userid=0;
         try {
@@ -108,7 +108,7 @@ public class TransactionController {
 
     @RequestMapping(value = "/admin/queryAdminTransaction/{op}", method = RequestMethod.GET)
     @ResponseBody
-    private String queryAdminTransaction(@PathVariable("op") int op,
+    public String queryAdminTransaction(@PathVariable("op") int op,
                                           HttpServletRequest request) {
         Map<String,List> map=new HashMap<String,List>();
         List<Integer> rentstate=new ArrayList<Integer>();
@@ -120,11 +120,7 @@ public class TransactionController {
         return JSON.toJSONString(transactionlist);
     }
 
-    @RequestMapping(value = "/test", method = RequestMethod.GET)
-    @ResponseBody
-    private void queryAdminTransaction() {
 
-    }
 
 
 }
