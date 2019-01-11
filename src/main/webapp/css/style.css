@@ -328,6 +328,7 @@ ul.sidebar-menu li a.active i {
 /*main content*/
 
 #main-content {
+    padding-top: 100px;
     margin-left: 210px;
 }
 
