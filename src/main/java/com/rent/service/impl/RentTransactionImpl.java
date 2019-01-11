@@ -15,10 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service
 public class RentTransactionImpl implements RentTransactionService {
@@ -181,6 +178,36 @@ public class RentTransactionImpl implements RentTransactionService {
         income.setFeeincome(feeincome+record.getLandlordpaymentagencyfee()*2);
 
         map = incomeService.updateIncome(income);
+        return map;
+    }
+
+    @Override
+    public Map<String, Object> countTransaction(int userid, int op) {
+        RentTransactionExample suittrans = new RentTransactionExample();
+        if (op==0)
+        {
+            suittrans.or().andLandlordidIn(Collections.singletonList(userid));
+        }
+        else
+        {
+            suittrans.or().andTenantidIn(Collections.singletonList(userid));
+        }
+        List<RentTransaction> list = rentTransactionMapper.selectByExample(suittrans);
+        Map<String,Object> map = new HashMap<String, Object>();
+
+        int transnum=0;
+        float depositnum=0,rentnum=0,feenum=0;
+        for (int i=0;i<list.size();i++)
+        {
+            transnum++;
+            depositnum+=list.get(i).getDepositmoney();
+            rentnum+=list.get(i).getTotalrent();
+            feenum+=list.get(i).getTenantpaymentagencyfee();
+        }
+        map.put("transnum",transnum);
+        map.put("deppsitnum",depositnum);
+        map.put("rentnum",rentnum);
+        map.put("feenum",feenum);
         return map;
     }
 }
