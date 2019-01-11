@@ -68,15 +68,4 @@ public class HouseController {
         return "";
     }
 
-    @RequestMapping(value="/addFavoriteHouse",method=RequestMethod.POST)
-    @ResponseBody
-    public String addFavoriteHouse(HttpServletRequest request)
-    {
-
-        return "";
-    }
-
-    
-
-
 }
