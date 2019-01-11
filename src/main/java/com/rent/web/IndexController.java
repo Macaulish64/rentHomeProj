@@ -34,6 +34,11 @@ public class IndexController {
 		return "templates/houseinfo";
 	}
 
+	@RequestMapping("/transaction")
+	public String transaction() {
+		return "templates/transaction";
+	}
+
 	@RequestMapping("/demandlist")
 	public String demandlist() {
 		return "templates/demandlist";
