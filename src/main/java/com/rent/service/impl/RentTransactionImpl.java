@@ -25,7 +25,7 @@ public class RentTransactionImpl implements RentTransactionService {
         RentTransactionExample suittrans = new RentTransactionExample();
         RentTransactionExample.Criteria criteria= suittrans.createCriteria();
         if (map.containsKey("transactionId"))
-            criteria.andTenantidIn(map.get("transactionId"));
+            criteria.andTransactionidIn(map.get("transactionId"));
         if (map.containsKey("houseId"))
             criteria.andHouseidIn(map.get("houseId"));
         if (map.containsKey("landlordId"))
@@ -85,7 +85,7 @@ public class RentTransactionImpl implements RentTransactionService {
         RentTransactionExample suittrans = new RentTransactionExample();
         RentTransactionExample.Criteria criteria= suittrans.createCriteria();
         if (map.containsKey("transactionId"))
-            criteria.andTenantidIn(map.get("transactionId"));
+            criteria.andTransactionidIn(map.get("transactionId"));
         if (map.containsKey("houseId"))
             criteria.andHouseidIn(map.get("houseId"));
         if (map.containsKey("landlordId"))
