@@ -113,4 +113,25 @@ public class RentTransactionImpl implements RentTransactionService {
 
         return rentTransactionMapper.selectByExample(suittrans).subList(start,end);
     }
+
+
+    //租客提交申请
+    @Override
+    public Map<String,Object> submitTransaction(int houseid,int userid)
+    {
+        Map<String,Object> map=new HashMap<String,Object>();
+
+
+        return map;
+    }
+
+    //房东同意申请
+    @Override
+    public Map<String,Object> confirmTransaction(int houseid,int userid)
+    {
+        Map<String,Object> map=new HashMap<String,Object>();
+
+
+        return map;
+    }
 }

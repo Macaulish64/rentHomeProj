@@ -56,7 +56,7 @@
   <!-- 4.扫描web相关的bean -->
   <context:component-scan base-package="com.rent.web" />
 
-  <!--&lt;!&ndash;拦截器&ndash;&gt;-->
+
   <!--<mvc:resources location="/js" mapping="/**/*.js"/>-->
   <!--<mvc:resources location="/css" mapping="/**/*.css"/>-->
   <!--<mvc:resources location="/assets/" mapping="/assets/**/*"/>-->

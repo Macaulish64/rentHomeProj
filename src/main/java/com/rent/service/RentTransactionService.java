@@ -27,19 +27,19 @@ public interface RentTransactionService {
 
     //done,use queryRentTransaction
     //对于房东,查找已经交易的记录
-    //1
+    //rentstate=1
     //对于房东,查找还没交易的记录
-    //0
+    //rentstate=0
     //对于房客,查找还没交易的记录
-    //1
+    //rentstate=1
     //对于房客,查找已经交易的记录
-    //0
+    //rentstate=0
     //对于管理员,查找已经交易的记录
-    //1
+    //rentstate=1
     //对于管理员,查找所有记录
-    //0,1
+    //rentstate=0,1
     //对于管理员,查找已交易的记录
-    //1
+    //rentstate=1
     //对于管理员,查找未交易的记录
-    //0
+    //rentstate=0
 }

@@ -64,7 +64,8 @@ public class TransactionController {
     private String queryOwnerTransaction(HttpServletRequest request,
                                          @PathVariable("op") int op) {
         int userid=0;
-
+        logger.info("Query Owner Transaction");
+        logger.info("Query Type:"+op);
         try {
             userid=Integer.parseInt(request.getParameter("userid"));
         } catch(NumberFormatException e) { }
@@ -72,7 +73,10 @@ public class TransactionController {
         List<Integer> landlorid=new ArrayList<Integer>();
         landlorid.add(userid);
         List<Integer> rentstate=new ArrayList<Integer>();
-        rentstate.add(op);
+        if (op<2) {
+            rentstate.add(op);
+            map.put("rentstate",rentstate);
+        }
         map.put("landlordId",landlorid);
         List<RentTransaction> transactionlist=rentTransctionService.queryRentTransaction(map,0,10);
         return JSON.toJSONString(transactionlist);
@@ -87,29 +91,28 @@ public class TransactionController {
             userid=Integer.parseInt(request.getParameter("userid"));
         } catch(NumberFormatException e) { }
         Map<String,List> map=new HashMap<String,List>();
-        List<Integer> landlorid=new ArrayList<Integer>();
-        landlorid.add(userid);
+        List<Integer> tenantid=new ArrayList<Integer>();
+        tenantid.add(userid);
         List<Integer> rentstate=new ArrayList<Integer>();
-        rentstate.add(op);
-        map.put("landlordId",landlorid);
+        if (op<2) {
+            rentstate.add(op);
+            map.put("rentstate",rentstate);
+        }
+        map.put("tenantid",tenantid);
         List<RentTransaction> transactionlist=rentTransctionService.queryRentTransaction(map,0,10);
         return JSON.toJSONString(transactionlist);
     }
 
-    @RequestMapping(value = "queryAdminTransaction/{op}", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/queryAdminTransaction/{op}", method = RequestMethod.GET)
     @ResponseBody
     private String queryAdminTransaction(@PathVariable("op") int op,
                                           HttpServletRequest request) {
-        int userid=0;
-        try {
-            userid=Integer.parseInt(request.getParameter("userid"));
-        } catch(NumberFormatException e) { }
         Map<String,List> map=new HashMap<String,List>();
-        List<Integer> landlorid=new ArrayList<Integer>();
-        landlorid.add(userid);
         List<Integer> rentstate=new ArrayList<Integer>();
-        rentstate.add(op);
-        map.put("landlordId",landlorid);
+        if (op<2) {
+            rentstate.add(op);
+            map.put("rentstate",rentstate);
+        }
         List<RentTransaction> transactionlist=rentTransctionService.queryRentTransaction(map,0,10);
         return JSON.toJSONString(transactionlist);
     }
