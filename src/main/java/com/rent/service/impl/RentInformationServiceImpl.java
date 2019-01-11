@@ -10,6 +10,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -17,12 +19,15 @@ import java.util.Map;
 @Service
 public class RentInformationServiceImpl implements RentInformationService {
     private Logger logger= LoggerFactory.getLogger(this.getClass());
+    SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     @Autowired
     private RentInformationMapper rentInformationMapper;
 
 
     @Override
     public Map<String, Object> insertRentInformation(RentInformation record) {
+        record.setUpdatetime(df.format(new Date()));
+        record.setRegisttime(df.format(new Date()));
         Map<String,Object> map=new HashMap<String,Object>();
         int num=rentInformationMapper.insertSelective(record);
 
@@ -49,6 +54,7 @@ public class RentInformationServiceImpl implements RentInformationService {
 
     @Override
     public Map<String, Object> updateRentInformation(RentInformation record) {
+        record.setUpdatetime(df.format(new Date()));
         Map<String,Object> map=new HashMap<String,Object>();
         int num=rentInformationMapper.updateByPrimaryKeySelective(record);
 

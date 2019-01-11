@@ -10,6 +10,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -17,6 +19,7 @@ import java.util.Map;
 @Service
 public class RentTransactionImpl implements RentTransactionService {
     private Logger logger= LoggerFactory.getLogger(this.getClass());
+    SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     @Autowired
     private RentTransactionMapper rentTransactionMapper;
 
@@ -25,7 +28,7 @@ public class RentTransactionImpl implements RentTransactionService {
         RentTransactionExample suittrans = new RentTransactionExample();
         RentTransactionExample.Criteria criteria= suittrans.createCriteria();
         if (map.containsKey("transactionId"))
-            criteria.andTenantidIn(map.get("transactionId"));
+            criteria.andTransactionidIn(map.get("transactionId"));
         if (map.containsKey("houseId"))
             criteria.andHouseidIn(map.get("houseId"));
         if (map.containsKey("landlordId"))
@@ -50,12 +53,14 @@ public class RentTransactionImpl implements RentTransactionService {
             criteria.andMonthrentBetween((float)map.get("totalRentMin").get(0),(float)map.get("totalRentMax").get(0));
         if (map.containsKey("tenantPaymentAgencyFeeMax") && map.containsKey("tenantPaymentAgencyFeeMin"))
             criteria.andMonthrentBetween((float)map.get("tenantPaymentAgencyFeeMin").get(0),(float)map.get("tenantPaymentAgencyFeeMax").get(0));
-
+        /*if (map.containsKey("rentStatus"))
+            criteria.andEndmonthIn(map.get("rentStatus"));*/
         return rentTransactionMapper.selectByExample(suittrans).size();
     }
 
     @Override
     public Map<String, Object> insertRentTransaction(RentTransaction record) {
+        record.setTransactiondate(df.format(new Date()));
         Map<String,Object> map=new HashMap<String,Object>();
         int num = rentTransactionMapper.insertSelective(record);
         //失败
@@ -85,7 +90,7 @@ public class RentTransactionImpl implements RentTransactionService {
         RentTransactionExample suittrans = new RentTransactionExample();
         RentTransactionExample.Criteria criteria= suittrans.createCriteria();
         if (map.containsKey("transactionId"))
-            criteria.andTenantidIn(map.get("transactionId"));
+            criteria.andTransactionidIn(map.get("transactionId"));
         if (map.containsKey("houseId"))
             criteria.andHouseidIn(map.get("houseId"));
         if (map.containsKey("landlordId"))

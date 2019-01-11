@@ -74,154 +74,126 @@
     </div>
   </header>
 
-  <section class="main-content">
-    <div class="center-block">
-      <div class="col-lg-12">
-        <section calss="panel">
-          <div class="panel-body">
-            <div>
-              <ul class="summary-list">
-                <li>
-                  <a href="#">
-                    <i class=" "></i>
-                    "
-                    个人中心(图标放矢量图像)
-                    "
-                  </a>
-                </li>
-                <li>
-                  <a th:href="@{/landlord}">
-                    <i class=" "></i>
-                    "
-                    房东中心
-                    "
-                  </a>
-                </li>
-                <li>
-                  <a th:href="@{/roomer}">
-                    <i class=" "></i>
-                    "
-                    房客中心
-                    "
-                  </a>
-                </li>
-              </ul>
-            </div>
+  <section id="main-content">
+    <div class="row">
+      <div class="col-lg-2">
+        <section class="panel-heading">
+          Link items
+        </section>
+        <div class="list-group">
+          <div class="list-group-item"><a th:href="@{/personview}">个人信息</a></div>
+          <div class="list-group-item"><a th:href="@{/personedit}">修改信息</a></div>
+          <div class="list-group-item"><a th:href="@{/personimg}">修改头像</a></div>
+          <div class="list-group-item"><a th:href="@{/personsecurity}">安全设置</a></div>
+          <div class="list-group-item"><a th:href="@{/irent}">我要租房</a></div>
+          <div class="list-group-item"><a th:href="@{/irentout}">我要出租</a></div>
+        </div>
+      </div>
+
+      <div class="col-lg-10">
+        <section class="panel">
+          <div class="w3-navbar w3-white w3-large">
+            <a th:href="@{/personview}" class="w3-bar-item w3-button w3-hover-deep-orange">个人信息</a>
+            <a th:href="@{/landlord}" class="w3-bar-item w3-button w3-hover-deep-orange">我是房东</a>
+            <a th:href="@{/roomer}" class="w3-bar-item w3-button w3-hover-deep-orange">我是房客</a>
           </div>
         </section>
-      </div>
-      <div>
-        <div class="col-lg-2">
-          <section class="panel-heading">
-            Link items
-          </section>
-          <div class="list-group">
-            <div class="list-group-item"><a th:href="@{/personview}">个人信息</a></div>
-            <div class="list-group-item"><a th:href="@{/personedit}">修改信息</a></div>
-            <div class="list-group-item"><a th:href="@{/personimg}">修改头像</a></div>
-            <div class="list-group-item"><a th:href="@{/personsecurity}">安全设置</a></div>
-            <div class="list-group-item"><a th:href="@{/irent}">我要租房</a></div>
-            <div class="list-group-item"><a th:href="@{/irentout}">我要出租</a></div>
-          </div>
-        </div>
 
-        <div class="col-lg-10">
-          <section class="panel">
-            <header class="panel-heading">
-              个人信息
-            </header>
-            <div class="panel-body">
-              <div class="row">
-                <!--<div class="col-lg-5">
-                  留着如果有编辑图片功能的话
-                  <img class="img-responsive" src="img/person/person1.jpg">
-                </div>-->
-                <div class="col-lg-7">
-                  <!--  <form>
-                      <img id="uploadimg" th:src="@{/img/defaultphoto.jpg}" width="400px" height="408px"/>
-                      &lt;!&ndash; The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload &ndash;&gt;
-                      <div class="row fileupload-buttonbar">
-                          <div class="col-lg-7">
-                            &lt;!&ndash; The fileinput-button span is used to style the file input field as button &ndash;&gt;
-                            <span class="btn btn-success fileinput-button">
-                              <i class="fa fa-plus"></i>
-                              <span> Add files </span>
-                              <input id="fileupload" type="file" name="photofile" multiple>
-                            </span>
-                            <button id="realfileupload" type="submit" class="btn btn-primary start">
-                              <i class="fa fa-cloud-upload"></i>
-                              <span>Start upload</span>
-                            </button>
-                          </div>
-                      </div>
-                      &lt;!&ndash; The table listing the files available for upload/download &ndash;&gt;
-                    </form>-->
-                  <form id="fileupload" method="POST" enctype="multipart/form-data">
-                    <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
+        <section class="panel">
+          <header class="panel-heading">
+            修改头像
+          </header>
+          <div class="panel-body">
+            <div class="row">
+              <!--<div class="col-lg-5">
+                留着如果有编辑图片功能的话
+                <img class="img-responsive" src="img/person/person1.jpg">
+              </div>-->
+              <div class="col-lg-7">
+                <!--  <form>
+                    <img id="uploadimg" th:src="@{/img/defaultphoto.jpg}" width="400px" height="408px"/>
+                    &lt;!&ndash; The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload &ndash;&gt;
                     <div class="row fileupload-buttonbar">
-                      <div class="col-lg-7">
-                        <!-- The fileinput-button span is used to style the file input field as button -->
-                        <span class="btn btn-success fileinput-button">
+                        <div class="col-lg-7">
+                          &lt;!&ndash; The fileinput-button span is used to style the file input field as button &ndash;&gt;
+                          <span class="btn btn-success fileinput-button">
+                            <i class="fa fa-plus"></i>
+                            <span> Add files </span>
+                            <input id="fileupload" type="file" name="photofile" multiple>
+                          </span>
+                          <button id="realfileupload" type="submit" class="btn btn-primary start">
+                            <i class="fa fa-cloud-upload"></i>
+                            <span>Start upload</span>
+                          </button>
+                        </div>
+                    </div>
+                    &lt;!&ndash; The table listing the files available for upload/download &ndash;&gt;
+                  </form>-->
+                <form id="fileupload" method="POST" enctype="multipart/form-data">
+                  <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
+                  <div class="row fileupload-buttonbar">
+                    <div class="col-lg-7">
+                      <!-- The fileinput-button span is used to style the file input field as button -->
+                      <span class="btn btn-success fileinput-button">
                                   <i class="fa fa-plus"></i>
                                   <span>Add files...</span>
                                   <input type="file" name="files[]" multiple>
                               </span>
-                        <button type="submit" class="btn btn-primary start">
-                          <i class="fa fa-cloud-upload"></i>
-                          <span>Start upload</span>
-                        </button>
-                        <button type="reset" class="btn btn-warning cancel">
-                          <span>Cancel upload</span>
-                        </button>
-                        <button type="button" class="btn btn-danger delete">
-                          <span>Delete</span>
-                        </button>
-                        <input type="checkbox" class="toggle">
-                        <!-- The global file processing state -->
-                        <span class="fileupload-process"></span>
+                      <button type="submit" class="btn btn-primary start">
+                        <i class="fa fa-cloud-upload"></i>
+                        <span>Start upload</span>
+                      </button>
+                      <button type="reset" class="btn btn-warning cancel">
+                        <span>Cancel upload</span>
+                      </button>
+                      <button type="button" class="btn btn-danger delete">
+                        <span>Delete</span>
+                      </button>
+                      <input type="checkbox" class="toggle">
+                      <!-- The global file processing state -->
+                      <span class="fileupload-process"></span>
+                    </div>
+                    <!-- The global progress state -->
+                    <div class="col-lg-5 fileupload-progress fade">
+                      <!-- The global progress bar -->
+                      <div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+                        <div class="progress-bar progress-bar-success" style="width:0%;">
+                        </div>
                       </div>
-                      <!-- The global progress state -->
-                      <div class="col-lg-5 fileupload-progress fade">
-                        <!-- The global progress bar -->
-                        <div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100">
-                          <div class="progress-bar progress-bar-success" style="width:0%;">
-                          </div>
-                        </div>
-                        <!-- The extended global progress state -->
-                        <div class="progress-extended">
-                          &nbsp;
-                        </div>
+                      <!-- The extended global progress state -->
+                      <div class="progress-extended">
+                        &nbsp;
                       </div>
                     </div>
-                    <!-- The table listing the files available for upload/download -->
-                    <table role="presentation" class="table table-striped">
-                      <tbody class="files">
-                      </tbody>
-                    </table>
-                  </form>
-                  <!-- simple one-->
-                  <div>
+                  </div>
+                  <!-- The table listing the files available for upload/download -->
+                  <table role="presentation" class="table table-striped">
+                    <tbody class="files">
+                    </tbody>
+                  </table>
+                </form>
+                <!-- simple one-->
+                <div>
                       <span class="preview">
                           <a href="{%=file.url%}" title="{%=file.name%}" download="{%=file.name%}" data-gallery><img src="{%=file.thumbnail_url%}"></a>
                          {% } %}
                       </span>
-                    <span class="btn btn-success fileinput-button">
+                  <span class="btn btn-success fileinput-button">
                         <i class="fa fa-plus"></i>
                         <span>Add files...</span>
                         <input type="file" name="onefiles" multiple method="POST"
                                data-url="user/testonephoto"  enctype="multipart/form-data">>
                     </span>
-                    <button type="submit" class="btn btn-primary start">
-                      <i class="fa fa-cloud-upload"></i>
-                      <span>Start upload</span>
-                    </button>
-                  </div>
+                  <button type="submit" class="btn btn-primary start">
+                    <i class="fa fa-cloud-upload"></i>
+                    <span>Start upload</span>
+                  </button>
                 </div>
-
               </div>
+
             </div>
-          </section>
-        </div>
+          </div>
+        </section>
       </div>
     </div>
   </section>
