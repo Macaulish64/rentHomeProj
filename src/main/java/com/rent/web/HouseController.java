@@ -6,6 +6,7 @@ import com.rent.entity.House;
 import com.rent.service.HouseService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,9 +18,11 @@ import java.util.Map;
 
 
 @Controller
-@RequestMapping("/house")
+@RequestMapping("house")
+@CrossOrigin(origins = "*", maxAge = 3600)
 public class HouseController {
     private Logger logger= LoggerFactory.getLogger(this.getClass());
+    @Autowired
     private HouseService houseService;
 
     @RequestMapping(value ="/list",method = RequestMethod.POST)
@@ -75,6 +78,8 @@ public class HouseController {
     }
 
 
+
+
     @RequestMapping(value="/ownerhouselist/{userid}",method=RequestMethod.GET)
     @ResponseBody
     public String getOwnerHouseList(@PathVariable("userid") int userid,
@@ -84,7 +89,10 @@ public class HouseController {
         List<Integer> publishuserlist=new ArrayList<>();
         publishuserlist.add(userid);
         map.put("publishUserId",publishuserlist);
-        houselist=houseService.queryHouse(map,0,0);
+        houselist=houseService.queryHouse(map,0,3);
+        for(House nowhouse : houselist) {//其内部实质上还是调用了迭代器遍历方式，这种循环方式还有其他限制，不建议使用。
+            System.out.println(nowhouse.toString());
+        }
         String json= JSON.toJSONString(houselist, SerializerFeature.WriteMapNullValue);
         return json;
     }

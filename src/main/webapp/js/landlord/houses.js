@@ -30,7 +30,7 @@ function toshowhouselist(data)
 {
     var i;
     if (data.length===0) return;
-    for(i=data.length-1;i>=0;i--) {
+    for(i=0;i<data.length;i++) {
         $('#ownerhouselist').append(
             '<tr>'+
                 '<td>'+data[i].houseid+'</td>'+
@@ -38,7 +38,7 @@ function toshowhouselist(data)
                 '<td>'+data[i].communityname +'</td>'+
                 '<td>'+data[i].buildingnumber +'</td>'+
                 '<td>'+stringHouseTyde(data[i].housetype)+'</td>'+
-                '<td>'+data[i].housearea+'面积'+'</td>'+
+                '<td>'+data[i].housearea+'平米'+'</td>'+
                 '<td>'+data[i].floornumber+'</td>'+
                 '<td>'+data[i].elevatorornot +'</td>'+
                 '<td>'+'￥'+data[i].depositmoney+'</td>'+
@@ -61,12 +61,12 @@ $(document).ready(function() {
             'userid' : userid
         },
         type:"GET",
-        url:"http://localhost:8080/rentHomeProj_war/user/ownerhouselist/"+userid,
+        url:"http://localhost:8080/rentHomeProj_war/house/ownerhouselist/"+userid,
         dataType:"json",
         global:"false",
         data:{ op : 0 },
         success:function(data) {
-            alert(data);
+         //   alert(data);
             toshowhouselist(data);
         },
         /* success:function(data){

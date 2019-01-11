@@ -7,10 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
@@ -23,7 +20,8 @@ String userid = request.getParameter("userid");单值
 String[] insts = request.getParameterValues("inst");多值
  */
 @Controller
-@RequestMapping("/transaction")
+@RequestMapping("transaction")
+@CrossOrigin(origins = "*", maxAge = 3600)
 public class TransactionController {
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
