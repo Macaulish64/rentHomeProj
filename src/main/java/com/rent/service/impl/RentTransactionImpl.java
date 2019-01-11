@@ -53,8 +53,8 @@ public class RentTransactionImpl implements RentTransactionService {
             criteria.andMonthrentBetween((float)map.get("totalRentMin").get(0),(float)map.get("totalRentMax").get(0));
         if (map.containsKey("tenantPaymentAgencyFeeMax") && map.containsKey("tenantPaymentAgencyFeeMin"))
             criteria.andMonthrentBetween((float)map.get("tenantPaymentAgencyFeeMin").get(0),(float)map.get("tenantPaymentAgencyFeeMax").get(0));
-        /*if (map.containsKey("rentStatus"))
-            criteria.andEndmonthIn(map.get("rentStatus"));*/
+        if (map.containsKey("rentStatus"))
+            criteria.andRentstatusIn(map.get("rentStatus"));
         return rentTransactionMapper.selectByExample(suittrans).size();
     }
 
@@ -115,7 +115,8 @@ public class RentTransactionImpl implements RentTransactionService {
             criteria.andMonthrentBetween((float)map.get("totalRentMin").get(0),(float)map.get("totalRentMax").get(0));
         if (map.containsKey("tenantPaymentAgencyFeeMax") && map.containsKey("tenantPaymentAgencyFeeMin"))
             criteria.andMonthrentBetween((float)map.get("tenantPaymentAgencyFeeMin").get(0),(float)map.get("tenantPaymentAgencyFeeMax").get(0));
-
+        if (map.containsKey("rentStatus"))
+            criteria.andRentstatusIn(map.get("rentStatus"));
         return rentTransactionMapper.selectByExample(suittrans).subList(start,end);
     }
 

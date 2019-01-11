@@ -20,6 +20,9 @@ public interface  UserService {
     //修改密码
     public Map<String,Object> updateUserPassword(int Userid,String oldpassword,String newPassword);
 
+    //修改手机号
+    public Map<String,Object> updateUserPhonenumber(int Userid,String phonenum);
+
     //在已知用户标识的情况下，查找用户
     User selectUserById(int userId);
 
