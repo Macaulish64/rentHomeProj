@@ -201,7 +201,7 @@ $(document).ready(function() {
     var houseid=$.Request("houseid");
     if (houseid===null) {
         alert("房屋编号错误");
-        $(location).attr('href', '/house/list');
+        $(location).attr('href', '/rentHomeProj_war/houselist');
     }
     else {
         $.ajax({
