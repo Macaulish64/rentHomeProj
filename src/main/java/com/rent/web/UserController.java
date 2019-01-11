@@ -50,6 +50,7 @@ public class UserController {
 	public String personedit(@PathVariable("userid") int userid,
 							 @RequestParam("phonenumber") String phonenumber) {
 		logger.info("Person Edit phonenumber\n");
+		System.out.println("!!!!!!!!!!!!!!!!!");
 		Map<String,Object> map=new HashMap<String,Object>();
 		map=userService.updateUserPhonenumber(userid,phonenumber);
 		String json=JSON.toJSONString(map, SerializerFeature.WriteMapNullValue);
