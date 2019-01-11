@@ -45,6 +45,17 @@ public class UserController {
 	}
 
 
+	@RequestMapping(value = "/personedit/{userid}", method = RequestMethod.GET)
+	@ResponseBody
+	public String personedit(@PathVariable("userid") int userid,
+							 @RequestParam("phonenumber") String phonenumber) {
+		logger.info("Person Edit phonenumber\n");
+		Map<String,Object> map=new HashMap<String,Object>();
+		map=userService.updateUserPhonenumber(userid,phonenumber);
+		String json=JSON.toJSONString(map, SerializerFeature.WriteMapNullValue);
+		return json;
+	}
+
 	@RequestMapping(value = "/personinfo/{userid}", method = RequestMethod.GET)
 	@ResponseBody
 	public String personview(@PathVariable("userid") int userid) {

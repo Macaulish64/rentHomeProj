@@ -40,6 +40,14 @@ function personinformation(data)
             "null"
         );
     }
+    $('#username').append(
+        data.username
+    );
+    if (data.username ===null) {
+        $('#username').append(
+            "null"
+        );
+    }
     $('#cardtype').append(
         data.cardtype
     );
@@ -87,7 +95,6 @@ $(document).ready(function() {
         global:"false",
         success:function(data) {
             personinformation(data);
-
         },
         error:function(data){
             alert("Please Log In First");
