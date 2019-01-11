@@ -40,11 +40,6 @@
 <!--TODO: <script th:src="@{/js/***.js}"></script>-->
 
 <style>
-	.houseimg {
-		width: 250px;
-		height: 250px;
-	}
-
 	#main-content {
 		padding-top: 50px;
 	}
@@ -68,14 +63,16 @@
 	<section id="main-content">
 		<div class="row">
 			<!-- left side (content) -->
-			<div class="col-sm-9 row">
+			<div class="col-sm-9">
 				<div id="houseinfo-pwd">
 					<p><a>home</a> > <a>houselist</a> > <a>houseinfo</a></p>
 				</div>
 
         <div class="row round-panel" id="houseinfo-basicinfo">
 					<div class="img col-sm-6">
-						<img class="houseimg" th:src="@{/img/a(1).jpg}">
+						<img class="houseimg"
+								 style="width: 30em; height: 30em;"
+								 th:src="@{/img/a(1).jpg}">
 					</div>
 
 					<div class="col-sm-6 container">
