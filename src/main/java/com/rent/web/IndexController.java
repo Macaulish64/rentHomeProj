@@ -90,9 +90,9 @@ public class IndexController {
 		return "templates/roomer/demands";
 	}
 
-	@RequestMapping("/roomerstar")
+	@RequestMapping("/roomerdeal")
 	public String roomerstar() {
-		return "templates/roomer/star";
+		return "templates/roomer/deal";
 	}
 
 	@RequestMapping("/roomerappointment")
