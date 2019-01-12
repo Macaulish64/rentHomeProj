@@ -23,8 +23,8 @@ function stringPaymentMethod(data)
 
 function stringhouseStatus(data)
 {
-    if (data===0) return '已确认';
-    if (data===1) return '待确认';
+    if (data===0) return '待确认';
+    if (data===1) return '已确认';
     return "";
 }
 
