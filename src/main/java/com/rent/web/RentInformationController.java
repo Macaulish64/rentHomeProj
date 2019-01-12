@@ -42,10 +42,28 @@ public class RentInformationController {
 
     @RequestMapping(value="/rentlist/{pagenumber}",method = RequestMethod.POST)
     @ResponseBody
-    public String rentListPage(HttpServletRequest request)
+    public String houseListPage(@PathVariable("pagenumber") int pagenumber,HttpServletRequest request)
     {
-
-        return "";
+        Map<String,List> map = (Map<String,List>) request.getAttribute("map");
+        int num = rentInformationService.queryRentInformationNum(map);
+        Map<String ,Object> map2=new HashMap<String, Object>();
+        if (num < (pagenumber - 1) * 5 + 1)
+        {
+            map2.put("rescode", CommonEnum.REQUEST_FAILED.getCode());
+            map2.put("resmsg",CommonEnum.REQUEST_FAILED.getMsg());
+        }
+        else
+        {
+            map2.put("rescode", CommonEnum.REQUEST_SUCCESS.getCode());
+            map2.put("resmsg", CommonEnum.REQUEST_SUCCESS.getMsg());
+            if (num > pagenumber * 5)
+                map2.put("list",rentInformationService.queryRentInformation(map ,(pagenumber-1)*5 ,pagenumber*5));
+            else
+                map2.put("list",rentInformationService.queryRentInformation(map ,(pagenumber-1)*5 ,num));
+        }
+        String json= JSON.toJSONString(map2, SerializerFeature.WriteMapNullValue);
+        System.out.println(json);
+        return json;
     }
 
     @RequestMapping(value="/details/{rentid}",method = RequestMethod.GET)

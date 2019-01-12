@@ -74,6 +74,7 @@ public class TestTransaction extends BaseTest {
     {
         Map<String,Object> map = renttservice.submitTransaction(1,5,"2019-01","2019-03",3);
         renttservice.confirmTransaction((Integer) map.get("transId"));
+
         System.out.println("!!!!\n");
     }
 }

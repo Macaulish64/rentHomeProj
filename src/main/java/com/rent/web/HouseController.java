@@ -5,6 +5,7 @@ import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.rent.common.CommonEnum;
 import com.rent.entity.House;
 import com.rent.service.HouseService;
+import com.rent.service.PhotoService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,8 @@ public class HouseController {
     private Logger logger= LoggerFactory.getLogger(this.getClass());
     @Autowired
     private HouseService houseService;
+    @Autowired
+    private PhotoService photoService;
 
     @RequestMapping(value ="/list",method = RequestMethod.POST)
     @ResponseBody
@@ -43,9 +46,28 @@ public class HouseController {
 
     @RequestMapping(value="/houselist/{pagenumber}",method = RequestMethod.POST)
     @ResponseBody
-    public String houseListPage(HttpServletRequest request)
+    public String houseListPage(@PathVariable("pagenumber") int pagenumber,HttpServletRequest request)
     {
-        return "";
+        Map<String,List> map = (Map<String,List>) request.getAttribute("map");
+        int num = houseService.queryHouseNum(map);
+        Map<String ,Object> map2=new HashMap<String, Object>();
+        if (num < (pagenumber - 1) * 5 + 1)
+        {
+            map2.put("rescode", CommonEnum.REQUEST_FAILED.getCode());
+            map2.put("resmsg",CommonEnum.REQUEST_FAILED.getMsg());
+        }
+        else
+        {
+            map2.put("rescode", CommonEnum.REQUEST_SUCCESS.getCode());
+            map2.put("resmsg", CommonEnum.REQUEST_SUCCESS.getMsg());
+            if (num > pagenumber * 5)
+                map2.put("list",houseService.queryHouse(map ,(pagenumber-1)*5 ,pagenumber*5));
+            else
+                map2.put("list",houseService.queryHouse(map ,(pagenumber-1)*5 ,num));
+        }
+        String json= JSON.toJSONString(map2, SerializerFeature.WriteMapNullValue);
+        System.out.println(json);
+        return json;
     }
 
     @RequestMapping(value="/details/{houseid}",method = RequestMethod.GET)
@@ -53,7 +75,7 @@ public class HouseController {
     public String houseDetails(@PathVariable("houseid") int houseid)
     {
         House nowhouse=houseService.selectHouseById(houseid);
-        Map<String ,Object> map=new HashMap<>();
+        Map<String ,Object> map=new HashMap<String, Object>();
         if (nowhouse==null) {
             map.put("rescode", CommonEnum.REQUEST_FAILED.getCode());
             map.put("resmsg",CommonEnum.REQUEST_FAILED.getMsg());

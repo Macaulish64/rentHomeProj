@@ -92,11 +92,26 @@ public class IncomeServiceImpl implements IncomeService {
     }
 
     @Override
-    public Map<String, Object> queryIncomeNum(Map<String, List> map) {
+    public int queryIncomeNum(Map<String, List> map) {
         IncomeExample suitincome = new IncomeExample();
         IncomeExample.Criteria criteria= suitincome.createCriteria();
-        if (map.containsKey("month"))
-            criteria.andMonthIn(map.get("month"));
+        if (map.containsKey("monthMax")&&map.containsKey("monthMin"))
+            criteria.andMonthBetween((String)map.get("monthMin").get(0),(String)map.get("monthMax").get(0));
+        if (map.containsKey("area"))
+            criteria.andAreaIn(map.get("area"));
+        if (map.containsKey("transactionNumMax") && map.containsKey("transactionNumMin"))
+            criteria.andTransactionnumBetween((int)map.get("transactionNumMin").get(0),(int)map.get("transactionNumMax").get(0));
+        if (map.containsKey("feeIncomeMax") && map.containsKey("feeIncomeMin"))
+            criteria.andFeeincomeBetween((float)map.get("feeIncomeMin").get(0),(float)map.get("feeIncomeMax").get(0));
+        return incomeMapper.selectByExample(suitincome).size();
+    }
+
+    @Override
+    public Map<String, Object> countIncome(Map<String, List> map) {
+        IncomeExample suitincome = new IncomeExample();
+        IncomeExample.Criteria criteria= suitincome.createCriteria();
+        if (map.containsKey("monthMax")&&map.containsKey("monthMin"))
+            criteria.andMonthBetween((String)map.get("monthMin").get(0),(String)map.get("monthMax").get(0));
         if (map.containsKey("area"))
             criteria.andAreaIn(map.get("area"));
         if (map.containsKey("transactionNumMax") && map.containsKey("transactionNumMin"))
@@ -113,6 +128,6 @@ public class IncomeServiceImpl implements IncomeService {
         }
         newmap.put("transactionNum",Transnum);
         newmap.put("feeIncome",Feeincome);
-        return null;
+        return newmap;
     }
 }

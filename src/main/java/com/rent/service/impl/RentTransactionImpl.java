@@ -84,7 +84,7 @@ public class RentTransactionImpl implements RentTransactionService {
         map.put("resmsg",CommonEnum.REQUEST_SUCCESS.getMsg());
         RentTransactionExample suithouse = new RentTransactionExample();
         List<RentTransaction> list = rentTransactionMapper.selectByExample(suithouse);
-        map.put("transId",list.get(list.size()-1).getTenantid());
+        map.put("transId",list.get(list.size()-1).getTransactionid());
 
         return map;
     }
@@ -145,6 +145,8 @@ public class RentTransactionImpl implements RentTransactionService {
         record.setStartmonth(startMonth);
         record.setEndmonth(endNMonth);
         record.setTotalrent(record.getMonthrent() * monthNum);
+        record.setLandlordpaymentagencyfee((float) (record.getTotalrent()*0.03));
+        record.setTenantpaymentagencyfee((float) (record.getTotalrent()*0.03));
         map = insertRentTransaction(record);
         return map;
     }
@@ -157,8 +159,7 @@ public class RentTransactionImpl implements RentTransactionService {
         RentTransaction record = new RentTransaction();
         record.setTransactionid(transId);
         record.setTransactiondate(df.format(new Date()));
-        record.setLandlordpaymentagencyfee((float) (record.getTotalrent()*0.03));
-        record.setTenantpaymentagencyfee((float) (record.getTotalrent()*0.03));
+
         record.setRentstatus(1);
         int num = rentTransactionMapper.updateByPrimaryKeySelective(record);
 
@@ -178,8 +179,7 @@ public class RentTransactionImpl implements RentTransactionService {
         int transnum=income.getTransactionnum();
         float feeincome=income.getFeeincome();
         income.setTransactionnum(transnum+1);
-        income.setFeeincome(feeincome+record.getLandlordpaymentagencyfee()*2);
-
+        income.setFeeincome(feeincome+selectRentTransactionById(transId).getLandlordpaymentagencyfee()*2);
 
         map = incomeService.updateIncome(income);
 
