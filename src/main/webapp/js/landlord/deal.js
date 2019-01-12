@@ -32,3 +32,9 @@ $(document).ready(function() {
      })
  });
 //alert("d???dd?");
+
+
+$('#submit-btn').click(funciton() {
+    $(location).attr('href', '/rentHomeProj_war/signin');
+
+});

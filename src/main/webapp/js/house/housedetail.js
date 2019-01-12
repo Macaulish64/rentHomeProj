@@ -201,7 +201,7 @@ $(document).ready(function() {
     var houseid=$.Request("houseid");
     if (houseid===null) {
         alert("房屋编号错误");
-        $(location).attr('href', '/rentHomeProj_war/houselist');
+     //   $(location).attr('href', '/rentHomeProj_war/houselist');
     }
     else {
         $.ajax({
@@ -209,13 +209,13 @@ $(document).ready(function() {
             url: "http://localhost:8080/rentHomeProj_war/house/details/" + houseid,
             dataType: "json",
             global: "false",
-            datatype: "json",
             success: function (data) {
                 if (data.rescode!==10003) {
                     alert("房屋编号错误");
                     return;
                 }
-                houseinformation(data);
+                var house=data.house;
+                houseinformation(house);
             },
             error: function () {
                 alert("房屋编号错误");
@@ -223,4 +223,21 @@ $(document).ready(function() {
             }
         })
     }
+    alert($('#submitbtn').prop("id"));
+});
+
+function clickclick()
+{
+    alert("????");
+}
+
+$('button').click(function(){
+    var houseid=$.Request("houseid");
+    alert(houseid+"");
+    // if (houseid===null) {
+    //     alert("房屋编号错误");
+    //     $(location).attr('href', '/rentHomeProj_war/houselist');
+    // }
+    // var url='/rentHomeRroj_war/transaction?houseid='+houseid;
+    // $(location).attr('href',url);
 });

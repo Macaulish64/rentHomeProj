@@ -65,7 +65,8 @@ public class HouseController {
             map.put("resmsg", CommonEnum.REQUEST_SUCCESS.getMsg());
             map.put("house", nowhouse);
         }
-        String json= JSON.toJSONString(nowhouse, SerializerFeature.WriteMapNullValue);
+        String json= JSON.toJSONString(map, SerializerFeature.WriteMapNullValue);
+        System.out.println(json);
         return json;
     }
 
