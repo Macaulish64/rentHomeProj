@@ -1,6 +1,8 @@
 package com.rent.web;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.serializer.SerializerFeature;
+import com.rent.common.CommonEnum;
 import com.rent.entity.RentTransaction;
 import com.rent.service.RentTransactionService;
 import org.slf4j.Logger;
@@ -127,4 +129,23 @@ public class TransactionController {
         return JSON.toJSONString(transactionlist);
     }
 
+    @RequestMapping(value="/details/{transid}",method = RequestMethod.GET)
+    @ResponseBody
+    public String transDetails(@PathVariable("transid") int transid)
+    {
+        RentTransaction newtrans=rentTransctionService.selectRentTransactionById(transid);
+        Map<String ,Object> map=new HashMap<String, Object>();
+        if (newtrans==null) {
+            map.put("rescode", CommonEnum.REQUEST_FAILED.getCode());
+            map.put("resmsg",CommonEnum.REQUEST_FAILED.getMsg());
+        }
+        else {
+            map.put("rescode", CommonEnum.REQUEST_SUCCESS.getCode());
+            map.put("resmsg", CommonEnum.REQUEST_SUCCESS.getMsg());
+            map.put("trans", newtrans);
+        }
+        String json= JSON.toJSONString(map, SerializerFeature.WriteMapNullValue);
+        System.out.println(json);
+        return json;
+    }
 }

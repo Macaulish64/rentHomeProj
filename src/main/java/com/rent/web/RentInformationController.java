@@ -53,7 +53,7 @@ public class RentInformationController {
     public String rentDetails(@PathVariable("rentid") int rentid)
     {
         RentInformation nowrent=rentInformationService.selectRentInformationById(rentid);
-        Map<String ,Object> map=new HashMap<>();
+        Map<String ,Object> map=new HashMap<String, Object>();
         if (nowrent==null) {
             map.put("rescode", CommonEnum.REQUEST_FAILED.getCode());
             map.put("resmsg",CommonEnum.REQUEST_FAILED.getMsg());
