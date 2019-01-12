@@ -37,7 +37,7 @@ public class TransactionController {
             userid=Integer.parseInt(request.getParameter("userid"));
         } catch(NumberFormatException e) { }
         try {
-            userid=Integer.parseInt(request.getParameter("houseid"));
+            houseid=Integer.parseInt(request.getParameter("houseid"));
         } catch(NumberFormatException e) { }
         String startMonth,endNMonth;
         startMonth=request.getParameter("startMonth");
@@ -126,8 +126,5 @@ public class TransactionController {
         List<RentTransaction> transactionlist=rentTransctionService.queryRentTransaction(map,0,10);
         return JSON.toJSONString(transactionlist);
     }
-
-
-
 
 }

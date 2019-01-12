@@ -39,8 +39,11 @@ public class TestUserMapper extends BaseTest {
     /* */
     @Test
     public void queryUserId() {
+        UserExample exam = new UserExample();
+        List<User> list = userMapper.selectByExample(exam);
 
 
+        System.out.println(list);
     }
 
     /* */
