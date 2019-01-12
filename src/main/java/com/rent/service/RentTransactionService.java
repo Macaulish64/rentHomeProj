@@ -19,10 +19,10 @@ public interface RentTransactionService {
     public List<RentTransaction> queryRentTransaction(Map<String, List> map, int start, int end);
 
     //租客提交申请
-    public Map<String,Object> submitTransaction(int houseid,int userid);
+    public Map<String,Object> submitTransaction(int houseid,int userid,String startMonth,String endNMonth,int monthNum);
 
     //房东同意申请
-    public Map<String,Object> confirmTransaction(int transId,String startMonth,String endNMonth,int monthNum);
+    public Map<String,Object> confirmTransaction(int transId);
 
     //op为0表示房东，op为1表示租客
     public Map<String,Object> countTransaction(int userid,int op);
