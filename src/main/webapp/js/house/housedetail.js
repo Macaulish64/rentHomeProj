@@ -160,7 +160,7 @@ function houseinformation(data)
         );
     }
     $('#houseprice').append(
-        data.rentmoney+"/月"
+        Number(data.rentmoney)+"/月"
     );
 
 
@@ -190,12 +190,19 @@ function houseinformation(data)
             "空"
         );
     }
+
+
+    if (data.housestatus===1) {
+        $('#submit-btn').html("已出售");
+        $('#submit-btn').prop('class',"btn btn-danger");
+        $('#submit-btn').prop('id',"faile-btn");
+    }
 };
 
 
 
 $(document).ready(function() {
-    var houseid=$.Request("houseid");
+    var houseid=$.Request("house");
     if (houseid===null) {
         alert("房屋编号错误");
      //   $(location).attr('href', '/rentHomeProj_war/houselist');
@@ -220,15 +227,13 @@ $(document).ready(function() {
             }
         })
     }
-    alert($('#wwwantbtn').prop("id"));
-    $('#wwwantbtn').on('click',function(){
-        var houseid=$.Request("houseid");
-        alert(houseid+"");
-        // if (houseid===null) {
-        //     alert("房屋编号错误");
-        //     $(location).attr('href', '/rentHomeProj_war/houselist');
-        // }
-        // var url='/rentHomeRroj_war/transaction?houseid='+houseid;
-        // $(location).attr('href',url);
+    $('#submit-btn').on('click',function(){
+        var houseid=$.Request("house");
+        if (houseid===null) {
+            alert("房屋编号错误");
+            $(location).attr('href', '/rentHomeProj_war/houselist');
+        }
+        var url='/rentHomeProj_war/transaction?house='+houseid;
+        $(location).attr('href',url);
     });
 });

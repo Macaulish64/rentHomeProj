@@ -93,8 +93,8 @@ function stringPaymentMethod(data)
 
 function stringhouseStatus(data)
 {
-    if (data===0) return '已租';
-    if (data===1) return '待租';
+    if (data===0) return '待租';
+    if (data===1) return '已租';
     return "";
 }
 
@@ -178,7 +178,7 @@ $(document).ready(function() {
     trans=$.Request("trans");
     $.ajax({
         type: "GET",
-        url: "http://localhost:8080/rentHomeProj_war/transaction/details/" + trans,
+        url: "http://localhost:8080/rentHomeProj_war/trans/details/" + trans,
         dataType: "json",
         global: "false",
         success: function (data) {
@@ -186,7 +186,7 @@ $(document).ready(function() {
                 alert("交易号错误");
                 return;
             }
-            var transinform = data.RentTransaction;
+            var transinform = data.trans;
             transactionformation(transinform);
         },
         error: function () {
@@ -200,12 +200,12 @@ $(document).ready(function() {
 $('#confirmtransbtn').click(function(){
      $.ajax({
         type: "POST",
-        url: "http://localhost:8080/rentHomeProj_war/transaction/submittransaction/" + trans,
+        url: "http://localhost:8080/rentHomeProj_war/trans/confirmtransaction/" + trans,
         dataType: "json",
         global: "false",
         success: function (data) {
             if (data.rescode !== 10003) {
-                alert("交易请求失败,请再试一次");
+                alert("交易确认失败,请再试一次");
                 return;
             }
             else {
@@ -214,7 +214,7 @@ $('#confirmtransbtn').click(function(){
             }
         },
         error: function () {
-            alert("交易请求失败,请再试一次");
+            alert("交易确认失败,请再试一次");
             // $(location).attr('href', '/house/list');
         }
     })

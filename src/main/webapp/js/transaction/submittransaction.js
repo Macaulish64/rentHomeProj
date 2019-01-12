@@ -162,9 +162,34 @@ function transactionformation(data)
     console.log("!"+strtime);
 };
 
-
-
-$(document).ready(function() {
+$(document).ready(function a() {
+    $('#submit-btn2').on('click',function b(){
+        $.ajax({
+            type: "POST",
+            url: "http://localhost:8080/rentHomeProj_war/trans/submittransaction",
+            dataType: "json",
+            global: "false",
+            data:{ userid : userid,
+                houseid : ahouseid,
+                startmonth : $('#premonth').val(),
+                endmonth : $('#edmonth').val(),
+                monthcount : longtime
+            },
+            success: function (data) {
+                if (data.rescode !== 10003) {
+                    alert("交易请求失败,请再试一次");
+                    return;
+                }
+                alert("交易申请成功");
+                trans=data.transId;
+                $(location).attr('href', 'checktransaction?trans='+trans);
+            },
+            error: function () {
+                alert("交易申请失败,请再试一次");
+                // $(location).attr('href', '/house/list');
+            }
+        })
+    });
     /*当开始时间改变时*/
     $('#premonth').bind("change input keyup", function(){
         updatamoney();
@@ -173,7 +198,8 @@ $(document).ready(function() {
     $('#edmonth').bind("change input keyup",function(){
         updatamoney();
     });
-    var houseid=$.Request("house");
+    if ($.Request("house")!==null) storage["house"]=$.Request("house");
+    houseid=storage["house"];
     if (houseid===null) {
         alert("房屋编号错误");
         //   $(location).attr('href', '/rentHomeProj_war/houselist');
@@ -205,40 +231,3 @@ $(document).ready(function() {
     }
   //  alert($('#submitbtn').prop("id"));
 });
-
-$('#wanthousebtn').click(function(){
-    var obj;
-
-    $.ajax({
-        type: "POST",
-        url: "http://localhost:8080/rentHomeProj_war/transaction/submittransaction",
-        dataType: "json",
-        global: "false",
-        data:{ userid : userid,
-               houseid : ahouseid,
-               startmonth : $('#premonth').val(),
-               endmonth : $('#edmonth').val(),
-               monthcount : longtime
-        },
-        success: function (data) {
-            if (data.rescode !== 10003) {
-                alert("交易请求失败,请再试一次");
-                return;
-            }
-            alert("交易成功");
-            trans=data.renttransaction;
-            $(location).attr('href', '/transaction/checktransaction'+trans.transid);
-        },
-        error: function () {
-            alert("交易请求失败,请再试一次");
-            // $(location).attr('href', '/house/list');
-        }
-    })
-});
-
-
-
-
-
-
-

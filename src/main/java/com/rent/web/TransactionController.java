@@ -22,7 +22,7 @@ String userid = request.getParameter("userid");单值
 String[] insts = request.getParameterValues("inst");多值
  */
 @Controller
-@RequestMapping("transaction")
+@RequestMapping("/trans")
 @CrossOrigin(origins = "*", maxAge = 3600)
 public class TransactionController {
 
@@ -31,7 +31,7 @@ public class TransactionController {
     @Autowired
     private RentTransactionService rentTransctionService;
 
-    @RequestMapping(value = "submittransaction", method = RequestMethod.POST)
+    @RequestMapping(value = "/submittransaction", method = RequestMethod.POST)
     @ResponseBody
     public String submitTransaction(HttpServletRequest request) {
         int userid=0,houseid=0;
