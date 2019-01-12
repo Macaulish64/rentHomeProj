@@ -5,12 +5,8 @@ var userid=storage["userid"]
 var myDate=new Date();
 console.log("输出:"+jwt);
 
-var startdate=$('#startmonth');
-var enddate=$('#endmonth');
 var monthmoney;
 
-alert("time"+$('#startmonth').val());
-alert("time"+$('#startmonth').value);
 //Jquery 加参数或减参数
 /*1、取值使用
 $.Request("act") = 1
@@ -44,6 +40,41 @@ $.UrlUpdateParams(window.location.href, "mid", 11111),*/
     });
 })(jQuery);
 
+function number_format(number) {
+    /*
+    * 参数说明：
+    * number：要格式化的数字
+    * decimals：保留几位小数
+    * dec_point：小数点符号
+    * thousands_sep：千分位符号
+    * */
+    var dec_point='.';
+    var thousands_sep=',';
+    var decimals=2;
+    number = (number + '').replace(/[^0-9+-Ee.]/g, '');
+    var n = !isFinite(+number) ? 0 : +number,
+        prec = !isFinite(+decimals) ? 0 : Math.abs(decimals),
+        sep = (typeof thousands_sep === 'undefined') ? ',' : thousands_sep,
+        dec = (typeof dec_point === 'undefined') ? '.' : dec_point,
+        s = '',
+        toFixedFix = function (n, prec) {
+            var k = Math.pow(10, prec);
+            return '' + Math.ceil(n * k) / k;
+        };
+
+    s = (prec ? toFixedFix(n, prec) : '' + Math.round(n)).split('.');
+    var re = /(-?\d+)(\d{3})/;
+    while (re.test(s[0])) {
+        s[0] = s[0].replace(re, "$1" + sep + "$2");
+    }
+
+    if ((s[1] || '').length < prec) {
+        s[1] = s[1] || '';
+        s[1] += new Array(prec - s[1].length + 1).join('0');
+    }
+    return s.join(dec);
+}
+
 
 function stringHouseTyde(data)
 {
@@ -67,6 +98,30 @@ function stringhouseStatus(data)
     if (data===0) return '已租';
     if (data===1) return '待租';
     return "";
+}
+
+function calcudate(){
+    var date1=$('#premonth').val();
+    var y1=date1.split("-")[0];
+    var m1=date1.split("-")[1];
+
+    var date2=$('#edmonth').val();
+    var y2=date2.split("-")[0];
+    var m2=date2.split("-")[1];
+
+    moneycount =Number(y2-y1)*Number(12)+Number(m2-m1);
+    return moneycount;
+}
+
+function updatamoney()
+{
+    longtime=calcudate();
+    if ( longtime < 0 ) longtime=0;
+    var allmoney=monthmoney*longtime;
+    var middlemoney=Number(allmoney*0.03);
+    $('#rentmoney').prop('value','￥'+number_format(allmoney));
+    $('#landlordagenctfee').prop('value','￥'+number_format(middlemoney));
+    $('#tenantagencyfee').prop('value','￥'+number_format(middlemoney));
 }
 
 
@@ -96,15 +151,24 @@ function transactionformation(data)
     if (month < 10) {
         month = "0" + (month);
     }
-
     var nowDate = (year) + "-" + (month);
-    startdate.val(nowDate);
-    alert(startdate.val());
+    $('#premonth').val(nowDate);
+    var strtime=$('#premonth').val();
+    //alert(strtime);
+    console.log("!"+strtime);
 };
 
 
 
 $(document).ready(function() {
+    /*当开始时间改变时*/
+    $('#premonth').bind("change input keyup", function(){
+        updatamoney();
+    });
+    /*当结束时间改变时*/
+    $('#edmonth').bind("change input keyup",function(){
+        updatamoney();
+    });
     var houseid=$.Request("house");
     if (houseid===null) {
         alert("房屋编号错误");
@@ -117,16 +181,16 @@ $(document).ready(function() {
             dataType: "json",
             global: "false",
             success: function (data) {
-                if (data.rescode!==10003) {
+                if (data.rescode !== 10003) {
                     alert("房屋编号错误");
                     return;
                 }
-                var house=data.house;
-                if (house.rentstate===1) {
+                var house = data.house;
+                if (house.rentstate === 1) {
                     alert("房子已出租，请选择其他房源");
-                }
-                else {
+                } else {
                     transactionformation(house);
+                    updatamoney();
                 }
             },
             error: function () {
@@ -138,36 +202,26 @@ $(document).ready(function() {
   //  alert($('#submitbtn').prop("id"));
 });
 
-function calcudate(){
-    var date1=startdata.val();
-    var y1=date1.split("-")[0];
-    var m1=date1.split("-")[1];
+$('#wanthousebtn').click(function(){
+    var obj;
 
-    var date2=enddata.val();
-    var y2=date2.split("-")[0];
-    var m2=date2.split("-")[1];
+    $.ajax({
+        type: "POST",
+        url: "http://localhost:8080/rentHomeProj_war/house/details/" + houseid,
+        dataType: "json",
+        global: "false",
+        success: function (data) {
+            if (data.rescode !== 10003) {
+                alert("交易请求失败,请再试一次");
+                return;
+            }
 
-    var moneyCount =(y2-y1)*12+m2-m1;
-    return moneyCount;
-}
-
-
-function updatamoney()
-{
-    $('#rentmoney').prop('value',monthmoney*longtime);
-}
-
-/*当开始时间改变时*/
-startdate.change(function(){
-    longtime=calcudate();
-    if ( longtime < 0 ) longtime=0;
-    updatamoney();
-});
-/*当结束时间改变时*/
-enddate.bind('input propertychange',function(event){
-    longtime=calcudate();
-    if ( longtime < 0 ) longtime=0;
-    updatamoney();
+        },
+        error: function () {
+            alert("交易请求失败,请再试一次");
+            // $(location).attr('href', '/house/list');
+        }
+    })
 });
 
 
