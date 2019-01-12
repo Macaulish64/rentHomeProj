@@ -74,8 +74,20 @@ public class HouseServiceImpl implements HouseService {
     }
 
     @Override
-    public int deleteHouse(Integer houseId) {
-       return houseMapper.deleteByPrimaryKey(houseId);
+    public Map<String, Object> deleteHouse(Integer houseId) {
+        Map<String,Object> map=new HashMap<String,Object>();
+        int num = houseMapper.deleteByPrimaryKey(houseId);
+        //失败
+        if (num==0)
+        {
+            map.put("rescode", CommonEnum.REQUEST_FAILED.getCode());
+            map.put("resmsg",CommonEnum.REQUEST_FAILED.getMsg());
+            return map;
+        }
+        //成功
+        map.put("rescode", CommonEnum.REQUEST_SUCCESS.getCode());
+        map.put("resmsg",CommonEnum.REQUEST_SUCCESS.getMsg());
+        return map;
     }
 
     @Override

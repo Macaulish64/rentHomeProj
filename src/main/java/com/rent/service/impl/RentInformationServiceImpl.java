@@ -48,8 +48,21 @@ public class RentInformationServiceImpl implements RentInformationService {
     }
 
     @Override
-    public int deleteRentInformation(Integer rentId) {
-        return rentInformationMapper.deleteByPrimaryKey(rentId);
+    public Map<String, Object> deleteRentInformation(Integer rentId) {
+        Map<String,Object> map=new HashMap<String,Object>();
+        int num=rentInformationMapper.deleteByPrimaryKey(rentId);
+
+        if (num==0)
+        {
+            //失败
+            map.put("rescode", CommonEnum.REQUEST_FAILED.getCode());
+            map.put("resmsg",CommonEnum.REQUEST_FAILED.getMsg());
+            return map;
+        }
+        //成功
+        map.put("rescode", CommonEnum.REQUEST_SUCCESS.getCode());
+        map.put("resmsg",CommonEnum.REQUEST_SUCCESS.getMsg());
+        return map;
     }
 
     @Override

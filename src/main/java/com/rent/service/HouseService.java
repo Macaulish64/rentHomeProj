@@ -16,7 +16,7 @@ public interface HouseService {
     public Map<String,Object> updateHouse(House record);
 
     //在已知房屋标识的情况下，删除房屋
-    public int deleteHouse(Integer houseId);
+    public Map<String,Object> deleteHouse(Integer houseId);
 
     //查找房屋的数量
     public int queryHouseNum(Map<String,List> map);

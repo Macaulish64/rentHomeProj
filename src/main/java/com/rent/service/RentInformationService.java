@@ -10,7 +10,7 @@ public interface RentInformationService {
     public Map<String,Object> insertRentInformation(RentInformation record);
 
     //在已知求租信息标识的情况下，删除房屋信息
-    public int deleteRentInformation(Integer rentId);
+    public Map<String,Object> deleteRentInformation(Integer rentId);
 
     //在已知求租信息标识的情况下，更新房屋信息
     public Map<String,Object> updateRentInformation(RentInformation record);

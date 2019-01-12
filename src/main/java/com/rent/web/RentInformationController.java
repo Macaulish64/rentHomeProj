@@ -3,8 +3,8 @@ package com.rent.web;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.rent.common.CommonEnum;
-import com.rent.entity.House;
-import com.rent.service.HouseService;
+import com.rent.entity.RentInformation;
+import com.rent.service.RentInformationService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,20 +17,19 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
 @Controller
-@RequestMapping("house")
+@RequestMapping("rentinformation")
 @CrossOrigin(origins = "*", maxAge = 3600)
-public class HouseController {
+public class RentInformationController {
     private Logger logger= LoggerFactory.getLogger(this.getClass());
     @Autowired
-    private HouseService houseService;
+    private RentInformationService rentInformationService;
 
     @RequestMapping(value ="/list",method = RequestMethod.POST)
     @ResponseBody
-    public void houseListPageOne(@RequestParam("prideList[]") List<Integer> prideList,
-                              @RequestParam("cityList[]") List<Integer> cityList) {
-        logger.info("!!!I am in House List Test\n");
+    public void rentListPageOne(@RequestParam("prideList[]") List<Integer> prideList,
+                                 @RequestParam("cityList[]") List<Integer> cityList) {
+        logger.info("!!!I am in Rent List Test\n");
         for(Integer i:cityList) {
             logger.info("value="+i);
         }
@@ -41,53 +40,49 @@ public class HouseController {
 
     }
 
-    @RequestMapping(value="/houselist/{pagenumber}",method = RequestMethod.POST)
+    @RequestMapping(value="/rentlist/{pagenumber}",method = RequestMethod.POST)
     @ResponseBody
-    public String houseListPage(HttpServletRequest request)
+    public String rentListPage(HttpServletRequest request)
     {
+
         return "";
     }
 
-    @RequestMapping(value="/details/{houseid}",method = RequestMethod.GET)
+    @RequestMapping(value="/details/{rentid}",method = RequestMethod.GET)
     @ResponseBody
-    public String houseDetails(@PathVariable("houseid") int houseid)
+    public String rentDetails(@PathVariable("rentid") int rentid)
     {
-        House nowhouse=houseService.selectHouseById(houseid);
+        RentInformation nowrent=rentInformationService.selectRentInformationById(rentid);
         Map<String ,Object> map=new HashMap<>();
-        if (nowhouse==null) {
+        if (nowrent==null) {
             map.put("rescode", CommonEnum.REQUEST_FAILED.getCode());
             map.put("resmsg",CommonEnum.REQUEST_FAILED.getMsg());
         }
         else {
             map.put("rescode", CommonEnum.REQUEST_SUCCESS.getCode());
             map.put("resmsg", CommonEnum.REQUEST_SUCCESS.getMsg());
-            map.put("house", nowhouse);
+            map.put("rent", nowrent);
         }
         String json= JSON.toJSONString(map, SerializerFeature.WriteMapNullValue);
         System.out.println(json);
         return json;
     }
 
-    @RequestMapping(value="/addhouse",method=RequestMethod.POST)
+    @RequestMapping(value="/addrent",method=RequestMethod.POST)
     @ResponseBody
-    public String addHouse(HttpServletRequest request)
+    public String addRent(HttpServletRequest request)
     {
-        int publishUserId=0;
+        RentInformation newrent = new RentInformation();
+        int userid=0;
         try{
-            publishUserId = Integer.parseInt(request.getParameter("publishuserid"));
+            userid = Integer.parseInt(request.getParameter("publishuserid"));
         }catch(NumberFormatException e) { }
-        House newhouse = new House();
-        newhouse.setHouseid(publishUserId);
         String cityName = request.getParameter("cityname");
         String communityName = request.getParameter("communityname");
-        int houseType=0,floorNumber=0,elevatorOrNot=0,paymentMethod=0,houseArea = 0;
-        String buildingNumber = request.getParameter("buildingnumber");
+        int houseType=0,floorNumber=0,elevatorOrNot=0,paymentMethod=0;
         String houseDescription = request.getParameter("housedescription");
         try{
             houseType = Integer.parseInt(request.getParameter("housetype"));
-        }catch(NumberFormatException e) { }
-        try{
-            houseArea = Integer.parseInt(request.getParameter("housearea"));
         }catch(NumberFormatException e) { }
         try{
             floorNumber = Integer.parseInt(request.getParameter("floornumber"));
@@ -106,54 +101,49 @@ public class HouseController {
             rentMoney = Float.parseFloat(request.getParameter("rentmoney"));
         }catch(NumberFormatException e) { }
 
-        newhouse.setCityname(cityName);
-        newhouse.setCommunityname(communityName);
-        newhouse.setBuildingnumber(buildingNumber);
-        newhouse.setHousetype(houseType);
-        newhouse.setFloornumber(floorNumber);
-        newhouse.setHousearea(houseArea);
-        newhouse.setElevatorornot(elevatorOrNot);
-        newhouse.setDepositmoney(depositMoney);
-        newhouse.setHousedescription(houseDescription);
-        newhouse.setPaymentmethod(paymentMethod);
-        newhouse.setRentmoney(rentMoney);
+        newrent.setPublishuserid(userid);
+        newrent.setCityname(cityName);
+        newrent.setCommunityname(communityName);
+        newrent.setHousetype(houseType);
+        newrent.setFloornumber(floorNumber);
+        newrent.setElevatorornot(elevatorOrNot);
+        newrent.setDepositmoney(depositMoney);
+        newrent.setHousedescription(houseDescription);
+        newrent.setPaymentmethod(paymentMethod);
+        newrent.setRentmoney(rentMoney);
 
-        Map<String,Object> map = houseService.insertHouse(newhouse);
+        Map<String,Object> map = rentInformationService.insertRentInformation(newrent);
         return JSON.toJSONString(map);
     }
 
-    @RequestMapping(value="/deletehouse",method=RequestMethod.POST)
+    @RequestMapping(value="/deleterent",method=RequestMethod.POST)
     @ResponseBody
-    public String deleteHouse(HttpServletRequest requset)
+    public String deleteRent(HttpServletRequest requset)
     {
-        int houseid = 0;
+        int rentid = 0;
         try{
-            houseid = Integer.parseInt(requset.getParameter("houseid"));
+            rentid = Integer.parseInt(requset.getParameter("rentid"));
         }catch(NumberFormatException e) { }
-        Map<String,Object> map = houseService.deleteHouse(houseid);
+        Map<String,Object> map = rentInformationService.deleteRentInformation(rentid);
         return JSON.toJSONString(map);
     }
 
-    @RequestMapping(value="/updatehouse",method=RequestMethod.POST)
+    @RequestMapping(value="/updaterent",method=RequestMethod.POST)
     @ResponseBody
-    public String updateHouse(HttpServletRequest requset)
+    public String updateRent(HttpServletRequest requset)
     {
-        int houseid=0;
+        int rentid=0;
         try{
-            houseid = Integer.parseInt(requset.getParameter("houseid"));
+            rentid = Integer.parseInt(requset.getParameter("rentid"));
         }catch(NumberFormatException e) { }
-        House newhouse = new House();
-        newhouse.setHouseid(houseid);
+        RentInformation newrent = new RentInformation();
+        newrent.setRentid(rentid);
         String cityName = requset.getParameter("cityname");
         String communityName = requset.getParameter("communityname");
-        int houseType=0,floorNumber=0,elevatorOrNot=0,paymentMethod=0,houseArea = 0;
-        String buildingNumber = requset.getParameter("buildingnumber");
+        int houseType=0,floorNumber=0,elevatorOrNot=0,paymentMethod=0;
         String houseDescription = requset.getParameter("housedescription");
         try{
             houseType = Integer.parseInt(requset.getParameter("housetype"));
-        }catch(NumberFormatException e) { }
-        try{
-            houseArea = Integer.parseInt(requset.getParameter("housearea"));
         }catch(NumberFormatException e) { }
         try{
             floorNumber = Integer.parseInt(requset.getParameter("floornumber"));
@@ -172,37 +162,34 @@ public class HouseController {
             rentMoney = Float.parseFloat(requset.getParameter("rentmoney"));
         }catch(NumberFormatException e) { }
 
-        newhouse.setCityname(cityName);
-        newhouse.setCommunityname(communityName);
-        newhouse.setBuildingnumber(buildingNumber);
-        newhouse.setHousetype(houseType);
-        newhouse.setFloornumber(floorNumber);
-        newhouse.setHousearea(houseArea);
-        newhouse.setElevatorornot(elevatorOrNot);
-        newhouse.setDepositmoney(depositMoney);
-        newhouse.setHousedescription(houseDescription);
-        newhouse.setPaymentmethod(paymentMethod);
-        newhouse.setRentmoney(rentMoney);
+        newrent.setCityname(cityName);
+        newrent.setCommunityname(communityName);
+        newrent.setHousetype(houseType);
+        newrent.setFloornumber(floorNumber);
+        newrent.setElevatorornot(elevatorOrNot);
+        newrent.setDepositmoney(depositMoney);
+        newrent.setHousedescription(houseDescription);
+        newrent.setPaymentmethod(paymentMethod);
+        newrent.setRentmoney(rentMoney);
 
-        Map<String,Object> map = houseService.updateHouse(newhouse);
+        Map<String,Object> map = rentInformationService.updateRentInformation(newrent);
         return JSON.toJSONString(map);
     }
 
-    @RequestMapping(value="/ownerhouselist/{userid}",method=RequestMethod.GET)
+    @RequestMapping(value="/ownerrentlist/{userid}",method= RequestMethod.GET)
     @ResponseBody
-    public String getOwnerHouseList(@PathVariable("userid") int userid,
+    public String getOwnerRentList(@PathVariable("userid") int userid,
                                     HttpServletRequest request) {
-        List<House> houselist;
-        Map<String,List> map=new HashMap<String, List>();
+        List<RentInformation> rentlist;
+        Map<String, List> map=new HashMap<String, List>();
         List<Integer> publishuserlist=new ArrayList<Integer>();
         publishuserlist.add(userid);
         map.put("publishUserId",publishuserlist);
-        houselist=houseService.queryHouse(map,0,3);
-        for(House nowhouse : houselist) {//其内部实质上还是调用了迭代器遍历方式，这种循环方式还有其他限制，不建议使用。
-            System.out.println(nowhouse.toString());
+        rentlist=rentInformationService.queryRentInformation(map,0,3);
+        for(RentInformation nowrent : rentlist) {//其内部实质上还是调用了迭代器遍历方式，这种循环方式还有其他限制，不建议使用。
+            System.out.println(nowrent.toString());
         }
-        String json= JSON.toJSONString(houselist, SerializerFeature.WriteMapNullValue);
+        String json= JSON.toJSONString(rentlist, SerializerFeature.WriteMapNullValue);
         return json;
     }
-
 }

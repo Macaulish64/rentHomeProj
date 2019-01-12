@@ -40,8 +40,8 @@ public class TransactionController {
             houseid=Integer.parseInt(request.getParameter("houseid"));
         } catch(NumberFormatException e) { }
         String startMonth,endNMonth;
-        startMonth=request.getParameter("startMonth");
-        endNMonth=request.getParameter("endNMonth");
+        startMonth=request.getParameter("startmonth");
+        endNMonth=request.getParameter("endmonth");
         int longtime=0;
         try {
             longtime=Integer.parseInt(request.getParameter("monthcount"));
@@ -103,9 +103,9 @@ public class TransactionController {
         List<Integer> rentstate=new ArrayList<Integer>();
         if (op<2) {
             rentstate.add(op);
-            map.put("rentstate",rentstate);
+            map.put("rentStatus",rentstate);
         }
-        map.put("tenantid",tenantid);
+        map.put("tenantId",tenantid);
         List<RentTransaction> transactionlist=rentTransctionService.queryRentTransaction(map,0,10);
         for(RentTransaction attribute : transactionlist) {
             logger.info(attribute.toString());
@@ -121,7 +121,7 @@ public class TransactionController {
         List<Integer> rentstate=new ArrayList<Integer>();
         if (op<2) {
             rentstate.add(op);
-            map.put("rentstate",rentstate);
+            map.put("rentStatus",rentstate);
         }
         List<RentTransaction> transactionlist=rentTransctionService.queryRentTransaction(map,0,10);
         return JSON.toJSONString(transactionlist);
