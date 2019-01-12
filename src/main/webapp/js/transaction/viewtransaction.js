@@ -93,8 +93,8 @@ function stringPaymentMethod(data)
 
 function stringhouseStatus(data)
 {
-    if (data===0) return '待租';
-    if (data===1) return '已租';
+    if (data===0) return '待确认';
+    if (data===1) return '已确认';
     return "";
 }
 
@@ -111,7 +111,7 @@ function transactionformation(data)
         $('#houseid').prop('value',"空")
     }
 
-    $('#landlordid').prop('value',data.publishuserid)
+    $('#landlordid').prop('value',data.landlordid)
     if (data.publishuserid ===null) {
         $('#landlordid').prop('value',"空")
     }
@@ -126,15 +126,20 @@ function transactionformation(data)
         $('#transactiondate').prop('value',"空")
     }
 
+    $('#paymentmethod').prop('value',stringPaymentMethod(data.paymentmethod));
+    if (data.paymentmethod ===null) {
+        $('#paymentmethod').prop('value',"空")
+    }
 
 
-    $('#premonth').prop('value',data.premonth)
-    if (data.premonth ===null) {
+
+    $('#premonth').prop('value',data.startmonth)
+    if (data.startmonth ===null) {
         $('#premonth').prop('value',"空")
     }
 
-    $('#edmonth').prop('value',data.edmonth)
-    if (data.edmonth ===null) {
+    $('#edmonth').prop('value',data.endmonth)
+    if (data.endmonth ===null) {
         $('#edmonth').prop('value',"空")
     }
 
@@ -144,18 +149,18 @@ function transactionformation(data)
         $('#depositmoney').prop('value',"空")
     }
 
-    $('#rentmoney').prop('value',data.rentmoney);
-    if (data.rentmoney ===null) {
+    $('#rentmoney').prop('value',data.totalrent);
+    if (data.totalrent ===null) {
         $('#rentmoney').prop('value',"空")
     }
 
-    $('#landlordagenctfee').prop('value',data.landlordagenctfee);
-    if (data.landlordagenctfee ===null) {
+    $('#landlordagenctfee').prop('value',data.landlordpaymentagencyfee);
+    if (data.landlordpaymentagencyfee ===null) {
         $('#landlordagenctfee').prop('value',"空")
     }
 
-    $('#tenantagencyfee').prop('value',data.tenantagencyfee);
-    if (data.tenantagencyfee ===null) {
+    $('#tenantagencyfee').prop('value',data.tenantpaymentagencyfee);
+    if (data.tenantpaymentagencyfee ===null) {
         $('#tenantagencyfee').prop('value',"空")
     }
 
@@ -169,7 +174,6 @@ function transactionformation(data)
             "</button>"
         )
     }
-    console.log("!"+strtime);
 };
 
 

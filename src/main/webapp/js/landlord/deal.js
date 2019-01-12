@@ -2,7 +2,60 @@ var jwt = window.localStorage["jwt"];
 var username = window.localStorage["username"];
 var userid=window.localStorage['userid'];
 console.log("输出:"+jwt);
-alert("!!");
+
+function stringHouseTyde(data)
+{
+    if (data===1) return '一居';
+    if (data===2) return '二居';
+    if (data===3) return '三居';
+    if (data===4) return '三居以上';
+    return "";
+}
+
+function stringPaymentMethod(data)
+{
+    if (data===0) return '月租';
+    if (data===1) return '季租';
+    if (data===2) return '年租';
+    return "";
+}
+
+
+function stringhouseStatus(data)
+{
+    if (data===0) return '已确认';
+    if (data===1) return '待确认';
+    return "";
+}
+
+function toshowtransactionlist(data)
+{
+    var i;
+    if (data.length===0) return;
+    for(i=0;i<data.length;i++) {
+        $('#pretranslist').append(
+            '<tr>'+
+            '<td>'+data[i].transactionid+
+                '<a class="button" style="alignment:center" ' +
+                'href="checktransaction?trans='+data[i].transactionid+'">'+
+            '</td>'+
+            '<td>'+data[i].houseid+'</td>'+
+            '<td>'+data[i].landlordid +'</td>'+
+            '<td>'+data[i].tenantid +'</td>'+
+            '<td>'+data[i].transactiondate +'</td>'+
+            '<td>'+data[i].startmonth +'</td>'+
+            '<td>'+data[i].endmonth +'</td>'+
+            '<td>'+'￥'+data[i].depositmoney +'</td>'+
+            '<td>'+'￥'+data[i].totalrent+'</td>'+
+            '<td>'+'￥'+data[i].landlordpaymentagencyfee +'</td>'+
+            '<td>'+'￥'+data[i].tenantpaymentagencyfee+'</td>'+
+            '<td>'+stringhouseStatus(Number(data[i].rentstatus))+'</td>'+
+            '<tr>'+'</tr>'
+        );
+    }
+}
+
+
 $(document).ready(function() {
     $.ajax({
         headers: {
@@ -11,30 +64,16 @@ $(document).ready(function() {
             'userid' : userid
         },
         type:"GET",
-        url:"http://localhost:8080/rentHomeProj_war/transaction/queryownerTransaction",
+        url:"http://localhost:8080/rentHomeProj_war/trans/queryownerTransaction/"+userid,
         dataType:"json",
         global:"false",
         data:{ op :0 },
         success:function(data) {
-           /* $('#usereditform').append(
-                '<li>' + data[0].userid + '</li>' +
-                '<li>' + data.usernickname + '</li>' +
-                '<li>' + data.usertype + '</li>'
-            )*/
-       },
-        /* success:function(data){
-           alert(JSON.stringify(data));
-         },*/
-       error:function(){
+            toshowtransactionlist(data);
+        },
+        error:function(){
            alert("Please Log In First");
            // $(location).attr('href', '/rentHomeProj_war/signin');
         }
      })
  });
-//alert("d???dd?");
-
-
-$('#submit-btn').click(funciton() {
-    $(location).attr('href', '/rentHomeProj_war/signin');
-
-});

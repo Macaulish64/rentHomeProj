@@ -35,7 +35,7 @@ public class TestYue extends BaseTest {
             map.put("rentstate",rentstate);
         }
         map.put("landlordId",landlorid);
-        List<RentTransaction> transactionlist=rentTransctionService.queryRentTransaction(map,0,10);
+        List<RentTransaction> transactionlist=rentTransctionService.queryRentTransaction(map,0,5);
         String str=JSON.toJSONString(transactionlist);
         logger.debug(str);
     }

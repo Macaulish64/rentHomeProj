@@ -219,7 +219,8 @@ public class HouseController {
         List<Integer> publishuserlist=new ArrayList<Integer>();
         publishuserlist.add(userid);
         map.put("publishUserId",publishuserlist);
-        houselist=houseService.queryHouse(map,0,3);
+        int listlen=houseService.queryHouseNum(map);
+        houselist=houseService.queryHouse(map,0,listlen);
         for(House nowhouse : houselist) {//其内部实质上还是调用了迭代器遍历方式，这种循环方式还有其他限制，不建议使用。
             System.out.println(nowhouse.toString());
         }

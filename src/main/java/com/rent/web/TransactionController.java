@@ -59,16 +59,13 @@ public class TransactionController {
         return JSON.toJSONString(map);
     }
 
-    @RequestMapping(value = "/queryownerTransaction", method = RequestMethod.GET)
+    @RequestMapping(value = "/queryownerTransaction/{userid}", method = RequestMethod.GET)
     @ResponseBody
-    public String queryOwnerTransaction(HttpServletRequest request) {
-        int userid=0;
+    public String queryOwnerTransaction(@PathVariable("userid") int userid,
+                                        HttpServletRequest request) {
         int op=Integer.parseInt(request.getParameter("op"));
         logger.info("Query Owner Transaction");
         logger.info("Query Type:"+op);
-        try {
-            userid=Integer.parseInt(request.getParameter("userid"));
-        } catch(NumberFormatException e) { }
         Map<String,List> map=new HashMap<String,List>();
         List<Integer> landlorid=new ArrayList<Integer>();
         landlorid.add(userid);
@@ -78,17 +75,18 @@ public class TransactionController {
             map.put("rentstate",rentstate);
         }
         map.put("landlordId",landlorid);
-        List<RentTransaction> transactionlist=rentTransctionService.queryRentTransaction(map,0,10);
+        int listLen=rentTransctionService.queryRentTransactionNum(map);
+        List<RentTransaction> transactionlist=rentTransctionService.queryRentTransaction(map,0,listLen);
         return JSON.toJSONString(transactionlist);
     }
 
-    @RequestMapping(value = "queryHolderTransaction/{op}", method = RequestMethod.GET)
+    @RequestMapping(value = "queryHolderTransaction/{userid}", method = RequestMethod.GET)
     @ResponseBody
-    public String queryHolderTransaction(@PathVariable("op") int op,
+    public String queryHolderTransaction(@PathVariable("userid") int userid,
                                             HttpServletRequest request) {
-        int userid=0;
+        int op=0;
         try {
-            userid=Integer.parseInt(request.getParameter("userid"));
+            userid=Integer.parseInt(request.getParameter("op"));
         } catch(NumberFormatException e) { }
         Map<String,List> map=new HashMap<String,List>();
         List<Integer> tenantid=new ArrayList<Integer>();

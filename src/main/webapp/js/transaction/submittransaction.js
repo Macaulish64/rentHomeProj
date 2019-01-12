@@ -95,8 +95,8 @@ function stringPaymentMethod(data)
 
 function stringhouseStatus(data)
 {
-    if (data===0) return '已租';
-    if (data===1) return '待租';
+    if (data===0) return '待租';
+    if (data===1) return '已租';
     return "";
 }
 
