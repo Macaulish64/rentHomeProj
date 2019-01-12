@@ -3,7 +3,19 @@
 
 
 $('#search-btn').click(function(){
-	
+	var map={};
+	var houseType =new Array();
+	var i;
+	var str,str2;
+	str="houseType";
+	for(i=0;i<=3;i++) {
+		str2=str+i;
+		if ($('#'+str2).attr('checked')) houseType.add(i);
+	}
+	str="depositMoneyMin",
+	if ($('#'+houseAreaMin))
+	publishUserId.add()
+
 
 
 
