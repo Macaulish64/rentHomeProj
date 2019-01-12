@@ -36,12 +36,7 @@ public class IndexController {
 
 	@RequestMapping("/transaction")
 	public String transaction() {
-		return "templates/transaction/transaction";
-	}
-
-	@RequestMapping("/checktransaction")
-	public String checktransaction() {
-		return "templates/transaction/checktransaction";
+		return "templates/transaction";
 	}
 
 	@RequestMapping("/demandlist")
