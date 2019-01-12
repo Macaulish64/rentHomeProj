@@ -51,7 +51,7 @@ public class RentInformationController {
 
     @RequestMapping(value="/details/{rentid}",method = RequestMethod.GET)
     @ResponseBody
-    public String houseDetails(@PathVariable("rentid") int rentid)
+    public String rentDetails(@PathVariable("rentid") int rentid)
     {
         RentInformation nowrent=rentInformationService.selectRentInformationById(rentid);
         Map<String ,Object> map=new HashMap<>();
@@ -73,8 +73,48 @@ public class RentInformationController {
     @ResponseBody
     public String addRent(HttpServletRequest request)
     {
+        RentInformation newrent = new RentInformation();
+        int userid=0;
+        try{
+            userid = Integer.parseInt(request.getParameter("publishUserId"));
+        }catch(NumberFormatException e) { }
+        String cityName = request.getParameter("cityName");
+        String communityName = request.getParameter("communityName");
+        int houseType=0,floorNumber=0,elevatorOrNot=0,paymentMethod=0;
+        String houseDescription = request.getParameter("houseDescription");
+        try{
+            houseType = Integer.parseInt(request.getParameter("houseType"));
+        }catch(NumberFormatException e) { }
+        try{
+            floorNumber = Integer.parseInt(request.getParameter("floorNumber"));
+        }catch(NumberFormatException e) { }
+        try{
+            elevatorOrNot = Integer.parseInt(request.getParameter("elevatorOrNot"));
+        }catch(NumberFormatException e) { }
+        try{
+            paymentMethod = Integer.parseInt(request.getParameter("paymentMethod"));
+        }catch(NumberFormatException e) { }
+        float depositMoney = 0, rentMoney =0;
+        try{
+            depositMoney = Float.parseFloat(request.getParameter("depositMoney"));
+        }catch(NumberFormatException e) { }
+        try{
+            rentMoney = Float.parseFloat(request.getParameter("rentMoney"));
+        }catch(NumberFormatException e) { }
 
-        return "";
+        newrent.setPublishuserid(userid);
+        newrent.setCityname(cityName);
+        newrent.setCommunityname(communityName);
+        newrent.setHousetype(houseType);
+        newrent.setFloornumber(floorNumber);
+        newrent.setElevatorornot(elevatorOrNot);
+        newrent.setDepositmoney(depositMoney);
+        newrent.setHousedescription(houseDescription);
+        newrent.setPaymentmethod(paymentMethod);
+        newrent.setRentmoney(rentMoney);
+
+        Map<String,Object> map = rentInformationService.insertRentInformation(newrent);
+        return JSON.toJSONString(map);
     }
 
     @RequestMapping(value="/deleterent",method=RequestMethod.POST)
@@ -88,7 +128,48 @@ public class RentInformationController {
     @ResponseBody
     public String updateRent(HttpServletRequest requset)
     {
-        return "";
+        int rentid=0;
+        try{
+            rentid = Integer.parseInt(requset.getParameter("rentId"));
+        }catch(NumberFormatException e) { }
+        RentInformation newrent = new RentInformation();
+        newrent.setRentid(rentid);
+        String cityName = requset.getParameter("cityName");
+        String communityName = requset.getParameter("communityName");
+        int houseType=0,floorNumber=0,elevatorOrNot=0,paymentMethod=0;
+        String houseDescription = requset.getParameter("houseDescription");
+        try{
+            houseType = Integer.parseInt(requset.getParameter("houseType"));
+        }catch(NumberFormatException e) { }
+        try{
+            floorNumber = Integer.parseInt(requset.getParameter("floorNumber"));
+        }catch(NumberFormatException e) { }
+        try{
+            elevatorOrNot = Integer.parseInt(requset.getParameter("elevatorOrNot"));
+        }catch(NumberFormatException e) { }
+        try{
+            paymentMethod = Integer.parseInt(requset.getParameter("paymentMethod"));
+        }catch(NumberFormatException e) { }
+        float depositMoney = 0, rentMoney =0;
+        try{
+            depositMoney = Float.parseFloat(requset.getParameter("depositMoney"));
+        }catch(NumberFormatException e) { }
+        try{
+            rentMoney = Float.parseFloat(requset.getParameter("rentMoney"));
+        }catch(NumberFormatException e) { }
+
+        newrent.setCityname(cityName);
+        newrent.setCommunityname(communityName);
+        newrent.setHousetype(houseType);
+        newrent.setFloornumber(floorNumber);
+        newrent.setElevatorornot(elevatorOrNot);
+        newrent.setDepositmoney(depositMoney);
+        newrent.setHousedescription(houseDescription);
+        newrent.setPaymentmethod(paymentMethod);
+        newrent.setRentmoney(rentMoney);
+
+        Map<String,Object> map = rentInformationService.updateRentInformation(newrent);
+        return JSON.toJSONString(map);
     }
 
 
