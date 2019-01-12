@@ -39,26 +39,30 @@ public class TransactionController {
         try {
             userid=Integer.parseInt(request.getParameter("houseid"));
         } catch(NumberFormatException e) { }
-        Map<String,Object> map=rentTransctionService.submitTransaction(houseid,userid);
+        String startMonth,endNMonth;
+        startMonth=request.getParameter("startMonth");
+        endNMonth=request.getParameter("endNMonth");
+        int longtime=0;
+        try {
+            longtime=Integer.parseInt(request.getParameter("monthcount"));
+        } catch(NumberFormatException e) { }
+        Map<String,Object> map=rentTransctionService.submitTransaction(houseid,userid,startMonth,endNMonth,longtime);
         return JSON.toJSONString(map);
     }
 
     @RequestMapping(value = "confirmtransaction", method = RequestMethod.POST)
     @ResponseBody
     public String confirmTransaction(HttpServletRequest request) {
-        int transid=0,monthNum=0,num1,num2;
-        String startMonth,endNMonth;
+        int transid=0,num1;
+//        ,monthNum=0,num1,num2;
+//        String startMonth,endNMonth;
         try {
             transid=Integer.parseInt(request.getParameter("transid"));
         } catch(NumberFormatException e) { }
-        try {
-            monthNum=Integer.parseInt(request.getParameter("monthNum"));
-        } catch(NumberFormatException e) { }
-        num1=transid;
-        num2=monthNum;
-        startMonth=request.getParameter("startMonth");
-        endNMonth=request.getParameter("endNMonth");
-        Map<String,Object> map=rentTransctionService.confirmTransaction(num1,startMonth,endNMonth,num2);
+//        try {
+//            monthNum=Integer.parseInt(request.getParameter("monthNum"));
+//        } catch(NumberFormatException e) { }
+        Map<String,Object> map=rentTransctionService.confirmTransaction(transid);
         return JSON.toJSONString(map);
     }
 
