@@ -25,8 +25,6 @@
   <link rel="stylesheet" th:href="@{css/style.css}">
   <link rel="stylesheet" th:href="@{css/style-responsive.css}">
 
-  <link rel="stylesheet" th:href="@{css/w3.css}">
-
 </head>
 
 <body>
@@ -40,89 +38,63 @@
     <a href="adminindex.html" class="logo">后台管理系统</a>
   </header>
 
-  <section id="main-content" class="row">
-    <!--顶部结束-->
-    <!--侧栏开始-->
-    <section class="col-sm-2">
-      <div id="sidebar"  class="nav-collapse ">
-        <!-- sidebar menu start-->
-        <ul class="sidebar-menu" id="nav-accordion">
-          <li>
-            <a th:href="@{/adminindex}">
-              <i class="fa fa-dashboard"></i>
-              <span>Dashboard</span>
-            </a>
-          </li>
-
-          <li >
-            <a >
-              <i class="fa fa-laptop"></i>
-              <span>Layouts</span>
-            </a>
-            <ul>
-              <li><a th:href="@{/adminusrlist}">Users</a></li>
-              <li><a th:href="@{/adminhouselist}">Houses</a></li>
-              <li><a th:href="@{/admindemandlist}">Demands</a></li>
-              <li><a th:href="@{/admintransactionlist}">Transactions</a></li>
-              <li><a th:href="@{/adminstatistics}">Statistics</a></li>
-            </ul>
-          </li>
-        </ul>
-        <!-- sidebar menu end-->
-      </div>
-    </section>
-    <!--侧栏结束-->
-    <!--主体内容-->
-
-    <section class="panel col-sm-10">
-      <div class="panel-body">
-        <div>
-          <table class="table table-hover">
-            <thead>
-            <tr>
-              <th>房屋ID</th>
-              <th>城市</th>
-              <th>社区</th>
-              <th>楼门号</th>
-              <th>房屋类型</th>
-              <th>房屋面积</th>
-              <th>楼层</th>
-              <th>是否有电梯</th>
-              <th>押金</th>
-              <th>租金支付方式</th>
-              <th>租金</th>
-              <th>注册时间</th>
-              <th>修改时间</th>
-              <th>已租/待租</th>
-            </tr>
-            </thead>
-            <tbody id="ownerhouselist">
-            <tr>
-              <td>111</td>
-              <td>Beijing</td>
-              <td>Haidian</td>
-              <td>456</td>
-              <td>三室两厅</td>
-              <td>500平米</td>
-              <td>234</td>
-              <td>有</td>
-              <td>￥192831081</td>
-              <td>￥1931081</td>
-              <td>支付宝</td>
-              <td>2019/1/11 0:00</td>
-              <td>2019/1/11 1:00</td>
-              <td>已租</td>
-            </tr>
-            </tbody>
-          </table>
+  <section id="main-content">
+    <div class="row ">
+      <div class="col-sm-2">
+        <section class="panel-heading">
+          后台管理系统
+        </section>
+        <div class="list-group">
+          <div class="list-group-item"><a th:href="@{/adminusrlist}">Users</a></div>
+          <div class="list-group-item"><a th:href="@{/adminhouselist}">Houses</a></div>
+          <div class="list-group-item"><a th:href="@{/admindemandlist}">Demands</a></div>
+          <div class="list-group-item"><a th:href="@{/admintransactionlist}">Transactions</a></div>
+          <div class="list-group-item"><a th:href="@{/adminstatistics}">Statistics</a></div>
         </div>
       </div>
-    </section>
+
+      <div class="col-sm-10">
+        <header>User List</header>
+        <table class="table table-hover">
+          <thead>
+          <tr>
+            <th>userId</th>
+            <th>userNickName</th>
+            <th>password</th>
+            <th>userType</th>
+            <th>userName</th>
+            <th>cardType</th>
+            <th>idNumber</th>
+            <th>phoneNumber</th>
+            <th>userLevel</th>
+            <th>registCity</th>
+            <th>updateTime</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>a</td>
+            <td>b</td>
+            <td>c</td>
+            <td>d</td>
+            <td>e</td>
+            <td>f</td>
+            <td>g</td>
+            <td>h</td>
+            <td>i</td>
+            <td>j</td>
+            <td>k</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </section>
   <!--main content end-->
 
+
   <!--footer start-->
-  <footer class="site-footer">
+  <footer>
     <div class="text-center">
       @Copyright haha
       <a href="#" class="go-top">
@@ -137,4 +109,5 @@
 
 </body>
 </html>
+
 

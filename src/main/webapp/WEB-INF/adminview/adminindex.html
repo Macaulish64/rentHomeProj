@@ -15,7 +15,7 @@
     <link rel="stylesheet" th:href="@{css/font-awesome/css/font-awesome.css}">
     <!--统计插件https://github.com/rendro/easy-pie-chart/-->
     <link th:href="@{css/jquery-easy-pie-chart/jquery.easy-pie-chart.css}" rel="stylesheet" type="text/css" media="screen">
-     <!--幻灯片插件-->
+    <!--幻灯片插件-->
     <link rel="stylesheet" th:href="@{css/owl.carousel.css}" type="text/css">
 
     <!--right slidebar-->
@@ -37,48 +37,31 @@
         </div>
         <a href="adminindex.html" class="logo">后台管理系统</a>
     </header>
-    <!--顶部结束-->
-    <!--侧栏开始-->
-    <aside>
-        <div id="sidebar"  class="nav-collapse ">
-            <!-- sidebar menu start-->
-            <ul class="sidebar-menu" id="nav-accordion">
-                <li>
-                    <a th:href="@{/adminindex}">
-                        <i class="fa fa-dashboard"></i>
-                        <span>Dashboard</span>
-                    </a>
-                </li>
 
-                <li >
-                    <a >
-                        <i class="fa fa-laptop"></i>
-                        <span>Layouts</span>
-                    </a>
-                    <ul>
-                        <li><a th:href="@{/adminusrlist}">Users</a></li>
-                        <li><a th:href="@{/adminhouselist}">Houses</a></li>
-                        <li><a th:href="@{/admindemandlist}">Demands</a></li>
-                        <li><a th:href="@{/admintransactionlist}">Transactions</a></li>
-                        <li><a th:href="@{/adminstatistics}">Statistics</a></li>
-                    </ul>
-                </li>
-            </ul>
-            <!-- sidebar menu end-->
-        </div>
-    </aside>
-    <!--侧栏结束-->
-    <!--主体内容-->
     <section id="main-content">
-        <section class="wrapper">
-        </section>
+      <div class="row">
+
+          <div class="col-sm-2">
+              <section class="panel-heading">
+                  后台管理系统
+              </section>
+              <div class="list-group">
+                  <div class="list-group-item"><a th:href="@{/adminusrlist}">Users</a></div>
+                  <div class="list-group-item"><a th:href="@{/adminhouselist}">Houses</a></div>
+                  <div class="list-group-item"><a th:href="@{/admindemandlist}">Demands</a></div>
+                  <div class="list-group-item"><a th:href="@{/admintransactionlist}">Transactions</a></div>
+                  <div class="list-group-item"><a th:href="@{/adminstatistics}">Statistics</a></div>
+              </div>
+          </div>
+
+          <div class="col-sm-10"></div>
+      </div>
     </section>
     <!--main content end-->
 
 
-
     <!--footer start-->
-    <footer class="site-footer">
+    <footer>
         <div class="text-center">
             @Copyright haha
             <a href="#" class="go-top">
@@ -93,3 +76,6 @@
 
 </body>
 </html>
+
+
+

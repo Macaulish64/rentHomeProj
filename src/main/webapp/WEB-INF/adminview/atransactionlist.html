@@ -39,76 +39,61 @@
     </div>
     <a href="adminindex.html" class="logo">后台管理系统</a>
   </header>
-  <!--顶部结束-->
-  <!--侧栏开始-->
-  <aside>
-    <div id="sidebar"  class="nav-collapse ">
-      <!-- sidebar menu start-->
-      <ul class="sidebar-menu" id="nav-accordion">
-        <li>
-          <a th:href="@{/adminindex}">
-            <i class="fa fa-dashboard"></i>
-            <span>Dashboard</span>
-          </a>
-        </li>
 
-        <li >
-          <a >
-            <i class="fa fa-laptop"></i>
-            <span>Layouts</span>
-          </a>
-          <ul>
-            <li><a th:href="@{/adminusrlist}">Users</a></li>
-            <li><a th:href="@{/adminhouselist}">Houses</a></li>
-            <li><a th:href="@{/admindemandlist}">Demands</a></li>
-            <li><a th:href="@{/admintransactionlist}">Transactions</a></li>
-            <li><a th:href="@{/adminstatistics}">Statistics</a></li>
-          </ul>
-        </li>
-      </ul>
-      <!-- sidebar menu end-->
-    </div>
-  </aside>
-  <!--侧栏结束-->
-  <!--主体内容-->
   <section id="main-content">
+    <div class="row">
+      <div class="col-sm-2">
+        <section class="panel-heading">
+          后台管理系统
+        </section>
+        <div class="list-group">
+          <div class="list-group-item"><a th:href="@{/adminusrlist}">Users</a></div>
+          <div class="list-group-item"><a th:href="@{/adminhouselist}">Houses</a></div>
+          <div class="list-group-item"><a th:href="@{/admindemandlist}">Demands</a></div>
+          <div class="list-group-item"><a th:href="@{/admintransactionlist}">Transactions</a></div>
+          <div class="list-group-item"><a th:href="@{/adminstatistics}">Statistics</a></div>
+        </div>
+      </div>
 
-    <div class="panel-body">
-      <div>
-        <table class="table table-hover">
-          <thead>
-          <tr>
-            <th>交易号</th>
-            <th>房屋ID</th>
-            <th>房东ID</th>
-            <th>房客ID</th>
-            <th>交易日期</th>
-            <th>开始时间</th>
-            <th>结束时间</th>
-            <th>押金</th>
-            <th>总租金</th>
-            <th>房东中介费</th>
-            <th>房客中介费</th>
-            <th>租借状态</th>
-          </tr>
-          </thead>
-          <tbody id="pretranslist">
-          <tr>
-            <td>77477</td>
-            <td>2934789</td>
-            <td>289345</td>
-            <td>0297834</td>
-            <td>2019/1/11 11:11</td>
-            <td>2019/1/11 11:12</td>
-            <td>2019/12/11 12:11</td>
-            <td>￥444</td>
-            <td>￥55555</td>
-            <td>￥321</td>
-            <td>￥999</td>
-            <td>已付款</td>
-          </tr>
-          </tbody>
-        </table>
+      <div class="col-sm-10">
+        <div class="panel-body">
+          <div>
+            <table class="table table-hover">
+              <thead>
+              <tr>
+                <th>交易号</th>
+                <th>房屋ID</th>
+                <th>房东ID</th>
+                <th>房客ID</th>
+                <th>交易日期</th>
+                <th>开始时间</th>
+                <th>结束时间</th>
+                <th>押金</th>
+                <th>总租金</th>
+                <th>房东中介费</th>
+                <th>房客中介费</th>
+                <th>租借状态</th>
+              </tr>
+              </thead>
+              <tbody id="pretranslist">
+              <tr>
+                <td>77477</td>
+                <td>2934789</td>
+                <td>289345</td>
+                <td>0297834</td>
+                <td>2019/1/11 11:11</td>
+                <td>2019/1/11 11:12</td>
+                <td>2019/12/11 12:11</td>
+                <td>￥444</td>
+                <td>￥55555</td>
+                <td>￥321</td>
+                <td>￥999</td>
+                <td>已付款</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
     </div>
   </section>
