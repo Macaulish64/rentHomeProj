@@ -43,10 +43,10 @@ public class RentTransactionImpl implements RentTransactionService {
             criteria.andTenantidIn(map.get("tenantId"));
         if (map.containsKey("transactionDate"))
             criteria.andTransactiondateIn(map.get("transactionDate"));
-        if (map.containsKey("startMonth"))
-            criteria.andStartmonthIn(map.get("startMonth"));
-        if (map.containsKey("endMonth"))
-            criteria.andEndmonthIn(map.get("endMonth"));
+        if (map.containsKey("startMonthMin") && map.containsKey("startMonthMax"))
+            criteria.andStartmonthBetween((String)map.get("startMonthMin").get(0),(String)map.get("endMonthMax").get(0));
+        if (map.containsKey("endMonthMin") && map.containsKey("endMonthMax"))
+            criteria.andEndmonthBetween((String)map.get("endMonthMin").get(0),(String)map.get("endMonthMax").get(0));
         if (map.containsKey("paymentMethod"))
             criteria.andPaymentmethodIn(map.get("paymentMethod"));
         if (map.containsKey("depositMoneyMax") && map.containsKey("depositMoneyMin"))
@@ -105,10 +105,10 @@ public class RentTransactionImpl implements RentTransactionService {
             criteria.andTenantidIn(map.get("tenantId"));
         if (map.containsKey("transactionDate"))
             criteria.andTransactiondateIn(map.get("transactionDate"));
-        if (map.containsKey("startMonth"))
-            criteria.andStartmonthIn(map.get("startMonth"));
-        if (map.containsKey("endMonth"))
-            criteria.andEndmonthIn(map.get("endMonth"));
+        if (map.containsKey("startMonthMin") && map.containsKey("startMonthMax"))
+            criteria.andStartmonthBetween((String)map.get("startMonthMin").get(0),(String)map.get("endMonthMax").get(0));
+        if (map.containsKey("endMonthMin") && map.containsKey("endMonthMax"))
+            criteria.andEndmonthBetween((String)map.get("endMonthMin").get(0),(String)map.get("endMonthMax").get(0));
         if (map.containsKey("paymentMethod"))
             criteria.andPaymentmethodIn(map.get("paymentMethod"));
         if (map.containsKey("depositMoneyMax") && map.containsKey("depositMoneyMin"))
@@ -128,7 +128,7 @@ public class RentTransactionImpl implements RentTransactionService {
 
     //租客提交申请
     @Override
-    public Map<String,Object> submitTransaction(int houseid,int userid)
+    public Map<String,Object> submitTransaction(int houseid,int userid,String startMonth,String endNMonth,int monthNum)
     {
         Map<String,Object> map = new HashMap<String, Object>();
         House house = houseMapper.selectByPrimaryKey(houseid);
@@ -139,21 +139,21 @@ public class RentTransactionImpl implements RentTransactionService {
         record.setDepositmoney(house.getDepositmoney());
         record.setPaymentmethod(house.getPaymentmethod());
         record.setMonthrent(house.getRentmoney());
+        record.setStartmonth(startMonth);
+        record.setEndmonth(endNMonth);
+        record.setTotalrent(record.getMonthrent() * monthNum);
         map = insertRentTransaction(record);
         return map;
     }
 
     //房东同意申请
     @Override
-    public Map<String,Object> confirmTransaction(int transId,String startMonth,String endNMonth,int monthNum)
+    public Map<String,Object> confirmTransaction(int transId)
     {
         Map<String,Object> map=new HashMap<String,Object>();
         RentTransaction record = new RentTransaction();
         record.setTransactionid(transId);
         record.setTransactiondate(df.format(new Date()));
-        record.setStartmonth(startMonth);
-        record.setEndmonth(endNMonth);
-        record.setTotalrent(selectRentTransactionById(transId).getMonthrent() * monthNum);
         record.setLandlordpaymentagencyfee((float) (record.getTotalrent()*0.03));
         record.setTenantpaymentagencyfee((float) (record.getTotalrent()*0.03));
         record.setRentstatus(1);

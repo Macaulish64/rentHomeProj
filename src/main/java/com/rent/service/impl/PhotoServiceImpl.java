@@ -1,7 +1,9 @@
 package com.rent.service.impl;
 
 import com.rent.common.CommonEnum;
+import com.rent.dao.HouseMapper;
 import com.rent.dao.PhotoMapper;
+import com.rent.entity.House;
 import com.rent.entity.Photo;
 import com.rent.entity.PhotoExample;
 import com.rent.service.PhotoService;
@@ -19,6 +21,8 @@ public class PhotoServiceImpl implements PhotoService {
     private Logger logger= LoggerFactory.getLogger(this.getClass());
     @Autowired
     private PhotoMapper photoMapper;
+    @Autowired
+    private HouseMapper houseMapper;
 
 
     @Override
@@ -37,12 +41,23 @@ public class PhotoServiceImpl implements PhotoService {
         map.put("resmsg",CommonEnum.REQUEST_SUCCESS.getMsg());
         PhotoExample suithouse = new PhotoExample();
         List<Photo> list = photoMapper.selectByExample(suithouse);
-        map.put("photoId",list.get(list.size()-1).getPhotoid());
+
+        Photo newphoto = list.get(list.size()-1);
+        map.put("photoId",newphoto.getPhotoid());
+        House newhouse = houseMapper.selectByPrimaryKey(newphoto.getHouseid());
+        int photonum = newhouse.getPhotonum() + 1;
+        newhouse.setPhotonum(photonum);
+        houseMapper.updateByPrimaryKeySelective(newhouse);
         return map;
     }
 
     @Override
     public int deletePhoto(Integer photoid) {
+        Photo newphoto = photoMapper.selectByPrimaryKey(photoid);
+        House newhouse = houseMapper.selectByPrimaryKey(newphoto.getHouseid());
+        int photonum = newhouse.getPhotonum() - 1;
+        newhouse.setPhotonum(photonum);
+        houseMapper.updateByPrimaryKeySelective(newhouse);
         return photoMapper.deleteByPrimaryKey(photoid);
     }
 
