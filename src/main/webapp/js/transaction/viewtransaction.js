@@ -2,10 +2,8 @@ var storage=window.localStorage;
 var jwt = storage["jwt"];
 var username = storage["username"];
 var userid=storage["userid"]
-var myDate=new Date();
+var trans;
 console.log("输出:"+jwt);
-
-var monthmoney;
 
 //Jquery 加参数或减参数
 /*1、取值使用
@@ -103,10 +101,10 @@ function stringhouseStatus(data)
 
 function transactionformation(data)
 {
-    $('#transactionid').prop('value',data.transactionid)
-    if (data.transactionid ===null) {
+    $('#transactionid').prop('value',trans)
+  /*  if (data.transactionid ===null) {
         $('#transactionid').prop('value',"空")
-    }
+    }*/
 
     $('#houseid').prop('value',data.houseid)
     if (data.houseid ===null) {
@@ -177,10 +175,10 @@ function transactionformation(data)
 
 
 $(document).ready(function() {
-    var trans=$.Request("trans");
+    trans=$.Request("trans");
     $.ajax({
         type: "GET",
-        url: "http://localhost:8080/rentHomeProj_war/transaction/details/" + transaction,
+        url: "http://localhost:8080/rentHomeProj_war/transaction/details/" + trans,
         dataType: "json",
         global: "false",
         success: function (data) {
@@ -188,8 +186,8 @@ $(document).ready(function() {
                 alert("交易号错误");
                 return;
             }
-            var transa = data.transa;
-            transactionformation(house);
+            var transinform = data.RentTransaction;
+            transactionformation(transinform);
         },
         error: function () {
             alert("交易号错误");
@@ -200,9 +198,7 @@ $(document).ready(function() {
 });
 
 $('#confirmtransbtn').click(function(){
-    var obj;
-
-    $.ajax({
+     $.ajax({
         type: "POST",
         url: "http://localhost:8080/rentHomeProj_war/transaction/submittransaction/" + trans,
         dataType: "json",
@@ -216,7 +212,6 @@ $('#confirmtransbtn').click(function(){
                 alert("已成功确认");
                 window.location.reload();
             }
-
         },
         error: function () {
             alert("交易请求失败,请再试一次");

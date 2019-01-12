@@ -52,18 +52,9 @@ public class TransactionController {
         return JSON.toJSONString(map);
     }
 
-    @RequestMapping(value = "confirmtransaction", method = RequestMethod.POST)
+    @RequestMapping(value = "/confirmtransaction/{transid}", method = RequestMethod.POST)
     @ResponseBody
-    public String confirmTransaction(HttpServletRequest request) {
-        int transid=0,num1;
-//        ,monthNum=0,num1,num2;
-//        String startMonth,endNMonth;
-        try {
-            transid=Integer.parseInt(request.getParameter("transid"));
-        } catch(NumberFormatException e) { }
-//        try {
-//            monthNum=Integer.parseInt(request.getParameter("monthNum"));
-//        } catch(NumberFormatException e) { }
+    public String confirmTransaction(@PathVariable("transid") int transid) {
         Map<String,Object> map=rentTransctionService.confirmTransaction(transid);
         return JSON.toJSONString(map);
     }
