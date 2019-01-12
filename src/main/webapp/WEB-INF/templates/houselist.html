@@ -41,17 +41,6 @@
 
 <script th:src="@{/js/house/houselist.js}"></script>
 
-<style>
-	.houseimg {
-		width: 250px;
-		height: 250px;
-	}
-
-	#main-content {
-		padding-top: 50px;
-	}
-</style>
-
 <section id="container">
 	<!-- Navbar -->
 	<header class="w3-top">
@@ -68,39 +57,60 @@
 	</header>
 
 	<section id="main-content">
-    <form class="search-result">
-			<div class="row panel">
-				<label class="col-sm-1 control-label" for="search-input">Search</label>
-        <div class="col-sm-8">
-					<input class="form-control w3-xlarge" type="text" id="search-input">
-					<p class="help-block">About ... results (... seconds)</p>
+
+		<div class="panel round-panel">
+			<form>
+				<hr>
+				<div class="form-group">
+					<b class="bbb">区域</b>
+					<input type="checkbox" name="district1" value="0"> 海淀区
+					<input type="checkbox" name="district2" value="1"> 朝阳区
+					<input type="checkbox" name="district3" value="2"> 浦东新区
+					<input type="checkbox" name="district4" value="3"> 静安区
 				</div>
-				<div class="col-sm-2">
-					<button class="btn" type="submit">SEARCH</button>
+        <hr>
+				<div class="form-group">
+					<b class="bbb">类型</b>
+					<input type="checkbox" name="housetype1" value="0"> 一居
+					<input type="checkbox" name="housetype2" value="1"> 两居
+					<input type="checkbox" name="housetype3" value="2"> 三居
+					<input type="checkbox" name="housetype4" value="3"> 四居+
 				</div>
-			</div>
-      <div class="row panel">
-				<label for="select-province">Province</label>
-				<select id="select-province">
-					<option>Bj</option>
-					<option>Sh</option>
-					<option>AN</option>
-					<option>SC</option>
-				</select>
-				<label for="select-city">Province</label>
-				<select id="select-city">
-					<option>Bj</option>
-					<option>Ai</option>
-					<option>Zh</option>
-				</select>
-				<label for="select-district">Province</label>
-				<select id="select-district">
-					<option>QAZ</option>
-					<option>WSX</option>
-					<option>EDC</option>
-				</select>
-			</div>
-		</form>
+				<hr>
+				<div class="form-group">
+					<b class="bbb">面积</b>
+					<input type="checkbox" name="housearea1" value="0"> 10平以下
+					<input type="checkbox" name="housearea2" value="1"> 10~20平
+					<input type="checkbox" name="housearea3" value="2"> 20~30平
+					<input type="checkbox" name="housearea4" value="3"> 30~50平
+					<input type="checkbox" name="housearea5" value="4"> 50~100平
+				</div>
+				<hr>
+				<div class="form-group">
+					<b class="bbb">是否有电梯</b>
+					<input type="checkbox" name="elevator1" value="0"> 有
+					<input type="checkbox" name="elevator2" value="1"> 否
+				</div>
+				<hr>
+				<div class="form-group">
+					<b class="bbb">租金</b>
+					<input type="checkbox" name="rentmoney1" value="0"> 1500元以下
+					<input type="checkbox" name="rentmoney2" value="1"> 1500~2000元
+					<input type="checkbox" name="rentmoney3" value="2"> 2000~2500元
+					<input type="checkbox" name="rentmoney4" value="3"> 2500~3000元
+					<input type="checkbox" name="rentmoney5" value="4"> 3000~3500元
+					<input type="checkbox" name="rentmoney6" value="5"> 3500元以上
+				</div>
+				<hr>
+				<div class="form-group">
+					<b class="bbb">支付方式</b>
+					<input type="checkbox" name="paymentmethod1" value="0"> 月租
+					<input type="checkbox" name="paymentmethod2" value="1"> 季租
+					<input type="checkbox" name="paymentmethod3" value="2"> 年租
+				</div>
+				<hr>
+			</form>
+		</div>
 
 		<div class="row">
 			<!-- left side (content) -->
