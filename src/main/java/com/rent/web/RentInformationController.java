@@ -121,7 +121,12 @@ public class RentInformationController {
     @ResponseBody
     public String deleteRent(HttpServletRequest requset)
     {
-        return "";
+        int rentid = 0;
+        try{
+            rentid = Integer.parseInt(requset.getParameter("rentId"));
+        }catch(NumberFormatException e) { }
+        Map<String,Object> map = rentInformationService.deleteRentInformation(rentid);
+        return JSON.toJSONString(map);
     }
 
     @RequestMapping(value="/updaterent",method=RequestMethod.POST)

@@ -128,7 +128,12 @@ public class HouseController {
     @ResponseBody
     public String deleteHouse(HttpServletRequest requset)
     {
-        return "";
+        int houseid = 0;
+        try{
+            houseid = Integer.parseInt(requset.getParameter("houseId"));
+        }catch(NumberFormatException e) { }
+        Map<String,Object> map = houseService.deleteHouse(houseid);
+        return JSON.toJSONString(map);
     }
 
     @RequestMapping(value="/updatehouse",method=RequestMethod.POST)
