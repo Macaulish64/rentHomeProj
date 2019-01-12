@@ -104,13 +104,17 @@
             </div>
             <div class="form-group">
               <label for="startmonth">开始时间</label>
-              <input type="date" class="form-control"
-                     id="startmonth" name="startmonth">
+              <input type="month"
+                     id="startmonth" name="startmonth"
+                     min="1900-01" max="2100-12"
+                      value="年-月-日">
             </div>
             <div class="form-group">
               <label for="endmonth">结束时间</label>
-              <input type="date" class="form-control"
-                     id="endmonth" name="endmonth">
+              <input type="month"
+                     id="endmonth" name="endmonth"
+                     min="1900-01" max="2100-12"
+                     value="年-月-日">
             </div>
             <div class="form-group">
               <label for="depositmoney">押金</label>
