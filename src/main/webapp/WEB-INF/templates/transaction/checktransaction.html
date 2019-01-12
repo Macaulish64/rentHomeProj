@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html xmlns:="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>查看交易</title>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" th:href="@{/css/w3.css}">
+
+  <!-- -->
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+  <link rel="stylesheet" th:href="@{/css/bootstrap-reset.css}">
+  <!--矢量图标插件-->
+  <link rel="stylesheet" th:href="@{/css/font-awesome/css/font-awesome.css}">
+  <!--统计插件https://github.com/rendro/easy-pie-chart/-->
+  <link th:href="@{/css/jquery-easy-pie-chart/jquery.easy-pie-chart.css}" rel="stylesheet" type="text/css" media="screen">
+  <!--幻灯片插件-->
+  <link rel="stylesheet" th:href="@{/css/owl.carousel.css}" type="text/css">
+
+  <!--right slidebar-->
+  <link rel="stylesheet" th:href="@{/css/slidebars.css}">
+
+  <!-- Custom styles for this template -->
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+  <link rel="stylesheet" th:href="@{/css/style-responsive.css}">
+
+</head>
+<body>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<!-- <script src="Scripts/jquery.pagination.js" type="text/javascript"></script> -->
+
+
+<section id="container">
+  <!-- Navbar -->
+  <header class="w3-top">
+    <div>
+      <div class="w3-navbar w3-white navbar-collapse collapse w3-large">
+        <a th:href="@{/}" class="w3-bar-item w3-button w3-hover-orange">主页</a>
+        <a th:href="@{/houselist}" class="w3-bar-item w3-button w3-hover-orange">房源</a>
+        <a th:href="@{/demandlist}" class="w3-bar-item w3-button w3-hover-orange">求租</a>
+        <a th:href="@{/signup}" class="w3-bar-item w3-button w3-hover-orange w3-right">注册</a>
+        <a th:href="@{/signin}" class="w3-bar-item w3-button w3-hover-orange w3-right">登陆</a>
+        <a th:href="@{/personview}" class="w3-bar-item w3-button w3-hover-orange w3-right">个人中心</a>
+      </div>
+    </div>
+  </header>
+
+  <section id="main-content">
+    <div class="row">
+      <!-- left side (content) -->
+      <div class="col-sm-9">
+
+        <div class="row round-panel" id="houseinfo-basicinfo">
+          <div class="img col-sm-6">
+            <img class="houseimg"
+                 style="width: 30em; height: 30em;"
+                 th:src="@{/img/a(1).JPG}">
+          </div>
+
+          <div class="col-sm-6 container">
+            <h1>The House</h1>
+            <h2>Dorm room in BUPT</h2>
+            <label for="houseprice">Price:</label>
+            <h1 id="houseprice">￥65536/月</h1>
+          </div>
+        </div>
+
+        <div class="row round-panel">
+          <form role="form" id="transaction-form">
+            <div class="form-group">
+              <label for="transactionid">交易号</label>
+              <input type="text" class="form-control"
+                     id="transactionid" name="transactionid"
+                     readonly="readonly">
+            </div>
+            <div class="form-group">
+              <label for="houseid">房屋ID</label>
+              <input type="text" class="form-control"
+                     id="houseid" name="houseid"
+                     readonly="readonly">
+            </div>
+            <div class="form-group">
+              <label for="landlordid">房东ID</label>
+              <input type="text" class="form-control"
+                     id="landlordid" name="landlordid"
+                     readonly="readonly">
+            </div>
+            <div class="form-group">
+              <label for="tenantid">房客ID</label>
+              <input type="text" class="form-control"
+                     id="tenantid" name="tenantid"
+                     readonly="readonly">
+            </div>
+            <div class="form-group">
+              <label for="transactiondate">交易日期</label>
+              <input type="text" class="form-control"
+                     id="transactiondate" name="transactiondate"
+                     readonly="readonly">
+            </div>
+            <div class="form-group">
+              <label for="paymentmethod">支付方式</label>
+              <input type="text" class="form-control"
+                     id="paymentmethod" name="paymentmethod"
+                     readonly="readonly">
+            </div>
+            <div class="form-group">
+              <label for="startmonth">开始时间</label>
+              <input type="date" class="form-control"
+                     id="startmonth" name="startmonth"
+                     readonly="readonly">
+            </div>
+            <div class="form-group">
+              <label for="endmonth">结束时间</label>
+              <input type="date" class="form-control"
+                     id="endmonth" name="endmonth"
+                     readonly="readonly">
+            </div>
+            <div class="form-group">
+              <label for="depositmoney">押金</label>
+              <input type="text" class="form-control"
+                     id="depositmoney" name="depositmoney"
+                     readonly="readonly">
+            </div>
+            <div class="form-group">
+              <label for="rentmoney">总租金</label>
+              <input type="text" class="form-control"
+                     id="rentmoney" name="rentmoney"
+                     readonly="readonly">
+            </div>
+            <div class="form-group">
+              <label for="landlordagenctfee">房东中介费</label>
+              <input type="text" class="form-control"
+                     id="landlordagenctfee" name="landlordagenctfee"
+                     readonly="readonly">
+            </div>
+            <div class="form-group">
+              <label for="tenantagencyfee">房客中介费</label>
+              <input type="text" class="form-control"
+                     id="tenantagencyfee" name="tenantagencyfee"
+                     readonly="readonly">
+            </div>
+            <div class="form-group">
+              <label for="rentstatus">租借状态</label>
+              <input type="text" class="form-control"
+                     id="rentstatus" name="rentstatus"
+                     readonly="readonly">
+            </div>
+
+            <!-- 房东进入这个界面后会显示按钮 -->
+            <!-- 房客进入这个界面后不显示按钮 -->
+            <button type="submit" class="btn btn-primary">
+              确认交易
+            </button>
+          </form>
+        </div>
+
+      </div>
+
+      <!-- sidebar -->
+      <div class="col-sm-3">
+        <div id="user-panel">
+          <div class="caption title">
+            UserName
+          </div>
+          <div>
+            <div>
+              <ul>
+                <li>...</li>
+                <li>...</li>
+                <li>...</li>
+              </ul>
+            </div>
+            <div>
+              <ul>
+                <li>
+                  <a th:href="@{/irent}">我要求租</a>
+                </li>
+                <li>
+                  <a th:href="@{/irentout}">我要出租</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <footer class="w3-container w3-black" style="padding:32px;">
+    <p class="w3-center">@Copyright haha</p>
+  </footer>
+
+</section>
+</body>
+</html>
+
+
