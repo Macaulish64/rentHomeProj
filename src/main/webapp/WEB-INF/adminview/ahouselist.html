@@ -70,84 +70,97 @@
   <!--侧栏结束-->
   <!--主体内容-->
   <section id="main-content">
-    <section class="panel" style="padding-top:100px;">
-      <form class="search-result" style="padding-left: 50px;">
-        <div class="row panel">
-          <label class="col-sm-1 control-label" for="search-input">Search</label>
-          <div class="col-sm-8">
-            <input class="form-control w3-xlarge"
-                   type="text"
-                   id="search-input"
-                   name="search-text">
-            <p class="help-block">About ... results (... seconds)</p>
-          </div>
-          <div class="col-sm-2">
-            <button class="btn" type="submit">SEARCH</button>
-          </div>
+    
+    <div class="panel search-panel w3-large">
+      <form>
+        <hr>
+        <div class="form-group">
+          <b class="bbb">区域</b>
+          <input type="checkbox" name="district1" value="0"> 海淀区
+          <input type="checkbox" name="district2" value="1"> 朝阳区
+          <input type="checkbox" name="district3" value="2"> 浦东新区
+          <input type="checkbox" name="district4" value="3"> 静安区
         </div>
-
-        <div class="row panel">
-          <label for="select-province">Province</label>
-          <select id="select-province" name="province">
-            <option>Bj</option>
-            <option>Sh</option>
-            <option>AN</option>
-            <option>SC</option>
-          </select>
-          <label for="select-city">Province</label>
-          <select id="select-city" name="city">
-            <option>Bj</option>
-            <option>Ai</option>
-            <option>Zh</option>
-          </select>
-          <label for="select-district">Province</label>
-          <select id="select-district" name="district">
-            <option>QAZ</option>
-            <option>WSX</option>
-            <option>EDC</option>
-          </select>
+        <hr>
+        <div class="form-group">
+          <b class="bbb">类型</b>
+          <input type="checkbox" name="housetype1" value="0"> 一居
+          <input type="checkbox" name="housetype2" value="1"> 两居
+          <input type="checkbox" name="housetype3" value="2"> 三居
+          <input type="checkbox" name="housetype4" value="3"> 四居+
         </div>
-
-        <div class="row panel">
-          <label for="user-id">user id</label>
-          <input type="text" id="user-id">
+        <hr>
+        <div class="form-group">
+          <b class="bbb">面积</b>
+          <label for="houseareamin">最小值</label>
+          <input type="number" min="0" max="10000" id="houseareamin" name="houseareamin">
+          <label for="houseareamax">最小值</label>
+          <input type="number" min="0" max="10000" id="houseareamax" name="houseareamax">
         </div>
+        <hr>
+        <div class="form-group">
+          <b class="bbb">是否有电梯</b>
+          <input type="checkbox" name="elevator1" value="0"> 有
+          <input type="checkbox" name="elevator2" value="1"> 否
+        </div>
+        <hr>
+        <div class="form-group">
+          <b class="bbb">租金</b>
+          <label for="rentmoneymin">最小值</label>
+          <input type="number" min="0" max="1000000" id="rentmoneymin" name="rentmoneymin">
+          <label for="rentmoneymax">最小值</label>
+          <input type="number" min="0" max="1000000" id="rentmoneymax" name="rentmoneymax">
+        </div>
+        <hr>
+        <div class="form-group">
+          <b class="bbb">支付方式</b>
+          <input type="checkbox" name="paymentmethod1" value="0"> 月租
+          <input type="checkbox" name="paymentmethod2" value="1"> 季租
+          <input type="checkbox" name="paymentmethod3" value="2"> 年租
+        </div>
+        <hr>
+        <button type="button" class="btn btn-primary">确认</button>
       </form>
-    </section>
+    </div>
 
     <section class="panel">
-      <div class="row">
-        <div class="col-sm-12">
-          <header>User List</header>
+      <div class="panel-body">
+        <div>
           <table class="table table-hover">
             <thead>
             <tr>
-              <th>userId</th>
-              <th>userNickName</th>
-              <th>password</th>
-              <th>userType</th>
-              <th>userName</th>
-              <th>cardType</th>
-              <th>idNumber</th>
-              <th>phoneNumber</th>
-              <th>userLevel</th>
-              <th>registCity</th>
-              <th>updateTime</th>
+              <th>房屋ID</th>
+              <th>城市</th>
+              <th>社区</th>
+              <th>楼门号</th>
+              <th>房屋类型</th>
+              <th>房屋面积</th>
+              <th>楼层</th>
+              <th>是否有电梯</th>
+              <th>押金</th>
+              <th>租金支付方式</th>
+              <th>租金</th>
+              <th>注册时间</th>
+              <th>修改时间</th>
+              <th>已租/待租</th>
             </tr>
             </thead>
-            <tbody>
+            <tbody id="ownerhouselist">
             <tr>
-              <td>a</td>
-              <td>b</td>
-              <td>c</td>
-              <td>d</td>
-              <td>e</td>
-              <td>f</td>
-              <td>g</td>
-              <td>h</td>
-              <td>i</td>
-              <td>j</td>
-              <td>k</td>
+              <td>111</td>
+              <td>Beijing</td>
+              <td>Haidian</td>
+              <td>456</td>
+              <td>三室两厅</td>
+              <td>500平米</td>
+              <td>234</td>
+              <td>有</td>
+              <td>￥192831081</td>
+              <td>￥1931081</td>
+              <td>支付宝</td>
+              <td>2019/1/11 0:00</td>
+              <td>2019/1/11 1:00</td>
+              <td>已租</td>
             </tr>
             </tbody>
           </table>
