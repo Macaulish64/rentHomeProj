@@ -5,6 +5,10 @@ var userid=storage["userid"]
 var myDate=new Date();
 console.log("输出:"+jwt);
 
+var startdata=$('#startmonth');
+var enddata=$('#endmonth');
+var monthmoney;
+
 //Jquery 加参数或减参数
 /*1、取值使用
 $.Request("act") = 1
@@ -37,5 +41,129 @@ $.UrlUpdateParams(window.location.href, "mid", 11111),*/
         }
     });
 })(jQuery);
+
+
+function stringHouseTyde(data)
+{
+    if (data===1) return '一居';
+    if (data===2) return '二居';
+    if (data===3) return '三居';
+    if (data===4) return '三居以上';
+    return "";
+}
+
+function stringPaymentMethod(data)
+{
+    if (data===0) return '月租';
+    if (data===1) return '季租';
+    if (data===2) return '年租';
+    return "";
+}
+
+function stringhouseStatus(data)
+{
+    if (data===0) return '已租';
+    if (data===1) return '待租';
+    return "";
+}
+
+
+function transactionformation(data)
+{
+    $('#houseid').prop('value',data.houseid)
+    if (data.houseid ===null) {
+        $('#houseid').prop('value',"空")
+    }
+
+    $('#landlordid').prop('value',data.landlordid)
+    if (data.landlordid ===null) {
+        $('#landlordid').prop('value',"空")
+    }
+
+    $('#tenantid').prop('value',userid);
+
+    $('#depositmoney').prop('value',data.depositmoney);
+    if (data.depositmoney ===null) {
+        $('#depositmoney').prop('value',"空")
+    }
+
+    monthmoney=data.rentmoney;
+
+};
+
+
+
+$(document).ready(function() {
+    var houseid=$.Request("house");
+    if (houseid===null) {
+        alert("房屋编号错误");
+        //   $(location).attr('href', '/rentHomeProj_war/houselist');
+    }
+    else {
+        $.ajax({
+            type: "GET",
+            url: "http://localhost:8080/rentHomeProj_war/house/details/" + houseid,
+            dataType: "json",
+            global: "false",
+            success: function (data) {
+                if (data.rescode!==10003) {
+                    alert("房屋编号错误");
+                    return;
+                }
+                var house=data.house;
+                if (house.rentstate===1) {
+                    alert("房子已出租，请选择其他房源");
+                }
+                else {
+                    transactionformation(house);
+                }
+            },
+            error: function () {
+                alert("房屋编号错误");
+                // $(location).attr('href', '/house/list');
+            }
+        })
+    }
+    alert($('#submitbtn').prop("id"));
+});
+
+function calcudate(){
+    var date1=startdata.val();
+    var y1=date1.split("-")[0];
+    var m1=date1.split("-")[1];
+    var d1=date1.split("-")[2];
+
+    var date2=enddata.val();
+    var y2=date2.split("-")[0];
+    var m2=date2.split("-")[1];
+    var d2=date2.split("-")[2];
+
+    var moneyCount =(y2-y1)*12+m2-m1+(d2<d1?1:0);
+    return moneyCount;
+}
+
+
+function updatamoney()
+{
+    $('#rentmoney').prop('value',monthmoney*longtime);
+}
+
+/*当开始时间改变时*/
+startdata.change(function(){
+    longtime=calcudate();
+    if ( longtime < 0 ) longtime=0;
+    updatamoney();
+});
+
+/*当结束时间改变时*/
+enddata.change(function(){
+    longtime=calcudate();
+    if ( longtime < 0 ) longtime=0;
+    updatamoney();
+});
+
+
+
+
 
 
