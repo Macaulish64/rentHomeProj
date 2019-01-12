@@ -10,6 +10,8 @@ elevatorOrNot int
 paymentMethod int
 depositMoneyMin depositMoneyMax float
 rentMoneyMin rentMoneyMax float
+houseAreaMin houseAreaMax int
+
 houseStatus int
 
 对RentInformation查询

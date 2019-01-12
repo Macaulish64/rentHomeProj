@@ -71,42 +71,45 @@
         <hr>
 				<div class="form-group">
 					<b class="bbb">类型</b>
-					<input type="checkbox" name="housetype1" value="0"> 一居
-					<input type="checkbox" name="housetype2" value="1"> 两居
-					<input type="checkbox" name="housetype3" value="2"> 三居
-					<input type="checkbox" name="housetype4" value="3"> 四居+
+					<input type="checkbox" name="housetype1" id="housetype1" value="0"> 一居
+					<input type="checkbox" name="housetype2" id="housetype2" value="1"> 两居
+					<input type="checkbox" name="housetype3" id="housetype3" value="2"> 三居
+					<input type="checkbox" name="housetype4" id="housetype4" value="3"> 四居+
 				</div>
 				<hr>
 				<div class="form-group">
 					<b class="bbb">面积</b>
 					<label for="houseareamin">最小值</label>
           <input type="number" min="0" max="10000" id="houseareamin" name="houseareamin">
-					<label for="houseareamax">最小值</label>
+					<label for="houseareamax">最大值</label>
 					<input type="number" min="0" max="10000" id="houseareamax" name="houseareamax">
 				</div>
 				<hr>
 				<div class="form-group">
 					<b class="bbb">是否有电梯</b>
-					<input type="checkbox" name="elevator1" value="0"> 有
-					<input type="checkbox" name="elevator2" value="1"> 否
+					<input type="checkbox" name="elevator1" value="0" id="elevator1"> 有
+					<input type="checkbox" name="elevator2" value="1" id="elevator2"> 否
 				</div>
 				<hr>
 				<div class="form-group">
 					<b class="bbb">租金</b>
 					<label for="rentmoneymin">最小值</label>
 					<input type="number" min="0" max="1000000" id="rentmoneymin" name="rentmoneymin">
-					<label for="rentmoneymax">最小值</label>
+					<label for="rentmoneymax">最大值</label>
 					<input type="number" min="0" max="1000000" id="rentmoneymax" name="rentmoneymax">
 				</div>
 				<hr>
 				<div class="form-group">
 					<b class="bbb">支付方式</b>
-					<input type="checkbox" name="paymentmethod1" value="0"> 月租
-					<input type="checkbox" name="paymentmethod2" value="1"> 季租
-					<input type="checkbox" name="paymentmethod3" value="2"> 年租
+					<input type="checkbox" name="paymentmethod1" value="0"
+					id="paymentmethod1"> 月租
+					<input type="checkbox" name="paymentmethod2" value="1"
+					id="paymentmethod2"> 季租
+					<input type="checkbox" name="paymentmethod3" value="2"
+					id="paymentmethod3"> 年租
 				</div>
 				<hr>
-				<button type="button" class="btn btn-primary">确认</button>
+				<button type="button" class="btn btn-primary" id="search-btn">确认</button>
 			</form>
 		</div>
 

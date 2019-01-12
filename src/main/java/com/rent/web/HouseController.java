@@ -29,25 +29,33 @@ public class HouseController {
     @Autowired
     private PhotoService photoService;
 
-    @RequestMapping(value ="/list",method = RequestMethod.POST)
+    @RequestMapping(value="/list",method = RequestMethod.GET)
     @ResponseBody
-    public void houseListPageOne(@RequestParam("prideList[]") List<Integer> prideList,
-                              @RequestParam("cityList[]") List<Integer> cityList) {
-        logger.info("!!!I am in House List Test\n");
-        for(Integer i:cityList) {
-            logger.info("value="+i);
-        }
-        for(Integer i:prideList) {
-            logger.info("value="+i);
-        }
-//        List<House> houselist=HouseService.queryHouse(HouseExample,0,5);
-
+    public String houseListPage(HttpServletRequest request)
+    {
+        if ()
+        String str=(request.getAttribute("map")).toString();
+        logger.info("=========================================================");
+        logger.info("houselist request(JSON)"+str);
+        Map<String,List> map = (Map<String,List>) request.getAttribute("map");
+        int numlist = houseService.queryHouseNum(map);
+        Map<String ,Object> map2=new HashMap<String, Object>();
+        map2.put("rescode", CommonEnum.REQUEST_SUCCESS.getCode());
+        map2.put("resmsg", CommonEnum.REQUEST_SUCCESS.getMsg());
+        map2.put("list",houseService.queryHouse(map ,0,numlist));
+        String json= JSON.toJSONString(map2, SerializerFeature.WriteMapNullValue);
+        System.out.println(json);
+        return json;
     }
 
-    @RequestMapping(value="/houselist/{pagenumber}",method = RequestMethod.POST)
+    @RequestMapping(value="/houselist/{pagenumber}",method = RequestMethod.GET)
     @ResponseBody
-    public String houseListPage(@PathVariable("pagenumber") int pagenumber,HttpServletRequest request)
+    public String houseListPage(@PathVariable("pagenumber") int pagenumber,
+                                HttpServletRequest request)
     {
+        String str=(request.getAttribute("map")).toString();
+        logger.info("=========================================================");
+        logger.info("houselist request(JSON)"+str);
         Map<String,List> map = (Map<String,List>) request.getAttribute("map");
         int num = houseService.queryHouseNum(map);
         Map<String ,Object> map2=new HashMap<String, Object>();
@@ -212,8 +220,7 @@ public class HouseController {
 
     @RequestMapping(value="/ownerhouselist/{userid}",method=RequestMethod.GET)
     @ResponseBody
-    public String getOwnerHouseList(@PathVariable("userid") int userid,
-                                    HttpServletRequest request) {
+    public String getOwnerHouseList(@PathVariable("userid") int userid) {
         List<House> houselist;
         Map<String,List> map=new HashMap<String, List>();
         List<Integer> publishuserlist=new ArrayList<Integer>();

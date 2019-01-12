@@ -1,34 +1,82 @@
 
 
 
+function getselect()
+{
+    var map={};
+    var houseType =new Array();
+    var i;
+    var str,str2;
+    str="housetype";
+    for(i=0;i<=3;i++) {
+        str2=str+Number(i+1);
+        console.log($('#'+str2).prop('checked'));
+        if (($('#'+str2).prop('checked'))==true)
+            houseType.push(i);
+     //   houseType.push(Number(1));
+    }
+    map['houseType']=houseType;
+    if ($('#houseareamin').val()!=="") {
+        map["houseAreaMin"]=Number($('#houseareamin').val());
+    }
+    else {
+        map["houseAreaMin"]=0;
+    }
+    if ($('#houseareamax').val()!=="") {
+        map["houseAreaMax"]=Number($('#houseareamax').val());
+    }
+    else {
+        map["houseAreaMax"]=1000000;
+    }
+
+
+    if ($('#elevator1').attr('checked') && (!($('#elevator2').attr('checked')))) {
+        map["elevatorOrNot"]=1;
+    }
+    if (($('#elevator1').attr('checked')==false) && (($('#elevator2').attr('checked'))==true)) {
+        map["elevatorOrNot"]=0;
+    }
+
+    if ($('#rentmoneymin').val()!=="") {
+        map["rentMoneyMin"]=Number($('#rentmoneymin').val());
+    }
+    else {
+        map["rentMoneyMin"]=0;
+    }
+    if ($('#rentmoneymax').val()!=="") {
+        map["rentMoneyMax"]=Number($('#rentmoneymax').val());
+    }
+    else {
+        map["rentMoneyMax"]=1000000;
+    }
+
+    var list2 =new Array();
+    if ($('#paymentmethod1').prop('checked')==true) {
+        list2.push(0);
+    }
+    if ($('#paymentmethod2').prop('checked')==true) {
+        list2.push(1);
+    }
+    if ($('#paymentmethod2').prop('checked')==true) {
+        list2.push(2);
+    }
+    map['paymentMethod']=list2;
+
+    var str=JSON.stringify(map);
+    alert(str);
+    return str;
+}
 
 $('#search-btn').click(function(){
-	var map={};
-	var houseType =new Array();
-	var i;
-	var str,str2;
-	str="houseType";
-	for(i=0;i<=3;i++) {
-		str2=str+i;
-		if ($('#'+str2).attr('checked')) houseType.add(i);
-	}
-	str="depositMoneyMin",
-	if ($('#'+houseAreaMin))
-	publishUserId.add()
-
-
-
-
-
-
-
+    alert("!!!");
+    getselect();
 });
 
-
-
-
-
 $(document).ready(function () {
+    $('#search-btn').on('click',function(){
+        alert("!!!");
+        getselect();
+    });
     // $.ajax({
       // type: "GET",
       // dataType: 'json',
@@ -70,8 +118,7 @@ $(document).ready(function () {
       var list2=["444","555","666"];
       $.ajax({
 		  url:'http://localhost:8080/rentHomeProj_war/house/list',
-		  type:"POST",
-		  data:{"prideList[]":list1,"cityList[]":list2},
+		  type:"GET",
 		  success:function(){
 		 // 	alert("Success");
 		  },
@@ -79,7 +126,7 @@ $(document).ready(function () {
 		 // 	alert("Error");
 		  }
 	  })
-		var idList = new Array();
+		/*var idList = new Array();
 		idList.push("1");
 		idList.push("2");
 		idList.push("3");
@@ -99,7 +146,7 @@ $(document).ready(function () {
 			error:function(){
 			//	alert("Error");
 			}
-		})
+		})*/
      // }
     // })
   });
