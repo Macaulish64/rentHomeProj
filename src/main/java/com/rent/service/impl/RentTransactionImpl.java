@@ -7,6 +7,7 @@ import com.rent.entity.House;
 import com.rent.entity.Income;
 import com.rent.entity.RentTransaction;
 import com.rent.entity.RentTransactionExample;
+import com.rent.service.HouseService;
 import com.rent.service.IncomeService;
 import com.rent.service.RentTransactionService;
 import org.slf4j.Logger;
@@ -28,6 +29,8 @@ public class RentTransactionImpl implements RentTransactionService {
     private HouseMapper houseMapper;
     @Autowired
     private IncomeService incomeService;
+    @Autowired
+    private HouseService houseService;
 
     @Override
     public int queryRentTransactionNum(Map<String, List> map) {
@@ -177,7 +180,16 @@ public class RentTransactionImpl implements RentTransactionService {
         income.setTransactionnum(transnum+1);
         income.setFeeincome(feeincome+record.getLandlordpaymentagencyfee()*2);
 
+
         map = incomeService.updateIncome(income);
+
+        if ((Integer) map.get("rescode") == 10004)
+            return map;
+
+        House house = houseMapper.selectByPrimaryKey(houseid);
+        house.setHousestatus(1);
+        map = houseService.updateHouse(house);
+
         return map;
     }
 
