@@ -58,7 +58,7 @@
 
 	<section id="main-content">
 
-		<div class="panel round-panel">
+		<div class="panel search-panel w3-large">
 			<form>
 				<hr>
 				<div class="form-group">
@@ -79,11 +79,10 @@
 				<hr>
 				<div class="form-group">
 					<b class="bbb">面积</b>
-					<input type="checkbox" name="housearea1" value="0"> 10平以下
-					<input type="checkbox" name="housearea2" value="1"> 10~20平
-					<input type="checkbox" name="housearea3" value="2"> 20~30平
-					<input type="checkbox" name="housearea4" value="3"> 30~50平
-					<input type="checkbox" name="housearea5" value="4"> 50~100平
+					<label for="houseareamin">最小值</label>
+          <input type="number" min="0" max="10000" id="houseareamin" name="houseareamin">
+					<label for="houseareamax">最小值</label>
+					<input type="number" min="0" max="10000" id="houseareamax" name="houseareamax">
 				</div>
 				<hr>
 				<div class="form-group">
@@ -94,12 +93,10 @@
 				<hr>
 				<div class="form-group">
 					<b class="bbb">租金</b>
-					<input type="checkbox" name="rentmoney1" value="0"> 1500元以下
-					<input type="checkbox" name="rentmoney2" value="1"> 1500~2000元
-					<input type="checkbox" name="rentmoney3" value="2"> 2000~2500元
-					<input type="checkbox" name="rentmoney4" value="3"> 2500~3000元
-					<input type="checkbox" name="rentmoney5" value="4"> 3000~3500元
-					<input type="checkbox" name="rentmoney6" value="5"> 3500元以上
+					<label for="rentmoneymin">最小值</label>
+					<input type="number" min="0" max="1000000" id="rentmoneymin" name="rentmoneymin">
+					<label for="rentmoneymax">最小值</label>
+					<input type="number" min="0" max="1000000" id="rentmoneymax" name="rentmoneymax">
 				</div>
 				<hr>
 				<div class="form-group">
@@ -109,6 +106,7 @@
 					<input type="checkbox" name="paymentmethod3" value="2"> 年租
 				</div>
 				<hr>
+				<button type="button" class="btn btn-primary">确认</button>
 			</form>
 		</div>
 

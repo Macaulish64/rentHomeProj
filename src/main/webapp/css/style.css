@@ -6235,6 +6235,21 @@ header.blue-bg .search:focus {
     border-color: black;
 }
 
+.search-panel {
+    background: white;
+    margin: 1em 1em 1em 1em;
+    padding: 1em 1em 1em 1em;
+    border-radius: 10px;
+    border-style: double;
+    border-width: 1px;
+    border-color: black;
+}
+
+.houseimg {
+    width: 15em;
+    height: 15em;
+}
+
 /*h1, h2, h3, h4, h5, h6 { font-family: Constantia, "思源宋体", sans-serif; }*/
 /*a, p { font-family: "Century Gothic", "华文中宋", sans-serif; }*/
 
