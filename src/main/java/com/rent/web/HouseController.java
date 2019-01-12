@@ -43,8 +43,20 @@ public class HouseController {
 
     @RequestMapping(value="/houselist/{pagenumber}",method = RequestMethod.POST)
     @ResponseBody
-    public String houseListPage(HttpServletRequest request)
+    public String houseListPage(@PathVariable("pagenumber") int pagenumber,HttpServletRequest request)
     {
+        Map<String,List> map = (Map<String,List>) request.getAttribute("map");
+        int num = houseService.queryHouseNum(map);
+        Map<String ,Object> map2=new HashMap<String, Object>();
+        if (num < pagenumber)
+        {
+            map2.put("rescode", CommonEnum.REQUEST_FAILED.getCode());
+            map2.put("resmsg",CommonEnum.REQUEST_FAILED.getMsg());
+        }
+        else
+        {
+
+        }
         return "";
     }
 
@@ -53,7 +65,7 @@ public class HouseController {
     public String houseDetails(@PathVariable("houseid") int houseid)
     {
         House nowhouse=houseService.selectHouseById(houseid);
-        Map<String ,Object> map=new HashMap<>();
+        Map<String ,Object> map=new HashMap<String, Object>();
         if (nowhouse==null) {
             map.put("rescode", CommonEnum.REQUEST_FAILED.getCode());
             map.put("resmsg",CommonEnum.REQUEST_FAILED.getMsg());
