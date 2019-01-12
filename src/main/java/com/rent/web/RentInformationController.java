@@ -180,7 +180,7 @@ public class RentInformationController {
 
     @RequestMapping(value="/ownerrentlist/{userid}",method= RequestMethod.GET)
     @ResponseBody
-    public String getOwnerHouseList(@PathVariable("userid") int userid,
+    public String getOwnerRentList(@PathVariable("userid") int userid,
                                     HttpServletRequest request) {
         List<RentInformation> rentlist;
         Map<String, List> map=new HashMap<>();

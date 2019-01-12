@@ -48,8 +48,6 @@ public class HouseController {
         return "";
     }
 
-
-
     @RequestMapping(value="/details/{houseid}",method = RequestMethod.GET)
     @ResponseBody
     public String houseDetails(@PathVariable("houseid") int houseid)
@@ -189,7 +187,6 @@ public class HouseController {
         Map<String,Object> map = houseService.updateHouse(newhouse);
         return JSON.toJSONString(map);
     }
-
 
     @RequestMapping(value="/ownerhouselist/{userid}",method=RequestMethod.GET)
     @ResponseBody
