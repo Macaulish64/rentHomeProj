@@ -3,8 +3,10 @@ package com.rent.web;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.serializer.SerializerFeature;
+import com.rent.common.CommonEnum;
 import com.rent.entity.House;
 import com.rent.entity.User;
+import com.rent.entity.UserExample;
 import com.rent.service.HouseService;
 import com.rent.service.UserService;
 import org.slf4j.Logger;
@@ -47,7 +49,6 @@ public class UserController {
 		Map<String,Object> map=userService.checkUserLogin(user);
 		return JSON.toJSONString(map);
 	}
-
 
 	@RequestMapping(value = "/personedit/{userid}", method = RequestMethod.POST)
 	@ResponseBody
@@ -169,6 +170,55 @@ public class UserController {
 		}
 		String json= JSON.toJSONString(houselist, SerializerFeature.WriteMapNullValue);
 		return json;
+	}
+
+	@RequestMapping(value = "regist",method = RequestMethod.POST)
+	@ResponseBody
+	public String userregist(HttpServletRequest request)
+	{
+		User newuser = new User();
+		String userNickName = request.getParameter("usernickname");
+
+		Map<String,Object> map =new HashMap<String, Object>();
+		UserExample example = new UserExample();
+		example.or().andUsernicknameIn(Collections.singletonList(userNickName));
+		User testuser = userService.getExistUser(example);
+		if (testuser!=null)
+		{
+			map.put("rescode", CommonEnum.REQUEST_FAILED.getCode());
+			map.put("resmsg",CommonEnum.REQUEST_FAILED.getMsg());
+			return JSON.toJSONString(map);
+		}
+
+		String password = request.getParameter("password");
+		int userType=0,cardType=0,userLevel=0;
+		String userName = request.getParameter("username");
+		String idNumber = request.getParameter("idnumber");
+		String phoneNumber = request.getParameter("phonenumber");
+		String registCity = request.getParameter("registcity");
+
+		try{
+			userType = Integer.parseInt(request.getParameter("useryype"));
+		}catch(NumberFormatException e) { }
+		try{
+			cardType = Integer.parseInt(request.getParameter("cardtype"));
+		}catch(NumberFormatException e) { }
+		try{
+			userLevel = Integer.parseInt(request.getParameter("userlevel"));
+		}catch(NumberFormatException e) { }
+
+		newuser.setUsernickname(userNickName);
+		newuser.setPassword(password);
+		newuser.setUsername(userName);
+		newuser.setUsertype(userType);
+		newuser.setIdnumber(idNumber);
+		newuser.setCardtype(cardType);
+		newuser.setRegistcity(registCity);
+		newuser.setPhonenumber(phoneNumber);
+		newuser.setUserlevel(userLevel);
+
+		map = userService.insertUser(newuser);
+		return JSON.toJSONString(map);
 	}
 
 }
