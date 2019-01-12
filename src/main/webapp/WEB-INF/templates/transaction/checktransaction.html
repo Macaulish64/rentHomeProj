@@ -74,7 +74,7 @@
         </div>
 
         <div class="row round-panel">
-          <form role="form" id="transaction-form">
+          < role="form" id="transaction-form">
             <div class="form-group">
               <label for="transactionid">交易号</label>
               <input type="text" class="form-control"
@@ -112,15 +112,15 @@
                      readonly="readonly">
             </div>
             <div class="form-group">
-              <label for="startmonth">开始时间</label>
-              <input type="date" class="form-control"
-                     id="startmonth" name="startmonth"
+              <label for="premonth">开始时间</label>
+              <input type="month" class="form-control"
+                     id="premonth" name="premonth"
                      readonly="readonly">
             </div>
             <div class="form-group">
-              <label for="endmonth">结束时间</label>
-              <input type="date" class="form-control"
-                     id="endmonth" name="endmonth"
+              <label for="edmonth">结束时间</label>
+              <input type="month" class="form-control"
+                     id="edmonth" name="edmonth"
                      readonly="readonly">
             </div>
             <div class="form-group">
@@ -154,11 +154,14 @@
                      readonly="readonly">
             </div>
 
+
             <!-- 房东进入这个界面后会显示按钮 -->
             <!-- 房客进入这个界面后不显示按钮 -->
-            <button type="submit" class="btn btn-primary">
-              确认交易
-            </button>
+            <div id="morebutton">
+              <button id='confirmtransbtn' type="submit" class="btn btn-primary">
+                确认交易
+              </button>
+            </div>  
           </form>
         </div>
 

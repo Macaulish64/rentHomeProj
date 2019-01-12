@@ -100,134 +100,123 @@ function stringhouseStatus(data)
     return "";
 }
 
-function calcudate(){
-    var date1=$('#premonth').val();
-    var y1=date1.split("-")[0];
-    var m1=date1.split("-")[1];
-
-    var date2=$('#edmonth').val();
-    var y2=date2.split("-")[0];
-    var m2=date2.split("-")[1];
-
-    moneycount =Number(y2-y1)*Number(12)+Number(m2-m1);
-    return moneycount;
-}
-
-function updatamoney()
-{
-    longtime=calcudate();
-    if ( longtime < 0 ) longtime=0;
-    var allmoney=monthmoney*longtime;
-    var middlemoney=Number(allmoney*0.03);
-    $('#rentmoney').prop('value','￥'+number_format(allmoney));
-    $('#landlordagenctfee').prop('value','￥'+number_format(middlemoney));
-    $('#tenantagencyfee').prop('value','￥'+number_format(middlemoney));
-}
-
-
-var ahouseid;
 
 function transactionformation(data)
 {
-    ahouseid=data.houseid;
-    $('#houseid').prop('value',ahouseid)
-    if (ahouseid ===null) {
+    $('#transactionid').prop('value',data.transactionid)
+    if (data.transactionid ===null) {
+        $('#transactionid').prop('value',"空")
+    }
+
+    $('#houseid').prop('value',data.houseid)
+    if (data.houseid ===null) {
         $('#houseid').prop('value',"空")
     }
 
-    alandlordid=data.publishuserid;
     $('#landlordid').prop('value',data.publishuserid)
     if (data.publishuserid ===null) {
         $('#landlordid').prop('value',"空")
     }
 
-    $('#tenantid').prop('value',userid);
+    $('#tenantid').prop('value',data.tenantid)
+    if (data.tenantid ===null) {
+        $('#tenantid').prop('value',"空")
+    }
+
+    $('#transactiondate').prop('value',data.transactiondate)
+    if (data.transactiondate ===null) {
+        $('#transactiondate').prop('value',"空")
+    }
+
+
+
+    $('#premonth').prop('value',data.premonth)
+    if (data.premonth ===null) {
+        $('#premonth').prop('value',"空")
+    }
+
+    $('#edmonth').prop('value',data.edmonth)
+    if (data.edmonth ===null) {
+        $('#edmonth').prop('value',"空")
+    }
+
 
     $('#depositmoney').prop('value',data.depositmoney);
     if (data.depositmoney ===null) {
         $('#depositmoney').prop('value',"空")
     }
 
-    monthmoney=data.rentmoney;
-
-    var year = myDate.getFullYear();
-    var month = myDate.getMonth() + 1;
-    if (month < 10) {
-        month = "0" + (month);
+    $('#rentmoney').prop('value',data.rentmoney);
+    if (data.rentmoney ===null) {
+        $('#rentmoney').prop('value',"空")
     }
-    var nowDate = (year) + "-" + (month);
-    $('#premonth').val(nowDate);
-    var strtime=$('#premonth').val();
-    //alert(strtime);
+
+    $('#landlordagenctfee').prop('value',data.landlordagenctfee);
+    if (data.landlordagenctfee ===null) {
+        $('#landlordagenctfee').prop('value',"空")
+    }
+
+    $('#tenantagencyfee').prop('value',data.tenantagencyfee);
+    if (data.tenantagencyfee ===null) {
+        $('#tenantagencyfee').prop('value',"空")
+    }
+
+    $('#rentstatus').prop('value',stringhouseStatus(data.rentstatus));
+
+
+    if (data.landlordid === userid && data.rentstate===0) {
+        $('#morebutton').append(
+            "<button id='confirmtransbtn' type='submit' class='btn btn-primary'>"+
+            "确认交易"+
+            "</button>"
+        )
+    }
     console.log("!"+strtime);
 };
 
 
 
 $(document).ready(function() {
-    /*当开始时间改变时*/
-    $('#premonth').bind("change input keyup", function(){
-        updatamoney();
-    });
-    /*当结束时间改变时*/
-    $('#edmonth').bind("change input keyup",function(){
-        updatamoney();
-    });
-    var houseid=$.Request("house");
-    if (houseid===null) {
-        alert("房屋编号错误");
-        //   $(location).attr('href', '/rentHomeProj_war/houselist');
-    }
-    else {
-        $.ajax({
-            type: "GET",
-            url: "http://localhost:8080/rentHomeProj_war/house/details/" + houseid,
-            dataType: "json",
-            global: "false",
-            success: function (data) {
-                if (data.rescode !== 10003) {
-                    alert("房屋编号错误");
-                    return;
-                }
-                var house = data.house;
-                if (house.rentstate === 1) {
-                    alert("房子已出租，请选择其他房源");
-                } else {
-                    transactionformation(house);
-                    updatamoney();
-                }
-            },
-            error: function () {
-                alert("房屋编号错误");
-                // $(location).attr('href', '/house/list');
+    var trans=$.Request("trans");
+    $.ajax({
+        type: "GET",
+        url: "http://localhost:8080/rentHomeProj_war/transaction/details/" + transaction,
+        dataType: "json",
+        global: "false",
+        success: function (data) {
+            if (data.rescode !== 10003) {
+                alert("交易号错误");
+                return;
             }
-        })
-    }
-  //  alert($('#submitbtn').prop("id"));
+            var transa = data.transa;
+            transactionformation(house);
+        },
+        error: function () {
+            alert("交易号错误");
+            // $(location).attr('href', '/house/list');
+        }
+    })
+    //  alert($('#submitbtn').prop("id"));
 });
 
-$('#wanthousebtn').click(function(){
+$('#confirmtransbtn').click(function(){
     var obj;
 
     $.ajax({
         type: "POST",
-        url: "http://localhost:8080/rentHomeProj_war/transaction/submittransaction",
+        url: "http://localhost:8080/rentHomeProj_war/transaction/submittransaction/" + trans,
         dataType: "json",
         global: "false",
-        data:{ userid : userid,
-               houseid : ahouseid,
-               startmonth : $('#premonth').val(),
-               endmonth : $('#edmonth').val(),
-               monthcount : longtime
-        },
         success: function (data) {
             if (data.rescode !== 10003) {
                 alert("交易请求失败,请再试一次");
                 return;
             }
-            alert("交易成功");
-            trans=data.renttransaction;
-            $(location).attr('href', '/transaction/checktransaction'+trans.transid);
+            else {
+                alert("已成功确认");
+                window.location.reload();
+            }
+
         },
         error: function () {
             alert("交易请求失败,请再试一次");
