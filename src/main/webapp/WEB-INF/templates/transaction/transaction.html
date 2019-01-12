@@ -103,18 +103,18 @@
               </select>
             </div>
             <div class="form-group">
-              <label for="startmonth">开始时间</label>
-              <input type="month"
-                     id="startmonth" name="startmonth"
+              <label for="premonth">开始时间</label>
+              <input type="month" class="form-control"
+                     id="premonth" name="startmonth"
                      min="1900-01" max="2100-12"
-                      value="年-月-日">
+                      value="2019-12">
             </div>
             <div class="form-group">
-              <label for="endmonth">结束时间</label>
-              <input type="month"
-                     id="endmonth" name="endmonth"
+              <label for="edmonth">结束时间</label>
+              <input type="month" class="form-control"
+                     id="edmonth" name="endmonth"
                      min="1900-01" max="2100-12"
-                     value="年-月-日">
+                     value="2020-01">
             </div>
             <div class="form-group">
               <label for="depositmoney">押金</label>
@@ -141,7 +141,7 @@
                      readonly="readonly">
             </div>
 
-            <button type="submit" class="btn btn-primary">
+            <button type="submit" class="btn btn-primary" id="wanthousebtn">
               提交
             </button>
           </form>
