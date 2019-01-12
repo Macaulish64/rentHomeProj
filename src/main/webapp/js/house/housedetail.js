@@ -160,15 +160,12 @@ function houseinformation(data)
         );
     }
     $('#houseprice').append(
-        data.rentmoney
+        data.rentmoney+"/月"
     );
 
 
     $('#paymentmethod').append(
         stringPaymentMethod(data.paymentmethod)
-    );
-    $('#houseprice').append(
-        "/"+stringPaymentMethod(data.paymentmethod)
     );
     if (data.paymentmethod ===null) {
         $('#paymentmethod').append(
@@ -223,21 +220,15 @@ $(document).ready(function() {
             }
         })
     }
-    alert($('#submitbtn').prop("id"));
-});
-
-function clickclick()
-{
-    alert("????");
-}
-
-$('button').click(function(){
-    var houseid=$.Request("houseid");
-    alert(houseid+"");
-    // if (houseid===null) {
-    //     alert("房屋编号错误");
-    //     $(location).attr('href', '/rentHomeProj_war/houselist');
-    // }
-    // var url='/rentHomeRroj_war/transaction?houseid='+houseid;
-    // $(location).attr('href',url);
+    alert($('#wwwantbtn').prop("id"));
+    $('#wwwantbtn').on('click',function(){
+        var houseid=$.Request("houseid");
+        alert(houseid+"");
+        // if (houseid===null) {
+        //     alert("房屋编号错误");
+        //     $(location).attr('href', '/rentHomeProj_war/houselist');
+        // }
+        // var url='/rentHomeRroj_war/transaction?houseid='+houseid;
+        // $(location).attr('href',url);
+    });
 });
