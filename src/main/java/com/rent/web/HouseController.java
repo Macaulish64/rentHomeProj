@@ -85,9 +85,9 @@ public class HouseController {
         return "";
     }
 
-    @RequestMapping(value="/updatahouse",method=RequestMethod.POST)
+    @RequestMapping(value="/updatehouse",method=RequestMethod.POST)
     @ResponseBody
-    public String updataHouse(HttpServletRequest requset)
+    public String updateHouse(HttpServletRequest requset)
     {
         return "";
     }
