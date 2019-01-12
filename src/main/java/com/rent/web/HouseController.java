@@ -5,6 +5,7 @@ import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.rent.common.CommonEnum;
 import com.rent.entity.House;
 import com.rent.service.HouseService;
+import com.rent.service.PhotoService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,8 @@ public class HouseController {
     private Logger logger= LoggerFactory.getLogger(this.getClass());
     @Autowired
     private HouseService houseService;
+    @Autowired
+    private PhotoService photoService;
 
     @RequestMapping(value ="/list",method = RequestMethod.POST)
     @ResponseBody
