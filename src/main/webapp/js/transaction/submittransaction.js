@@ -5,10 +5,12 @@ var userid=storage["userid"]
 var myDate=new Date();
 console.log("输出:"+jwt);
 
-var startdata=$('#startmonth');
-var enddata=$('#endmonth');
+var startdate=$('#startmonth');
+var enddate=$('#endmonth');
 var monthmoney;
 
+alert("time"+$('#startmonth').val());
+alert("time"+$('#startmonth').value);
 //Jquery 加参数或减参数
 /*1、取值使用
 $.Request("act") = 1
@@ -75,8 +77,8 @@ function transactionformation(data)
         $('#houseid').prop('value',"空")
     }
 
-    $('#landlordid').prop('value',data.landlordid)
-    if (data.landlordid ===null) {
+    $('#landlordid').prop('value',data.publishuserid)
+    if (data.publishuserid ===null) {
         $('#landlordid').prop('value',"空")
     }
 
@@ -89,6 +91,15 @@ function transactionformation(data)
 
     monthmoney=data.rentmoney;
 
+    var year = myDate.getFullYear();
+    var month = myDate.getMonth() + 1;
+    if (month < 10) {
+        month = "0" + (month);
+    }
+
+    var nowDate = (year) + "-" + (month);
+    startdate.val(nowDate);
+    alert(startdate.val());
 };
 
 
@@ -124,21 +135,19 @@ $(document).ready(function() {
             }
         })
     }
-    alert($('#submitbtn').prop("id"));
+  //  alert($('#submitbtn').prop("id"));
 });
 
 function calcudate(){
     var date1=startdata.val();
     var y1=date1.split("-")[0];
     var m1=date1.split("-")[1];
-    var d1=date1.split("-")[2];
 
     var date2=enddata.val();
     var y2=date2.split("-")[0];
     var m2=date2.split("-")[1];
-    var d2=date2.split("-")[2];
 
-    var moneyCount =(y2-y1)*12+m2-m1+(d2<d1?1:0);
+    var moneyCount =(y2-y1)*12+m2-m1;
     return moneyCount;
 }
 
@@ -149,18 +158,18 @@ function updatamoney()
 }
 
 /*当开始时间改变时*/
-startdata.change(function(){
+startdate.change(function(){
+    longtime=calcudate();
+    if ( longtime < 0 ) longtime=0;
+    updatamoney();
+});
+/*当结束时间改变时*/
+enddate.bind('input propertychange',function(event){
     longtime=calcudate();
     if ( longtime < 0 ) longtime=0;
     updatamoney();
 });
 
-/*当结束时间改变时*/
-enddata.change(function(){
-    longtime=calcudate();
-    if ( longtime < 0 ) longtime=0;
-    updatamoney();
-});
 
 
 
