@@ -106,6 +106,8 @@ public class HouseServiceImpl implements HouseService {
             criteria.andBuildingnumberIn(map.get("buildingNumber"));
         if (map.containsKey("houseType"))
             criteria.andHousetypeIn(map.get("houseType"));
+        if (map.containsKey("houseAreaMin") && map.containsKey("houseAreaMax"))
+            criteria.andHouseareaBetween((Integer)map.get("houseAreaMin").get(0),(Integer)map.get("houseAreaMax").get(0));
         if (map.containsKey("floorNumber"))
             criteria.andFloornumberIn(map.get("floorNumber"));
         if (map.containsKey("elevatorOrNot"))
@@ -136,6 +138,8 @@ public class HouseServiceImpl implements HouseService {
             criteria.andCommunitynameIn(map.get("communityName"));
         if (map.containsKey("buildingNumber"))
             criteria.andBuildingnumberIn(map.get("buildingNumber"));
+        if (map.containsKey("houseAreaMin") && map.containsKey("houseAreaMax"))
+            criteria.andHouseareaBetween((Integer)map.get("houseAreaMin").get(0),(Integer)map.get("houseAreaMax").get(0));
         if (map.containsKey("houseType"))
             criteria.andHousetypeIn(map.get("houseType"));
         if (map.containsKey("floorNumber"))
