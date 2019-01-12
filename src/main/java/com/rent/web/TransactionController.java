@@ -34,14 +34,14 @@ public class TransactionController {
     public String submitTransaction(HttpServletRequest request) {
         int userid=0,houseid=0;
         try {
-            userid=Integer.parseInt(request.getParameter("userId"));
+            userid=Integer.parseInt(request.getParameter("userid"));
         } catch(NumberFormatException e) { }
         try {
-            houseid=Integer.parseInt(request.getParameter("houseId"));
+            houseid=Integer.parseInt(request.getParameter("houseid"));
         } catch(NumberFormatException e) { }
         String startMonth,endNMonth;
-        startMonth=request.getParameter("startMonth");
-        endNMonth=request.getParameter("endNMonth");
+        startMonth=request.getParameter("startmonth");
+        endNMonth=request.getParameter("endmonth");
         int longtime=0;
         try {
             longtime=Integer.parseInt(request.getParameter("monthcount"));
@@ -57,7 +57,7 @@ public class TransactionController {
 //        ,monthNum=0,num1,num2;
 //        String startMonth,endNMonth;
         try {
-            transid=Integer.parseInt(request.getParameter("transId"));
+            transid=Integer.parseInt(request.getParameter("transid"));
         } catch(NumberFormatException e) { }
 //        try {
 //            monthNum=Integer.parseInt(request.getParameter("monthNum"));

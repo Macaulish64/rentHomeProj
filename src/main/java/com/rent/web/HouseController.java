@@ -74,36 +74,36 @@ public class HouseController {
     {
         int publishUserId=0;
         try{
-            publishUserId = Integer.parseInt(request.getParameter("publishUserId"));
+            publishUserId = Integer.parseInt(request.getParameter("publishuserid"));
         }catch(NumberFormatException e) { }
         House newhouse = new House();
         newhouse.setHouseid(publishUserId);
-        String cityName = request.getParameter("cityName");
-        String communityName = request.getParameter("communityName");
+        String cityName = request.getParameter("cityname");
+        String communityName = request.getParameter("communityname");
         int houseType=0,floorNumber=0,elevatorOrNot=0,paymentMethod=0,houseArea = 0;
-        String buildingNumber = request.getParameter("buildingNumber");
-        String houseDescription = request.getParameter("houseDescription");
+        String buildingNumber = request.getParameter("buildingnumber");
+        String houseDescription = request.getParameter("housedescription");
         try{
-            houseType = Integer.parseInt(request.getParameter("houseType"));
+            houseType = Integer.parseInt(request.getParameter("housetype"));
         }catch(NumberFormatException e) { }
         try{
-            houseArea = Integer.parseInt(request.getParameter("houseArea"));
+            houseArea = Integer.parseInt(request.getParameter("housearea"));
         }catch(NumberFormatException e) { }
         try{
-            floorNumber = Integer.parseInt(request.getParameter("floorNumber"));
+            floorNumber = Integer.parseInt(request.getParameter("floornumber"));
         }catch(NumberFormatException e) { }
         try{
-            elevatorOrNot = Integer.parseInt(request.getParameter("elevatorOrNot"));
+            elevatorOrNot = Integer.parseInt(request.getParameter("elevatorornot"));
         }catch(NumberFormatException e) { }
         try{
-            paymentMethod = Integer.parseInt(request.getParameter("paymentMethod"));
+            paymentMethod = Integer.parseInt(request.getParameter("paymentmethod"));
         }catch(NumberFormatException e) { }
         float depositMoney = 0, rentMoney =0;
         try{
-            depositMoney = Float.parseFloat(request.getParameter("depositMoney"));
+            depositMoney = Float.parseFloat(request.getParameter("depositmoney"));
         }catch(NumberFormatException e) { }
         try{
-            rentMoney = Float.parseFloat(request.getParameter("rentMoney"));
+            rentMoney = Float.parseFloat(request.getParameter("rentmoney"));
         }catch(NumberFormatException e) { }
 
         newhouse.setCityname(cityName);
@@ -128,7 +128,7 @@ public class HouseController {
     {
         int houseid = 0;
         try{
-            houseid = Integer.parseInt(requset.getParameter("houseId"));
+            houseid = Integer.parseInt(requset.getParameter("houseid"));
         }catch(NumberFormatException e) { }
         Map<String,Object> map = houseService.deleteHouse(houseid);
         return JSON.toJSONString(map);
@@ -140,36 +140,36 @@ public class HouseController {
     {
         int houseid=0;
         try{
-            houseid = Integer.parseInt(requset.getParameter("houseId"));
+            houseid = Integer.parseInt(requset.getParameter("houseid"));
         }catch(NumberFormatException e) { }
         House newhouse = new House();
         newhouse.setHouseid(houseid);
-        String cityName = requset.getParameter("cityName");
-        String communityName = requset.getParameter("communityName");
+        String cityName = requset.getParameter("cityname");
+        String communityName = requset.getParameter("communityname");
         int houseType=0,floorNumber=0,elevatorOrNot=0,paymentMethod=0,houseArea = 0;
-        String buildingNumber = requset.getParameter("buildingNumber");
-        String houseDescription = requset.getParameter("houseDescription");
+        String buildingNumber = requset.getParameter("buildingnumber");
+        String houseDescription = requset.getParameter("housedescription");
         try{
-            houseType = Integer.parseInt(requset.getParameter("houseType"));
+            houseType = Integer.parseInt(requset.getParameter("housetype"));
         }catch(NumberFormatException e) { }
         try{
-            houseArea = Integer.parseInt(requset.getParameter("houseArea"));
+            houseArea = Integer.parseInt(requset.getParameter("housearea"));
         }catch(NumberFormatException e) { }
         try{
-            floorNumber = Integer.parseInt(requset.getParameter("floorNumber"));
+            floorNumber = Integer.parseInt(requset.getParameter("floornumber"));
         }catch(NumberFormatException e) { }
         try{
-            elevatorOrNot = Integer.parseInt(requset.getParameter("elevatorOrNot"));
+            elevatorOrNot = Integer.parseInt(requset.getParameter("elevatorornot"));
         }catch(NumberFormatException e) { }
         try{
-            paymentMethod = Integer.parseInt(requset.getParameter("paymentMethod"));
+            paymentMethod = Integer.parseInt(requset.getParameter("paymentmethod"));
         }catch(NumberFormatException e) { }
         float depositMoney = 0, rentMoney =0;
         try{
-            depositMoney = Float.parseFloat(requset.getParameter("depositMoney"));
+            depositMoney = Float.parseFloat(requset.getParameter("depositmoney"));
         }catch(NumberFormatException e) { }
         try{
-            rentMoney = Float.parseFloat(requset.getParameter("rentMoney"));
+            rentMoney = Float.parseFloat(requset.getParameter("rentmoney"));
         }catch(NumberFormatException e) { }
 
         newhouse.setCityname(cityName);
@@ -193,8 +193,8 @@ public class HouseController {
     public String getOwnerHouseList(@PathVariable("userid") int userid,
                                     HttpServletRequest request) {
         List<House> houselist;
-        Map<String,List> map=new HashMap<>();
-        List<Integer> publishuserlist=new ArrayList<>();
+        Map<String,List> map=new HashMap<String, List>();
+        List<Integer> publishuserlist=new ArrayList<Integer>();
         publishuserlist.add(userid);
         map.put("publishUserId",publishuserlist);
         houselist=houseService.queryHouse(map,0,3);
