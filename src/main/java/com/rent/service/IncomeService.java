@@ -12,8 +12,9 @@ public interface IncomeService {
     public Map<String,Object> updateIncome(Income record);
     //查询，从start项到end项，从0开始
     public List<Income> queryIncome(Map<String,List> map, int start, int end);
+    public int queryIncomeNum(Map<String,List> map);
     //计数
-    public Map<String,Object> queryIncomeNum(Map<String,List> map);
+    public Map<String,Object> countIncome(Map<String,List> map);
     //用主键查找
     public Income queryIncomeByKey(String Month,String Area);
 }
