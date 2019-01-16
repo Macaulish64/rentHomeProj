@@ -9,15 +9,31 @@
 
 	<link rel="stylesheet" th:href="@{/css/w3.css}">
 
-	<style>
-		h1, h2, h3, h4, h5, h6 { font-family: Constantia, "思源宋体", sans-serif; }
-		a, p { font-family: "Century Gothic", "华文中宋", sans-serif; }
+	<!-- -->
+	<!-- Bootstrap core CSS -->
+	<link rel="stylesheet" th:href="@{css/bootstrap.min.css}">
+	<link rel="stylesheet" th:href="@{css/bootstrap-reset.css}">
+	<!--矢量图标插件-->
+	<link rel="stylesheet" th:href="@{css/font-awesome/css/font-awesome.css}">
+	<!--统计插件https://github.com/rendro/easy-pie-chart/-->
+	<link th:href="@{css/jquery-easy-pie-chart/jquery.easy-pie-chart.css}" rel="stylesheet" type="text/css" media="screen">
+	<!--幻灯片插件-->
+	<link rel="stylesheet" th:href="@{css/owl.carousel.css}" type="text/css">
 
+	<!--right slidebar-->
+	<link rel="stylesheet" th:href="@{css/slidebars.css}">
+
+	<!-- Custom styles for this template -->
+	<link rel="stylesheet" th:href="@{css/style.css}">
+	<link rel="stylesheet" th:href="@{css/style-responsive.css}">
+
+
+	<style>
 		.our-login-box {
 			width: 400px;
-			height: 450px;
+			height: 600px;
 			right: 100px;
-			bottom: -250px;
+			bottom: -400px;
 		}
 	</style>
 </head>
@@ -35,43 +51,48 @@
 
 <div class="w3-display-container w3-content w3-center"
 		 style="max-width:3200px; height:300px; background:dimgray;">
-	<div class="w3-container w3-border w3-round w3-white w3-display-bottomright our-login-box">
-		<form role="form" id="register" th:action="@{/user/register}" method="post">
+	<div class="w3-container w3-white w3-display-bottomright our-login-box round-panel">
+		<form class="form-horizontal" role="form" id="register" method="post">
 
-			<div class="form-group">
+			<div class="form-group w3-row">
 				<label for="phonenumber">Phone number</label>
-				<input type="text" class="form-control" id="phonenumber">
+				<input type="text" class="form-control" id="phonenumber" name="phonenumber">
 			</div>
-			<div class="form-group">
-				<label for="usernickname">User Name</label>
-				<input type="text" class="form-control" id="usernickname">
+			<div class="form-group w3-row">
+				<label for="usernickname">User Nick Name</label>
+				<input type="text" class="form-control" id="usernickname" name="usernickname">
 			</div>
-			<div class="form-group">
+			<div class="form-group w3-row">
 				<label for="password">Password</label>
-				<input type="password" class="form-control" id="password">
+				<input type="password" class="form-control" id="password" name="password">
 			</div>
-			<div class="form-group">
+			<div class="form-group w3-row">
 				<label for="confirmpassword">Confirm password</label>
 				<input type="password" class="form-control" id="confirmpassword">
 			</div>
 
 			<hr>
-			<div class="form-group">
+			<div class="form-group w3-row">
+				<label for="idnumber">姓名</label>
+				<input type="text" class="form-control" id="username" name="username">
+			</div>
+
+			<div class="form-group w3-row">
 				<label for="selectid">Select ID</label>
-				<select name="id" id="selectid">
+				<select name="idtype" id="selectid">
 					<option value=0>身份证</option>
 					<option value=1>护照</option>
 				</select>
 			</div>
-			<div class="form-group">
+			<div class="form-group w3-row">
 				<label for="idnumber">ID Number</label>
-				<input type="text" class="form-control" id="idnumber">
+				<input type="text" class="form-control" id="idnumber" name="idnumber">
 			</div>
-			<div class="form-group">
+			<div class="form-group w3-row">
 				<!--<label for="city">City</label>-->
 			</div>
 
-			<button type="submit" class="btn btn-primary">
+			<button type="button" class="btn btn-primary" onclick="signup()">
 				Sign up
 			</button>
 
@@ -79,6 +100,36 @@
 				<a th:href="@{/signin}">sign in</a>
 			</div>
 		</form>
+
+		<script>
+			var storage = window.localStorage;
+			function signup() {
+			  var http = XMLHttpRequest();
+			  http.open('POST', 'localhost:8080/rentHomeProj_war/user/regist', false);
+/*
+				$.ajax({
+					type: "POST",
+					url: "http://localhost:8080/rentHomeProj_war/user/regist",
+					async: false,
+					data: $('register').serialize(),
+					contentType: "application/x-www-form-urlencoded",
+					success: function(data) {
+						console.log(data);
+						alert(data);
+						var json = jQuery.parseJSON(data);
+						if (json.rescode === 10002) {
+							alert('success');
+							var jwt = json.JWT;
+							alert(jwt);
+							storage["username"] = json.username;
+							storage["userid"]=json.userid;
+							console.log(jwt);
+							$(location).attr('href', '/rentHomeProj_war/');
+						}
+					}
+				});*/
+			}
+		</script>
 	</div>
 </div>
 

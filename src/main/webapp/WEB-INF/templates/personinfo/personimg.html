@@ -132,14 +132,18 @@
                 <form action="" enctype="multipart/form-data">
                   <input type="file" id="chooseimg"
                          onchange="changeImg(this)" name="file"
+                         multiple="multiple"
                          accept="image/*">
                   <img src="" id="showimg" style="width: 20em;">
+                  <br>
                   <button type="button"
                           class="btn btn-primary"
                           onclick="sendimg()">
                     上传图片
                   </button>
                 </form>
+
+                <hr>
 
                 <script>
                   function changeImg() {
@@ -153,11 +157,11 @@
 
                   function sendimg() {
                     var fd = new FormData();
-                    var file = document.getElementById('file');
+                    var file = document.getElementById('chooseimg');
                     fd.append('file', file.files[0]);
-                    fd.append(browser.userid, browser.password);
+                    fd.append(window.localStorage['userid'], window.localStorage['password']);
                     var http = new XMLHttpRequest();
-                    http.open("POST", "http://localohost:8080/rentHomeProj_war/user/testpersonimg");
+                    http.open("POST", "http://localhost:8080/rentHomeProj_war/user/testpersonimg");
                     http.send(fd);
                   }
                 </script>
