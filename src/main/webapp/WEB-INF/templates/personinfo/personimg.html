@@ -134,7 +134,11 @@
                          onchange="changeImg(this)" name="file"
                          accept="image/*">
                   <img src="" id="showimg" style="width: 20em;">
-                  <button type="submit" class="btn btn-primary">上传图片</button>
+                  <button type="button"
+                          class="btn btn-primary"
+                          onclick="sendimg()">
+                    上传图片
+                  </button>
                 </form>
 
                 <script>
@@ -145,6 +149,16 @@
                     fin.onload = function(e) {
                       document.getElementById('showimg').src = this.result;
                     }
+                  }
+
+                  function sendimg() {
+                    var fd = new FormData();
+                    var file = document.getElementById('file');
+                    fd.append('file', file.files[0]);
+                    fd.append(browser.userid, browser.password);
+                    var http = new XMLHttpRequest();
+                    http.open("POST", "http://localohost:8080/rentHomeProj_war/user/testpersonimg");
+                    http.send(fd);
                   }
                 </script>
 
