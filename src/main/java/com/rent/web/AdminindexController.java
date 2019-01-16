@@ -55,11 +55,11 @@ public class AdminindexController {
         return json;
     }
 
-    @RequestMapping(value = "adminhouselist", method = RequestMethod.POST)
+    @RequestMapping(value = "adminhouselist", method = RequestMethod.GET)
     @ResponseBody
     public String adminHousePage(HttpServletRequest request)
     {
-        Map<String, List> map = (Map<String,List>) request.getAttribute("map");
+        Map<String, List> map =new HashMap<>();
         int num = houseService.queryHouseNum(map);
         Map<String ,Object> map2=new HashMap<String, Object>();
         if (num ==0)
@@ -82,7 +82,7 @@ public class AdminindexController {
     @ResponseBody
     public String adminRentPage(HttpServletRequest request)
     {
-        Map<String, List> map = (Map<String,List>) request.getAttribute("map");
+        Map<String, List> map =new HashMap<>();
         int num = rentInformationService.queryRentInformationNum(map);
         Map<String ,Object> map2=new HashMap<String, Object>();
         if (num ==0)

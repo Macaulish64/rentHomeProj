@@ -60,12 +60,12 @@ $(document).ready(function() {
             'userid' : userid
         },
         type:"GET",
-        url:"http://localhost:8080/rentHomeProj_war/adminhouselist",
+        url:"http://localhost:8080/rentHomeProj_war/admin/adminhouselist",
         dataType:"json",
         global:"false",
         success:function(data) {
          //   alert(data);
-            toshowhouselist(data);
+            toshowhouselist(data.list);
         },
         /* success:function(data){
            alert(JSON.stringify(data));
