@@ -1,4 +1,36 @@
 
+//Jquery 加参数或减参数
+/*1、取值使用
+$.Request("act") = 1
+2、url加参数
+$.UrlUpdateParams(window.location.href, "mid", 11111),*/
+(function ($) {
+    $.extend({
+        Request: function (m) {
+            var sValue = location.search.match(new RegExp("[\?\&]" + m + "=([^\&]*)(\&?)", "i"));
+            return sValue ? sValue[1] : sValue;
+        },
+        UrlUpdateParams: function (url, name, value) {
+            var r = url;
+            if (r != null && r != 'undefined' && r != "") {
+                value = encodeURIComponent(value);
+                var reg = new RegExp("(^|)" + name + "=([^&]*)(|$)");
+                var tmp = name + "=" + value;
+                if (url.match(reg) != null) {
+                    r = url.replace(eval(reg), tmp);
+                }
+                else {
+                    if (url.match("[\?]")) {
+                        r = url + "&" + tmp;
+                    } else {
+                        r = url + "?" + tmp;
+                    }
+                }
+            }
+            return r;
+        }
+    });
+})(jQuery);
 
 
 function getselect()
@@ -152,6 +184,23 @@ $(document).ready(function () {
             }
         })
     });
+    var str=$.Request("searchbat");
+    if (str !==null) {
+        $.ajax({
+            url:'http://localhost:8080/rentHomeProj_war/house/searchbar',
+            type:"GET",
+            dataType:"json",
+            data:{"search":str},
+            success:function(data){
+                viewhouselist(data.list);
+                // 	alert("Success");
+            },
+            error:function(){
+                // 	alert("Error");
+            }
+        })
+    }
+
     // $.ajax({
       // type: "GET",
       // dataType: 'json',
