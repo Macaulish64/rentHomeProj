@@ -5,10 +5,10 @@ console.log("输出:"+jwt);
 
 function stringHouseTyde(data)
 {
-    if (data===1) return '一居';
-    if (data===2) return '二居';
-    if (data===3) return '三居';
-    if (data===4) return '三居以上';
+    if (data===0) return '一居';
+    if (data===1) return '二居';
+    if (data===2) return '三居';
+    if (data===3) return '三居以上';
     return "";
 }
 
@@ -31,18 +31,18 @@ function toshowhouselist(data)
     var i;
     if (data.length===0) return;
     for(i=0;i<data.length;i++) {
-        $('#ownerhouselist').append(
-            '<tr>'+
-            '<td>'+data[i].houseid+'</td>'+
-            '<td>'+data[i].cityname+'</td>'+
-            '<td>'+data[i].communityname +'</td>'+
-            '<td>'+data[i].buildingnumber +'</td>'+
-            '<td>'+stringHouseTyde(data[i].housetype)+'</td>'+
-            '<td>'+data[i].housearea+'平米'+'</td>'+
-            '<td>'+data[i].floornumber+'</td>'+
-            '<td>'+data[i].elevatorornot +'</td>'+
-            '<td>'+'￥'+data[i].depositmoney+'</td>'+
-            '<td>'+stringPaymentMethod(data[i].paymentmethod)+'</td>'+
+        $('#ownerthouselist').append(
+        '<tr>'+
+        '<td>'+data[i].houseid+'</td>'+
+        '<td>'+data[i].cityname+'</td>'+
+        '<td>'+data[i].communityname +'</td>'+
+        '<td>'+data[i].buildingnumber +'</td>'+
+        '<td>'+stringHouseTyde(data[i].housetype)+'</td>'+
+        '<td>'+data[i].housearea+'平米'+'</td>'+
+        '<td>'+data[i].floornumber+'</td>'+
+        '<td>'+data[i].elevatorornot +'</td>'+
+        '<td>'+'￥'+data[i].depositmoney+'</td>'+
+        '<td>'+stringPaymenMethod(data[i].paymentmethod)+'</td>'+
             '<td>'+'￥'+data[i].rentmoney  +'</td>'+
             '<td>'+data[i].registtime  +'</td>'+
             '<td>'+data[i].updatetime  +'</td>'+

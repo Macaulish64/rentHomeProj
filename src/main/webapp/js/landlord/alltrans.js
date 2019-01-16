@@ -5,13 +5,12 @@ console.log("输出:"+jwt);
 
 function stringHouseTyde(data)
 {
-    if (data===1) return '一居';
-    if (data===2) return '二居';
-    if (data===3) return '三居';
-    if (data===4) return '三居以上';
+    if (data===0) return '一居';
+    if (data===1) return '二居';
+    if (data===2) return '三居';
+    if (data===3) return '三居以上';
     return "";
 }
-
 function stringPaymentMethod(data)
 {
     if (data===0) return '月租';
