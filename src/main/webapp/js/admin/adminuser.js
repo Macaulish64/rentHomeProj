@@ -33,7 +33,7 @@ function toshowuserlist(data)
             '<td>'+data[i].usernickname+'</td>'+
             '<td>'+stringUserType(data[i].usertype) +'</td>'+
             '<td>'+data[i].username+'</td>'+
-            '<td>'+stringcardType(data[i].housearea)+'</td>'+
+            '<td>'+stringcardType(data[i].cardtype)+'</td>'+
             '<td>'+data[i].idnumber+'</td>'+
             '<td>'+data[i].phonenumber +'</td>'+
             '<td>'+stringUserLevel(data[i].userlevel)+'</td>'+

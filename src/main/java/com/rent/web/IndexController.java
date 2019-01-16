@@ -64,6 +64,11 @@ public class IndexController {
 		return "templates/post/irentout";
 	}
 
+	@RequestMapping("/editrentout")
+	public String editirentout() {
+		return "templates/post/editrentout";
+	}
+
 	@RequestMapping("/personview")
 	public String personview() {
 		System.out.printf("Into person view");

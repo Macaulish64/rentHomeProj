@@ -2,7 +2,7 @@
 <html xmlns:="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head>
-  <title>发布房源</title>
+  <title>修改房源信息</title>
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -59,7 +59,7 @@
       <div class="col-sm-9">
 
         <div class="round-panel">
-          <h1>发布房源</h1>
+          <h1>修改房屋信息</h1>
           <br>
           <br>
 
@@ -67,48 +67,43 @@
                role="form" id="irentout-form" method="post">
 
             <div class="form-group">
-              位置
-              <br>
               <label for="city">城市</label>
-              <select id="city" name="city">
-                <option value="0">北京</option>
-                <option value="1">上海</option>
-                <option value="2">天津</option>
-              </select>
+              <input type="text" class="form-control" id="city" name="city" readonly="readonly">
+            </div>
 
+            <div class="form-group">
               <label for="community">小区</label>
-              <input type="text" id="community" name="community">
+              <input type="text" class="form-control" id="community" name="community" readonly="readonly">
             </div>
 
             <div class="form-group">
               <label for="buildingnumber">栋数</label>
-              <input type="text" class="form-control" id="buildingnumber" name="buildingnumber">
+              <input type="text" class="form-control"
+                     id="buildingnumber" name="buildingnumber" readonly="readonly">
             </div>
 
             <div class="form-group">
               <label for="housetype">房屋类型</label>
-              <input type="number" min="0" max="3"
-                     class="form-control" id="housetype" name="housetype">
+              <input type="text"
+                     class="form-control" id="housetype" name="housetype" readonly="readonly">
             </div>
 
             <div class="form-group">
               <label for="housearea">房屋面积</label>
-              <input type="number" min="1" max="10000"
-                     class="form-control" id="housearea" name="housearea">
+              <input type="text"
+                     class="form-control" id="housearea" name="housearea" readonly="readonly">
             </div>
 
             <div class="form-group">
               <label for="floornumber">楼层</label>
-              <input type="number" min="1" max="1000"
-                     class="form-control" id="floornumber" name="floornumber">
+              <input type="text"
+                     class="form-control" id="floornumber" name="floornumber" readonly="readonly">
             </div>
 
             <div class="form-group">
               <label for="elevatorornot">是否有电梯</label>
-              <select id="elevatorornot">
-                <option value="1">有</option>
-                <option value="0">没有</option>
-              </select>
+              <input type="text" class="form-control"
+                     id="elevatorornot" name="elevatorornot" readonly="readonly">
             </div>
 
             <div class="form-group">
