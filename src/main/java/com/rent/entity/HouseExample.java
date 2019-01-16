@@ -1064,7 +1064,7 @@ public class HouseExample {
             return (Criteria) this;
         }
 
-        public Criteria andRentmoneyBetween(Float value1, Float value2) {
+        public Criteria andRentmoneyBetween(double value1, double value2) {
             addCriterion("rentMoney between", value1, value2, "rentmoney");
             return (Criteria) this;
         }

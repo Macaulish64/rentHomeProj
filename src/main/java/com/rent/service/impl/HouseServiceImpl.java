@@ -117,7 +117,7 @@ public class HouseServiceImpl implements HouseService {
         if (map.containsKey("depositMoneyMax") && map.containsKey("depositMoneyMin"))
             criteria.andDepositmoneyBetween((float)map.get("depositMoneyMin").get(0),(float)map.get("depositMoneyMax").get(0));
         if (map.containsKey("rentMoneyMax") && map.containsKey("rentMoneyMin"))
-            criteria.andRentmoneyBetween((float)map.get("rentMoneyMin").get(0),(float)map.get("rentMoneyMax").get(0));
+            criteria.andRentmoneyBetween((double)map.get("rentMoneyMin").get(0),(double)map.get("rentMoneyMax").get(0));
         if (map.containsKey("houseStatus"))
             criteria.andHousestatusIn(map.get("houseStatus"));
 
@@ -151,7 +151,7 @@ public class HouseServiceImpl implements HouseService {
         if (map.containsKey("depositMoneyMax") && map.containsKey("depositMoneyMin"))
             criteria.andDepositmoneyBetween((float)map.get("depositMoneyMin").get(0),(float)map.get("depositMoneyMax").get(0));
         if (map.containsKey("rentMoneyMax") && map.containsKey("rentMoneyMin"))
-            criteria.andRentmoneyBetween((float)map.get("rentMoneyMin").get(0),(float)map.get("rentMoneyMax").get(0));
+            criteria.andRentmoneyBetween((double)map.get("rentMoneyMin").get(0),(double)map.get("rentMoneyMax").get(0));
         if (map.containsKey("houseStatus"))
             criteria.andHousestatusIn(map.get("houseStatus"));
 
