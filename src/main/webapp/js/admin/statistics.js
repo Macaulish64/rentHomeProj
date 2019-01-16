@@ -57,7 +57,7 @@ function toshowdata(data)
         point['x']=list[i].month;
         point['y']=Number(list[i].transactionnum);
         if (point['y']>big) big=point['y'];
-        drwalist.push(point);
+        drawlist.push(point);
     }
     todrawview("viewtransnum",drwalist,big);
     drawlist=[];
@@ -65,7 +65,7 @@ function toshowdata(data)
         point['x']=list[i].month;
         point['y']=list[i].feeincome;
         if (point['y']>big) big=point['y'];
-        drwalist.push(point);
+        drawlist.push(point);
     }
     todrawview("viewtransmoney",drwalist,big);
 }
@@ -76,11 +76,14 @@ function getdata()
     calcudate();
     calccity();
     var list1=[],list2=[],list3=[];
+
+    if (monthMin==='') monthMin="0000-00-00 00:00:00";
+    if (monthMax==='') monthMax="9999-99-99 99:99:99";
     list1[0]=monthMin;
     map["monthMin"]=list1;
     list2[0]=monthMax;
     map["monthMax"]=list2;
-    list3[0]='!!';
+    list3[0]=area;
     map["area"]=list3;
     $.ajax({
         headers: {
