@@ -27,7 +27,7 @@ function toshowuserlist(data)
     var i;
     if (data.length===0) return;
     for(i=0;i<data.length;i++) {
-        $('#ownerhouselist').append(
+        $('#adminuserlist').append(
             '<tr>'+
             '<td>'+data[i].userid+'</td>'+
             '<td>'+data[i].usernickname+'</td>'+

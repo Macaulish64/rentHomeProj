@@ -3,13 +3,15 @@ package com.rent.web;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.rent.common.CommonEnum;
-import com.rent.entity.RentTransaction;
 import com.rent.service.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
@@ -32,11 +34,11 @@ public class AdminindexController {
     @Autowired
     RentTransactionService rentTransactionService;
 
-    @RequestMapping(value = "adminuserlist", method = RequestMethod.POST)
+    @RequestMapping(value = "adminuserlist", method = RequestMethod.GET)
     @ResponseBody
     public String adminUserPage(HttpServletRequest request)
     {
-        Map<String, List> map = (Map<String,List>) request.getAttribute("map");
+        Map<String, List> map =new HashMap<>();
         int num = userService.queryUserNum(map);
         Map<String ,Object> map2=new HashMap<String, Object>();
         if (num == 0)
@@ -78,7 +80,7 @@ public class AdminindexController {
         return json;
     }
 
-    @RequestMapping(value = "adminrentlist", method = RequestMethod.POST)
+    @RequestMapping(value = "adminrentlist", method = RequestMethod.GET)
     @ResponseBody
     public String adminRentPage(HttpServletRequest request)
     {
@@ -101,17 +103,27 @@ public class AdminindexController {
         return json;
     }
 
-    @RequestMapping(value = "/queryAdminTransaction/{op}", method = RequestMethod.GET)
+    @RequestMapping(value = "admintranslist", method = RequestMethod.GET)
     @ResponseBody
-    public String queryAdminTransaction(HttpServletRequest request) {
-        int op=Integer.parseInt(request.getParameter("op"));
-        logger.info("Query Holder Transaction");
-        logger.info("Query Type:"+op);
-        Map<String,List> map=new HashMap<String,List>();
-
-        int listLen=rentTransactionService.queryRentTransactionNum(map);
-        List<RentTransaction> transactionlist=rentTransactionService.queryRentTransaction(map,0,listLen);
-        return JSON.toJSONString(transactionlist);
+    public String adminTransPage()
+    {
+        Map<String, List> map =new HashMap<>();
+        int num = rentTransactionService.queryRentTransactionNum(map);
+        Map<String ,Object> map2=new HashMap<String, Object>();
+        if (num ==0)
+        {
+            map2.put("rescode", CommonEnum.REQUEST_FAILED.getCode());
+            map2.put("resmsg",CommonEnum.REQUEST_FAILED.getMsg());
+        }
+        else
+        {
+            map2.put("rescode", CommonEnum.REQUEST_SUCCESS.getCode());
+            map2.put("resmsg", CommonEnum.REQUEST_SUCCESS.getMsg());
+            map2.put("list",rentTransactionService.queryRentTransaction(map ,0 ,num));
+        }
+        String json= JSON.toJSONString(map2, SerializerFeature.WriteMapNullValue);
+        System.out.println(json);
+        return json;
     }
 
     @RequestMapping(value = "adminincomelist", method = RequestMethod.POST)

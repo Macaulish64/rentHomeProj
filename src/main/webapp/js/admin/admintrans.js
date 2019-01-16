@@ -64,7 +64,7 @@ $(document).ready(function() {
             'userid' : userid
         },
         type:"GET",
-        url:"http://localhost:8080/rentHomeProj_war/trans/queryAdminTransaction/"+userid,
+        url:"http://localhost:8080/rentHomeProj_war/admin/admintranslist",
         dataType:"json",
         global:"false",
         data:{ op :2 },
