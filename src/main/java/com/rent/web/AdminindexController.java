@@ -130,6 +130,7 @@ public class AdminindexController {
         {
             map2.put("rescode", CommonEnum.REQUEST_SUCCESS.getCode());
             map2.put("resmsg", CommonEnum.REQUEST_SUCCESS.getMsg());
+
             map2.put("list",incomeService.queryIncome(map ,0,num));
 
             Map<String,Object> map3 = incomeService.countIncome(map);

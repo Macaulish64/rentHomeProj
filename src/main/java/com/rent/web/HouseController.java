@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.rent.common.CommonEnum;
 import com.rent.entity.House;
+import com.rent.entity.Photo;
 import com.rent.service.HouseService;
 import com.rent.service.PhotoService;
 import org.slf4j.Logger;
@@ -111,6 +112,7 @@ public class HouseController {
         String cityName = request.getParameter("cityname");
         String communityName = request.getParameter("communityname");
         int houseType=0,floorNumber=0,elevatorOrNot=0,paymentMethod=0,houseArea = 0;
+        int photoNum= 0;
         String buildingNumber = request.getParameter("buildingnumber");
         String houseDescription = request.getParameter("housedescription");
         try{
@@ -135,6 +137,9 @@ public class HouseController {
         try{
             rentMoney = Float.parseFloat(request.getParameter("rentmoney"));
         }catch(NumberFormatException e) { }
+        try{
+            photoNum = Integer.parseInt(request.getParameter("photonum"));
+        }catch(NumberFormatException e) { }
 
         newhouse.setCityname(cityName);
         newhouse.setCommunityname(communityName);
@@ -147,8 +152,24 @@ public class HouseController {
         newhouse.setHousedescription(houseDescription);
         newhouse.setPaymentmethod(paymentMethod);
         newhouse.setRentmoney(rentMoney);
+        newhouse.setPhotonum(photoNum);
 
         Map<String,Object> map = houseService.insertHouse(newhouse);
+
+        if((Integer) map.get("rescode") == 10004)
+            return JSON.toJSONString(map);
+
+        if (photoNum!=0)
+        {
+            List list = (List) request.getAttribute("photolist");
+            Photo photo = new Photo();
+            photo.setHouseid((Integer) map.get("houseId"));
+            for (int i=0;i<list.size();i++)
+            {
+                photo.setHousephoto((String) list.get(i));
+                photoService.insertPhoto(photo);
+            }
+        }
         return JSON.toJSONString(map);
     }
 
