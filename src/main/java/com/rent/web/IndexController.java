@@ -87,7 +87,7 @@ public class IndexController {
 
 	@RequestMapping("/roomer")
 	public String roomer() {
-		return "templates/roomer/roomer";
+		return "templates/roomer/statistics";
 	}
 
 	@RequestMapping("/roomerdemandlist")
@@ -112,7 +112,7 @@ public class IndexController {
 
 	@RequestMapping("/landlord")
 	public String landlord() {
-		return "templates/landlord/landlord";
+		return "templates/landlord/statistics";
 	}
 
 	@RequestMapping("/landlordhouselist")

@@ -31,12 +31,12 @@
 
 <section id="container" >
     <!--顶部结束-->
-    <header class="header white-bg">
-        <div class="sidebar-toggle-box">
-            <div class="fa fa-bars tooltips" data-placement="right"></div>
-        </div>
-        <a href="adminindex.html" class="logo">后台管理系统</a>
-    </header>
+  <header class="header white-bg">
+    <div class="sidebar-toggle-box">
+      <div class="fa fa-bars tooltips" data-placement="right"></div>
+    </div>
+    <a href="adminindex.html" class="logo">后台管理系统</a>
+  </header>
 
     <section id="main-content">
       <div class="row">
@@ -45,13 +45,14 @@
               <section class="panel-heading">
                   后台管理系统
               </section>
-              <div class="list-group">
-                  <div class="list-group-item"><a th:href="@{/adminusrlist}">Users</a></div>
-                  <div class="list-group-item"><a th:href="@{/adminhouselist}">Houses</a></div>
-                  <div class="list-group-item"><a th:href="@{/admindemandlist}">Demands</a></div>
-                  <div class="list-group-item"><a th:href="@{/admintransactionlist}">Transactions</a></div>
-                  <div class="list-group-item"><a th:href="@{/adminstatistics}">Statistics</a></div>
-              </div>
+            <div class="list-group">
+              <div class="list-group-item"><a th:href="@{/}">返回主页</a></div>
+              <div class="list-group-item"><a th:href="@{/adminusrlist}">用户列表</a></div>
+              <div class="list-group-item"><a th:href="@{/adminhouselist}">房屋列表</a></div>
+              <div class="list-group-item"><a th:href="@{/admindemandlist}">求租列表</a></div>
+              <div class="list-group-item"><a th:href="@{/admintransactionlist}">交易列表</a></div>
+              <div class="list-group-item"><a th:href="@{/adminstatistics}">统计信息</a></div>
+            </div>
           </div>
 
           <div class="col-sm-10"></div>
