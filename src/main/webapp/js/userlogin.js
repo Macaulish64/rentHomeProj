@@ -58,21 +58,21 @@ $('#btnsignin').click(function() {
     contentType: "application/x-www-form-urlencoded",
     success:function(data){
       console.log(data);
-      alert(data);
+      //alert(data);
       var json = jQuery.parseJSON(data);
      // alert(data['resmsg']);
       if (json.rescode === 10002) {
         alert("Success");
         var jwt = json.JWT;
         // 登录成功,存储令牌到本地
-        alert(jwt);
+        //alert(jwt);
         storage["jwt"] = jwt;
         storage["username"] = json.username;
         storage["userid"]=json.userid;
         console.log(jwt);
         $(location).attr('href', '/rentHomeProj_war/');
       }
-      alert(json.resmsg);
+      //alert(json.resmsg);
     },
     error:function(){alert("Error");}
   })

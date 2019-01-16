@@ -67,9 +67,8 @@ $(document).ready(function() {
         url:"http://localhost:8080/rentHomeProj_war/admin/admintranslist",
         dataType:"json",
         global:"false",
-        data:{ op :2 },
         success:function(data) {
-            toshowtransactionlist(data);
+            toshowtransactionlist(data.list);
         },
         error:function(){
             alert("Please Log In First");
