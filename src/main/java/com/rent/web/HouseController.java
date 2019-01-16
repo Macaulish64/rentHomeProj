@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -38,9 +39,10 @@ public class HouseController {
         //String str=(request.getAttribute("map")).toString();
         logger.info("=========================================================");
         //logger.info("houselist request(JSON)"+str);
-        String aaa=request.getParameter("map");
-        logger.info(aaa);
-        Map<String, List> map = (Map<String,List>) JSON.parse(aaa);
+        Map<String,List> map = (Map<String,List>) request.getAttribute("map");
+        if (map==null) {
+            map=new HashMap<>();
+        }
         int numlist = houseService.queryHouseNum(map);
         Map<String ,Object> map2=new HashMap<String, Object>();
         map2.put("rescode", CommonEnum.REQUEST_SUCCESS.getCode());
@@ -56,10 +58,11 @@ public class HouseController {
     public String searchBar(HttpServletRequest request)
     {
         //if ()
+        String str=(request.getAttribute("map")).toString();
         logger.info("=========================================================");
-        String search =request.getParameter("search");
-        logger.info("houselist request(search bar)"+search);
-        List<House> list = houseService.searchBar(search);
+        logger.info("houselist request(JSON)"+str);
+        String c = (String) request.getAttribute("search");
+        List<House> list = houseService.searchBar(c);
         Map<String ,Object> map2=new HashMap<String, Object>();
         map2.put("rescode", CommonEnum.REQUEST_SUCCESS.getCode());
         map2.put("resmsg", CommonEnum.REQUEST_SUCCESS.getMsg());
@@ -122,14 +125,14 @@ public class HouseController {
 
     @RequestMapping(value="/addhouse",method=RequestMethod.POST)
     @ResponseBody
-    public String addHouse(HttpServletRequest request)
-    {
+    public String addHouse(HttpServletRequest request) throws UnsupportedEncodingException {
+        request.setCharacterEncoding("UTF-8");
         int publishUserId=0;
         try{
             publishUserId = Integer.parseInt(request.getParameter("publishuserid"));
         }catch(NumberFormatException e) { }
         House newhouse = new House();
-        newhouse.setHouseid(publishUserId);
+        newhouse.setPublishuserid(publishUserId);
         String cityName = request.getParameter("cityname");
         String communityName = request.getParameter("communityname");
         int houseType=0,floorNumber=0,elevatorOrNot=0,paymentMethod=0,houseArea = 0;

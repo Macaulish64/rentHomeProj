@@ -63,21 +63,29 @@
           <br>
           <br>
 
-          <form class="form-horizontal" enctype="multipart/form-data"
+          <form class="form-horizontal" enctype="application/x-www-form-urlencoded"
                role="form" id="irentout-form" method="post">
 
             <div class="form-group">
-              位置
-              <br>
+              <label for="publishuserid">发布者ID</label>
+              <input type="text" id="publishuserid" name="publishuserid" readonly="readonly">
+            </div>
+
+            <div class="form-group">
               <label for="city">城市</label>
-              <select id="city" name="city">
-                <option value="0">北京</option>
-                <option value="1">上海</option>
-                <option value="2">天津</option>
+              <select class="form-control" id="city" name="cityname">
+                <option>北京</option>
+                <option>上海</option>
+                <option>天津</option>
               </select>
 
               <label for="community">小区</label>
-              <input type="text" id="community" name="community">
+              <input type="text" id="community" name="communityname">
+            </div>
+
+            <div class="form-group">
+              <label for="housedescription">房屋描述</label>
+              <input type="text" class="form-control" id="housedescription" name="housedescription">
             </div>
 
             <div class="form-group">
@@ -152,7 +160,7 @@
               }
             </script>
 
-            <button type="button" class="btn btn-primary" id="btn-irentout">
+            <button type="button" class="btn btn-primary" onclick="submithouse()">
               Submit
             </button>
           </form>
@@ -196,5 +204,8 @@
   </footer>
 
 </section>
+
+<script th:src="@{/js/post/irentout.js}"></script>
+
 </body>
 </html>
