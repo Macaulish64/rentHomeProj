@@ -151,7 +151,7 @@ function viewhouselist(list)
             '</li>'
         );
     }*/
-
+    $('#houseList').html("");
     for(var i=0;i<list.length;i++) {
         $('#houseList').append(
             '<li class="round-panel toumingdu">'+
@@ -198,7 +198,7 @@ $(document).ready(function () {
             }
         })
     });
-    var str=$.Request("searchbat");
+    var str=$.Request("searchbar");
     if (str !==null) {
         $.ajax({
             url:'http://localhost:8080/rentHomeProj_war/house/searchbar',
