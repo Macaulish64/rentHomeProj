@@ -3,6 +3,13 @@ var username = window.localStorage["username"];
 var userid=window.localStorage['userid'];
 console.log("输出:"+jwt);
 
+
+function stringHave(data)
+{
+    if (data===0) return '有';
+    if (data===1) return '无';
+}
+
 function stringHouseTyde(data)
 {
     if (data===0) return '一居';
@@ -31,7 +38,7 @@ function toshowhouselist(data)
     var i;
     if (data.length===0) return;
     for(i=0;i<data.length;i++) {
-        $('#ownerthouselist').append(
+        $('#ownerhouselist').append(
         '<tr>'+
         '<td>'+data[i].houseid+'</td>'+
         '<td>'+data[i].cityname+'</td>'+
@@ -40,14 +47,14 @@ function toshowhouselist(data)
         '<td>'+stringHouseTyde(data[i].housetype)+'</td>'+
         '<td>'+data[i].housearea+'平米'+'</td>'+
         '<td>'+data[i].floornumber+'</td>'+
-        '<td>'+data[i].elevatorornot +'</td>'+
+        '<td>'+stringHave(data[i].elevatorornot) +'</td>'+
         '<td>'+'￥'+data[i].depositmoney+'</td>'+
-        '<td>'+stringPaymenMethod(data[i].paymentmethod)+'</td>'+
+        '<td>'+stringPaymentMethod(data[i].paymentmethod)+'</td>'+
             '<td>'+'￥'+data[i].rentmoney  +'</td>'+
             '<td>'+data[i].registtime  +'</td>'+
             '<td>'+data[i].updatetime  +'</td>'+
             '<td>'+stringhouseStatus(data[i].housestatus)+'</td>'+
-            '<tr>'+'</tr>'
+            '</tr>'
         );
     }
 }

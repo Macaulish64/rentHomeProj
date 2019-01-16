@@ -47,7 +47,7 @@ function getselect()
             houseType.push(i);
      //   houseType.push(Number(1));
     }
-    map['houseType']=houseType;
+    if (houseType.length>0) map['houseType']=houseType;
 
     var listhouseAreaMin=[];
     if ($('#houseareamin').val()!=="") {
@@ -72,7 +72,7 @@ function getselect()
     var listelevator=[];
     if ($('#elevator1').attr('checked')) listelevator.push(0);
     if ($('#elevator2').attr('checked')) listelevator.push(1);
-    map["elevatorOrNot"]=listelevator;
+    if (listelevator.length>0) map["elevatorOrNot"]=listelevator;
 
 
     var listrentmoneymin=[];
@@ -96,16 +96,30 @@ function getselect()
     map["rentMoneyMax"]=listrentmoneymax;
 
     var list2 =new Array();
-    if ($('#paymentmethod1').prop('checked')==true) {
+    if ($('#paymentmethod1').prop('checked')) {
         list2.push(0);
     }
-    if ($('#paymentmethod2').prop('checked')==true) {
+    if ($('#paymentmethod2').prop('checked')) {
         list2.push(1);
     }
-    if ($('#paymentmethod2').prop('checked')==true) {
+    if ($('#paymentmethod2').prop('checked')) {
         list2.push(2);
     }
-    map['paymentMethod']=list2;
+    if (list2.length>0) map['paymentMethod']=list2;
+
+
+    var listcity =new Array();
+    if ($('#city1').prop('checked')) {
+        listcity.push('北京');
+    }
+    if ($('#paymentmethod2').prop('checked')) {
+        listcity.push('上海');
+    }
+    if ($('#paymentmethod2').prop('checked')) {
+        listcity.push('天津');
+    }
+    if (listcity.length>0) map['cityName']=listcity;
+
 
     var str=JSON.stringify(map);
     console.log(str);
@@ -199,6 +213,7 @@ $(document).ready(function () {
                 // 	alert("Error");
             }
         })
+        return;
     }
 
     // $.ajax({
