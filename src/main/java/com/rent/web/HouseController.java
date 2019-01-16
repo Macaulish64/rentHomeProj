@@ -34,10 +34,13 @@ public class HouseController {
     public String houseListPage(HttpServletRequest request)
     {
         //if ()
-        String str=(request.getAttribute("map")).toString();
+        //String str=(request.getAttribute("map")).toString();
         logger.info("=========================================================");
-        logger.info("houselist request(JSON)"+str);
+        //logger.info("houselist request(JSON)"+str);
         Map<String,List> map = (Map<String,List>) request.getAttribute("map");
+        if (map==null) {
+            map=new HashMap<>();
+        }
         int numlist = houseService.queryHouseNum(map);
         Map<String ,Object> map2=new HashMap<String, Object>();
         map2.put("rescode", CommonEnum.REQUEST_SUCCESS.getCode());

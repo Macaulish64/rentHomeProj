@@ -76,8 +76,8 @@ $('#search-btn').click(function(){
 function viewhouselist(list)
 {
     /*问题：动态的话不能用th:需要绝对地址*/
-   // if (list.length===0) return;
-    for(var i=0;i<2;i++) {
+    if (list.length===0) return;
+    /*for(var i=0;i<2;i++) {
         $('#houseList').append(
             '<li class="round-panel">'+
                 '<div class="row">'+
@@ -93,6 +93,30 @@ function viewhouselist(list)
                 '<div class="btn col-sm-2">'+
                 '<button id="house-btn" class="btn btn-default w3-center">'+'查看'+'</button>'+
                 '</div>'+
+            '</div>'+
+            '</li>'
+        );
+    }*/
+
+    for(var i=0;i<list.length;i++) {
+        $('#houseList').append(
+            '<li class="round-panel">'+
+            '<div class="row">'+
+            '<div class="img col-sm-5">'+
+            '<img class="w3-center"'+
+            'style="width: 15em; height: 15em;"'+
+            'src="'+'/rentHomeProj_war/img/a(1).JPG">'+
+            '</div>'+
+            '<div class="txt col-sm-5">'+
+            '<h3>'+list[i].housedescription+'</h3>'+
+            '<h4>'+list[i].cityname+'市'+list[i].communityname+'</h4>'+
+            '</div>'+
+            '<div class="btn col-sm-2">'+
+            '<a href="/rentHomeProj_war/houseinfo?house='+list[i].houseid+'">'+
+            '<button id="house-btn" class="btn btn-default w3-center">'+
+            '查看'+'</button>'+
+            '</a>'+
+            '</div>'+
             '</div>'+
             '</li>'
         );
@@ -132,18 +156,21 @@ $(document).ready(function () {
       var list1=["1","2","3"];
       var list2=["444","555","666"];
       var list=[];
-      viewhouselist(list);
-    /*  $.ajax({
+      //viewhouselist(list);
+      var map={};
+      $.ajax({
 		  url:'http://localhost:8080/rentHomeProj_war/house/list',
 		  type:"GET",
+          dataType:"json",
+          data:{"map":map},
 		  success:function(data){
-		      viewhouselist(list);
+		      viewhouselist(data.list);
 		 // 	alert("Success");
 		  },
 		  error:function(){
 		 // 	alert("Error");
 		  }
-	  })*/
+	  })
 		/*var idList = new Array();
 		idList.push("1");
 		idList.push("2");

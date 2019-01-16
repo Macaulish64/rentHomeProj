@@ -38,7 +38,7 @@ $(document).ready(function() {
             'userid' : userid
         },
         type:"GET",
-        url:"http://localhost:8080/rentHomeProj_war/user/statisticsroomer/"+userid,
+        url:"http://localhost:8080/rentHomeProj_war/user/landlordstatistics/"+userid,
         dataType:"json",
         global:"false",
         data:{ "startmonth" :startmonth,
