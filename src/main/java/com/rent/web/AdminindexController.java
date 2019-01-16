@@ -126,7 +126,7 @@ public class AdminindexController {
         return json;
     }
 
-    @RequestMapping(value = "adminincomelist", method = RequestMethod.POST)
+    @RequestMapping(value = "adminincomelist", method = RequestMethod.GET)
     @ResponseBody
     public String adminIncomePage(HttpServletRequest request)
     {
