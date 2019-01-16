@@ -6261,6 +6261,7 @@ header.blue-bg .search:focus {
 }
 
 .bbb {
+    padding-right: 2em;
     alignment: right;
     position: relative;
 }
