@@ -5,6 +5,23 @@ var userid=storage["userid"]
 var myDate=new Date();
 console.log("输出:"+jwt);
 
+function stringUserType(data)
+{
+    if (data==0) return '普通用户';
+    if (data==1) return '管理员';
+}
+
+function stringUserLevel(data)
+{
+    if (data==0) return '一般';
+    if (data==1) return '重要';
+    if (data==2) return '钻石级';
+}
+
+function stringcardType(data)
+{
+    if (data==0) return '身份证';
+    if (data==1) return '护照';
 
 function personinformation(data)
 {
@@ -25,7 +42,7 @@ function personinformation(data)
         );
     }
     $('#userlevel').append(
-        data.userlevel
+        stringUserLevel(data.userlevel)
     );
     if (data.userlevel ===null) {
         $('#userlevel').append(
@@ -49,7 +66,7 @@ function personinformation(data)
         );
     }
     $('#cardtype').append(
-        data.cardtype
+        stringcardType(data.cardtype)
     );
     if (data.cardtype ===null) {
         $('#cardtype').append(
