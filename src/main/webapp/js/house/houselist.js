@@ -16,39 +16,52 @@ function getselect()
      //   houseType.push(Number(1));
     }
     map['houseType']=houseType;
+
+    var listhouseAreaMin=[];
     if ($('#houseareamin').val()!=="") {
-        map["houseAreaMin"]=Number($('#houseareamin').val());
+        listhouseAreaMin[0]=Number($('#houseareamin').val());
     }
     else {
-        map["houseAreaMin"]=0;
+        listhouseAreaMin[0]=0;
     }
+    map["houseAreaMin"]=listhouseAreaMin;
+
+
+    var listhouseareamax=[];
     if ($('#houseareamax').val()!=="") {
-        map["houseAreaMax"]=Number($('#houseareamax').val());
+        listhouseareamax[0]=Number($('#houseareamax').val());
     }
     else {
-        map["houseAreaMax"]=1000000;
+        listhouseareamax[0]=10000;
     }
+    map["houseAreaMax"]=listhouseareamax;
 
 
-    if ($('#elevator1').attr('checked') && (!($('#elevator2').attr('checked')))) {
-        map["elevatorOrNot"]=1;
-    }
-    if (($('#elevator1').attr('checked')==false) && (($('#elevator2').attr('checked'))==true)) {
-        map["elevatorOrNot"]=0;
-    }
+    var listelevator=[];
+    if ($('#elevator1').attr('checked')) listelevator.push(0);
+    if ($('#elevator2').attr('checked')) listelevator.push(1);
+    map["elevatorOrNot"]=listelevator;
 
+
+    var listrentmoneymin=[];
     if ($('#rentmoneymin').val()!=="") {
-        map["rentMoneyMin"]=Number($('#rentmoneymin').val());
+        listrentmoneymin[0]=Number($('#rentmoneymin').val());
     }
     else {
-        map["rentMoneyMin"]=0;
+        listrentmoneymin[0]=0;
     }
+    map["rentMoneyMin"]= listrentmoneymin;
+
+
+
+    var listrentmoneymax=[];
     if ($('#rentmoneymax').val()!=="") {
-        map["rentMoneyMax"]=Number($('#rentmoneymax').val());
+        listrentmoneymax[0]=Number($('#rentmoneymax').val());
     }
     else {
-        map["rentMoneyMax"]=1000000;
+        listrentmoneymax[0]=10000;
     }
+    map["rentMoneyMax"]=listrentmoneymax;
 
     var list2 =new Array();
     if ($('#paymentmethod1').prop('checked')==true) {
@@ -63,14 +76,9 @@ function getselect()
     map['paymentMethod']=list2;
 
     var str=JSON.stringify(map);
-    alert(str);
+    console.log(str);
     return str;
 }
-
-$('#search-btn').click(function(){
-    alert("!!!");
-    getselect();
-});
 
 
 function viewhouselist(list)
@@ -130,8 +138,19 @@ function viewhouselist(list)
 
 $(document).ready(function () {
     $('#search-btn').on('click',function(){
-        alert("!!!");
-        getselect();
+        $.ajax({
+            url:'http://localhost:8080/rentHomeProj_war/house/list',
+            type:"GET",
+            dataType:"json",
+            data:{"map":getselect()},
+            success:function(data){
+                viewhouselist(data.list);
+                // 	alert("Success");
+            },
+            error:function(){
+                // 	alert("Error");
+            }
+        })
     });
     // $.ajax({
       // type: "GET",
@@ -158,11 +177,12 @@ $(document).ready(function () {
       var list=[];
       //viewhouselist(list);
       var map={};
+      map['aa']=list;
       $.ajax({
 		  url:'http://localhost:8080/rentHomeProj_war/house/list',
 		  type:"GET",
           dataType:"json",
-          data:{"map":map},
+          data:{"map":JSON.stringify(map)},
 		  success:function(data){
 		      viewhouselist(data.list);
 		 // 	alert("Success");

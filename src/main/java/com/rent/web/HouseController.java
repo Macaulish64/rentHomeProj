@@ -38,10 +38,9 @@ public class HouseController {
         //String str=(request.getAttribute("map")).toString();
         logger.info("=========================================================");
         //logger.info("houselist request(JSON)"+str);
-        Map<String,List> map = (Map<String,List>) request.getAttribute("map");
-        if (map==null) {
-            map=new HashMap<>();
-        }
+        String aaa=request.getParameter("map");
+        logger.info(aaa);
+        Map<String, List> map = (Map<String,List>) JSON.parse(aaa);
         int numlist = houseService.queryHouseNum(map);
         Map<String ,Object> map2=new HashMap<String, Object>();
         map2.put("rescode", CommonEnum.REQUEST_SUCCESS.getCode());
