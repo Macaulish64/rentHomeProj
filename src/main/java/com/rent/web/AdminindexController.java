@@ -132,9 +132,9 @@ public class AdminindexController {
     {
         logger.info("=======================================");
         logger.info("Adminincomelist");
-        Object aaa=request.getAttribute("map");
-        logger.info(aaa.toString());
-        Map<String, List> map = (Map<String,List>) request.getAttribute("map");
+        String aaa=request.getParameter("map");
+        logger.info(aaa);
+        Map<String, List> map = (Map<String,List>) JSON.parse(aaa);
         int num = incomeService.queryIncomeNum(map);
         Map<String ,Object> map2=new HashMap<String, Object>();
         if (num == 0)
