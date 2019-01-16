@@ -61,7 +61,9 @@ public class AdminindexController {
     @ResponseBody
     public String adminHousePage(HttpServletRequest request)
     {
-        Map<String, List> map =new HashMap<>();
+        String aaa=request.getParameter("map");
+        logger.info(aaa);
+        Map<String, List> map = (Map<String,List>) JSON.parse(aaa);
         int num = houseService.queryHouseNum(map);
         Map<String ,Object> map2=new HashMap<String, Object>();
         if (num ==0)

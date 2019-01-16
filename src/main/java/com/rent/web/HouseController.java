@@ -79,7 +79,8 @@ public class HouseController {
         String str=(request.getAttribute("map")).toString();
         logger.info("=========================================================");
         logger.info("houselist request(JSON)"+str);
-        Map<String,List> map = (Map<String,List>) request.getAttribute("map");
+        String aaa = request.getParameter("map");
+        Map<String,List> map = (Map<String,List>) JSON.parse(aaa);
         int num = houseService.queryHouseNum(map);
         Map<String ,Object> map2=new HashMap<String, Object>();
         if (num < (pagenumber - 1) * 5 + 1)
