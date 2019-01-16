@@ -33,25 +33,28 @@ function toshowtransactionlist(data)
     var i;
     if (data.length===0) return;
     for(i=0;i<data.length;i++) {
-        $('#pretranslist').append(
-            '<tr>'+
-            '<td>'+data[i].transactionid+
+        if (data[i].rentstatus === 0)
+        {
+            $('#pretranslist').append(
+                '<tr>'+
+                '<td>'+data[i].transactionid+
                 '<a class="button" style="alignment:center" ' +
                 'href="checktransaction?trans='+data[i].transactionid+'">'+
-            '</td>'+
-            '<td>'+data[i].houseid+'</td>'+
-            '<td>'+data[i].landlordid +'</td>'+
-            '<td>'+data[i].tenantid +'</td>'+
-            '<td>'+data[i].transactiondate +'</td>'+
-            '<td>'+data[i].startmonth +'</td>'+
-            '<td>'+data[i].endmonth +'</td>'+
-            '<td>'+'￥'+data[i].depositmoney +'</td>'+
-            '<td>'+'￥'+data[i].totalrent+'</td>'+
-            '<td>'+'￥'+data[i].landlordpaymentagencyfee +'</td>'+
-            '<td>'+'￥'+data[i].tenantpaymentagencyfee+'</td>'+
-            '<td>'+stringhouseStatus(Number(data[i].rentstatus))+'</td>'+
-            '<tr>'+'</tr>'
-        );
+                '</td>'+
+                '<td>'+data[i].houseid+'</td>'+
+                '<td>'+data[i].landlordid +'</td>'+
+                '<td>'+data[i].tenantid +'</td>'+
+                '<td>'+data[i].transactiondate +'</td>'+
+                '<td>'+data[i].startmonth +'</td>'+
+                '<td>'+data[i].endmonth +'</td>'+
+                '<td>'+'￥'+data[i].depositmoney +'</td>'+
+                '<td>'+'￥'+data[i].totalrent+'</td>'+
+                '<td>'+'￥'+data[i].landlordpaymentagencyfee +'</td>'+
+                '<td>'+'￥'+data[i].tenantpaymentagencyfee+'</td>'+
+                //'<td>'+stringhouseStatus(Number(data[i].rentstatus))+'</td>'+
+                '<tr>'+'</tr>'
+            );
+        }
     }
 }
 
