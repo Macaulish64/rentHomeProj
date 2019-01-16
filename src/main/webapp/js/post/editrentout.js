@@ -37,6 +37,42 @@ $.UrlUpdateParams(window.location.href, "mid", 11111),*/
   });
 })(jQuery);
 
+function stringHouseTyde(data)
+{
+  if (data===0) return '一居';
+  if (data===1) return '二居';
+  if (data===2) return '三居';
+  if (data===3) return '三居以上';
+  return "";
+}
+
+function stringPaymentMethod(data)
+{
+  if (data===0) return '月租';
+  if (data===1) return '季租';
+  if (data===2) return '年租';
+  return "";
+}
+
+function stringhouseStatus(data)
+{
+  if (data===0) return '已租';
+  if (data===1) return '待租';
+  return "";
+}
+
+function fillinput(house) {
+  $('#city').attr({"value": house.cityname});
+  $('#community').attr({"value": house.communityname});
+  $('#buildingnumber').attr({"value": house.buildingnumber});
+  $('#housetype').attr({"value": stringHouseTyde(house.housetype)});
+  $('#housearea').attr({"value": house.housearea});
+  $('#floornumber').attr({"value": house.floornumber});
+  $('#elevatorornot').attr({"value": house.elevatorornot});
+  $('#depositmoney').attr({"value": house.depositmoney});
+  $('#rentmoney').attr({"value": house.rentmoney});
+}
+
 $(document).ready(function () {
   var houseid = $.Request("house");
   if (houseid===null) {
@@ -54,9 +90,13 @@ $(document).ready(function () {
           alert("房屋编号错误");
           return;
         }
-        if (data.rentstatus === 0)
         var house=data.house;
-        houseinformation(house);
+        if (house.housestatus === 1) {
+          alert('房屋已出租');
+          return;
+        }
+
+        fillinput(house);
       },
       error: function () {
         alert("房屋编号错误");
