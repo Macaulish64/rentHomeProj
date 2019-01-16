@@ -6276,3 +6276,17 @@ hr {
 input {
     margin: 1em 1em 1em 1em;
 }
+
+.backgroundimg{
+    background-image: url('../img/beijing.jpg');
+}
+
+.backgroundimg2{
+    background-image: url('../img/beijing2.jpg');
+}
+.backgroundimg3{
+    background-image: url('../img/b (1).JPG');
+}
+.toumingdu{
+    opacity:0.95;
+}
