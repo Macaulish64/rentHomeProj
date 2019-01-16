@@ -155,6 +155,10 @@ public class AdminindexController {
                 map2.put("list",incomeService.queryIncome(map ,(pagenumber-1)*5 ,pagenumber*5));
             else
                 map2.put("list",incomeService.queryIncome(map ,(pagenumber-1)*5 ,num));
+
+            Map<String,Object> map3 = incomeService.countIncome(map);
+            map2.put("transactionNum",map3.get("transactionNum"));
+            map2.put("feeIncome",map3.get("feeIncome"));
         }
         String json= JSON.toJSONString(map2, SerializerFeature.WriteMapNullValue);
         System.out.println(json);
