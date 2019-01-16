@@ -154,11 +154,11 @@
             <header class="panel-heading">成交笔数折线图</header>
             <div class="row">
 
-              <div class="col-sm-8" id="viewtransnum">
+              <div class="col-sm-9" id="viewtransnum">
 
               </div>
 
-              <div class="col-sm-4">
+              <div class="col-sm-3">
                 <table class="table table-hover" id="transaction-list">
                   <thead>
                   <tr>
@@ -189,11 +189,11 @@
             <header class="panel-heading">中介费折线图</header>
             <div class="row">
 
-              <div class="col-sm-8" id="viewtransmoney">
+              <div class="col-sm-9" id="viewtransmoney">
 
               </div>
 
-              <div class="col-sm-4">
+              <div class="col-sm-3">
                 <table class="table table-hover" id="agencyfee-list">
                   <thead>
                   <tr>
@@ -238,50 +238,6 @@
   </footer>
   <!--footer end-->
 </section>
-
-<script>
-  var trans = document.querySelectorAll('#transactions s');
-  var agency = document.querySelectorAll('#agencyfee s');
-
-  // 这个是折线方法
-  var fnLineChart = function (eles) {
-    [].slice.call(eles).forEach(function (ele, index) {
-      var eleNext = eles[index + 1];
-      if (!eleNext) { return;  }
-      var eleLine = ele.querySelector('i');
-      if (!eleLine) {
-        eleLine = document.createElement('i');
-        eleLine.setAttribute('line', '');
-        ele.appendChild(eleLine);
-      }
-      // 记录坐标
-      var boundThis = ele.getBoundingClientRect();
-      // 下一个点的坐标
-      var boundNext = eleNext.getBoundingClientRect();
-      // 计算长度和旋转角度
-      var x1 = boundThis.left, y1 = boundThis.top;
-      var x2 = boundNext.left, y2 = boundNext.top;
-      // 长度
-      var distance = Math.sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1));
-      // 弧度
-      var radius = Math.atan((y2 - y1) / (x2 - x1));
-      // 设置线条样式
-      eleLine.style.width = distance + 'px';
-      eleLine.style.msTransform = 'rotate('+ radius +'rad)';
-      eleLine.style.transform = 'rotate('+ radius +'rad)';
-    });
-  };
-
-  // 调用折线方法
-  fnLineChart(trans);
-  fnLineChart(agency);
-
-  // 浏览器尺寸改变时候
-  window.addEventListener('resize', function () {
-    fnLineChart(trans);
-    fnLineChart(agency);
-  });
-</script>
 
 </body>
 </html>

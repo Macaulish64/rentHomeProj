@@ -53,6 +53,9 @@ function toshowhouselist(data)
 }
 
 $(document).ready(function() {
+    var list1=[];
+    var map={};
+    map["no"]=list1;
     $.ajax({
         headers: {
             Authorization : jwt,
@@ -63,6 +66,7 @@ $(document).ready(function() {
         url:"http://localhost:8080/rentHomeProj_war/admin/adminhouselist",
         dataType:"json",
         global:"false",
+        data:{"map":JSON.stringify(map)},
         success:function(data) {
          //   alert(data);
             toshowhouselist(data.list);
