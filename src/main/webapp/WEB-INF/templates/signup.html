@@ -2,7 +2,7 @@
 <html xmlns:="http://www.w3.org/1999/xhtml"
 			xmlns:th="http://www.thymeleaf.org">
 <head>
-	<title>Rent</title>
+	<title>注册</title>
 
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -27,15 +27,6 @@
 	<link rel="stylesheet" th:href="@{css/style.css}">
 	<link rel="stylesheet" th:href="@{css/style-responsive.css}">
 
-
-	<style>
-		.our-login-box {
-			width: 400px;
-			height: 600px;
-			right: 100px;
-			bottom: -400px;
-		}
-	</style>
 </head>
 <body>
 
@@ -49,100 +40,118 @@
 	</div>
 </header>
 
-<div class="w3-display-container w3-content w3-center"
-		 style="max-width:3200px; height:300px; background:dimgray;">
-	<div class="w3-container w3-white w3-display-bottomright our-login-box round-panel">
-		<form class="form-horizontal" role="form" id="register" method="post">
+<section id="container" style="background-color: dimgray">
+  <section id="main-content">
 
-			<div class="form-group w3-row">
-				<label for="phonenumber">Phone number</label>
-				<input type="text" class="form-control" id="phonenumber" name="phonenumber">
-			</div>
-			<div class="form-group w3-row">
-				<label for="usernickname">User Nick Name</label>
-				<input type="text" class="form-control" id="usernickname" name="usernickname">
-			</div>
-			<div class="form-group w3-row">
-				<label for="password">Password</label>
-				<input type="password" class="form-control" id="password" name="password">
-			</div>
-			<div class="form-group w3-row">
-				<label for="confirmpassword">Confirm password</label>
-				<input type="password" class="form-control" id="confirmpassword">
-			</div>
+		<div class="row">
+			<div class="col-sm-4"></div>
 
-			<hr>
-			<div class="form-group w3-row">
-				<label for="idnumber">姓名</label>
-				<input type="text" class="form-control" id="username" name="username">
-			</div>
+			<div class="col-sm-5">
+				<div class="round-panel">
 
-			<div class="form-group w3-row">
-				<label for="selectid">Select ID</label>
-				<select name="idtype" id="selectid">
-					<option value=0>身份证</option>
-					<option value=1>护照</option>
-				</select>
-			</div>
-			<div class="form-group w3-row">
-				<label for="idnumber">ID Number</label>
-				<input type="text" class="form-control" id="idnumber" name="idnumber">
-			</div>
-			<div class="form-group w3-row">
-				<!--<label for="city">City</label>-->
-			</div>
+					<form role="form" id="register" method="post">
 
-			<button type="button" class="btn btn-primary" onclick="signup()">
-				Sign up
-			</button>
+						<div class="form-group w3-row">
+							<label for="phonenumber">Phone number</label>
+							<input type="text" class="form-control" id="phonenumber" name="phonenumber">
+						</div>
+						<div class="form-group w3-row">
+							<label for="usernickname">User Nick Name</label>
+							<input type="text" class="form-control" id="usernickname" name="usernickname">
+						</div>
+						<div class="form-group w3-row">
+							<label for="password">Password</label>
+							<input type="password" class="form-control" id="password" name="password">
+						</div>
+						<div class="form-group w3-row">
+							<label for="confirmpassword">Confirm password</label>
+							<input type="password" class="form-control" id="confirmpassword">
+						</div>
 
-			<div>
-				<a th:href="@{/signin}">sign in</a>
-			</div>
-		</form>
+						<hr>
+						<div class="form-group w3-row">
+							<label for="idnumber">姓名</label>
+							<input type="text" class="form-control" id="username" name="username">
+						</div>
 
-		<script>
-			var storage = window.localStorage;
-			function signup() {
-			  var http = XMLHttpRequest();
-			  http.open('POST', 'localhost:8080/rentHomeProj_war/user/regist', false);
+						<div class="form-group w3-row">
+							<label for="registcity">注册城市</label>
+							<select name="registcity" id="registcity">
+								<option value="0">北京</option>
+								<option value="1">上海</option>
+								<option value="2">天津</option>
+							</select>
+						</div>
 
-			  var form = document.getElementById('register');
+						<div class="form-group w3-row">
+							<label for="selectid">Select ID</label>
+							<select name="idtype" id="selectid">
+								<option value=0>身份证</option>
+								<option value=1>护照</option>
+							</select>
+						</div>
+						<div class="form-group w3-row">
+							<label for="idnumber">ID Number</label>
+							<input type="text" class="form-control" id="idnumber" name="idnumber">
+						</div>
+						<div class="form-group w3-row">
+							<!--<label for="city">City</label>-->
+						</div>
 
-			  var fd = new FormData();
-			  // fd.open('usernickname', form.)
-/*
-				$.ajax({
-					type: "POST",
-					url: "http://localhost:8080/rentHomeProj_war/user/regist",
-					async: false,
-					data: $('register').serialize(),
-					contentType: "application/x-www-form-urlencoded",
-					success: function(data) {
-						console.log(data);
-						alert(data);
-						var json = jQuery.parseJSON(data);
-						if (json.rescode === 10002) {
-							alert('success');
-							var jwt = json.JWT;
-							alert(jwt);
-							storage["username"] = json.username;
-							storage["userid"]=json.userid;
-							console.log(jwt);
-							$(location).attr('href', '/rentHomeProj_war/');
-						}
+						<button type="button" class="btn btn-primary" onclick="signup()">
+							Sign up
+						</button>
+
+						<div>
+							<a th:href="@{/signin}">sign in</a>
+						</div>
+					</form>
+				</div>
+
+				<script>
+					var storage = window.localStorage;
+					function signup() {
+						var http = XMLHttpRequest();
+						http.open('POST', 'localhost:8080/rentHomeProj_war/user/regist', false);
+
+						var form = document.getElementById('register');
+
+						var fd = new FormData();
+						fd.open('usernickname', $('#usernickname').text());
+						/*
+                    $.ajax({
+                      type: "POST",
+                      url: "http://localhost:8080/rentHomeProj_war/user/regist",
+                      async: false,
+                      data: $('register').serialize(),
+                      contentType: "application/x-www-form-urlencoded",
+                      success: function(data) {
+                        console.log(data);
+                        alert(data);
+                        var json = jQuery.parseJSON(data);
+                        if (json.rescode === 10002) {
+                          alert('success');
+                          var jwt = json.JWT;
+                          alert(jwt);
+                          storage["username"] = json.username;
+                          storage["userid"]=json.userid;
+                          console.log(jwt);
+                          $(location).attr('href', '/rentHomeProj_war/');
+                        }
+                      }
+                    });*/
 					}
-				});*/
-			}
-		</script>
-	</div>
-</div>
+				</script>
 
-<div class="w3-container w3-white" style="background: white; height: 300px"></div>
+			</div>
+		</div>
+	</section>
 
-<footer class="w3-container w3-black" style="padding:32px;">
-	<p class="w3-center">@Copyright haha</p>
-</footer>
+	<footer class="w3-container w3-black" style="padding:32px;">
+		<p class="w3-center">@Copyright haha</p>
+	</footer>
+
+</section>
 
 </body>
 </html>

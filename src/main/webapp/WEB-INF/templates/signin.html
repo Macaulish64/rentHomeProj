@@ -2,7 +2,7 @@
 <html xmlns:="http://www.w3.org/1999/xhtml"
 			xmlns:th="http://www.thymeleaf.org">
 <head>
-	<title>Sign in</title>
+	<title>登陆</title>
 
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -27,15 +27,6 @@
 	<link rel="stylesheet" th:href="@{css/style.css}">
 	<link rel="stylesheet" th:href="@{css/style-responsive.css}">
 
-
-	<style>
-		.our-login-box {
-			width: 400px;
-			height: 450px;
-			right: 100px;
-			bottom: -250px;
-		}
-	</style>
 </head>
 <body>
 
@@ -51,38 +42,45 @@
 
 <script th:src="@{/js/userlogin.js}"></script>
 
-<div class="w3-display-container w3-content w3-center"
-		 style="max-width:3200px; height:300px; background:dimgray;">
-	<div class="w3-container w3-white w3-display-bottomright our-login-box round-panel">
-		<form class="form-horizontal" role="form" id="form-signin" method="post">
-			<div class="form-group w3-row">
-				<label for="usernickname">User Name</label>
-				<input type="text" class="form-control" id="usernickname" name="usernickname">
-			</div>
-			<div class="form-group w3-row">
-				<label for="password">Password</label>
-				<input type="password" class="form-control" id="password" name="password">
-			</div>
-			<div class="form-check w3-row">
-				<label for="rememberme" class="form-check-label">Remember me</label>
-				<input class="form-check-input" type="checkbox" id="rememberme">
-			</div>
-			<button type="button" class="btn btn-primary" id="btnsignin">
-				Login
-			</button>
-			<div>
-				<a th:href="@{/signup}">sign up</a>
-			</div>
-		</form>
-	</div>
-</div>
+<section id="container" style="background-color: dimgray;">
+	<section id="main-content">
 
-<div class="w3-container w3-white" style="background: white; height: 300px"></div>
+		<div class="row">
+			<div class="col-sm-4"></div>
 
-<footer class="w3-container w3-black" style="padding:32px;">
-	<p class="w3-center">@Copyright haha</p>
-</footer>
+			<div class="col-sm-5">
+				<div class="round-panel">
+					<form role="form" id="form-signin" method="post">
+						<div class="form-group w3-row">
+							<label for="usernickname">User Name</label>
+							<input type="text" class="form-control" id="usernickname" name="usernickname">
+						</div>
+						<div class="form-group w3-row">
+							<label for="password">Password</label>
+							<input type="password" class="form-control" id="password" name="password">
+						</div>
+						<div class="form-check w3-row">
+							<label for="rememberme" class="form-check-label">Remember me</label>
+							<input class="form-check-input" type="checkbox" id="rememberme">
+						</div>
+						<button type="button" class="btn btn-primary" id="btnsignin">
+							Login
+						</button>
+						<div>
+							<a th:href="@{/signup}">sign up</a>
+						</div>
+					</form>
 
+				</div>
+
+			</div>
+		</div>
+	</section>
+
+	<footer class="w3-container w3-black" style="padding:32px;">
+		<p class="w3-center">@Copyright haha</p>
+	</footer>
+</section>
 
 
 <!-- Optional JavaScript -->
