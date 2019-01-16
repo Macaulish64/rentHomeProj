@@ -59,7 +59,9 @@ public class HouseController {
         request.setCharacterEncoding("UTF-8");
         logger.info("=========================================================");
         String search =request.getParameter("search");
-        logger.info("houselist request(search bar)"+search);
+        //search=java.net.URLDecoder.decode(search, "UTF-8");
+        logger.info("houselist request(search bar)"+search+java.net.URLDecoder.decode(search, "UTF-8"));
+        search=java.net.URLDecoder.decode(search, "UTF-8");
         List<House> list = houseService.searchBar(search);
         Map<String ,Object> map2=new HashMap<String, Object>();
         map2.put("rescode", CommonEnum.REQUEST_SUCCESS.getCode());
@@ -75,9 +77,8 @@ public class HouseController {
     public String houseListPage(@PathVariable("pagenumber") int pagenumber,
                                 HttpServletRequest request)
     {
-        String str=(request.getAttribute("map")).toString();
         logger.info("=========================================================");
-        logger.info("houselist request(JSON)"+str);
+        logger.info("houselist request(JSON)");
         String aaa = request.getParameter("map");
         Map<String,List> map = (Map<String,List>) JSON.parse(aaa);
         int num = houseService.queryHouseNum(map);

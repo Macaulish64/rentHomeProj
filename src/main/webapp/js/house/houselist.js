@@ -112,10 +112,10 @@ function getselect()
     if ($('#city1').prop('checked')) {
         listcity.push('北京');
     }
-    if ($('#paymentmethod2').prop('checked')) {
+    if ($('#city2').prop('checked')) {
         listcity.push('上海');
     }
-    if ($('#paymentmethod2').prop('checked')) {
+    if ($('#city3').prop('checked')) {
         listcity.push('天津');
     }
     if (listcity.length>0) map['cityName']=listcity;
@@ -204,8 +204,8 @@ $(document).ready(function () {
             url:'http://localhost:8080/rentHomeProj_war/house/searchbar',
             type:"GET",
             dataType:"json",
+            contentType:"application/x-www-form-urlencoded",
             data:{"search":str},
-            ContentType:"application/text; charset=UTF-8",
             success:function(data){
                 viewhouselist(data.list);
                 // 	alert("Success");
