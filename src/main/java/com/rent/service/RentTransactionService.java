@@ -25,7 +25,7 @@ public interface RentTransactionService {
     public Map<String,Object> confirmTransaction(int transId);
 
     //op为0表示房东，op为1表示租客
-    public Map<String,Object> countTransaction(int userid,int op);
+    public Map<String,Object> countTransaction(int userid,int op,String stratMonth,String endMonth);
 
     //done,use queryRentTransaction
     //对于房东,查找已经交易的记录

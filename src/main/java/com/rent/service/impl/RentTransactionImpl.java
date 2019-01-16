@@ -195,16 +195,20 @@ public class RentTransactionImpl implements RentTransactionService {
 
     //op为0表示房东，op为1表示租客
     @Override
-    public Map<String, Object> countTransaction(int userid, int op) {
+    public Map<String, Object> countTransaction(int userid, int op,String stratMonth,String endMonth) {
         RentTransactionExample suittrans = new RentTransactionExample();
+        RentTransactionExample.Criteria criteria = suittrans.createCriteria();
         if (op==0)
         {
-            suittrans.or().andLandlordidIn(Collections.singletonList(userid));
+            criteria.andLandlordidIn(Collections.singletonList(userid));
         }
         else
         {
-            suittrans.or().andTenantidIn(Collections.singletonList(userid));
+            criteria.andTenantidIn(Collections.singletonList(userid));
         }
+        stratMonth = stratMonth+"-00 00:00:00";
+        endMonth = endMonth+"-99 99:99:99";
+        criteria.andTransactiondateBetween(stratMonth,endMonth);
         List<RentTransaction> list = rentTransactionMapper.selectByExample(suittrans);
         Map<String,Object> map = new HashMap<String, Object>();
 

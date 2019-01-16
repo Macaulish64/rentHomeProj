@@ -230,9 +230,10 @@ public class UserController {
 	public String landlordstatistics(@PathVariable("userid") int userid,
 									 HttpServletRequest request)
 	{
-		//Map<String,List> map = (Map<String,List>) request.getAttribute("map");
+		String startMonth = request.getParameter("startmonth");
+		String endMonth = request.getParameter("endmonth");
 		int op = 0;
-		Map<String,Object> map = rentTransactionService.countTransaction(userid,op);
+		Map<String,Object> map = rentTransactionService.countTransaction(userid,op,startMonth,endMonth);
 		String json= JSON.toJSONString(map, SerializerFeature.WriteMapNullValue);
 		System.out.println(json);
 		return json;
@@ -243,9 +244,10 @@ public class UserController {
 	public String statisticsroomer(@PathVariable("userid") int userid,
 								   HttpServletRequest request)
 	{
-		//Map<String,List> map = (Map<String,List>) request.getAttribute("map");
+		String startMonth = request.getParameter("startmonth");
+		String endMonth = request.getParameter("endmonth");
 		int op = 1;
-		Map<String,Object> map = rentTransactionService.countTransaction(userid,op);
+		Map<String,Object> map = rentTransactionService.countTransaction(userid,op,startMonth,endMonth);
 		String json= JSON.toJSONString(map, SerializerFeature.WriteMapNullValue);
 		System.out.println(json);
 		return json;

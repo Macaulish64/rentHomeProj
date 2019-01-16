@@ -36,34 +36,10 @@ public class TestTransaction extends BaseTest {
         RentTransactionExample suittrans = new RentTransactionExample();
         RentTransactionExample.Criteria criteria= suittrans.createCriteria();
 
-        if (map.containsKey("transactionId"))
-            criteria.andTransactionidIn(map.get("transactionId"));
-        if (map.containsKey("houseId"))
-            criteria.andHouseidIn(map.get("houseId"));
-        if (map.containsKey("landlordId"))
-            criteria.andLandlordidIn(map.get("landlordId"));
-        if (map.containsKey("tenantId"))
-            criteria.andTenantidIn(map.get("tenantId"));
-        if (map.containsKey("transactionDate"))
-            criteria.andTransactiondateIn(map.get("transactionDate"));
-        if (map.containsKey("startMonth"))
-            criteria.andStartmonthIn(map.get("startMonth"));
-        if (map.containsKey("endMonth"))
-            criteria.andEndmonthIn(map.get("endMonth"));
-        if (map.containsKey("paymentMethod"))
-            criteria.andPaymentmethodIn(map.get("paymentMethod"));
-        if (map.containsKey("depositMoneyMax") && map.containsKey("depositMoneyMin"))
-            criteria.andDepositmoneyBetween((float)map.get("depositMoneyMin").get(0),(float)map.get("depositMoneyMax").get(0));
-        if (map.containsKey("monthRentMax") && map.containsKey("monthRentMin"))
-            criteria.andMonthrentBetween((float)map.get("monthRentMin").get(0),(float)map.get("monthRentMax").get(0));
-        if (map.containsKey("landlordPaymentAgencyFeeMax") && map.containsKey("landlordPaymentAgencyFeeMin"))
-            criteria.andDepositmoneyBetween((float)map.get("landlordPaymentAgencyFeeMin").get(0),(float)map.get("landlordPaymentAgencyFeeMax").get(0));
-        if (map.containsKey("totalRentMax") && map.containsKey("totalRentMin"))
-            criteria.andMonthrentBetween((float)map.get("totalRentMin").get(0),(float)map.get("totalRentMax").get(0));
-        if (map.containsKey("tenantPaymentAgencyFeeMax") && map.containsKey("tenantPaymentAgencyFeeMin"))
-            criteria.andMonthrentBetween((float)map.get("tenantPaymentAgencyFeeMin").get(0),(float)map.get("tenantPaymentAgencyFeeMax").get(0));
 
-        List<RentTransaction> transactionlist = rentTransactionMapper.selectByExample(suittrans).subList(0,1);
+        criteria.andTransactiondateBetween("2019-01-00 00:00:00","2019-01-99 99:99:99");
+
+        List<RentTransaction> transactionlist = rentTransactionMapper.selectByExample(suittrans);
         logger.info(transactionlist.size()+"");
         //RentTransaction record = renttservice.selectRentTransactionById(1);
         System.out.println(transactionlist);
