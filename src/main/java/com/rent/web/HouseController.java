@@ -33,7 +33,7 @@ public class HouseController {
     @ResponseBody
     public String houseListPage(HttpServletRequest request)
     {
-        if ()
+        //if ()
         String str=(request.getAttribute("map")).toString();
         logger.info("=========================================================");
         logger.info("houselist request(JSON)"+str);
