@@ -3,6 +3,7 @@ package com.rent.web;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.rent.common.CommonEnum;
+import com.rent.entity.RentTransaction;
 import com.rent.service.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,7 +17,7 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
-@RequestMapping("adminindex")
+@RequestMapping("/admin")
 @CrossOrigin(origins = "*", maxAge = 3600)
 public class AdminindexController {
     private Logger logger= LoggerFactory.getLogger(this.getClass());
@@ -109,30 +110,17 @@ public class AdminindexController {
         return json;
     }
 
-    @RequestMapping(value = "admintranslist/{pagenumber}", method = RequestMethod.POST)
+    @RequestMapping(value = "/queryAdminTransaction/{op}", method = RequestMethod.GET)
     @ResponseBody
-    public String adminTransPage(@PathVariable("pagenumber") int pagenumber, HttpServletRequest request)
-    {
-        Map<String, List> map = (Map<String,List>) request.getAttribute("map");
-        int num = rentTransactionService.queryRentTransactionNum(map);
-        Map<String ,Object> map2=new HashMap<String, Object>();
-        if (num < (pagenumber - 1) * 5 + 1)
-        {
-            map2.put("rescode", CommonEnum.REQUEST_FAILED.getCode());
-            map2.put("resmsg",CommonEnum.REQUEST_FAILED.getMsg());
-        }
-        else
-        {
-            map2.put("rescode", CommonEnum.REQUEST_SUCCESS.getCode());
-            map2.put("resmsg", CommonEnum.REQUEST_SUCCESS.getMsg());
-            if (num > pagenumber * 5)
-                map2.put("list",rentTransactionService.queryRentTransaction(map ,(pagenumber-1)*5 ,pagenumber*5));
-            else
-                map2.put("list",rentTransactionService.queryRentTransaction(map ,(pagenumber-1)*5 ,num));
-        }
-        String json= JSON.toJSONString(map2, SerializerFeature.WriteMapNullValue);
-        System.out.println(json);
-        return json;
+    public String queryAdminTransaction(HttpServletRequest request) {
+        int op=Integer.parseInt(request.getParameter("op"));
+        logger.info("Query Holder Transaction");
+        logger.info("Query Type:"+op);
+        Map<String,List> map=new HashMap<String,List>();
+
+        int listLen=rentTransactionService.queryRentTransactionNum(map);
+        List<RentTransaction> transactionlist=rentTransactionService.queryRentTransaction(map,0,listLen);
+        return JSON.toJSONString(transactionlist);
     }
 
     @RequestMapping(value = "adminincomelist/{pagenumber}", method = RequestMethod.POST)
