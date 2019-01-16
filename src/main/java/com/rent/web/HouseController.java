@@ -38,11 +38,9 @@ public class HouseController {
         //if ()
         //String str=(request.getAttribute("map")).toString();
         logger.info("=========================================================");
-        //logger.info("houselist request(JSON)"+str);
-        Map<String,List> map = (Map<String,List>) request.getAttribute("map");
-        if (map==null) {
-            map=new HashMap<>();
-        }
+        String aaa=request.getParameter("map");
+        logger.info(aaa);
+        Map<String, List> map = (Map<String,List>) JSON.parse(aaa);
         int numlist = houseService.queryHouseNum(map);
         Map<String ,Object> map2=new HashMap<String, Object>();
         map2.put("rescode", CommonEnum.REQUEST_SUCCESS.getCode());
@@ -55,14 +53,14 @@ public class HouseController {
 
     @RequestMapping(value="/searchbar",method=RequestMethod.GET)
     @ResponseBody
-    public String searchBar(HttpServletRequest request)
+    public String searchBar(HttpServletRequest request)throws UnsupportedEncodingException
     {
         //if ()
-        String str=(request.getAttribute("map")).toString();
+        request.setCharacterEncoding("UTF-8");
         logger.info("=========================================================");
-        logger.info("houselist request(JSON)"+str);
-        String c = (String) request.getAttribute("search");
-        List<House> list = houseService.searchBar(c);
+        String search =request.getParameter("search");
+        logger.info("houselist request(search bar)"+search);
+        List<House> list = houseService.searchBar(search);
         Map<String ,Object> map2=new HashMap<String, Object>();
         map2.put("rescode", CommonEnum.REQUEST_SUCCESS.getCode());
         map2.put("resmsg", CommonEnum.REQUEST_SUCCESS.getMsg());

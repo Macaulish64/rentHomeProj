@@ -205,6 +205,7 @@ $(document).ready(function () {
             type:"GET",
             dataType:"json",
             data:{"search":str},
+            ContentType:"application/text; charset=UTF-8",
             success:function(data){
                 viewhouselist(data.list);
                 // 	alert("Success");
