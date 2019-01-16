@@ -3,6 +3,31 @@ var username = window.localStorage["username"];
 var userid=window.localStorage['userid'];
 console.log("输出:"+jwt);
 
+function deletehouse(houseid)
+{
+    var http = new XMLHttpRequest();
+    http.open("POST", "http://localhost:8080/rentHomeProj_war/house/deletehouse", true);
+    http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+    http.onreadystatechange = function(xhttp) {
+        return function() {
+            if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+                var data = jQuery.parseJSON(xhttp.responseText);
+
+                alert(data.rescode);
+                console.log(data);
+                // var json = jQuery.parseJSON(data);
+
+                if (data.rescode === 10003) {
+                    alert("Success");
+                    $(location).attr('href', '/rentHomeProj_war/landlordhouselist');
+                }
+            }
+        }
+    } (http);
+
+    http.send('houseid=' + houseid);
+}
 
 function stringHave(data)
 {
@@ -38,27 +63,49 @@ function toshowhouselist(data)
     var i;
     if (data.length===0) return;
     for(i=0;i<data.length;i++) {
-        $('#ownerhouselist').append(
-          '<tr>'+
-          '<td>'+data[i].houseid+'</td>'+
-          '<td>'+data[i].cityname+'</td>'+
-          '<td>'+data[i].communityname +'</td>'+
-          '<td>'+data[i].buildingnumber +'</td>'+
-          '<td>'+stringHouseTyde(data[i].housetype)+'</td>'+
-          '<td>'+data[i].housearea+'平米'+'</td>'+
-          '<td>'+data[i].floornumber+'</td>'+
-          '<td>'+stringHave(data[i].elevatorornot) +'</td>'+
-          '<td>'+'￥'+data[i].depositmoney+'</td>'+
-          '<td>'+stringPaymentMethod(data[i].paymentmethod)+'</td>'+
-          '<td>'+'￥'+data[i].rentmoney  +'</td>'+
-          '<td>'+data[i].registtime  +'</td>'+
-          '<td>'+data[i].updatetime  +'</td>'+
-          '<td>'+stringhouseStatus(data[i].housestatus)+'</td>'+
-          '<td><a href="/rentHomeProj_war/editrentout?house='+data[i].houseid+'">' +
-          '<i class="fa fa-edit"></i></a></td>' +
-          '<td><i class="fa fa-trash-o"></i></td>' +
-          '</tr>'
-        );
+        if (data[i].housestatus === 0) {
+            $('#ownerhouselist').append(
+              '<tr>' +
+              '<td>' + data[i].houseid + '</td>' +
+              '<td>' + data[i].cityname + '</td>' +
+              '<td>' + data[i].communityname + '</td>' +
+              '<td>' + data[i].buildingnumber + '</td>' +
+              '<td>' + stringHouseTyde(data[i].housetype) + '</td>' +
+              '<td>' + data[i].housearea + '平米' + '</td>' +
+              '<td>' + data[i].floornumber + '</td>' +
+              '<td>' + stringHave(data[i].elevatorornot) + '</td>' +
+              '<td>' + '￥' + data[i].depositmoney + '</td>' +
+              '<td>' + stringPaymentMethod(data[i].paymentmethod) + '</td>' +
+              '<td>' + '￥' + data[i].rentmoney + '</td>' +
+              '<td>' + data[i].registtime + '</td>' +
+              '<td>' + data[i].updatetime + '</td>' +
+              '<td>' + stringhouseStatus(data[i].housestatus) + '</td>' +
+              '<td><a href="/rentHomeProj_war/editrentout?house=' + data[i].houseid + '">' +
+              '<i class="fa fa-edit"></i></a></td>' +
+              '<td><a onclick="deletehouse(' + data[i].houseid + ')"><i class="fa fa-trash-o"></i></a></td>' +
+              '</tr>'
+            );
+        }
+        else {
+            $('#ownerhouselist').append(
+              '<tr>' +
+              '<td>' + data[i].houseid + '</td>' +
+              '<td>' + data[i].cityname + '</td>' +
+              '<td>' + data[i].communityname + '</td>' +
+              '<td>' + data[i].buildingnumber + '</td>' +
+              '<td>' + stringHouseTyde(data[i].housetype) + '</td>' +
+              '<td>' + data[i].housearea + '平米' + '</td>' +
+              '<td>' + data[i].floornumber + '</td>' +
+              '<td>' + stringHave(data[i].elevatorornot) + '</td>' +
+              '<td>' + '￥' + data[i].depositmoney + '</td>' +
+              '<td>' + stringPaymentMethod(data[i].paymentmethod) + '</td>' +
+              '<td>' + '￥' + data[i].rentmoney + '</td>' +
+              '<td>' + data[i].registtime + '</td>' +
+              '<td>' + data[i].updatetime + '</td>' +
+              '<td>' + stringhouseStatus(data[i].housestatus) + '</td>' +
+              '</tr>'
+            );
+        }
     }
 }
 

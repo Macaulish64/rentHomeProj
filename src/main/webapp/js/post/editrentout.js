@@ -62,6 +62,7 @@ function stringhouseStatus(data)
 }
 
 function fillinput(house) {
+  $('#houseid').attr({"value": house.houseid});
   $('#city').attr({"value": house.cityname});
   $('#community').attr({"value": house.communityname});
   $('#buildingnumber').attr({"value": house.buildingnumber});
@@ -105,3 +106,28 @@ $(document).ready(function () {
     })
   }
 });
+
+function submitchange() {
+  var http = new XMLHttpRequest();
+  http.open("POST", "http://localhost:8080/rentHomeProj_war/house/updatehouse", true);
+  http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+  http.onreadystatechange = function(xhttp) {
+    return function() {
+      if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+        var data = jQuery.parseJSON(xhttp.responseText);
+
+        alert(data.rescode);
+        console.log(data);
+        // var json = jQuery.parseJSON(data);
+
+        if (data.rescode === 10003) {
+          alert("Success");
+          $(location).attr('href', '/rentHomeProj_war/landlordhouselist');
+        }
+      }
+    }
+  } (http);
+
+  http.send($('#editrentout-form').serialize());
+}

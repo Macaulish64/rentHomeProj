@@ -64,7 +64,12 @@
           <br>
 
           <form class="form-horizontal" enctype="multipart/form-data"
-               role="form" id="irentout-form" method="post">
+               role="form" id="editrentout-form" method="post">
+
+            <div class="form-group">
+              <label for="houseid">房屋ID</label>
+              <input type="text" class="form-control" id="houseid" name="houseid" readonly="readonly">
+            </div>
 
             <div class="form-group">
               <label for="city">城市</label>
@@ -147,8 +152,8 @@
               }
             </script>
 
-            <button type="button" class="btn btn-primary" id="btn-irentout">
-              Submit
+            <button type="button" class="btn btn-primary" onclick="submitchange()">
+              确认修改
             </button>
           </form>
         </div>

@@ -28,7 +28,7 @@ function submithouse() {
           // var userid = data.userId;
           storage['jwt'] = jwt;
           // storage['userid'] = userid;
-          $(location).attr('href', '/rentHomeProj_war/landlord');
+          $(location).attr('href', '/rentHomeProj_war/landlordhouselist');
         }
       }
     }
