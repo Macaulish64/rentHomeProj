@@ -83,38 +83,21 @@ public class TransactionController {
     @RequestMapping(value = "queryHolderTransaction/{userid}", method = RequestMethod.GET)
     @ResponseBody
     public String queryHolderTransaction(@PathVariable("userid") int userid,
-                                            HttpServletRequest request) {
-        int op=0;
-        try {
-            userid=Integer.parseInt(request.getParameter("op"));
-        } catch(NumberFormatException e) { }
+                                        HttpServletRequest request) {
+        int op=Integer.parseInt(request.getParameter("op"));
+        logger.info("Query Holder Transaction");
+        logger.info("Query Type:"+op);
         Map<String,List> map=new HashMap<String,List>();
         List<Integer> tenantid=new ArrayList<Integer>();
         tenantid.add(userid);
         List<Integer> rentstate=new ArrayList<Integer>();
         if (op<2) {
             rentstate.add(op);
-            map.put("rentStatus",rentstate);
+            map.put("rentstate",rentstate);
         }
         map.put("tenantId",tenantid);
-        List<RentTransaction> transactionlist=rentTransctionService.queryRentTransaction(map,0,10);
-        for(RentTransaction attribute : transactionlist) {
-            logger.info(attribute.toString());
-        }
-        return JSON.toJSONString(transactionlist);
-    }
-
-    @RequestMapping(value = "/admin/queryAdminTransaction/{op}", method = RequestMethod.GET)
-    @ResponseBody
-    public String queryAdminTransaction(@PathVariable("op") int op,
-                                          HttpServletRequest request) {
-        Map<String,List> map=new HashMap<String,List>();
-        List<Integer> rentstate=new ArrayList<Integer>();
-        if (op<2) {
-            rentstate.add(op);
-            map.put("rentStatus",rentstate);
-        }
-        List<RentTransaction> transactionlist=rentTransctionService.queryRentTransaction(map,0,10);
+        int listLen=rentTransctionService.queryRentTransactionNum(map);
+        List<RentTransaction> transactionlist=rentTransctionService.queryRentTransaction(map,0,listLen);
         return JSON.toJSONString(transactionlist);
     }
 
