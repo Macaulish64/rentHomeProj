@@ -29,8 +29,8 @@ function toshownumber(data)
     $('#total-agency-fee').text(data.feenum);
 }
 
-
-$(document).ready(function() {
+function getdata()
+{
     $.ajax({
         headers: {
             Authorization : jwt,
@@ -42,7 +42,7 @@ $(document).ready(function() {
         dataType:"json",
         global:"false",
         data:{ "startmonth" :startmonth,
-                "endmonth" : endmonth},
+            "endmonth" : endmonth},
         success:function(data) {
             toshownumber(data);
         },
@@ -51,4 +51,10 @@ $(document).ready(function() {
             // $(location).attr('href', '/rentHomeProj_war/signin');
         }
     })
+}
+
+
+$(document).ready(function() {
+    $('#button-to-as').on('click',getdata());
+    getdata();
 });

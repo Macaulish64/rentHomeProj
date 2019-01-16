@@ -226,8 +226,13 @@ public class UserController {
 	public String landlordstatistics(@PathVariable("userid") int userid,
 									 HttpServletRequest request)
 	{
+		logger.info("====================================================");
+		logger.info("landlordstatistics");
 		String startMonth = request.getParameter("startmonth");
 		String endMonth = request.getParameter("endmonth");
+		if (startMonth==null) startMonth="0000-00-00 00:00:00";
+		if (endMonth==null) endMonth="9999-99-99 99:99:99";
+		logger.info(startMonth+"->"+endMonth);
 		int op = 0;
 		Map<String,Object> map = rentTransactionService.countTransaction(userid,op,startMonth,endMonth);
 		String json= JSON.toJSONString(map, SerializerFeature.WriteMapNullValue);
@@ -240,8 +245,13 @@ public class UserController {
 	public String statisticsroomer(@PathVariable("userid") int userid,
 								   HttpServletRequest request)
 	{
+		logger.info("====================================================");
+		logger.info("landlordstatistics");
 		String startMonth = request.getParameter("startmonth");
 		String endMonth = request.getParameter("endmonth");
+		if (startMonth==null) startMonth="0000-00-00 00:00:00";
+		if (endMonth==null) endMonth="9999-99-99 99:99:99";
+		logger.info(startMonth+"->"+endMonth);
 		int op = 1;
 		Map<String,Object> map = rentTransactionService.countTransaction(userid,op,startMonth,endMonth);
 		String json= JSON.toJSONString(map, SerializerFeature.WriteMapNullValue);
