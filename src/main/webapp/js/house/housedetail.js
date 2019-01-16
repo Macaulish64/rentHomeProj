@@ -39,10 +39,10 @@ $.UrlUpdateParams(window.location.href, "mid", 11111),*/
 
 function stringHouseTyde(data)
 {
-    if (data===1) return '一居';
-    if (data===2) return '二居';
-    if (data===3) return '三居';
-    if (data===4) return '三居以上';
+    if (data===0) return '一居';
+    if (data===1) return '二居';
+    if (data===2) return '三居';
+    if (data===3) return '三居以上';
     return "";
 }
 
@@ -64,6 +64,8 @@ function stringhouseStatus(data)
 
 function houseinformation(data)
 {
+    $('#housedescription').html(data.housedescription);
+
     $('#houseid').append(
         data.houseid
     );
@@ -92,7 +94,7 @@ function houseinformation(data)
     }
 
     $('#housetype').append(
-        data.housetype
+        stringHouseTyde(data.housetype)
     );
     if (data.housetype ===null) {
         $('#housetype').append(
@@ -102,6 +104,15 @@ function houseinformation(data)
 
     $('#housearea').append(
         data.housearea
+    );
+    if (data.housearea ===null) {
+        $('#housearea').append(
+            "空"
+        );
+    }
+
+    $('#buildingnumber').append(
+        data.buildingnumber
     );
     if (data.housearea ===null) {
         $('#housearea').append(
@@ -152,7 +163,7 @@ function houseinformation(data)
     }
 
     $('#rentmoney').append(
-        data.rentmoney
+        '￥'+data.rentmoney
     );
     if (data.rentmoney ===null) {
         $('#rentmoney').append(
