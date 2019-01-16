@@ -109,7 +109,7 @@ function calcudate(){
     var y2=date2.split("-")[0];
     var m2=date2.split("-")[1];
 
-    moneycount =Number(y2-y1)*Number(12)+Number(m2-m1);
+    moneycount =Number(y2-y1)*Number(12)+Number(m2-m1)+1;
     return moneycount;
 }
 
@@ -162,7 +162,13 @@ function transactionformation(data)
     console.log("!"+strtime);
 };
 
-$(document).ready(function a() {
+
+function houseinformation(data) {
+    $('#housedescription').html(data.housedescription);
+    $('#houseprice').append(Number(data.rentmoney)+"/月");
+}
+
+$(document).ready(function () {
     $('#submit-btn2').on('click',function b(){
         $.ajax({
             type: "POST",
@@ -216,6 +222,7 @@ $(document).ready(function a() {
                     return;
                 }
                 var house = data.house;
+                houseinformation(house);
                 if (house.rentstate === 1) {
                     alert("房子已出租，请选择其他房源");
                 } else {

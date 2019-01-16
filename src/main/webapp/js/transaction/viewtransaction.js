@@ -175,6 +175,10 @@ function transactionformation(data)
     }
 };
 
+function houseinformation(data) {
+    $('#housedescription').html(data.housedescription);
+    $('#houseprice').append(Number(data.rentmoney)+"/月");
+}
 
 
 $(document).ready(function() {
@@ -189,6 +193,8 @@ $(document).ready(function() {
                 alert("交易号错误");
                 return;
             }
+            var house = data.house;
+            houseinformation(house);
             var transinform = data.trans;
             transactionformation(transinform);
         },
