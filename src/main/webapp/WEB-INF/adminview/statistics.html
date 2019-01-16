@@ -98,7 +98,10 @@
   </style>
 
 </head>
-
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script th:src="@{/js/admin/statistics.js}"></script>
 <body>
 
 <section id="container" >
@@ -144,43 +147,15 @@
             <label for="edmonth">结束月份</label>
             <input type="month" id="edmonth" name="edmonth">
 
-            <button type="button" class="btn btn-primary">确认</button>
+            <button type="button" class="btn btn-primary"id="button-to-get">确认</button>
           </section>
 
           <section class="round-panel">
             <header class="panel-heading">成交笔数折线图</header>
             <div class="row">
 
-              <div class="col-sm-8">
-                <div id="transactions" class="result-xy">
-                  <div class="result-bg" data-month="1">
-                    <span class="result-bar" style="height: 84%"><s title="8.4"></s></span>
-                  </div>
-                  <div class="result-bg" data-month="2">
-                    <span class="result-bar" style="height: 100%"><s title="10.0"></s></span>
-                  </div>
-                  <div class="result-bg" data-month="3">
-                    <span class="result-bar" style="height: 24%"><s title="2.4"></s></span>
-                  </div>
-                  <div class="result-bg" data-month="4">
-                    <span class="result-bar" style="height: 56%"><s title="5.6"></s></span>
-                  </div>
-                  <div class="result-bg" data-month="5">
-                    <span class="result-bar" style="height: 67%"><s title="6.7"></s></span>
-                  </div>
-                  <div class="result-bg" data-month="6">
-                    <span class="result-bar" style="height: 97%"><s title="9.7"></s></span>
-                  </div>
-                  <div class="result-bg" data-month="7">
-                    <span class="result-bar" style="height: 99%"><s title="9.9"></s></span>
-                  </div>
-                  <div class="result-bg" data-month="8">
-                    <span class="result-bar" style="height: 94%"><s title="9.4"></s></span>
-                  </div>
-                  <div class="result-bg" data-month="12">
-                    <span class="result-bar" style="height: 92%"><s title="9.2"></s></span>
-                  </div>
-                </div>
+              <div class="col-sm-8" id="viewtransnum">
+
               </div>
 
               <div class="col-sm-4">
@@ -214,36 +189,8 @@
             <header class="panel-heading">中介费折线图</header>
             <div class="row">
 
-              <div class="col-sm-8">
-                <div id="agencyfee" class="result-xy">
-                  <div class="result-bg" data-month="1">
-                    <span class="result-bar" style="height: 84%"><s title="8.4"></s></span>
-                  </div>
-                  <div class="result-bg" data-month="2">
-                    <span class="result-bar" style="height: 100%"><s title="10.0"></s></span>
-                  </div>
-                  <div class="result-bg" data-month="3">
-                    <span class="result-bar" style="height: 24%"><s title="2.4"></s></span>
-                  </div>
-                  <div class="result-bg" data-month="4">
-                    <span class="result-bar" style="height: 56%"><s title="5.6"></s></span>
-                  </div>
-                  <div class="result-bg" data-month="5">
-                    <span class="result-bar" style="height: 67%"><s title="6.7"></s></span>
-                  </div>
-                  <div class="result-bg" data-month="6">
-                    <span class="result-bar" style="height: 97%"><s title="9.7"></s></span>
-                  </div>
-                  <div class="result-bg" data-month="7">
-                    <span class="result-bar" style="height: 99%"><s title="9.9"></s></span>
-                  </div>
-                  <div class="result-bg" data-month="8">
-                    <span class="result-bar" style="height: 94%"><s title="9.4"></s></span>
-                  </div>
-                  <div class="result-bg" data-month="12">
-                    <span class="result-bar" style="height: 92%"><s title="9.2"></s></span>
-                  </div>
-                </div>
+              <div class="col-sm-8" id="viewtransmoney">
+
               </div>
 
               <div class="col-sm-4">

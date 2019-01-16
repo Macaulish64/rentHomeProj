@@ -130,6 +130,10 @@ public class AdminindexController {
     @ResponseBody
     public String adminIncomePage(HttpServletRequest request)
     {
+        logger.info("=======================================");
+        logger.info("Adminincomelist");
+        Object aaa=request.getAttribute("map");
+        logger.info(aaa.toString());
         Map<String, List> map = (Map<String,List>) request.getAttribute("map");
         int num = incomeService.queryIncomeNum(map);
         Map<String ,Object> map2=new HashMap<String, Object>();

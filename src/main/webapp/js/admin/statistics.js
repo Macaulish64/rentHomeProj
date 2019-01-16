@@ -24,13 +24,15 @@ function calcudate(){
     var y2=date2.split("-")[0];
     var m2=date2.split("-")[1];
 
-    monthMin=data1;
-    monthMax=data2;
+    monthMin=date1;
+    monthMax=date2;
 }
 
 
 function todrawview(name,list,big)
 {
+    if (list.length===0) return;
+    $('#'+name).append('<div id="transactions" class="result-xy">');
     for(var i=0;i<list.length;i++) {
         $('#'+name).append(
             '<div class="result-bg" data-month='+list[i]['x']+'>'+
@@ -39,6 +41,7 @@ function todrawview(name,list,big)
             '</div>'
 
     )};
+    $('#'+name).append('</div>');
 }
 
 
@@ -54,7 +57,7 @@ function toshowdata(data)
         point['x']=list[i].month;
         point['y']=Number(list[i].transactionnum);
         if (point['y']>big) big=point['y'];
-        drwalist.put(point);
+        drwalist.push(point);
     }
     todrawview("viewtransnum",drwalist,big);
     drawlist=[];
@@ -62,20 +65,23 @@ function toshowdata(data)
         point['x']=list[i].month;
         point['y']=list[i].feeincome;
         if (point['y']>big) big=point['y'];
-        drwalist.put(point);
+        drwalist.push(point);
     }
     todrawview("viewtransmoney",drwalist,big);
 }
 
-void getdata()
+function getdata()
 {
     var map={};
     calcudate();
     calccity();
-    map.put("monthMin",monthMin);
-    map.put("monthMax",monthMax);
-    map.put("area",area);
-    var str=JSON.stringify(map);
+    var list1=[],list2=[],list3=[];
+    list1[0]=monthMin;
+    map["monthMin"]=list1;
+    list2[0]=monthMax;
+    map["monthMax"]=list2;
+    list3[0]='!!';
+    map["area"]=list3;
     $.ajax({
         headers: {
             Authorization : jwt,
@@ -86,7 +92,7 @@ void getdata()
         url:"http://localhost:8080/rentHomeProj_war/admin/adminincomelist",
         dataType:"json",
         global:"false",
-        data: str,
+        data: {"map":JSON.stringify(map)},
         success:function(data) {
             toshowdata(data);
         },
@@ -102,6 +108,6 @@ void getdata()
 
 
 $(document).ready(function() {
-    $('#button-to-get').on('click',getdata());
+    //$('#button-to-get').on('click',getdata());
     getdata();
 });
