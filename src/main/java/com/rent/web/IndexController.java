@@ -153,7 +153,7 @@ public class IndexController {
 	@RequestMapping("/adminindex")
 	public String adminindex() {
 		System.out.printf("Into admin");
-		return "adminview/adminindex";
+		return "adminview/statistics";
 	}
 
 	@RequestMapping("/adminusrlist")
