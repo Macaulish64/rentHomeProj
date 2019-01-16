@@ -189,6 +189,7 @@ public class UserController {
 		User testuser = userService.getExistUser(example);
 		if (testuser!=null)
 		{
+			System.out.println("User already exists !!");
 			map.put("rescode", CommonEnum.REQUEST_FAILED.getCode());
 			map.put("resmsg",CommonEnum.REQUEST_FAILED.getMsg());
 			return JSON.toJSONString(map);
@@ -218,7 +219,10 @@ public class UserController {
 		newuser.setPhonenumber(phoneNumber);
 
 		map = userService.insertUser(newuser);
-		return JSON.toJSONString(map);
+		String json = JSON.toJSONString(map);
+		System.out.println("Signed up successfully!!");
+		System.out.println(json);
+		return json;
 	}
 
 	@RequestMapping(value = "landlordstatistics/{userid}",method = RequestMethod.GET)

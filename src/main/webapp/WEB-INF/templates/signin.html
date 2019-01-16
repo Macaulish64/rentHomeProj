@@ -49,25 +49,26 @@
 			<div class="col-sm-4"></div>
 
 			<div class="col-sm-5">
-				<div class="round-panel">
+				<div class="round-panel w3-large">
 					<form role="form" id="form-signin" method="post">
-						<div class="form-group w3-row">
-							<label for="usernickname">User Name</label>
+						<div class="form-group">
+							<label for="usernickname">用户名</label>
 							<input type="text" class="form-control" id="usernickname" name="usernickname">
 						</div>
-						<div class="form-group w3-row">
-							<label for="password">Password</label>
+						<div class="form-group">
+							<label for="password">密码</label>
 							<input type="password" class="form-control" id="password" name="password">
 						</div>
-						<div class="form-check w3-row">
-							<label for="rememberme" class="form-check-label">Remember me</label>
+						<div class="form-check">
+							<label for="rememberme" class="form-check-label">记住我</label>
 							<input class="form-check-input" type="checkbox" id="rememberme">
 						</div>
+            <hr>
 						<button type="button" class="btn btn-primary" id="btnsignin">
-							Login
+							登陆
 						</button>
 						<div>
-							<a th:href="@{/signup}">sign up</a>
+							<a th:href="@{/signup}">转到注册页面</a>
 						</div>
 					</form>
 
