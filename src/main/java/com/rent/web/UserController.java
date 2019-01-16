@@ -195,7 +195,7 @@ public class UserController {
 		}
 
 		String password = request.getParameter("password");
-		int userType=0,cardType=0,userLevel=0;
+		int userType=0,cardType=0;
 		String userName = request.getParameter("username");
 		String idNumber = request.getParameter("idnumber");
 		String phoneNumber = request.getParameter("phonenumber");
@@ -207,9 +207,6 @@ public class UserController {
 		try{
 			cardType = Integer.parseInt(request.getParameter("cardtype"));
 		}catch(NumberFormatException e) { }
-		try{
-			userLevel = Integer.parseInt(request.getParameter("userlevel"));
-		}catch(NumberFormatException e) { }
 
 		newuser.setUsernickname(userNickName);
 		newuser.setPassword(password);
@@ -219,7 +216,6 @@ public class UserController {
 		newuser.setCardtype(cardType);
 		newuser.setRegistcity(registCity);
 		newuser.setPhonenumber(phoneNumber);
-		newuser.setUserlevel(userLevel);
 
 		map = userService.insertUser(newuser);
 		return JSON.toJSONString(map);

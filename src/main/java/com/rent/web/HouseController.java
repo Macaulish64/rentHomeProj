@@ -52,6 +52,25 @@ public class HouseController {
         return json;
     }
 
+    @RequestMapping(value="/searchbar",method=RequestMethod.GET)
+    @ResponseBody
+    public String searchHouseListPage(HttpServletRequest request)
+    {
+        //if ()
+        String str=(request.getAttribute("map")).toString();
+        logger.info("=========================================================");
+        logger.info("houselist request(JSON)"+str);
+        String c = (String) request.getAttribute("search");
+        List<House> list = houseService.searchBar(c);
+        Map<String ,Object> map2=new HashMap<String, Object>();
+        map2.put("rescode", CommonEnum.REQUEST_SUCCESS.getCode());
+        map2.put("resmsg", CommonEnum.REQUEST_SUCCESS.getMsg());
+        map2.put("list",list);
+        String json= JSON.toJSONString(map2, SerializerFeature.WriteMapNullValue);
+        System.out.println(json);
+        return json;
+    }
+
     @RequestMapping(value="/houselist/{pagenumber}",method = RequestMethod.GET)
     @ResponseBody
     public String houseListPage(@PathVariable("pagenumber") int pagenumber,
@@ -258,5 +277,6 @@ public class HouseController {
         String json= JSON.toJSONString(houselist, SerializerFeature.WriteMapNullValue);
         return json;
     }
+
 
 }
