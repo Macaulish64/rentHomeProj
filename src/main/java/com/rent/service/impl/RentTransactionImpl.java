@@ -209,6 +209,7 @@ public class RentTransactionImpl implements RentTransactionService {
         stratMonth = stratMonth+"-00 00:00:00";
         endMonth = endMonth+"-99 99:99:99";
         criteria.andTransactiondateBetween(stratMonth,endMonth);
+        criteria.andRentstatusIn(Collections.singletonList(1));
         List<RentTransaction> list = rentTransactionMapper.selectByExample(suittrans);
         Map<String,Object> map = new HashMap<String, Object>();
 
