@@ -5,6 +5,23 @@ var userid=storage["userid"]
 var myDate=new Date();
 console.log("输出:"+jwt);
 
+function stringUserType(data)
+{
+  if (data===0) return '普通用户';
+  if (data===1) return '管理员';
+}
+
+function stringUserLevel(data)
+{
+  if (data===0) return '一般';
+  if (data===1) return '重要';
+  if (data===2) return '钻石级';
+}
+
+function stringcardType(data) {
+  if (data === 0) return '身份证';
+  if (data === 1) return '护照';
+}
 
 var phobut=$('#phonenumber');
 
@@ -24,7 +41,7 @@ function personinformation(data)
     $('#userid').attr({"value":"空"});
   }
 
-  $('#userlevel').attr({"value":data.userlevel});
+  $('#userlevel').attr({"value":stringUserLevel(data.userlevel)});
   if (data.userlevel ===null) {
     $('#userlevel').attr({"value":"空"});
   }
@@ -39,7 +56,7 @@ function personinformation(data)
     $('#username').attr({"value":"空"});
   }
 
-  $('#cardtype').attr({"value":data.cardtype});
+  $('#cardtype').attr({"value":stringcardType(data.cardtype)});
   if (data.cardtype ===null) {
     $('#cardtype').attr({"value":"空"});
   }
