@@ -54,7 +54,7 @@ public class HouseController {
 
     @RequestMapping(value="/searchbar",method=RequestMethod.GET)
     @ResponseBody
-    public String searchHouseListPage(HttpServletRequest request)
+    public String searchBar(HttpServletRequest request)
     {
         //if ()
         String str=(request.getAttribute("map")).toString();
