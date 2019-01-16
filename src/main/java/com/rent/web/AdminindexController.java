@@ -32,14 +32,14 @@ public class AdminindexController {
     @Autowired
     RentTransactionService rentTransactionService;
 
-    @RequestMapping(value = "adminuserlist/{pagenumber}", method = RequestMethod.POST)
+    @RequestMapping(value = "adminuserlist", method = RequestMethod.POST)
     @ResponseBody
-    public String adminUserPage(@PathVariable("pagenumber") int pagenumber, HttpServletRequest request)
+    public String adminUserPage(HttpServletRequest request)
     {
         Map<String, List> map = (Map<String,List>) request.getAttribute("map");
         int num = userService.queryUserNum(map);
         Map<String ,Object> map2=new HashMap<String, Object>();
-        if (num < (pagenumber - 1) * 5 + 1)
+        if (num == 0)
         {
             map2.put("rescode", CommonEnum.REQUEST_FAILED.getCode());
             map2.put("resmsg",CommonEnum.REQUEST_FAILED.getMsg());
@@ -48,24 +48,21 @@ public class AdminindexController {
         {
             map2.put("rescode", CommonEnum.REQUEST_SUCCESS.getCode());
             map2.put("resmsg", CommonEnum.REQUEST_SUCCESS.getMsg());
-            if (num > pagenumber * 5)
-                map2.put("list",userService.queryUser(map ,(pagenumber-1)*5 ,pagenumber*5));
-            else
-                map2.put("list",userService.queryUser(map ,(pagenumber-1)*5 ,num));
+            map2.put("list",userService.queryUser(map ,0 ,num));
         }
         String json= JSON.toJSONString(map2, SerializerFeature.WriteMapNullValue);
         System.out.println(json);
         return json;
     }
 
-    @RequestMapping(value = "adminhouselist/{pagenumber}", method = RequestMethod.POST)
+    @RequestMapping(value = "adminhouselist", method = RequestMethod.POST)
     @ResponseBody
-    public String adminHousePage(@PathVariable("pagenumber") int pagenumber, HttpServletRequest request)
+    public String adminHousePage(HttpServletRequest request)
     {
         Map<String, List> map = (Map<String,List>) request.getAttribute("map");
         int num = houseService.queryHouseNum(map);
         Map<String ,Object> map2=new HashMap<String, Object>();
-        if (num < (pagenumber - 1) * 5 + 1)
+        if (num ==0)
         {
             map2.put("rescode", CommonEnum.REQUEST_FAILED.getCode());
             map2.put("resmsg",CommonEnum.REQUEST_FAILED.getMsg());
@@ -74,24 +71,21 @@ public class AdminindexController {
         {
             map2.put("rescode", CommonEnum.REQUEST_SUCCESS.getCode());
             map2.put("resmsg", CommonEnum.REQUEST_SUCCESS.getMsg());
-            if (num > pagenumber * 5)
-                map2.put("list",houseService.queryHouse(map ,(pagenumber-1)*5 ,pagenumber*5));
-            else
-                map2.put("list",houseService.queryHouse(map ,(pagenumber-1)*5 ,num));
+            map2.put("list",houseService.queryHouse(map ,0 ,num));
         }
         String json= JSON.toJSONString(map2, SerializerFeature.WriteMapNullValue);
         System.out.println(json);
         return json;
     }
 
-    @RequestMapping(value = "adminrentlist/{pagenumber}", method = RequestMethod.POST)
+    @RequestMapping(value = "adminrentlist", method = RequestMethod.POST)
     @ResponseBody
-    public String adminRentPage(@PathVariable("pagenumber") int pagenumber, HttpServletRequest request)
+    public String adminRentPage(HttpServletRequest request)
     {
         Map<String, List> map = (Map<String,List>) request.getAttribute("map");
         int num = rentInformationService.queryRentInformationNum(map);
         Map<String ,Object> map2=new HashMap<String, Object>();
-        if (num < (pagenumber - 1) * 5 + 1)
+        if (num ==0)
         {
             map2.put("rescode", CommonEnum.REQUEST_FAILED.getCode());
             map2.put("resmsg",CommonEnum.REQUEST_FAILED.getMsg());
@@ -100,10 +94,7 @@ public class AdminindexController {
         {
             map2.put("rescode", CommonEnum.REQUEST_SUCCESS.getCode());
             map2.put("resmsg", CommonEnum.REQUEST_SUCCESS.getMsg());
-            if (num > pagenumber * 5)
-                map2.put("list",rentInformationService.queryRentInformation(map ,(pagenumber-1)*5 ,pagenumber*5));
-            else
-                map2.put("list",rentInformationService.queryRentInformation(map ,(pagenumber-1)*5 ,num));
+            map2.put("list",rentInformationService.queryRentInformation(map ,0 ,num));
         }
         String json= JSON.toJSONString(map2, SerializerFeature.WriteMapNullValue);
         System.out.println(json);
@@ -123,14 +114,14 @@ public class AdminindexController {
         return JSON.toJSONString(transactionlist);
     }
 
-    @RequestMapping(value = "adminincomelist/{pagenumber}", method = RequestMethod.POST)
+    @RequestMapping(value = "adminincomelist", method = RequestMethod.POST)
     @ResponseBody
-    public String adminIncomePage(@PathVariable("pagenumber") int pagenumber, HttpServletRequest request)
+    public String adminIncomePage(HttpServletRequest request)
     {
         Map<String, List> map = (Map<String,List>) request.getAttribute("map");
         int num = incomeService.queryIncomeNum(map);
         Map<String ,Object> map2=new HashMap<String, Object>();
-        if (num < (pagenumber - 1) * 5 + 1)
+        if (num == 0)
         {
             map2.put("rescode", CommonEnum.REQUEST_FAILED.getCode());
             map2.put("resmsg",CommonEnum.REQUEST_FAILED.getMsg());
@@ -139,10 +130,7 @@ public class AdminindexController {
         {
             map2.put("rescode", CommonEnum.REQUEST_SUCCESS.getCode());
             map2.put("resmsg", CommonEnum.REQUEST_SUCCESS.getMsg());
-            if (num > pagenumber * 5)
-                map2.put("list",incomeService.queryIncome(map ,(pagenumber-1)*5 ,pagenumber*5));
-            else
-                map2.put("list",incomeService.queryIncome(map ,(pagenumber-1)*5 ,num));
+            map2.put("list",incomeService.queryIncome(map ,0,num));
 
             Map<String,Object> map3 = incomeService.countIncome(map);
             map2.put("transactionNum",map3.get("transactionNum"));

@@ -225,7 +225,7 @@ public class UserController {
 		return JSON.toJSONString(map);
 	}
 
-	@RequestMapping(value = "landlordstatistics/{userid}",method = RequestMethod.POST)
+	@RequestMapping(value = "landlordstatistics/{userid}",method = RequestMethod.GET)
 	@ResponseBody
 	public String landlordstatistics(@PathVariable("userid") int userid,
 									 HttpServletRequest request)
@@ -239,7 +239,7 @@ public class UserController {
 		return json;
 	}
 
-	@RequestMapping(value = "statisticsroomer/{userid}",method = RequestMethod.POST)
+	@RequestMapping(value = "statisticsroomer/{userid}",method = RequestMethod.GET)
 	@ResponseBody
 	public String statisticsroomer(@PathVariable("userid") int userid,
 								   HttpServletRequest request)
