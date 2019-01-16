@@ -147,7 +147,7 @@
             <label for="edmonth">结束月份</label>
             <input type="month" id="edmonth" name="edmonth">
 
-            <button type="button" class="btn btn-primary"id="button-to-get">确认</button>
+            <button type="button" class="btn btn-primary" id="button-to-get">确认</button>
           </section>
 
           <section class="round-panel">
@@ -162,11 +162,15 @@
                 <table class="table table-hover" id="transaction-list">
                   <thead>
                   <tr>
-                    <th>月份</th>
-                    <th>交易</th>
+                    <th>月份
+                      <button type="button" id="transnummonth" class="arrow-alt"/>
+                    </th>
+                    <th>交易
+                      <button type="button" id="transnumtrans" class="arrow-alt"/>
+                    </th>
                   </tr>
                   </thead>
-                  <tbody>
+                  <tbody id="viewtransnumt">
                   <tr>
                     <td>1</td>
                     <td>1234</td>
@@ -197,11 +201,11 @@
                 <table class="table table-hover" id="agencyfee-list">
                   <thead>
                   <tr>
-                    <th>月份</th>
+                    <th>月份<button id="premonth">起始月份</button></th>
                     <th>中介费</th>
                   </tr>
                   </thead>
-                  <tbody>
+                  <tbody id="viewtransmoneyt">
                   <tr>
                     <td>1</td>
                     <td>1234</td>

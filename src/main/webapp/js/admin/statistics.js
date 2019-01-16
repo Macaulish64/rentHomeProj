@@ -10,7 +10,7 @@ console.log("输出:"+jwt);
 var datamonth=[];
 var monthMin,monthMax,area;
 
-
+var map={};
 // 这个是折线方法
 var fnLineChart = function (eles) {
     [].slice.call(eles).forEach(function (ele, index) {
@@ -88,6 +88,17 @@ function todrawview(name,list,big)
 
     var trans = document.querySelectorAll('#'+name+'m s');
     fnLineChart(trans);
+
+    $('#'+name+'t').html("");
+    for(var i=0;i<list.length;i++) {
+        $('#'+name+'t').append(
+            '<tr>'+
+                '<th>'+getmonth(list[i]['x'])+'月'+'</th>'+
+                '<th>'+list[i]['y']+'</th>'+
+            '</tr>'
+        )}
+    map[name]=list;
+    map[name+'Max']=big;
 }
 
 
@@ -158,6 +169,40 @@ function getdata()
 
 
 $(document).ready(function() {
-    $('#button-to-get').on('click',getdata());
+    $('#button-to-get').bind('click',function () {
+        getdata()
+    });
+    $('#button-to-get').on('click', function () {
+        getdata()
+    });
+    $('#transnummonth').bind('click',function(){
+        var list=map["viewtransnum"];
+        list=list.sort(function(a,b){
+            return a['x'].localeCompare(b['x']);
+        });
+        $('#viewtransnumt').html("");
+        for(var i=0;i<list.length;i++) {
+            $('#viewtransnumt').append(
+                '<tr>'+
+                '<th>'+getmonth(list[i]['x'])+'月'+'</th>'+
+                '<th>'+list[i]['y']+'</th>'+
+                '</tr>'
+            )}
+    });
+    $('#transnumtrans').bind('click',function(){
+        var list=map["viewtransnum"];
+        list=list.sort(function(a,b){
+            return a['y']-b['y'];
+        });
+        $('#viewtransnumt').html("");
+        for(var i=0;i<list.length;i++) {
+            $('#viewtransnumt').append(
+                '<tr>'+
+                '<th>'+getmonth(list[i]['x'])+'月'+'</th>'+
+                '<th>'+list[i]['y']+'</th>'+
+                '</tr>'
+            )}
+    });
+
     getdata();
 });
