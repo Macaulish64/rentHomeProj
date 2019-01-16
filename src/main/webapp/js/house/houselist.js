@@ -72,6 +72,38 @@ $('#search-btn').click(function(){
     getselect();
 });
 
+
+function viewhouselist(list)
+{
+    /*问题：动态的话不能用th:需要绝对地址*/
+   // if (list.length===0) return;
+    for(var i=0;i<2;i++) {
+        $('#houseList').append(
+            '<li class="round-panel">'+
+                '<div class="row">'+
+                    '<div class="img col-sm-5">'+
+                        '<img class="w3-center"'+
+                        'style="width: 15em; height: 15em;"'+
+                        'src="'+'/rentHomeProj_war/img/a(1).JPG">'+
+                    '</div>'+
+                    '<div class="txt col-sm-5">'+
+                        '<h3>'+'Haha'+'</h3>'+
+                        '<h4>'+'北京市海淀区西土城路10号北京邮电大学学一楼307'+'</h4>'+
+                    '</div>'+
+                '<div class="btn col-sm-2">'+
+                '<button id="house-btn" class="btn btn-default w3-center">'+'查看'+'</button>'+
+                '</div>'+
+            '</div>'+
+            '</li>'
+        );
+    }
+
+
+}
+
+
+
+
 $(document).ready(function () {
     $('#search-btn').on('click',function(){
         alert("!!!");
@@ -82,7 +114,7 @@ $(document).ready(function () {
       // dataType: 'json',
       // global: "false",
       // success: function (data) {
-      for (var i = 0; i < 3; i++) {
+      /*for (var i = 0; i < 3; i++) {
           $('#tobehouselist').append(
             '<article class="media">'+
                 '<a class="pull-left thumb p-thumb">' +
@@ -94,38 +126,24 @@ $(document).ready(function () {
                 '</div>'+
             '</article>'
           );
-        }
-      /*问题：动态的话不能用th:需要绝对地址*/
-      for(var i=0;i<3;i++) {
-        $('#houseList').append(
-          '<li class="row">'+
-			  	'<div class="img col-sm-4">'+
-					  '<img class="houseimg" src="/rentHomeProj_war/'+'img/a(1).JPG">'+
-				  '</div>'+
-				  '<div class="txt col-sm-4">'+
-					  '<h3>Haha</h3>'+
-					  '<h4>北京市海淀区西土城路10号北京邮电大学学一楼307</h4>'+
-				  '</div>'+
-				  '<div class="btn col-sm-4">'+
-					  '<a class="button" style="alignment:center" href="houseinfo.html?house=2">'+
-						  'Details'+
-					  '</a>'+
-				  '</div>'+
-          '</li>'
-        );
-      }
+        }*/
+
+
       var list1=["1","2","3"];
       var list2=["444","555","666"];
-      $.ajax({
+      var list=[];
+      viewhouselist(list);
+    /*  $.ajax({
 		  url:'http://localhost:8080/rentHomeProj_war/house/list',
 		  type:"GET",
-		  success:function(){
+		  success:function(data){
+		      viewhouselist(list);
 		 // 	alert("Success");
 		  },
 		  error:function(){
 		 // 	alert("Error");
 		  }
-	  })
+	  })*/
 		/*var idList = new Array();
 		idList.push("1");
 		idList.push("2");
