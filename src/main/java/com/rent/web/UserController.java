@@ -22,6 +22,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.*;
 
 @Controller
@@ -178,8 +179,9 @@ public class UserController {
 
 	@RequestMapping(value = "regist",method = RequestMethod.POST)
 	@ResponseBody
-	public String userregist(HttpServletRequest request)
-	{
+	public String userregist(HttpServletRequest request) throws UnsupportedEncodingException {
+		request.setCharacterEncoding("UTF-8");
+
 		User newuser = new User();
 		String userNickName = request.getParameter("usernickname");
 
