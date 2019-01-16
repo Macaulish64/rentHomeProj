@@ -56,32 +56,28 @@
   <section id="main-content">
     <div class="row">
       <!-- left side (content) -->
-      <div class="col-sm-8">
+      <div class="col-sm-9">
 
-        <div class="container">
+        <div class="round-panel">
           <h1>我要出租</h1>
           <br>
           <br>
 
           <div class="form-horizontal" enctype="multipart/form-data"
-                role="form" id="irentout-form" method="post">
+               role="form" id="irentout-form" method="post">
 
             <div class="form-group">
               位置
               <br>
-              <label for="province">省份</label>
-              <select id="province" name="province">
-                <option>Beijing</option>
-                <option>Shanghai</option>
-                <option>Andorra</option>
-              </select>
-
               <label for="city">城市</label>
               <select id="city" name="city">
                 <option>Abcd</option>
                 <option>Bcde</option>
                 <option>Cdef</option>
               </select>
+
+              <label for="community">小区</label>
+              <input type="text" id="community" name="community">
             </div>
 
             <div class="form-group">
@@ -156,13 +152,14 @@
               }
             </script>
 
-            <button type="submit" class="btn btn-primary" id="btn-irentout">
+            <button type="button" class="btn btn-primary" id="btn-irentout">
               Submit
             </button>
-          </form>
+            </form>
+          </div>
         </div>
-
       </div>
+
 
       <!-- sidebar -->
       <div class="col-sm-3">
