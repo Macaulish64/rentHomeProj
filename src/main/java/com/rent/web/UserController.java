@@ -8,6 +8,7 @@ import com.rent.entity.House;
 import com.rent.entity.User;
 import com.rent.entity.UserExample;
 import com.rent.service.HouseService;
+import com.rent.service.RentTransactionService;
 import com.rent.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -34,6 +35,9 @@ public class UserController {
 
 	@Autowired
 	private HouseService houseService;
+
+	@Autowired
+	private RentTransactionService rentTransactionService;
 
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	@ResponseBody
@@ -221,4 +225,29 @@ public class UserController {
 		return JSON.toJSONString(map);
 	}
 
+	@RequestMapping(value = "landlordstatistics/{userid}",method = RequestMethod.POST)
+	@ResponseBody
+	public String landlordstatistics(@PathVariable("userid") int userid,
+									 HttpServletRequest request)
+	{
+		//Map<String,List> map = (Map<String,List>) request.getAttribute("map");
+		int op = 0;
+		Map<String,Object> map = rentTransactionService.countTransaction(userid,op);
+		String json= JSON.toJSONString(map, SerializerFeature.WriteMapNullValue);
+		System.out.println(json);
+		return json;
+	}
+
+	@RequestMapping(value = "statisticsroomer/{userid}",method = RequestMethod.POST)
+	@ResponseBody
+	public String statisticsroomer(@PathVariable("userid") int userid,
+								   HttpServletRequest request)
+	{
+		//Map<String,List> map = (Map<String,List>) request.getAttribute("map");
+		int op = 1;
+		Map<String,Object> map = rentTransactionService.countTransaction(userid,op);
+		String json= JSON.toJSONString(map, SerializerFeature.WriteMapNullValue);
+		System.out.println(json);
+		return json;
+	}
 }

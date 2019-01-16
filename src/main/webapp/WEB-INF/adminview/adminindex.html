@@ -2,35 +2,35 @@
 <html xmlns:="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>后台管理系统</title>
+  <title>后台管理系统</title>
 
-    <!-- -->
-    <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" th:href="@{css/bootstrap.min.css}">
-    <link rel="stylesheet" th:href="@{css/bootstrap-reset.css}">
-    <!--矢量图标插件-->
-    <link rel="stylesheet" th:href="@{css/font-awesome/css/font-awesome.css}">
-    <!--统计插件https://github.com/rendro/easy-pie-chart/-->
-    <link th:href="@{css/jquery-easy-pie-chart/jquery.easy-pie-chart.css}" rel="stylesheet" type="text/css" media="screen">
-    <!--幻灯片插件-->
-    <link rel="stylesheet" th:href="@{css/owl.carousel.css}" type="text/css">
+  <!-- -->
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" th:href="@{css/bootstrap.min.css}">
+  <link rel="stylesheet" th:href="@{css/bootstrap-reset.css}">
+  <!--矢量图标插件-->
+  <link rel="stylesheet" th:href="@{css/font-awesome/css/font-awesome.css}">
+  <!--统计插件https://github.com/rendro/easy-pie-chart/-->
+  <link th:href="@{css/jquery-easy-pie-chart/jquery.easy-pie-chart.css}" rel="stylesheet" type="text/css" media="screen">
+  <!--幻灯片插件-->
+  <link rel="stylesheet" th:href="@{css/owl.carousel.css}" type="text/css">
 
-    <!--right slidebar-->
-    <link rel="stylesheet" th:href="@{css/slidebars.css}">
+  <!--right slidebar-->
+  <link rel="stylesheet" th:href="@{css/slidebars.css}">
 
-    <!-- Custom styles for this template -->
-    <link rel="stylesheet" th:href="@{css/style.css}">
-    <link rel="stylesheet" th:href="@{css/style-responsive.css}">
+  <!-- Custom styles for this template -->
+  <link rel="stylesheet" th:href="@{css/style.css}">
+  <link rel="stylesheet" th:href="@{css/style-responsive.css}">
 
 </head>
 
 <body>
 
 <section id="container" >
-    <!--顶部结束-->
+  <!--顶部结束-->
   <header class="header white-bg">
     <div class="sidebar-toggle-box">
       <div class="fa fa-bars tooltips" data-placement="right"></div>
@@ -38,39 +38,43 @@
     <a href="adminindex.html" class="logo">后台管理系统</a>
   </header>
 
-    <section id="main-content">
-      <div class="row">
+  <section id="main-content">
+    <div class="row">
 
-          <div class="col-sm-2">
-              <section class="panel-heading">
-                  后台管理系统
-              </section>
-            <div class="list-group">
-              <div class="list-group-item"><a th:href="@{/}">返回主页</a></div>
-              <div class="list-group-item"><a th:href="@{/adminusrlist}">用户列表</a></div>
-              <div class="list-group-item"><a th:href="@{/adminhouselist}">房屋列表</a></div>
-              <div class="list-group-item"><a th:href="@{/admindemandlist}">求租列表</a></div>
-              <div class="list-group-item"><a th:href="@{/admintransactionlist}">交易列表</a></div>
-              <div class="list-group-item"><a th:href="@{/adminstatistics}">统计信息</a></div>
-            </div>
-          </div>
-
-          <div class="col-sm-10"></div>
-      </div>
-    </section>
-    <!--main content end-->
-
-
-    <!--footer start-->
-    <footer>
-        <div class="text-center">
-            @Copyright haha
-            <a href="#" class="go-top">
-                <i class="fa fa-angle-up"></i>
-            </a>
+      <div class="col-sm-2">
+        <section class="panel-heading">
+          后台管理系统
+        </section>
+        <div class="list-group">
+          <div class="list-group-item"><a th:href="@{/}">返回主页</a></div>
+          <div class="list-group-item"><a th:href="@{/adminusrlist}">用户列表</a></div>
+          <div class="list-group-item"><a th:href="@{/adminhouselist}">房屋列表</a></div>
+          <div class="list-group-item"><a th:href="@{/admindemandlist}">求租列表</a></div>
+          <div class="list-group-item"><a th:href="@{/admintransactionlist}">交易列表</a></div>
+          <div class="list-group-item"><a th:href="@{/adminstatistics}">统计信息</a></div>
         </div>
-    </footer>
-    <!--footer end-->
+      </div>
+
+      <div class="col-sm-10">
+        <div class="round-panel">
+
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--main content end-->
+
+
+  <!--footer start-->
+  <footer class="site-footer">
+    <div class="text-center">
+      @Copyright haha
+      <a href="#" class="go-top">
+        <i class="fa fa-angle-up"></i>
+      </a>
+    </div>
+  </footer>
+  <!--footer end-->
 </section>
 
 
