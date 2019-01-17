@@ -18,7 +18,7 @@ $(document).ready(function() {
             $(this).unbind('click');
             $(location).attr('href', "/rentHomeProj_war");
         })
-    }
+    };
   alert('ready');
   $('#publishuserid').attr({"value": userid});
 });
