@@ -169,6 +169,23 @@ function houseinformation(data) {
 }
 
 $(document).ready(function () {
+    jwt = storage["jwt"];
+    userid=storage['userid'];
+    username = storage["username"];
+    console.log("输出:"+jwt);
+    if (userid != null) {
+        $('#linksignin').prop('href', "/rentHomeProj_war/personview");
+        $('#linksignin').html("个人中心");
+        $('#linksignup').prop('href', "");
+        $('#linksignup').html("注销");
+        $('#linksignup').prop("id","longout");
+        $('#longout').bind('click',function(){
+            localStorage.clear();
+            alert("注销成功");
+            $(this).unbind('click');
+            $(location).attr('href', "/rentHomeProj_war");
+        })
+    };
     $('#submit-btn2').on('click',function b(){
         $.ajax({
             type: "POST",
