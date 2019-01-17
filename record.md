@@ -201,6 +201,8 @@ create table renttransaction(
     前者返回这段时间这些地区的成交笔数总和和中介费总和，分别是transactionNum和feeIncome
 
     后者是把这些表全拿出来
+
+14. 每成交一笔订单，需要修改
     
    
 
