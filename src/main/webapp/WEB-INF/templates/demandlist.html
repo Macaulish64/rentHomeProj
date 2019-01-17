@@ -58,9 +58,13 @@
         <a th:href="@{/}" class="w3-bar-item w3-button w3-hover-orange">主页</a>
         <a th:href="@{/houselist}" class="w3-bar-item w3-button w3-hover-orange">房源</a>
         <a th:href="@{/demandlist}" class="w3-bar-item w3-button w3-hover-orange">求租</a>
-        <a th:href="@{/signup}" class="w3-bar-item w3-button w3-hover-orange w3-right">注册</a>
-        <a th:href="@{/signin}" class="w3-bar-item w3-button w3-hover-orange w3-right">登陆</a>
-        <a th:href="@{/personview}" class="w3-bar-item w3-button w3-hover-orange w3-right">个人中心</a>
+        <a th:href="@{/personview}" id="linkpresonview" class="w3-bar-item w3-button w3-hover-orange w3-right">个人中心</a>
+        <a id="linksignup" th:href="@{/signup}" class="w3-bar-item w3-button w3-hover-orange w3-right">
+          <i class="fa fa-user"></i> 注册
+        </a>
+        <a id="linksignin" th:href="@{/signin}" class="w3-bar-item w3-button w3-hover-orange w3-right">
+          <i class="fa fa-sign-in"></i> 登陆
+         </a>
       </div>
     </div>
   </header>
