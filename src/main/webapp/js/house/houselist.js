@@ -1,4 +1,5 @@
-
+var storage=window.localStorage;
+var jwt,userid,username;
 //Jquery 加参数或减参数
 /*1、取值使用
 $.Request("act") = 1
@@ -216,7 +217,23 @@ $(document).ready(function () {
         })
         return;
     }
-
+    jwt = storage["jwt"];
+    userid=storage['userid'];
+    username = storage["username"];
+    console.log("输出:"+jwt);
+    if (userid != null) {
+        $('#linksignin').prop('href', "/rentHomeProj_war/personview");
+        $('#linksignin').html("个人中心");
+        $('#linksignup').prop('href', "");
+        $('#linksignup').html("注销");
+        $('#linksignup').prop("id","longout");
+        $('#longout').bind('click',function(){
+            localStorage.clear();
+            alert("注销成功");
+            $(this).unbind('click');
+            $(location).attr('href', "/rentHomeProj_war");
+        })
+    }
     // $.ajax({
       // type: "GET",
       // dataType: 'json',
