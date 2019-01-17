@@ -11,10 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service
 public class HouseServiceImpl implements HouseService {
@@ -27,9 +24,11 @@ public class HouseServiceImpl implements HouseService {
     public List<House> searchBar(String c) {
         HouseExample suithouse = new HouseExample();
         c='%'+c+'%';
-        suithouse.or().andCitynameLike(c);
-        suithouse.or().andCommunitynameLike(c);
-
+        HouseExample.Criteria criteria=suithouse.createCriteria();
+        HouseExample.Criteria criteria1=suithouse.createCriteria();
+        criteria.andCitynameLike(c);
+        criteria.andCommunitynameLike(c);
+        criteria1.andHousestatusIn(Collections.singletonList(0));
         return houseMapper.selectByExample(suithouse);
     }
 
