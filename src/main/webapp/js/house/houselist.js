@@ -240,9 +240,10 @@ $(document).ready(function () {
       var list1=["1","2","3"];
       var list2=["444","555","666"];
       var list=[];
+      list.push(0);
       //viewhouselist(list);
       var map={};
-      map['aa']=list;
+      map['houseStatus']=list;
       $.ajax({
 		  url:'http://localhost:8080/rentHomeProj_war/house/list',
 		  type:"GET",
