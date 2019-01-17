@@ -20,18 +20,13 @@ $(document).ready(function() {
         $('#linksignin').html("个人中心");
         $('#linksignup').prop('href', "");
         $('#linksignup').html("注销");
-        $('#linksignup').prop("id", "longout");
-        $('#longout').bind('click', function () {
+        $('#linksignup').prop("id","longout");
+        $('#longout').bind('click',function(){
             localStorage.clear();
             alert("注销成功");
             $(this).unbind('click');
             $(location).attr('href', "/rentHomeProj_war");
         })
-        if (username !== "admin") {
-            $('#toadmin').prop('href', "");
-            $('#toadmin').html("");
-
-        }
     }
 });
 
