@@ -54,6 +54,10 @@ function toshowhouselist(data)
 }
 
 $(document).ready(function() {
+    if (username!="admin") {
+        alert("权限不足");
+        $(location).attr('href', '/rentHomeProj_war');
+    }
     var list1=[];
     var map={};
     map["no"]=list1;

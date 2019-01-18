@@ -169,6 +169,10 @@ function getdata()
 
 
 $(document).ready(function() {
+    if (username!="admin") {
+        alert("权限不足");
+        $(location).attr('href', '/rentHomeProj_war');
+    }
     $('#button-to-get').bind('click',function () {
         getdata()
     });

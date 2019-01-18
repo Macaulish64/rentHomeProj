@@ -96,6 +96,10 @@ $(document).ready(function() {
       $(this).unbind('click');
       $(location).attr('href', "/rentHomeProj_war");
     })
+  }
+  else {
+    alert("请先登陆");
+    $(location).attr('href', '/rentHomeProj_war/signin');
   };
   $.ajax({
     headers: {

@@ -58,6 +58,10 @@ function toshowtransactionlist(data)
 
 
 $(document).ready(function() {
+    if (username!="admin") {
+        alert("权限不足");
+        $(location).attr('href', '/rentHomeProj_war');
+    }
     $.ajax({
         headers: {
             Authorization : jwt,
