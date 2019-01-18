@@ -27,6 +27,15 @@ $(document).ready(function() {
             $(this).unbind('click');
             $(location).attr('href', "/rentHomeProj_war");
         })
+        if (username !== "admin") {
+            $('#toadmin').prop('href', "");
+            $('#toadmin').html("");
+
+        }
+    }
+    else {
+        $('#toadmin').prop('href', "");
+        $('#toadmin').html("");
     }
 });
 

@@ -175,7 +175,7 @@ $(document).ready(function() {
     $('#button-to-get').on('click', function () {
         getdata()
     });
-    $('#transnummonth').bind('click',function(){
+    $('#transnummonthup').bind('click',function(){
         var list=map["viewtransnum"];
         list=list.sort(function(a,b){
             return a['x'].localeCompare(b['x']);
@@ -189,7 +189,7 @@ $(document).ready(function() {
                 '</tr>'
             )}
     });
-    $('#transnumtrans').bind('click',function(){
+    $('#transnumtransup').bind('click',function(){
         var list=map["viewtransnum"];
         list=list.sort(function(a,b){
             return a['y']-b['y'];
@@ -204,5 +204,93 @@ $(document).ready(function() {
             )}
     });
 
+
+    $('#transnummonthdown').bind('click',function(){
+        var list=map["viewtransnum"];
+        list=list.sort(function(a,b){
+            return b['x'].localeCompare(a['x']);
+        });
+        $('#viewtransnumt').html("");
+        for(var i=0;i<list.length;i++) {
+            $('#viewtransnumt').append(
+                '<tr>'+
+                '<th>'+getmonth(list[i]['x'])+'月'+'</th>'+
+                '<th>'+list[i]['y']+'</th>'+
+                '</tr>'
+            )}
+    });
+    $('#transnumtransdown').bind('click',function(){
+        var list=map["viewtransnum"];
+        list=list.sort(function(a,b){
+            return b['y']-a['y'];
+        });
+        $('#viewtransnumt').html("");
+        for(var i=0;i<list.length;i++) {
+            $('#viewtransnumt').append(
+                '<tr>'+
+                '<th>'+getmonth(list[i]['x'])+'月'+'</th>'+
+                '<th>'+list[i]['y']+'</th>'+
+                '</tr>'
+            )}
+    });
+    //把下面的表排序了
+    $('#transmoneymonthup').bind('click',function(){
+        var list=map["viewtransmoney"];
+        list=list.sort(function(a,b){
+            return a['x'].localeCompare(b['x']);
+        });
+        $('#viewtransmoneyt').html("");
+        for(var i=0;i<list.length;i++) {
+            $('#viewtransmoneyt').append(
+                '<tr>'+
+                '<th>'+getmonth(list[i]['x'])+'月'+'</th>'+
+                '<th>'+list[i]['y']+'</th>'+
+                '</tr>'
+            )}
+    });
+    $('#transmoneytransup').bind('click',function(){
+        var list=map["viewtransmoney"];
+        list=list.sort(function(a,b){
+            return a['y']-b['y'];
+        });
+        $('#viewtransmoneyt').html("");
+        for(var i=0;i<list.length;i++) {
+            $('#viewtransmoneyt').append(
+                '<tr>'+
+                '<th>'+getmonth(list[i]['x'])+'月'+'</th>'+
+                '<th>'+list[i]['y']+'</th>'+
+                '</tr>'
+            )}
+    });
+
+
+    $('#transmoneymonthdown').bind('click',function(){
+        var list=map["viewtransmoney"];
+        list=list.sort(function(a,b){
+            return b['x'].localeCompare(a['x']);
+        });
+        $('#viewtransmoneyt').html("");
+        for(var i=0;i<list.length;i++) {
+            $('#viewtransmoneyt').append(
+                '<tr>'+
+                '<th>'+getmonth(list[i]['x'])+'月'+'</th>'+
+                '<th>'+list[i]['y']+'</th>'+
+                '</tr>'
+            )}
+    });
+    $('#transmoneytransdown').bind('click',function(){
+        var list=map["viewtransmoney"];
+        list=list.sort(function(a,b){
+            return b['y']-a['y'];
+        });
+        $('#viewtransmoneyt').html("");
+        for(var i=0;i<list.length;i++) {
+            $('#viewtransmoneyt').append(
+                '<tr>'+
+                '<th>'+getmonth(list[i]['x'])+'月'+'</th>'+
+                '<th>'+list[i]['y']+'</th>'+
+                '</tr>'
+            )}
+    });
     getdata();
 });

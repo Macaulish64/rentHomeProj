@@ -1,3 +1,4 @@
+var storage=window.localStorage;
 var jwt = window.localStorage["jwt"];
 var username = window.localStorage["username"];
 var userid=window.localStorage['userid'];

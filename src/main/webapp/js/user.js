@@ -1,3 +1,4 @@
+var storage=window.localStorage;
 var jwt = window.localStorage["jwt"];
 var username = window.localStorage["name"];
 console.log("输出:"+jwt);

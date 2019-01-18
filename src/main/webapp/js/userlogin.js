@@ -72,6 +72,10 @@ $('#btnsignin').click(function() {
         console.log(jwt);
         $(location).attr('href', '/rentHomeProj_war/');
       }
+      else {
+          alert("密码错误");
+          $(location).attr('href', '/rentHomeProj_war/signin');
+      }
       //alert(json.resmsg);
     },
     error:function(){alert("Error");}
