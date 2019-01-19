@@ -24,12 +24,10 @@ public class HouseServiceImpl implements HouseService {
     public List<House> searchBar(String c) {
         HouseExample suithouse = new HouseExample();
         c='%'+c+'%';
-        HouseExample.Criteria criteria=suithouse.createCriteria();
-        HouseExample.Criteria criteria1=suithouse.createCriteria();
-        criteria.andCitynameLike(c);
-        criteria1.andCommunitynameLike(c);
-        criteria.andHousestatusIn(Collections.singletonList(0));
-        criteria1.andHousestatusIn(Collections.singletonList(0));
+        suithouse.or().andCitynameLike(c)
+                .andHousestatusIn(Collections.singletonList(0));
+        suithouse.or().andCommunitynameLike(c)
+                .andHousestatusIn(Collections.singletonList(0));
         return houseMapper.selectByExample(suithouse);
     }
 
