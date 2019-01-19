@@ -1,6 +1,21 @@
 var storage = window.localStorage;
 
 function signup() {
+  var pw = document.getElementById('password');
+  var content = pw.value;
+  var all_num = true;
+  for (var i = 0; i < content.length; i++) {
+    if (content[i] < '0' || content[i] > '9') {
+      all_num = false;
+      break;
+    }
+  }
+  if (all_num) {
+    alert('密码不能全部是数字！');
+    return;
+  }
+
+
   var http = new XMLHttpRequest();
   http.open('POST', 'http://localhost:8080/rentHomeProj_war/user/regist', true);
   http.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
