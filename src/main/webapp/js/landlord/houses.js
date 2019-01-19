@@ -15,12 +15,12 @@ function deletehouse(houseid)
             if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
                 var data = jQuery.parseJSON(xhttp.responseText);
 
-                alert(data.rescode);
+                // alert(data.rescode);
                 console.log(data);
                 // var json = jQuery.parseJSON(data);
 
                 if (data.rescode === 10003) {
-                    alert("Success");
+                    alert("删除房屋成功");
                     $(location).attr('href', '/rentHomeProj_war/landlordhouselist');
                 }
             }
@@ -83,7 +83,8 @@ function toshowhouselist(data)
               '<td>' + stringhouseStatus(data[i].housestatus) + '</td>' +
               '<td><a href="/rentHomeProj_war/editrentout?house=' + data[i].houseid + '">' +
               '<i class="fa fa-edit"></i></a></td>' +
-              '<td><a onclick="deletehouse(' + data[i].houseid + ')"><i class="fa fa-trash-o"></i></a></td>' +
+              '<td><a href="#" onclick="deletehouse(' + data[i].houseid + ')">' +
+              '<i class="fa fa-trash-o"></i></a></td>' +
               '</tr>'
             );
         }

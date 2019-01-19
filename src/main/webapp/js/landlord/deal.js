@@ -37,28 +37,54 @@ function toshowtransactionlist(data)
         if (data[i].rentstatus === 0)
         {
             $('#pretranslist').append(
-                '<tr>'+
-                '<td>'+data[i].transactionid+
-                '<a class="button" style="alignment:center" ' +
-                'href="checktransaction?trans='+data[i].transactionid+'">'+
-                '</td>'+
-                '<td>'+data[i].houseid+'</td>'+
-                '<td>'+data[i].landlordid +'</td>'+
-                '<td>'+data[i].tenantid +'</td>'+
-                '<td>'+data[i].transactiondate +'</td>'+
-                '<td>'+data[i].startmonth +'</td>'+
-                '<td>'+data[i].endmonth +'</td>'+
-                '<td>'+'￥'+data[i].depositmoney +'</td>'+
-                '<td>'+'￥'+data[i].totalrent+'</td>'+
-                '<td>'+'￥'+data[i].landlordpaymentagencyfee +'</td>'+
-                '<td>'+'￥'+data[i].tenantpaymentagencyfee+'</td>'+
-                //'<td>'+stringhouseStatus(Number(data[i].rentstatus))+'</td>'+
-                '<tr>'+'</tr>'
+              '<tr>'+
+              '<td>'+data[i].transactionid+
+              // '<a class="button" style="alignment:center" ' +
+              // 'href="checktransaction?trans='+data[i].transactionid+'">'+
+              // data[i].transactionid+'</a>' +
+              '</td>'+
+              '<td>'+data[i].houseid+'</td>'+
+              '<td>'+data[i].landlordid +'</td>'+
+              '<td>'+data[i].tenantid +'</td>'+
+              '<td>'+data[i].transactiondate +'</td>'+
+              '<td>'+data[i].startmonth +'</td>'+
+              '<td>'+data[i].endmonth +'</td>'+
+              '<td>'+'￥'+data[i].depositmoney +'</td>'+
+              '<td>'+'￥'+data[i].totalrent+'</td>'+
+              '<td>'+'￥'+data[i].landlordpaymentagencyfee +'</td>'+
+              '<td>'+'￥'+data[i].tenantpaymentagencyfee+'</td>'+
+              // '<td><a href="/trans/confirmtrasaction?transid='+data[i].transactionid+'">' +
+              // '<i class="fa fa-check-square-o"></i></a></td>' +
+              '<td><a href="#" onclick="accept('+data[i].transactionid+')"><i class="fa fa-check-square-o"></i></a></td>' +
+              //'<td>'+stringhouseStatus(Number(data[i].rentstatus))+'</td>'+
+              '<tr>'+'</tr>'
             );
         }
     }
 }
 
+function accept(transid) {
+    var http = new XMLHttpRequest();
+    http.open("POST",
+      "http://localhost:8080/rentHomeProj_war/trans/confirmtransaction/" + transid, true);
+    http.setRequestHeader('Content', 'application/x-www-form-urlencoded');
+
+    http.onreadystatechange = function(xhttp) {
+        return function () {
+            if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+                var data = jQuery.parseJSON(xhttp.responseText);
+                console.log(data);
+
+                if (data.rescode === 10003) {
+                    alert("成交！");
+                    $(location).attr('href', '/rentHomeProj_war/landlordappointment');
+                }
+            }
+        }
+    } (http);
+
+    http.send();
+}
 
 $(document).ready(function() {
     jwt = storage["jwt"];
