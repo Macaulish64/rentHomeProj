@@ -62,6 +62,13 @@ function stringhouseStatus(data)
   return "";
 }
 
+function stringelevatorornot(data)
+{
+  if (data===0) return '无';
+  if (data===1) return '有';
+  return "";
+}
+
 function fillinput(house) {
   $('#houseid').attr({"value": house.houseid});
   $('#city').attr({"value": house.cityname});
@@ -70,7 +77,7 @@ function fillinput(house) {
   $('#housetype').attr({"value": stringHouseTyde(house.housetype)});
   $('#housearea').attr({"value": house.housearea});
   $('#floornumber').attr({"value": house.floornumber});
-  $('#elevatorornot').attr({"value": house.elevatorornot});
+  $('#elevatorornot').attr({"value": stringelevatorornot(house.elevatorornot)});
   $('#depositmoney').attr({"value": house.depositmoney});
   $('#rentmoney').attr({"value": house.rentmoney});
 }
